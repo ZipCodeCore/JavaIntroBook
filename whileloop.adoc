@@ -1,0 +1,89 @@
+
+== Loops
+
+Loops allow you control over repetitive steps you need to do in your _control flow_. JavaScript has two different kinds of loops we will talk about: *while* loops and *for* loops. 
+Either one can be used interchangeably; but, as you will see there are couple cases where using one over the other makes more sense.
+
+The primary purpose of loops is to avoid having lots of repetitive code.
+
+=== While Loop
+
+Loop through a block of code (the body) WHILE a condition is true. 
+
+----
+while (condition_is_true) {
+
+    // execute the code statements 
+    // in the loop body
+
+}
+----
+
+See the code below.
+In this case, we start with a simple counter in x = 1. Then, after the loop starts, it checks to see if x < 6, and 1 is less than 6, so the loop body gets executed. We print out 1 and then increment x. Then we go to the top of the loop and check to see if x (now 2) is less than 6. Since that's true so we print out 2 and increment x again. This continues like this for three more times, printing 3, 4, and 5.
+
+Then, x is incremented to 6, and the check is made again, 6 < 6 ... well, no that is false. So we don't execute the loop's body and we fall through to the last console.log line, and print out x.
+
+[source,javascript]
+----
+let x = 1;
+
+while (x < 6) {
+    console.log(x);
+    x++;
+}
+
+console.log("ending at", x); // ? what will print here ?
+----
+
+While loops work well in situations where the condition you are testing at the top
+of the loop is one that may not be related to a simple number. 
+
+----
+while (player[1].isAlive() === true) {
+    player[1].takeTurn();
+    game.updateStatus(player[1]);
+}
+----
+
+This will keep letting player[1] take a turn in the game until the player dies. Another way to do something like this is with an _infinite loop_. (No, infinite loops are not necessarily a bad thing, watch.) We're going to use both *continue* and *break* in this example, and we will
+describe them better after we're done with loops.
+
+----
+let player = game.newPlayer();
+
+while (true) { // <- notice right here, an infinite loop
+
+    player.takeTurn();
+    game.updateScores();
+    game.advanceTime();
+
+    if (player.isAlive() == true) {
+        continue; // start at top of loop again.
+    } else {
+        break; // breaks out of loop and ends game.
+    }
+}
+game.sayToHuman("Game Over!");
+----
+
+Here, we are using the continue statement to force the flow of control to the top of the loop. We are also using the break statement to break out of the infinite loop, letting us do other things after the player has 'died'.
+
+=== Do..While Loop
+
+There is another kind of loop, a *Do..While* loop.
+Why? well, sometimes you need a loop to go at least once, no matter what
+and continue until the condition on the loop becomes false. These are used only occasionally,
+and only in very specific situations.
+
+[source,javascript]
+----
+let x = 0;
+
+do {
+    console.log(x);
+    x++;
+}
+while (x < 5);
+----
+

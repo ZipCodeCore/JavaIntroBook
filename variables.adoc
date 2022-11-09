@@ -1,0 +1,193 @@
+
+=== Variables
+
+In JavaScript, variables are containers used to store data while the program is running. Variables can be named just about anything, and often are named things that make you think about what you store there.
+
+Think of them as little boxes you can put data into, to keep it there and not lose it.
+
+There are some rules about variables. 
+
+- All Variables must be named.
+- Names can contain letters, digits, underscores, and dollar signs
+- Names must begin with a letter
+- Names can also begin with $ and _ but are often used in special cases
+- Names are case sensitive (y and Y are different variables)
+- Reserved words (like JavaScript keywords) cannot be used as names
+- All variable names must be unique (no two alike)
+
+So this means the following are fine for variable names in JavaScript:
+
+[source]
+----
+x
+AREA
+height
+Width
+currentScore
+playerOne
+playerTwo
+$sumOfCredits
+_lastPlay
+isPlayerAlive
+----
+
+And uppercase and lowercase letters are different.
+So each of these are DIFFERENT variables even 
+though they are based on the same word(s).
+
+[source]
+----
+Current_Speed
+current_speed
+CURRENT_SPEED
+----
+
+So be careful with UPPERCASE and lowercase letters in variable names.
+
+==== Declaring a Variable
+
+[source]
+----
+let x;
+----
+This creates a variable *x* that can hold any primitive type. But it has NO value assigned to it, so if we...
+
+[source]
+----
+console.log(x);  // -> undefined
+----
+There is _nothing_ there. 
+
+If we were to declare a variable named 'cats' and assign it the value 3:
+
+[source]
+----
+let cats = 3;
+console.log(cats);  // -> 3
+----
+
+==== Assign a value to a variable
+
+[source]
+----
+let age = 19; 
+let name = "James";
+console.log(name, "is", age, "years old"); // -> James is 19 years old
+age = 21;
+name = "Gina";
+console.log(name, "is", age, "years old"); // -> Gina is 21 years old
+----
+
+==== Reassigning a value to a variable
+
+[source]
+----
+let x = "five";
+console.log(x); // -> five
+x = "nineteen";
+console.log(x); // -> nineteen
+----
+
+Notice how we don't use "let" again, when we assign "nineteen" to x. We can assign a variable as many times as
+we might need to.
+
+[source]
+----
+let age = 3;
+// have a birthday
+age = age + 1;
+// have another birthday
+age = age + 1;
+console.log(age); // -> 5
+----
+
+Notice here how age's current value is used, added one to it, and re-assigned _back into the variable *age*_.
+
+Now, one of the weird (to me anyway) things JavaScript can do is change the type of a variable while the program is running.
+A lot of languages won't let you do this. But it can be handy in JavaScript.
+In JavaScript, variables are dynamic (can contain any data) which means a variable can be a string and later be a number.
+
+[source]
+----
+let height = 62.0; // inches maybe?
+console.log(height); // -> 62
+
+height = "very tall";
+console.log(height); // -> very tall
+// yep, first height is a number
+// and then it's a string.
+----
+
+_You can't see it, but I am slowly shaking my head in disbelief. Some day, maybe I'll explain why._
+
+=== Constants
+
+Constants are like let variables but they contain values that do NOT change such as a person’s date of birth. Convention is to capitalize constant variable names.
+
+[source]
+----
+const DATE_OF_BIRTH = "04-02-2005";
+DATE_OF_BIRTH = "04-10-2005"; // <-error
+----
+An attempt to re-assign a value to a constant will fail.
+
+
+=== Data Types
+
+JavaScript can keep track of a number of different kinds of data, and these are known
+as "primitive data types". There are 5 of them.
+
+* *Number* - there are two kinds of numbers: integers and floats
+** *Integers* are like 0, -4, 5, 6, 1234
+** *Floats* are numbers where the decimals matter like  0.005, 1.7, 3.14159, -1600300.4329
+* *String* - an array of characters - 
+** like 'text' or "Hello, World!"
+* *Boolean* - is either *true* or *false*
+** often used to decide things like isPlayer(1).alive() [true or false?]
+* *Null* - no value at all
+* *Undefined* - a variable not yet assigned - "let x;"
+** this is a weird type, and not very common.
+
+It is common for a computer language to want to know if data is a bunch numbers or text. Tracking
+what _type_ a piece of data is is very important. And it is the programmer's job to make sure all the 
+data get handled in the right ways. 
+
+So JavaScript has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
+
+[TIP]
+====
+Create variables for each primitive data type:
+
+- boolean, 
+- float, 
+- integer, 
+- string 
+- constant (integer)
+
+Store a value in each.
+====
+
+[source]
+----
+// Here are some samples. 
+
+// integer
+let x = 0;
+
+// boolean
+let playerOneAlive = true;
+
+// float
+let currentSpeed = 55.0;
+
+// string
+let playerOneName = "Rocco";
+
+// constant integer
+
+const maxPainScore = 150000;
+----
+
+Now, you try it. Write down a variable name and assign
+a normal value to it.
+

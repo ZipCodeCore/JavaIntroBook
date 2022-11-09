@@ -1,0 +1,189 @@
+
+== Code Patterns
+
+Any experienced coder would say that the ability to see patterns in code, remember them, and learn from them when creating code is another kind of 'superpower'.
+The following samples are really simple techniques, but they show some common ways of doing things that you should think about and study. 
+In almost all these examples, there may be some missing variable declarations.
+Just roll with it. 
+If you think about it, I'm sure you can figure out what "let" variable declarations are needed to run the sample in the REPL page.
+
+=== Simple Patterns
+
+If you wanted to find the larger of two values, x and y and assign it to 'max':
+
+[source]
+----
+if (x > y) {
+    max = x;
+} else {
+    max = y;
+}
+----
+
+Related to it, if we have two variables x and y, and we want the smaller in x, and the larger in y.
+
+[source]
+----
+if (x > y) {
+    let t = x;
+    x = y;
+    y = t;
+}
+----
+
+Do you see the three statements in the block there? That's called a 'swap'. If you need to swap two values in two variables, you just create a quick temporary variable 't' and use it as a place to make a copy of the first variable's value.
+
+If I needed to make sure a number is always positive (greater than zero), it's easy - this is called taking the "absolute value" of a number.
+
+[source]
+----
+if (n < 0) n = -n;
+----
+
+=== Loop Patterns
+
+The next few are examples of the handy use of loops to do a bunch of math easily and quickly. 
+Imagine a problem where you have to "add all the numbers from 1 to 100 and print the sum." 
+It might also be expressed as "*sum* all the number from x to y" (where x and y are two integers).
+Turns out there is a very easy pattern to learn here.
+
+[source]
+----
+let sum = 0;
+let n = 100;
+for (let i = 1; i < n; i++) {
+    sum = sum + i;
+}
+console.log(sum);
+----
+
+Now, if you wanted to find the average of a bunch of numbers, that's as easy as taking the sum of the numbers and dividing the sum by the number of numbers (or n).
+
+
+[source]
+----
+let sum = 0;
+let n = 100;
+for (let i = 1; i < n; i++) {
+    sum = sum + i;
+}
+let average = sum / n;
+console.log(average);
+----
+
+Pretty easy, yes? And the other common pattern here is doing a *product* of all the numbers from 1 to n. (Let's try 20)
+
+[source]
+----
+let product = 1;
+let n = 20;
+for (let i = 1; i < n; i++) {
+    product = product * i;
+}
+console.log(product);
+----
+
+Perhaps you want to print a table of values of some equation.
+
+[source]
+----
+for (let i = 0; i <= n; i++) {
+    console.log(i + " " + i*i/2);
+}
+----
+
+=== Array Patterns
+
+Arrays are often something that confuses beginning coders. Let's look at some code patterns with arrays that let you see how arrays and loops can work together to get a lot of work pretty easily.
+
+The array we are going to use in all these cases is pretty simple. It's an array of 7 numbers.
+
+[source]
+----
+let a = [ 4, 3, 7, 0, -4, 1, 8];
+----
+
+Here how to print out the array, one value per line.
+
+[source]
+----
+for (let i = 0; i < a.length; i++) {
+    console.log(i, a[i]); // print the index and value of an array element.
+}
+----
+
+If we needed to find the *smallest* number in the array, we could do:
+
+[source]
+----
+let min = a[0];
+for (let i = 1; i < a.length; i++) {
+    if (a[i] < min) min = a[i];
+}
+console.log(min);
+----
+
+We should look carefully here. 
+First, notice how I have taken the first element a[0] and made my first 'min' that value. 
+Then, I started at 1 (not 0), to be my first compare. 
+Then we step through the array, looking at each value and if the new value is smaller than the previous one, we update it; otherwise, we just do the next value. footnote:[YES, if the array is only one element long, this will fail. But I'm merely trying to show some concepts here. I'd do this differently, if it were to be in some codebase somewhere.]
+
+NOW, if you wanted to find the *largest* value in the array, you really only have to change a couple things.
+
+[source]
+----
+let max = a[0];
+for (let i = 1; i < a.length; i++) {
+    if (a[i] > max) max = a[i];
+}
+console.log(max);
+----
+
+Carefully look at the code, comparing to the one above. 
+What's different? 
+Well, for one, we changed the variable from 'min' to 'max'. 
+(But did we need to do that? We could have left it max, but it's cleaner to make the change so people who read it aren't confused.)
+We also changed the comparison in the 'if' statement from "less than <" to "greater than >" which lets us decide if the new number is larger than the previous largest we found.
+
+In both of these cases, we start with an initial value, then we step through the array, look at each value comparing it to the smallest (or largest) value we have yet found. If we need to update the 'carrying variable', we do; otherwise, we just ignore the value.
+
+What about finding the average of the values in the array? Well, we do it a lot like the average of the series of numbers.
+
+[source]
+----
+let sum = 0;
+for (let i = 0; i < a.length; i++) {
+    sum = sum + a[i];
+}
+let average = sum / a.length ; // whoa! lookee there?
+
+console.log(average);
+----
+
+Yep, the "a.length" is very handy, it has exactly the count of the numbers in the array!
+
+Finally, if we wanted to reverse the values in the array, we could write some code:
+
+[source]
+----
+console.log("before:", a);
+let n = a.length;
+let half = Math.ceil(n / 2);
+for (let i = 0; i < half; i++) {
+    let t = a[i];
+    a[i] = a[n-1-i];
+    a[n-i-1] = t;
+}
+console.log("after: ",a);
+----
+
+But perhaps the easier way to reverse an array in Javascript is to just call the library function:
+
+[source]
+----
+a = a.reverse();
+console.log(a);
+----
+
+It can be useful to look at the "longer" way to continue to get a feel for how to do small, useful things with simple logic.
+

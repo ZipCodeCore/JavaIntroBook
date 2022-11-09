@@ -1,0 +1,174 @@
+
+[appendix]
+== Mars Lander
+
+This is some code to show you how you might write a simple mars lander simulation in JavaScript. It's taken from history, way back in the 1970's - this idea was passed around as some of the very first open source programs.
+
+Meant as an example of a longer program (159 lines) to get you thinking, it's really not very complicated. 
+The general idea is you have a series of "burns" in a list, and the game (or simulator, if you will) steps through the list applying each burn. 
+If you run out of altitude (or height) while you're going too fast, you will crash.
+
+The tricky bit would be for you to figure out what `burnArray` would be used to safely land at a vehicle speed 1 or 2. That could be hard.
+
+[source]
+----
+// Mars Lander Source Code.
+
+const Gravity = 100 
+/* The rate in which the spaceship descents in free fall (in ten seconds) */
+
+const version = "1.2"; /* The Version of the program */
+
+// various end-of-game messages.
+const dead = "\nThere were no survivors.\n\n";
+const crashed = "\nThe Spaceship crashed. Good luck getting back home.\n\n";
+const success = "\nYou made it! Good job!\n\n";
+const emptyfuel = "\nThere is no fuel left. You're floating around like Wheatley.\n\n";
+
+function randomheight() {
+    let max = 20000;
+    let min = 10000;
+    let r = Math.floor(Math.random() * (max - min)) + min;
+    return (r % 15000 + 4000)
+}
+
+function gameHeader() {
+    s = "";
+    s = s + "\nMars Lander - Version " + version + "\n";
+    s = s + "This is a computer simulation of an Apollo mars landing capsule.\n";
+    s = s + "The on-board computer has failed so you have to land the capsule manually.\n";
+    s = s + "Set burn rate of retro rockets to any value between 0 (free fall) and 200\n";
+    s = s + "(maximum burn) kilo per second. Set burn rate every 10 seconds.\n"; /* That's why we have to go with 10 second-steps. */
+    s = s + "You must land at a speed of 2 or 1. Good Luck!\n\n";
+    return s;
+}
+
+function getHeader() {
+    s = "";
+    s = s + "\nTime\t";
+    s = s + "Speed\t\t";
+    s = s + "Fuel\t\t";
+    s = s + "Height\t\t";
+    s = s + "Burn\n";
+    s = s + "----\t";
+    s = s + "-----\t\t";
+    s = s + "----\t\t";
+    s = s + "------\t\t";
+    s = s + "----\n";
+    return s;
+}
+
+
+function computeDeltaV(vehicle) {
+    return (vehicle.Speed + Gravity - vehicle.Burn)
+}
+
+function checkStatus(vehicle) {
+    s = "";
+    if (vehicle.Height <= 0) {
+        if (vehicle.Speed > 10) {
+            s = dead;
+        }
+        if (vehicle.Speed < 10 && vehicle.Speed > 3) {
+            s = crashed;
+        }
+
+        if (vehicle.Speed < 3) {
+            s = success;
+        }
+    } else {
+        if (vehicle.Height > 0) {
+            s = emptyfuel;
+        }
+    }
+    return s
+}
+
+function adjustForBurn(vehicle) {
+    // save previousHeight
+    vehicle.PrevHeight = vehicle.Height;
+    // compute new velocity
+    vehicle.Speed = computeDeltaV(vehicle);
+    // compute new height of vehicle
+    vehicle.Height = vehicle.Height - vehicle.Speed;
+    // subtract fuel used from tank
+    vehicle.Fuel = vehicle.Fuel - vehicle.Burn;
+}
+
+function stillFlying() {
+    return (vehicle.Height > 0);
+}
+
+function outOfFuel(vehicle) {
+    return (vehicle.Fuel <= 0);
+}
+
+function getStatus(vehicle) {
+    // create a string with the vehicle status on it.
+    let s = "";
+    s = vehicle.Tensec + "0 \t\t" + vehicle.Speed + " \t\t" + vehicle.Fuel + " \t\t" +
+        vehicle.Height;
+    return s
+}
+
+function printString(string) {
+    // print long strings with new lines the them.
+    let a = string.split(/\r?\n/);
+    for (i = 0; i < a.length; i++) {
+        console.log(a[i]);
+    }
+}
+
+// this is initial vehicle setup
+var vehicle = {
+    Height: 8000,
+    Speed: 1000,
+    Fuel: 12000,
+    Tensec: 0,
+    Burn: 0,
+    PrevHeight: 8000,
+    Step: 1,
+}
+
+// main game loop
+function runGame(burns) {
+    let status = ""
+
+    /* Set initial vehicle parameters */
+    let h = randomheight()
+    vehicle.Height = h;
+    vehicle.PrevHeight = h;
+
+    burnIdx = 0;
+
+    printString(gameHeader());
+    printString(getHeader());
+
+    while (stillFlying() === true) {
+
+        status = getStatus(vehicle);
+
+        vehicle.Burn = burns[burnIdx];
+        printString(status + "\t\t" + vehicle.Burn);
+
+        adjustForBurn(vehicle);
+
+        if (outOfFuel(vehicle) === true) {
+            break;
+        }
+        vehicle.Tensec++;
+        burnIdx++;
+
+
+    }
+    status = checkStatus(vehicle);
+    printString(status);
+}
+
+// these are the series of burns made each 10 secs by the lander.
+// change them to see if you can get the lander to make a soft landing.
+// burns are between 0 and 200. This burn array usually crashes.
+const burnArray = [100, 100, 200, 200, 100, 100, 0, 0, 200, 100, 100, 0, 0, 0, 0];
+
+runGame(burnArray);
+----

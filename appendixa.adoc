@@ -1,0 +1,441 @@
+
+[appendix]
+== Advanced Ideas
+
+We're going to look at a few "modern" ways of handling a collection of data. 
+Frequently, you have a list, or an array, of data that needs to be gone through to print it out, transform it in some way, or to summarize it (such as a total or an average). 
+As you have seen in the code patterns section, there are common loops used for such things, a simple pattern that you can memorize.
+
+There are other methods of doing these things, and we're going to discuss a few of them here.
+These ideas are based primarily on methods made popular by Hadoop and other "big data" applications and tools.
+And what's good for "big" data is often good for "small" data as well.
+
+Each of these sections is an example of a more "elegant" way of expressing coding logic.
+By studying each one and comparing it to the ways we've discussed before using loops and conditional statements, we're expanding your understanding, making you see how these techniques can be used to create more extensible and elegant code.
+
+Let's use this array for the following examples. 
+
+[source]
+----
+const groceries = [
+  {
+    name: 'Breakfast Cereal',
+    price: 5.50,
+  },
+  {
+    name: 'Rice',
+    price: 14.99,
+  },
+  {
+    name: 'Oranges',
+    price: 6.49,
+  },
+  {
+    name: 'Crackers',
+    price: 4.79,
+  },
+  {
+    name: 'Potatoes',
+    price: 3.99,
+  },
+];
+----
+
+A common grocery list, we have this as a list (or array) of objects (what's known as a key/value data structure).
+
+=== Simplifying Loops
+
+Now, if you wanted to print out each item's name in the grocery list to the console, you could do something like this: 
+
+[source]
+----
+let idx = 0;
+while (idx < groceries.length) {
+  console.log(groceries[idx].name);
+  idx = idx + 1;
+}
+----
+
+This is a very common code pattern in JavaScript. 
+It's also fraught with possible errors. 
+It relies on the `idx` variable. 
+If we forget or mess up the increment step at the end of the loop, we could be in trouble. 
+Rather, how about this:
+
+[source]
+----
+groceries.forEach((item) => {
+  console.log(item.name);
+});
+----
+
+`forEach` is a _higher-order function_ that takes in another function as an argument and executes the provided function once for each element in the array. 
+It is meant to simplify your code.
+By using forEach, we remove the extraneous code for tracking and accessing the array using an index, and focus on our logic: printing out the name of each grocery item.
+
+A higher-order function is a function that does at least one of the following:
+
+* takes one or more functions as arguments (i.e. procedural parameters),
+* returns a function as its result.
+
+Let's look at a few other uses of higher-order functions.
+Say we wanted to get a list of just the prices of our grocery list. If we use a loop, we have a very recognizable pattern.
+
+[source]
+----
+let index = 0;
+const prices = [];
+while (index < groceries.length) {
+  prices.push(groceries[index].price);
+  index = index + 1;
+}
+----
+
+But if we use a different higher-order function, `map`:
+
+[source]
+----
+let prices = groceries.map((item) => {
+  return item.price;
+});
+----
+
+The value of prices would be: `[5.5,14.99,6.49,4.79,3.99]`. And if we were to want something a little more useful than just producing a list, we would do this when using a loop: 
+
+[source]
+----
+let index = 0;
+let total = 0;
+while (index < groceries.length) {
+  total = total + groceries[index].price;
+  index = index + 1;
+}
+----
+
+Now we are tracking _two_ pieces of information, the index and the total.
+With the sum of all the prices ending up in `total`.
+
+But look how much simpler our code can be if we use `reduce`, another higher-order function. 
+
+[source]
+----
+let total = groceries.reduce((sum, item) => {
+  return sum += item.price;
+}, 0);
+----
+
+The result, if we print `total` is the awkward number `35.760000000000005`, and why that is, well, later we'll discuss it. But, `35.76` should suffice.
+
+If we wanted to pull out all the even numbers from a list of numbers, we'd need a function like this to decide if a number if even. (Remember the trick using modulus?)
+
+[source]
+----
+function even (value) {
+    return value % 2 === 0;
+}
+
+console.log(even(3), even(4), even(126));
+
+// giving us 'false true true'
+----
+
+If we remove the name `even` from the definition, and use a higher-order function named `filter`, we have something like this.
+
+[source]
+----
+numList = [1,2,3,4,5,6,7,8];
+numList.filter(
+    function (value) {return value % 2 === 0}
+);
+----
+
+`filter` is a function which filters out the elements in an array that don’t pass a test. You can visualize it this way:
+
+[source]
+----
+function filter(array, test) {
+  let passed = [];
+  for (let element of array) {
+    if (test(element)) {
+      passed.push(element);
+    }
+  }
+  return passed;
+}
+
+function even (value) {
+    return value % 2 === 0;
+}
+
+let dataList = [1,2,3,4];
+
+console.log(
+    filter(dataList, even)
+); // produces [2,4]
+
+----
+
+See what I've done? First, I've shown you how to express `filter` with both a loop and an `if` statement, expressing the function in more verbose code to give you the idea of what's going on. 
+Second, I've then used it to show it in action.
+
+I've defined two functions, `filter` and `even`. 
+Then created a short array/list called `dataList`. 
+Finally, I've printed the result of calling `filter(dataList,even)`. 
+Wait, what? I passed the function's name, `even` as an argument to another function. 
+Well, sure, why not? Functions in JavaScript are called `first class objects`, just like a variable or an object or a value.
+
+And it turns out JavaScript already has a function called `filter`, a higher order function. 
+And I can reduce it even more to something like this:
+
+[source]
+----
+let result = [1,2,3,4].filter(
+    function (value) {return value % 2 === 0}
+);
+
+// or, If I have 'dataList' defined as [1,2,3,4]
+let result = dataList.filter(
+    function (value) {return value % 2 === 0}
+);
+----
+
+And as you will see further down, we can even reduce that to a simpler form, called a `lambda`.
+
+In these four cases, we see how we can use a different form of computing, a _functional_ form, to simplify our code by removing loops and their trappings and replacing them with higher-order functions, letting us hand some of our logic to the language itself. And making our code more elegant in the process.
+
+=== Simplifying Conditionals
+
+We can use the same ideas with conditionals. Conditionals can get thick and complicated without too much effort. Say we need to keep track of and perform different discounts for various purposes. Sounds like an `if` statement! With `else` statements too!
+
+But `else` statements, for instance, have a habit of complicating code.
+
+Every time you add an else statement, you increase the complexity of your code two-fold. 
+Conditional constructs like if-else and switch statements are foundational blocks in the world of programming. 
+But they can also get in the way when you want to write clean, extensible code.
+
+Let's create a function that computes a discount for a price amount based on sone discount code.
+We might, happily, build something like this:
+
+[source]
+----
+const discount = (amount, code) => {
+  if (code == 'TWENTYOFF') {
+      return amount * 0.80;
+  } else if (code == 'QUARTEROFF') {
+      return amount * 0.75;
+  } else if (code == 'HALFOFF') {
+      return amount * 0.50;
+  } else { // no discount
+      return amount;
+  }
+}; // whew! that a lot of braces.
+
+let netprice = discount(200.00, 'HALFOFF'); // would be 100.
+----
+
+But think about adding another discount, we'd have to add another `if`, more braces, and make sure we nest it in there carefully, otherwise we break the whole, rickety, mess.
+
+I know! Let's use a `switch` statement, and simplify! Well...
+
+Switch statements too, have a way of expanding on you, getting long, and sometimes complex, requiring care to maintain and/or extend. Say you wanted to add some more discounts to the following switch statement?
+
+[source]
+----
+const discount = (amount, code) => {
+  switch (code) {
+    case 'TWENTYOFF':
+      return amount * 0.80;
+    case 'QUARTEROFF':
+      return amount * 0.75;
+    case 'HALFOFF':
+      return amount * 0.50;
+  }
+};
+
+let netprice = discount(200.00, 'HALFOFF'); // would be 100.
+----
+
+We have to add two lines of code for each `case`. 
+And if you make a mistake, you break the whole contraption.
+
+But consider this idea: use a combination of a simple data structure and a small piece of code (called an arrow function (or "lambda")). 
+
+[source]
+----
+const DISCOUNT_MULTIPLIER = {
+  'TWENTYOFF': 0.80,
+  'QUARTEROFF': 0.75,
+  'HALFOFF': 0.50,
+};
+
+const discount = (amount, code) => { // look at that arrow '=>'?
+  return amount * DISCOUNT_MULTIPLIER[code];
+};
+----
+
+Whoa! How easy is it to add another 1, 3 or 7 discount cases? 
+Just one line each.
+This re-factor effectively decouples the data we use from the core calculation logic, which makes it much easier to modify either independently. No `ifs`, `elses` or `switches`, just an object holding data, a simple lambda (arrow) function which does simple math.
+
+=== Lambdas (or Arrow Functions)
+
+One of the ways we do a lot of this kind of simplification within code is by replacing more complex logic with simpler forms. 
+
+In JavaScript, we have function expressions which give us an anonymous function (a function without a name). Here we are creating an anonymous function and assigning it to a variable.
+
+[source]
+----
+var anon = function (a, b) { return a + b };
+
+// this is the same as
+function anon (a, b) {
+    return a + b;
+}
+----
+
+It's really just a different form of the same thing.
+
+But we also have `lambdas` or `arrow functions` with a more flexible syntax that has some bonus features and gotchas. 
+We could write the above example as:
+
+[source]
+----
+var anon = function (a, b) { return a + b }; // from above
+
+var anon = (a, b) => a + b; // Sweet!
+
+// or we could
+var anon = (a, b) => { return a + b };
+// if we only have one parameter we can loose the parentheses
+var anon = a => a + a;
+// and without parameters
+var () => {} // this does nothing. So who cares?
+
+// this looks pretty nice when you change something like:
+[1,2,3,4].filter(
+    function (value) {return value % 2 === 0}
+);
+// to:
+[1,2,3,4].filter(value => value % 2 === 0);
+----
+
+See how much easier it is to read the last line in the example over the previous filter using the anonymous function?
+Lambdas are a powerful way to express small functions, and use them in a variety of ways. 
+They are often paired with higher-order functions, as they simplify the code quite a bit.
+
+=== Polymorphism and K.I.S.S.
+
+Remember "keep it simple, stupid"? 
+Yeah, we suffer from over-complicating things in coding as well.
+Another way to replace conditionals is by using a key feature of object-oriented programming languages: polymorphism. 
+Let's show some code which helps bill a customer.
+
+[source]
+----
+// list of customers we want to 'checkout'
+const customers = [
+  {
+    name: 'sam',
+    amount: 75.00,
+    paymentMethod: 'credit-card',
+  },
+  {
+    name: 'frodo',
+    amount: 50.00,
+    paymentMethod: 'debit-card',
+  },
+  {
+    name: 'galadriel',
+    amount: 25.00,
+    paymentMethod: 'cash',
+  },
+];
+----
+
+I'm going to gloss over the code needed to do each of the three kinds of payment.
+But show you how I might have to account for all three inside a `checkout` function.
+
+[source]
+----
+const checkout = (amount, paymentMethod) => {
+  switch (paymentMethod) {
+    case 'credit-card':
+      // Complex code to charge ${amount} to the credit card.
+      break;
+    case 'debit-card':
+      // Complex code to charge ${amount} to the debit card.
+      break;
+    case 'cash':
+      // Complex code to put ${amount} into the cash drawer.
+      break;
+  }
+};
+----
+
+Now, I'd like to take the list of customers, and checkout each one. (Notice how I'm using the higher-order function here, not a `for` loop.)
+
+[source]
+----
+customers.forEach(({ amount, paymentMethod }) => {
+  checkout(amount, paymentMethod);
+});
+----
+
+But if I use `polymorphism`, I can make each customer's checkout method wired directly to the data list. 
+And look how I have broken the large function up, into three simpler things.
+
+[source]
+----
+class CreditCardCheckout {
+  static charge(amount) {
+    // Complex code to charge ${amount} to the credit card.
+  }
+}
+class DebitCardCheckout {
+  static charge(amount) {
+    // Complex code to charge ${amount} to the debit card.
+  }
+}
+class CashCheckout {
+  static charge(amount) {
+    // Complex code to put ${amount} into the cash drawer.
+  }
+}
+const customers = [
+  {
+    name: 'sam',
+    amount: 75.00,
+    paymentMethod: CreditCardCheckout,
+  },
+  {
+    name: 'frodo',
+    amount: 50.00,
+    paymentMethod: DebitCardCheckout,
+  },
+  {
+    name: 'galadriel',
+    amount: 25.00,
+    paymentMethod: CashCheckout,
+  },
+];
+customers.forEach(({ amount, paymentMethod}) => {
+  paymentMethod.charge(amount);
+});
+----
+
+I am using a `class` in this example, well, three of them actually. One for each payment method. 
+I can put the complex code within each class, and if I set them all up to have a `charge` method (a method being the term we use to talk about a function wired to a class), I know I just need to call `charge` on each customer, and the classes will all figure out which piece of code to use.
+This is an example of polymorphism, "many forms, same name".
+
+Another example, commonly used in explaining polymorphism, is a series of geometric shapes, like Square, Triangle and Circle. 
+Each of those shapes has a different way of computing the `area` of itself. 
+A Square's `area()` is `(side * side)`, right? 
+But a Circle's `area()` is `(Math.PI * (radius * radius))`. 
+Two different ways of calculating the area of a shape, depending on the kind of shape we're working with. 
+Each of these shapes would have it's own class, each with a different definition of how to find the area of the shape.
+That's polymorphism in a nutshell.
+
+Each of these techniques are currently considered "advanced" JavaScript, even though in many cases they are simpler and less error-prone than more "traditional" loops and conditionals.
+
+Be sure to consider how each of them are largely the same in functionality but simpler in expressing the logic of your program. 
+Remember to make your code more elegant by adding more simplicity.

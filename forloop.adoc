@@ -1,0 +1,88 @@
+=== For Loop
+
+The *for* loop is more complex, but it’s also the most commonly used loop.
+
+[source]
+----
+for (begin; condition; step) {
+
+    // execute the code statements 
+    // in the loop body
+
+}
+----
+
+Here's one where we go from 1 to 5.
+
+[source]
+----
+for(let j = 1; j < 6;  j++){
+    // loop body code
+    console.log(j);
+}
+----
+
+This loop will print out: 
+
+[source]
+----
+// print 
+1 
+2 
+3 
+4 
+5 
+----
+
+Notice how there are THREE parts to the FOR loop's mechanism. 
+
+* begin: j = 1  // Executes once upon entering the loop.
+* condition: j < 6  // Checked before every loop iteration. If false, the loop stops.
+* loop step: j++  // Executes after the body on each iteration.
+
+and
+
+* body:	console.log()  // Runs again and again while the condition is true.
+
+Let's show you another glimpse of the *break* statement.
+
+[source]
+----
+for(let p = 1; p < 6; p++){
+    if(p === 4){
+        break;
+    }
+console.log("Loop " + p + " times");
+}	
+----
+
+Jumps out of the loop when p is equal to 4.
+
+
+
+[TIP]
+====
+* Print from 10 to 1 with a for loop and a while loop (hint use decrement)
+* Write a loop that prints 1 - 5 but break out at 3
+====
+
+[TIP]
+====
+Stretch Goal: S/he who dares wins!
+
+* Go back to Arrays
+* Look at an array of donuts
+* Create an array of donuts
+* Loop through the array of donuts and print each donut string
+====
+
+You can do it, I know you can!
+
+[source]
+----
+for(let x = 0; x < donuts.length; x++){
+    console.log(donuts[x]);
+}
+----
+
+If you had something like this, buy yourself a donut, you deserve it.

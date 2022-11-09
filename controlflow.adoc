@@ -1,0 +1,30 @@
+
+== Changing the Control Flow
+
+In many of these examples so far, we see a very simple *control flow*. The program starts at the first line, and just goes line by line until runs out of statements.
+
+[source]
+----
+let q = 0; 
+let j = 5;
+q = j * 4 - 20;
+console.log(q); // -> 0
+----
+
+When programs start to get more sophisticated, the _control flow_ can be changed. There are various conditional statements, loop statements, and functions that can cause the control flow to move around within the code. Here we see using both a loop and a conditional IF statement to change the flow of control.
+
+[source]
+----
+let q = 0; 
+let j = 6;
+while (j > 0) {
+    q = j * 4 - 20;
+    console.log(q);
+    j--;
+    if (q > 0) {
+        console.log("q is still positive");
+    }
+}
+----
+
+This ability to manipulate the control flow of a program is very important when you start developing logic for your apps and programs. Logic in programs depends heavily on being able to manipulate the control flows through the code. Let's take a look at how each kind of statement allows a programmer to change the flow of control in programs.

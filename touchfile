@@ -1,0 +1,17 @@
+#!/bin/bash
+touch consolelog.adoc
+touch variables.adoc
+touch operators.adoc
+touch arithmeticexpressions.adoc
+touch simplecalc.adoc
+touch booleanexpr.adoc
+touch controlflow.adoc
+touch if.adoc
+touch switch.adoc
+touch whileloop.adoc
+touch forloop.adoc
+touch break.adoc
+touch functions.adoc
+touch return.adoc
+touch modules.adoc
+touch objectsmethods.adoc

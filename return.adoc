@@ -1,0 +1,44 @@
+==  Return statement
+
+The *return* statement is a very simple one. It just finishes the running of code in the current function and "returns" to the function's caller.
+
+As you have seen, _functions_ are used to make code more understandable, cleaner and more organized. Say we have a couple of functions in our program:
+
+[source]
+----
+let minorHit = 3;
+let majorHit = 7;
+
+function adjustHealth(player, hit) {
+    player.health = player.health - hit;
+
+    if (isAlive(player) == false) {
+        return playerDead;
+    }
+
+    return playerAlive;
+} 
+
+function isAlive(player, hit) {
+    if (player.health >= 20) {
+        return true;
+    } else { // player has died!
+        return false;
+    }
+} 
+
+----
+
+If someplace in our code we were to do something like:
+
+[source]
+----
+// big hit!
+continuePlaying = adjustHealth(playerOne, majorHit);
+
+if (continuePlaying == playerDead) endGame();
+----
+
+You can see how when we call the function "adjustHealth()" it returns either playerAlive or playerDead, and we make a decision to end the game if the player has died.
+
+Notice too, you can have multiple return statements in functions, and each one can return a different value if that's what you need.

@@ -1,0 +1,243 @@
+
+== Functions
+
+A function is a block of code designed to perform a particular task. A function encloses a set of statements and is a fundamental modular unit of JavaScript. They let you reuse code, and provide a way for you to organize your programs, keeping them easier to understand and easier to modify. It's often said that the craft of programming is the creation of a set of functions and data structures which implement a solution to some problem or set of requirements.
+ 
+Functions are objects, like many things in JavaScript. They can be stored in variables, other objects, or even collected into arrays. Functions are very powerful because in JavaScript, they can be passed as arguments to other functions, returned from functions, and can even have methods attached to them. The most important thing that functions can do is get *invoked*.
+
+You create functions easily.
+
+=== Function Literal
+
+Two examples of how you write a function literal:
+
+[source]
+----
+let add = function (parameter1, parameter2) {
+    return parameter1 + parameter2; 
+}
+----
+
+[source]
+----
+function add(p1, p2) {
+    return p1 + p2;
+}
+----
+
+In both of these cases, you end up with a function named 'add' that takes two parameters and adds them, returning the result. (Yes, you could just write (p1 + p2) and everyone would understand. It's just a very simple example.) Here is another example:
+
+=== Creating a Function
+
+[source]
+----
+function greetUser(username) {
+    console.log( "Hello " + username);
+    return;
+}
+
+//calling/Invoking the function
+greetUser("Mike Jones"); // "Hello Mike Jones"
+----
+
+=== Invoking Functions
+
+Functions are meant to be _invoked_. So you can have one function call another function which calls a third function and so on; it's very common.
+
+Imagine we have a program that gets an airplane ready for flight. We can imagine a whole series of functions we'd have to write. Things like 'loadPassengers', 'loadBaggage', 'loadFuel', 'checkTirePressures', and so on. Then we might have a 'higher level' functions which brings all these pieces together:
+
+[source]
+----
+function prepFlight(airplane) {
+    loadBaggage(airplane);
+    loadPassengers(airplane);
+
+    loadFuel(airplane);
+    performPreflightChecklist(airplane.copilot);
+    askTowerToDepart(airplane.pilot);
+    departGate(airplane);
+
+    taxiToRunway(airplane, mainRunway90);
+    takeoff(airplane.pilot, airplane);
+
+    return;
+}
+----
+
+You can see how functions let you perform different things in a particular order, and while you might have no idea _how_ 'loadBaggage' does what it does, you can see how the program preps the airplane object for flight and makes sure everything important is done. Each of the functions from 'loadBaggage' to 'takeoff' is invoked and returns so the next one can be invoked. This is the power of functions - the ability to take some code and put it a function so that it much easier to understand.
+
+=== Anonymous Functions
+
+A common pattern used in JavaScript revolves around an *anonymous* function. It's a function without a name, and one that probably only gets called _once_. Something like:
+
+[source]
+----
+function () {
+    let x = 5;
+    let y = 4;
+    while (x < 100) {
+        x = x + y;
+    }
+    console.log("x is", x);
+} () ;
+----
+
+Look at that last line. What's going on here? Well, first we are creating a function object _without a name_ (so it's _anonymous_). Then on the last line, we are _invoking_ the function once (see those two parentheses? '()'?), so all the code inside gets run. (x get printed out).
+
+You see this often in JavaScript. It's a way to put some code into an argument to another function call.
+
+[source]
+----
+let milliSecInASecond = 1000;
+
+setTimeout(function () {
+    console.log('We waited for 5 seconds, to print this')
+}, 5 * milliSecInASecond);
+----
+
+See how we pass an anonymous function to 'setTimeout' as one argument, and a timer value as the second argument? The idea here is that the anonymous function gets called at 5 seconds in the future. (Like scheduling an alarm to do something in 5 seconds).
+
+=== Function Return
+
+Once JavaScript reaches a return statement, the function will stop executing. Functions often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a functions, depending on how the flow of control is changed.
+
+[source]
+----
+function greetUser(username) {
+    return "Hello " + username;
+}
+
+let result = greetUser("Welcome back, Mike Jones");
+
+console.log(result); // will print "Hello Welcome back, Mike Jones" 
+----
+
+Or like this:
+
+[source]
+----
+function determineWinner(home, visitor) {
+    if (home.score > visitor.score) {
+        return "Home Team Wins! Let's have a Parade!"
+    } else if (home.score < visitor.score) {
+        return "Visitors Win! (oh Well)"
+    }
+    return "It's a Tie!"
+}
+----
+
+Notice how in this case, we check to see the scoring results with two conditions (which are, what? yes, _boolean expressions_). If neither condition is true, the third one must be the case. But if either condition is true, then we return right away, and the function is done.
+
+Again, to be clear, we might use this function like this:
+
+[source]
+----
+
+let home = {
+    name = "Fightin Cats"
+    score = 0;
+}
+
+let visitor = {
+    name = "Wild Horses"
+    score = 0;
+}
+
+playGame(home, visitor); // a lot of work done in this function(!)
+
+// game is done
+let result = determineWinner(home, visitor);
+
+// and then print the result..
+console.log(result);
+----
+
+=== Function Parameters
+
+Functions can also take parameters to be used within a function. 
+
+[source]
+----
+function addThreeNumbers(a, b, c) {
+    return (a + b + c);
+}
+
+function determineWinner(home, visitor) {
+    if (home.score > visitor.score) {
+        return "Home Team Wins! Let's have a Parade!";
+    } else if (home.score < visitor.score) {
+        return "Visitors Win! (oh Well)";
+    }
+    return "It's a Tie!";
+}
+
+function makeNegative(number) {
+    if (number > 0) {
+        return -(number);
+    }
+    // already negative, it's less than 0
+    return number;
+}
+----
+
+Remember how we had the expression ot see if a number was even? ( x % 2 === 0)
+Now, here's a way to decide is number was divisible cleanly by another, it's a standard arithmetic expression:
+
+[source]
+----
+(number % divisor === 0)
+----
+
+So to see if a number is even, we could use '(number % 2 == 0)':
+
+[source]
+----
+console.log((8 % 2 === 0)); // true
+console.log((7 % 2 === 0)); // false
+console.log((4 % 2 === 0)); // true
+----
+And we can use the same technique to see if a number is evenly divisible by 3 or 5.
+
+Try to write a function that will perform the following requirements:
+
+[TIP]
+====
+* Create a function called zipCoder
+* Your function takes one parameter of type number
+* Your function checks and does the following
+* If parameter is divisible by 3 and 5 (15). Print ZipCoder
+* If parameter is divisible by 3. Print Zip
+* If parameter is divisible by 5. Print Coder
+Phew...Finally
+* Call the method and pass in 45 as your parameter
+====
+
+OKAY! Write it yourself!
+
+Do it.
+
+Just write it yourself.
+
+C'mon, write your own version first.
+
+No, really.
+
+Wait.
+
+Do you want to be a ZipCoder, or just a Copy-Paste Stylist?
+
+Well, here's one solution:
+
+[source]
+----
+// Function ZipCoder
+
+function zipCoder(aNumber) {
+if (aNumber % 15 == 0) console.log("ZipCoder");
+else if (aNumber % 3 == 0) console.log("Zip");
+else if (aNumber % 5 == 0) console.log("Coder");
+}
+
+zipCoder(45); // -> ZipCoder
+----
+

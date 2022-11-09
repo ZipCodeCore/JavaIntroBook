@@ -1,0 +1,145 @@
+
+Arrays are a very powerful idea in many programming languages. Let's start with *why* we need them.
+
+Imagine you have a small number of things you want to track. Let's use our vague computer game we've been using for an example. The game has 5 players, friends that get together over the internet to play a dungeon game.
+
+Now, if you're the coder of this game you could keep track of each player's healthScore by have 5 different variables. (for players Zero to Four)
+
+[source]
+----
+let playerZeroHealthScore = 100;
+let playerOneHealthScore = 100;
+let playerTwoHealthScore = 100;
+let playerThreeHealthScore = 100;
+let playerFourHealthScore = 100;
+----
+
+If we setup these 5 variables, our game can track 5 players! But *we'd have to change the game's code to track SIX players.* Well, that not good. Kind of silly actually. 
+
+To get around this kind of problem we use an *array*. We could ask, "how many players are playing?", and then make an array that size. We know we need to track each player's healthScore, so we create an array:
+
+[source]
+----
+let playerHealthScores = [100, 100, 100, 100, 100];
+----
+
+Now, like a _string_, array indexes start at zero.
+
+[source]
+----
+                      //   0    1    2    3    4
+let playerHealthScores = [100, 100, 100, 100, 100];
+----
+
+This array is a *data structure* - a way for us to keep track of lots of data in a controlled fashion. (We can make arrays any size.)
+If we need to deduct health points from one of the players, we can do something like this:
+
+[source]
+----
+majorHit = 50;
+
+playerHealthScores[2] = 67;  // player 2 just took a hit!
+
+playerHealthScores[1] = 105;  // player one is getting stronger.
+
+playerHealthScores[3] = playerHealthScores[3] - majorHit;
+----
+
+The best way to think about arrays is like all those postal boxes at the post office. Each box has a number on it, and things get put in the box depending on the box number.
+
+Arrays are *indexed* like that. Each array slot has an index number, starting at zero. See how we use the number 2 to _index_ into the playerHealthScore array?
+
+Arrays:
+
+* Can store multiple values in a single variable
+* Start counting from index position zero
+* Elements can be primitive data types or/and Objects
+
+So let's think about an array of donuts for the following examples.
+
+=== Declaring Arrays
+
+Declaring and initializing some arrays in JavaScript:
+
+[source]
+----
+let donuts = ["chocolate", "glazed", "jelly"];
+
+let arrayofLetters = ['c','h','r','i','s'];
+
+let mixedData = ['one', 2, true];  // a string, a number and a boolean!
+----
+
+=== Accessing elements of an Array
+
+We use square brackets to get elements by their index. We'll use an array of
+strings to identify our donuts. Sometimes, we say something like "donuts sub 2" to mean _donuts[2]_.
+
+[source]
+----
+let donuts = ["chocolate", "glazed", "jelly"];
+
+console.log(donuts[0]);  // "chocolate" (we could say "donuts sub zero")
+
+console.log(donuts[2]);  // "jelly"
+----
+=== Adding to an Array
+
+We can also add things to the end of the array.
+
+[source]
+----
+let donuts = ["chocolate", "glazed", "jelly"];
+
+donuts[3] = "strawberry"   // notice there is no element 3 before this,
+
+console.log(donuts);  // but after, there are now 4 things in the array.
+----
+
+=== Get the size of an Array
+
+We can use the *length* property to find the size of an array.
+
+[source]
+----
+let donuts = ["chocolate", "glazed", "jelly"];
+
+console.log(donuts.length);  // it'll print 3
+----
+
+Note: A string is an ARRAY of single characters
+
+
+=== Get the last element of an Array
+
+If we use the _length_ property carefully, we can always get the last element in an array.
+
+[source]
+----
+let donuts = ["chocolate", "glazed", "jelly"];
+
+donuts[3] = "strawberry";    // -> ["chocolate", "glazed", "jelly", "strawberry"]
+
+console.log(donuts[donuts.length - 1]); // strawberry
+
+donuts[4] = "powdered"    // -> ["chocolate", "glazed", "jelly", "strawberry", "powdered"]
+
+console.log(donuts[donuts.length - 1]); // powdered
+----
+
+=== Append to the Array
+
+We can also use the `.length` to add to the end of the array!
+
+[source]
+----
+let donuts = ["chocolate", "glazed", "jelly"];
+
+donuts[donuts.length] = "strawberry";   
+console.log(donuts[donuts.length - 1]); // strawberry
+
+donuts[donuts.length] = "powdered";
+
+console.log(donuts[donuts.length - 1]); // powdered
+----
+

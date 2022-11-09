@@ -1,0 +1,455 @@
+
+Let's look at a series of problems that you can solve to get a feel for what we're looking for on the Zip Code admissions assessment.
+
+== Algebra Exercises
+
+Computing is often programming a computer to math.
+By solving these problems, you'll get a feel for the kind of algebra problems we'd like to be able to solve.
+
+Fell free to use the https://code.zipcode.rocks REPL to work these problems out. 
+(You can also just work them out in your head or on paper)
+
+As with many kinds of programming tasks, these problems can be solved a large number of ways.
+
+=== Y equals ?
+
+----
+Given the following formula,
+ 
+y = (5 * x) + 100
+
+what is y, if x = 3?
+----
+
+For each of these problems, you need to compute the value of *y*. 
+In each case the value of *x* is different, and so is the formula you need to compute.
+
+For this first one, if *x equals 3*, you would first multiply *5* times *3*, and then add 100 to it.
+So a correct answer is *15 + 100* or *115*.
+
+Each of these below are computed in pretty much the same way.
+
+==== ?
+
+----
+Given the following formula,
+ 
+y = (4 * x) - 5
+
+what is y, if x = 5?
+----
+
+==== ?
+
+----
+Given the following formula,
+ 
+y = (6 * x) - 7
+
+what is y, if x = 2?
+----
+
+==== ?
+
+----
+Given the following formula,
+ 
+y = (15 / x) * 8
+
+what is y, if x = 5?
+----
+
+=== Velocities
+
+Velocity is often thought of as *speed*. It's common to drive at 40 or 45 miles per hour.
+That speed is a *velocity*.
+*Acceleration*, you may remember, is the change in velocity.
+
+If a car is moving at an initial velocity V, and accelerates at rate of A for a set time 
+period of T, the formula to determine it final velocity S is: 
+
+****
+S = A*T + V
+****
+
+So if we have a *A=2*, *T=3*, and *V=4*, we would compute 
+****
+S = (2 * 3) + 4
+
+S = 6 + 4
+
+S = 10
+****
+
+You substitute each variable (V, A and T) into the formula and compute the result.
+
+==== ?
+
+----
+What is S if (V = 10), (A = 4), (T = 3)?
+----
+
+==== ?
+
+----
+What is S if (V = 0), (A = 5), (T = 20)?
+----
+
+==== ?
+
+----
+What is S if (V = 17), (A = 2), (T = 14)?
+----
+
+=== F of x or F(x)
+
+Sometimes you will see a formula expressed as a function which takes one parameter, *x*. 
+an _parameter_ to a function is it's input value.
+This is an algebraic (or math) function, not a Javascript function.
+
+****
+F(x) = 3x + 4
+****
+
+This is just another way of describing a simple computation.
+The result of the function, F(x) (which is pronounced _F of x_), is the same as *y* was
+in the problems above.
+
+****
+y = 3x + 4
+****
+
+*Y* ended up being the answer to the computation. 
+So is _F of x_ is also the answer to the computation.
+Don't overthink this, *y* and *f of x* are just two ways of saying the same thing.
+
+The other thing to notice is the *3x* portion. In JavaScript, you need to change it to *3 * x* so a correct form of a JavaScript function would be 
+
+----
+function f(x) {
+    return (3 * x) + 4;
+}
+----
+
+Write out these three formulas as JavaScript functions.
+Use the example above to help with your answers.
+
+==== ? 
+
+****
+f(x) = 5x - 7
+****
+
+==== ?
+
+****
+g(x) = 6x + 3
+****
+
+==== ?
+
+****
+h(x) = 123x - 68
+****
+
+
+[sidebar]
+.Parameters and Arguments
+--
+You'll be learning about this thing called a *function*. 
+Functions are the main “building blocks” of a program. 
+They allow the code to be called many times without repetition.
+
+So, a programmer bundles up smaller pieces of their program into functions.
+
+In JavaScript, and many other programming languages (yes, there are many!), we often need to supply a function with data.
+And that data can often change.
+
+When we supply a function with data, we *pass* some *parameters* to the function.
+
+Say I have a function that does something really simple:
+[source]
+----
+function halve(x) {
+    return x / 2;
+}
+----
+
+In this example, *x* is a *parameter*. It is also called an *argument*.
+I'll try to use *parameter* throughout this booklet, but in some problems you may see on-line,
+you may also see *x* in the above function described as an *argument*.
+--
+
+=== F of (x, y)
+
+Well, so if *F of x* is the result of a function of one parameter *x*, *F of x and y* is also the result of a function.
+But in this case, the functions takes two parameters *x* and *y*.
+
+Given the following function using x and y: 
+
+**** 
+F(x, y) = 2x + y -27
+****
+
+And then if _F(1, 2) = -23_, well, how did we get that result?
+
+The idea is that you think it through like this:
+
+****
+given F(1, 2), we assign x=1 and y=2 and substitute these two variables to compute the result.
+
+F(1,2) = (2 * x) + y - 27
+
+F(1,2) = (2 * 1) + 2 - 27
+
+F(1,2) = 2 + 2 - 27
+
+F(1,2) = 23
+****
+
+Using that as a *pattern*, work through these problems:
+
+==== ?
+
+****
+f(20, 8) = ?
+****
+
+==== ?
+
+****
+f(6, 25) = ?
+****
+
+==== ?
+
+****
+f(5, 2) = ?
+****
+
+==== ?
+
+****
+f(0, 0) = ?
+****
+
+=== Complete the answer
+
+For this problem, you need to figure out the correct answer to the last expression. 
+----
+dog + fish = 25
+dog + bird = 35
+bird + fish = 30
+----
+
+If the above expressions are true, what is the answer to this?
+
+----
+dog + bird + fish = ?
+----
+
+== JavaScript Coding
+
+=== Area of a Triangle
+  
+image::TriangleArea.png[Triangle]
+
+The area of a triangle is calculated using the following function:
+
+****
+Area = (h*b)/2
+****
+
+where Area represents the area, h represents the height perpendicular to the length of its base, b.
+
+----
+if h = 6 and b = 4,
+(6 * 4) is 24
+24 / 2 is 12
+= 12
+----
+
+----
+What is Area, if h = 4 and b = 5 ?
+What is Area, if h = 2 and b = 6 ?
+----
+
+What do you need to do to this function to make it use the triangle equation?
+
+[source]
+----
+function triangleArea(h, b) {
+    area = 0;
+    return area
+}
+
+console.log(triangleArea(4,5));
+console.log(triangleArea(2,6));
+----
+
+=== Javascript Math
+
+If asked to write a function to calculate and return a number divided by 2, you would code
+
+----
+function f(x) {
+    return x / 2;
+}
+----
+
+*x* is the parameter, the number we want to divide by 2. We just `return x / 2`. 
+So if x=6, the number returned by the function will be *3*.
+
+If asked to produce a function that calculated a more complicated expression, perhaps
+
+****
+234 * 76 / 89 * 564
+****
+
+You could just write
+
+----
+function whoa() {
+    return 234 * 76 / 89 * 564;
+}
+----
+
+Use these as *patterns* to solve the problems below.
+
+Complete the function to calculate multiplication of two input values. 4 x 4 should print 16.
+
+----
+function multiply(x, y) {
+    return 
+}
+----
+
+Write a simple function that returns the remainder (modulus) of the following equation:  118 % 31
+
+----
+function foo() {
+    return 
+}
+----
+
+Using Arithmetic Operators, write a function to return the product of 789 x 123.
+
+----
+function m() {
+    return
+}
+----
+
+Complete the function to calculate the square of an input value. 
+Remember that the square of a number is the result of multiplying that number times itself.
+
+----
+function square(y) {
+    return 
+}
+----
+
+=== Variables
+
+Variables, as you will remember, allow a program to "name" various data and keep track of it as it changes during the running of a program.
+You can imagine that a computer game which tracks the scores of each player, would keep these values in variables as the game is played.
+
+Write a function *one* which creates a variable called *t* with the value 1024 and return the variable.
+
+----
+function one() {
+
+
+
+}
+----
+
+Write out a series of JavaScript variables.
+
+
+----
+a variable named foot equal to 12
+a variable named fingers equal to 4
+a variable named thumb equal to 1
+a variable name isPlayerAlive equal to true
+a variable named speed equal to 55.0
+a variable named playerOne equal to a string "Joe"
+a variable named PI equal to 3.14159
+a variable named hand equal to 2 times fingers plus 2 times thumbs
+----
+
+=== Functions
+
+==== String
+
+Make a function that returns the string value "Zip Code" from the given function.
+
+----
+
+----
+
+==== Length of String
+
+Using the JavaScript length method, return the length of the string "ZipCodeRocks" using the given function.
+ 
+Example 1
+input: "hello".length
+output: 5
+ 
+Example 2
+input: "Delaware"
+output: 8
+
+=== Array
+
+Complete the function below to swap two elements in an array and return the result. Your function should take three parameters: An array and two integers. The integers are the indexes of the two elements in the array you should swap.
+ 
+Example 1:
+ 
+Input:
+[7,4,9,3,6,2], 4, 2
+ 
+Output:
+[7,4,6,3,9,2],
+
+=== First and Last (50)
+
+This problem is a little harder.
+It's a 
+Given a string, create a new string made up of its first and last letters, reversed and separated by a space.
+
+----
+Example
+Given the word 'bat', return 't b'.
+Given the word 'motor', return 'r m'.
+ 
+Function Description 
+Complete the function lastLetters in the editor below.
+ 
+lastLetters has the following parameter(s):
+    string word:  a string to process
+ 
+Returns:
+    string: a string of two space-separated characters
+ 
+Constraint
+2 ≤ length of word ≤ 100
+----
+
+=== Sum Something
+
+Calculate the sum of an array of integers.
+ 
+Example
+numbers = [3, 13, 4, 11, 9]
+ 
+The sum is 3 + 13 + 4 + 11 + 9 = 40.
+ 
+Function Description 
+Complete the function arraySum in the editor below.
+ 
+arraySum has the following parameter(s):
+    int numbers[n]: an array of integers
+Returns
+    int: integer sum of the numbers array
+

@@ -1,0 +1,159 @@
+== Simple Calculation Programs
+
+=== How far can we go in the car?
+
+Let's create a simple problem to solve with Javascript.
+
+****
+Our car's gas tank can hold 12.0 gallons of gas. 
+It gets 22.0 miles per gallon (mpg) when driving at 55.0
+miles per hour (mph).
+If we start with the tank full and carefully drive at 55.0 mph,
+how many miles can we drive (total miles driven) using the whole tank of gas?
+
+BONUS:
+
+How long will it take us to drive all those miles?
+****
+
+What do we need figure out? We need a variable for our
+result: totalMilesDriven. So we start our program this way...
+
+----
+let totalMilesDriven = 0;
+
+// print result of computation
+console.log(totalMilesDriven);
+----
+
+It's often good to start with a very simple template. If we run that, we will see 0 (zero) as the result, right?
+
+Next step, let's add the variables we know.
+
+----
+let totalMilesDriven = 0;
+let totalHoursTaken = 0;
+
+let totalGasGallons = 12.0;
+let milesPerGallon = 22.0;
+let milesPerHour = 55.0;
+
+// print result of computation
+console.log(totalMilesDriven);
+----
+
+Okay, good. We've added all the stuff we know about the computation. Well, except
+the part of the _actual computation_.
+
+You probably know that if you multiply the milesPerGallon by the totalGasGallons,
+that will give you totalMilesDriven.
+And if you divide the totalMilesDriven by the milesPerHour, you will get the totalHoursTaken.
+
+So let's add those as JavaScript statements.
+
+----
+let totalMilesDriven = 0;
+let totalHoursTaken = 0;
+
+let totalGasGallons = 12.0;
+let milesPerGallon = 22.0;
+let milesPerHour = 55.0;
+
+totalMilesDriven = milesPerGallon * totalGasGallons;
+totalHoursTaken = totalMilesDriven / milesPerHour;
+
+// print result of computation
+console.log(totalMilesDriven, totalHoursTaken);
+----
+
+We get as a result 264 miles driven in 4.8 hours.
+And that's how a simple JavaScript program can get written.
+
+Let's do another.
+
+=== The Cost of a "Free" Cat
+
+A friend of ours is offering you a "free cat". You're not allergic to
+cats but before you say yes, you want to know how much it'll cost to feed the 
+cat for a year (and then, approximately how much much each month).
+
+****
+We find out that cat food costs $2 for 3 cans.
+Each can will feed the cat for 1 day. (Half the can in the morning, the rest
+in the evening.)
+We know there are 365 days in a year.
+We also know that there are 12 months in the year.
+So how much will it cost to feed the cat for a year?
+****
+
+Looking at it, this may be quite simple. If we know each can feeds the cat for a day,
+we then know that we need 365 cans of food. So we can describe that as
+
+[source]
+----
+let totalCost = 0;
+let cansNeeded = 365;
+let costPerCan = 2.0 / 3.0;
+
+totalCost = cansNeeded * costPerCan; // right?
+
+let monthsPerYear = 12;
+let costPerMonth = totalCost / monthsPerYear;
+// print result of computation
+console.log(totalCost, costPerMonth);
+----
+
+What's going to be the answer? footnote:[totalCost will be $243.33 and $20.28 per month.] Run it in your Repl window to work it all out.
+
+And let's do one more.
+
+=== You Used Too Much Data!
+
+A cell phone company charges a monthly rate of $12.95 and $1.00 a gigabyte of data. The bill for this month is $21.20. How many gigabytes of data did we use? Again, let's use a simple template to get started.
+
+[source]
+----
+let dataUsed = 0.0;
+
+// print result of computation
+console.log("total data used (GB)", dataUsed);
+----
+
+Let's add what we know: that the monthly base charge (for calls, and so on) is $12.95 
+and that data costs 1 dollar per gigabyte. 
+We also know the monthly bill is $21.20. Let's get all
+that written down.
+
+[source]
+----
+let dataUsed = 0.0;
+let costPerGB = 1.0;
+let monthlyRate = 12.95;
+
+let thisBill = 21.20;
+
+// print result of computation
+console.log("total data used (GB)", dataUsed);
+----
+Now we're ready to do the computation. If we subtract the monthlyRate from thisBill, we get the total cost of data. Then, if we divide the total cost of data by the cost per gigabyte, we
+will get the dataUsed.
+
+[source]
+----
+let dataUsed = 0.0;
+let costPerGB = 1.0;
+let monthlyRate = 12.95;
+
+let thisBill = 21.20;
+let totalDataCost = thisBill - monthlyRate;
+
+dataUsed = totalDataCost / costPerGB;
+
+// print result of computation
+console.log("total data used (GB)", dataUsed);
+----
+
+How many GBs of data did we use? Turns out to be 8.25 gigabytes.
+
+Now if the bill was $24.00? How many GBs then? (go ahead, I'll wait...) footnote:[total data used (GB) 11.05]
+

@@ -1,0 +1,45 @@
+
+=== Break Statement
+
+Normally, a loop exits when its condition becomes false. But we can force the exit at any time using the special *break* statement.
+
+[source]
+----
+while (true) {
+
+  let cmd = +prompt("Enter a command", '');
+
+  if (cmd == "exit") break; 
+
+  execute(cmd);
+}
+console.log("Exiting.")
+----
+
+Here, you are asking the user to type in a command. If the command is "exit", then quit the loop and output "Exiting", and end the program.
+Otherwise, execute the command and go around to the top of the loop and ask for another command.
+
+=== Continue Statement
+
+The continue statement doesn’t stop the whole loop. Instead, it stops the current iteration and forces the loop to start a new one (if the condition allows).
+
+We can use it if we’re done with the current iteration and would like to move on to the next one. This loops prints odd number less than 10.
+
+[source]
+----
+for (let i = 0; i < 10; i++) {
+
+  // if true, skip the remaining part of the body
+  // will only be true if the number is even
+  if (i % 2 === 0) continue;
+
+  console.log(i); // prints 1, then 3, 5, 7, 9
+}
+----
+
+What's interesting here is the use of the remainder operator (%) to see if a number is odd.
+The expression (i % 2) is zero if the number is even, if not, the number must be odd.
+You want to remember this trick of how to find odd or even numbers. 
+It's a common programming problem that you will get asked. 
+The continue statement starts the loop over, not letting the console.log to print out the number when it's even.
+

@@ -1,0 +1,196 @@
+
+== Objects
+
+There are only a few data types in JavaScript. All but one of them are called “primitive” data types, because their values contain only a single thing (be it a string or a number or whatever).
+
+In contrast, *objects* are used to store *keyed* collections of various data and more complex entities. 
+_Objects_ add tremendous power to Javascript and penetrate almost every aspect of the language. 
+Here are a few different objects, all these are actually objects in JavaScript, which makes the language rather elegant:
+
+* arrays
+* functions
+* regular expressions 
+* objects footnote:[Now, unlike a lot of languages, JavaScript has no notion of _classes_. It uses a different model of _prototypes_.]
+
+Objects are used to collect and organize data - and that data can be variable values, functions and other things. 
+Objects can also contain other objects(!), in kind of a "nesting" way. 
+This allows for large data structures to be built using a very simple and elegant mechanism.
+
+An object (in this case an _object literal_) can be created with curly braces {…} with an optional list of properties. 
+A property is a “key: value” pair, where key is a string (also called a “property name”), and value can be anything. footnote:[In some languages, a listing of key/value pairs is called a dictionary, an associative array or a hashtable.]
+
+[source]
+----
+let katniss = {
+    firstname: "Katniss",
+    lastname: "Everdene",
+    homedistrict: 12,
+    skills: ["foraging", "wildlife", "hunting", "survival"]
+}
+----
+
+Notice how you use commas for all but the last one in the list?
+
+=== Object Creation
+
+We can imagine an object as a container where everything has a key, and we can get data from the key, add data with a key to an object, and delete a key (with its data value) from the object.
+Each pair (of key and value) can be referred to as a *property*. Properties can be almost any JavaScript data type at all. Let's create a sample player object for a game:
+
+[source]
+----
+let player1 = {
+    name: "Rocco",
+    species: "warrior",
+    super_power: flight,
+    lives: 4,
+    weapons: {
+        sword: "Excalibur",
+        bow: "Legolas",
+        arrows: 12
+    }
+};
+----
+
+A property has a key (also known as “name” or “identifier”) before the colon ":" and a value to the right of it.
+
+Here 'name' is a _key_ and "Rocco" is the _value_. 
+This 'player1' object has 5 key/value pairs (and you can add as many as you like, and can delete those you don't need). 
+One of those key/value pairs is a nested object, the 'weapons' key has another object with 3 key/value pairs inside of it. 
+(Notice the commas ',' after all but the last item in each object.)
+
+=== Property Retrieval
+
+Values can be retrieved from inside an object by using a string expression in a [ ] (bracket) pair. You can also use "dot notation". 
+
+[source]
+----
+player1[name] // "Rocco"
+player.name   // "Rocco"
+player1.lives // 4
+----
+
+You get 'undefined' if you try to retrieve a value whose key doesn't exist.
+
+player1.nickname  // undefined
+
+=== Property Update
+
+If we were to use an assignment statement, we can change the properties inside of the object.
+
+[source]
+----
+player1.name = "Gina";
+player1[species] = "Mage";
+player1.weapons.sword = "Anduril";  // notice how to reach into nested objects!
+
+console.log(player1.weapons.sword);  // Anduril
+----
+
+=== Object Reference
+
+This next little bit will stretch your mind a bit. 
+
+If we have an object:
+
+[source]
+----
+let airplane512 = {
+    type: "airbusA330",
+    topSpeed: 0.86, // Mach
+    passengerLimit: 253,
+    passengersOnboard: 0
+}
+----
+
+We have built a plane object.
+
+[source]
+----
+let flight77 = airplane512;  // I'm assigning a plane to a flight
+
+flight77.destination = "Tokyo"; //create two new properties in the object
+flight77.origin = "Seattle";
+
+// now watch carefully...
+flight77.passengersOnboard = 120;
+
+// and if I print out some of the properties...
+console.log(airplane512.passengersOnboard);  // 120
+console.log(flight77.type); // airbusA330
+console.log(airplane512.type); // airbusA330
+----
+
+This is because both flight77 and airplane512 _refer to the *same* object. so when you make changes through the flight77 name, the properties in the object change, and you can get and/or set properties through the airplane512 name as well. This proves very powerful in many cases.
+
+=== Delete Properties
+
+Properties can be deleted as well.
+
+[source]
+----
+delete flight77.destination;
+delete flight77.origin;
+----
+
+=== Object Functions
+
+Now to make things even more powerful, JavaScript objects can have _functions_ attached to them.
+Let's build a special counter object, something we might use in a program or app somewhere.
+
+As you may be aware, in American football there are four common changes to a team's score during a game:
+
+[source]
+----
+let scoreCounter = {
+    options: {"fieldgoal": 3, "touchdown": 6, 
+    "point_after_touchdown": 1, "safety": 2},
+    
+    score: 0,
+    
+    touchdown: function () {
+        this.score += this.options["touchdown"];
+    },
+    fieldgoal: function () {
+        this.score += this.options["fieldgoal"];
+    },
+    pat: function () {
+        this.score += this.options["point_after_touchdown"];
+    },
+    safety: function () {
+        this.score += this.options["safety"];
+    },
+    get_score: function () {
+        return this.score;
+    }
+}
+----
+
+We can use that object, with its function methods like this:
+
+[source]
+----
+scoreCounter.touchdown(); // add 6
+scoreCounter.pat(); // add 1
+scoreCounter.fieldgoal(); // add 3
+
+console.log(scoreCounter.get_score()); // ??
+----
+
+There are two data properties (options and score), and 5(!) functions. These functions are called *methods* (functions which are attached to an object), and get invoked when you make the _method call_ (or _invoke_ the method on the _object_).
+
+Notice the *this* variable. _This_ is the special variable used to refer to the _object itself_. (which is a rather advanced topic for this book, so, we'll leave it right there. When you get a chance, read about _this_ in a deeper JavaScript resource.)
+
+=== Follow Ons
+
+We have tried to give you some of the very basic parts of JavaScript, in order for you to be able to
+do well on the Zip Code Wilmington assessment. (Or for you to get a very basic understanding of coding in JavaScript and whether or not you enjoy learning this sort of thing.)
+
+There are a number of very powerful things we have left out of this discussion about JavaScript objects.
+We have not covered the ideas of *prototypes* and the *prototype chain* here, which are not really needed for the assessment you may be taking. 
+
+We also have not discussed an extremely powerful concept, *closures*. But rest assured, there is much much more for you to learn about Objects in JavaScript. 
+
+Master what we've written about here and then forge ahead into more complicated and powerful capabilities.
+
+There is a lot more to learn about JavaScript.
+But you made it this far, so perhaps you have what it takes to learn the 21st century super-power of coding.

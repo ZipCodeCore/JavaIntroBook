@@ -1,0 +1,248 @@
+
+== Strings
+
+Strings are perhaps the most important data type in JavaScript. Many other computer languages have strings, and they are used in almost ALL modern programs. Knowing how to manage them, create and modify them to do what you need them to do, is a "sub-superpower" within JavaScript.
+
+Pay close attention; this stuff is VERY important.
+
+=== What is a String?
+
+Think about the words on this page. The text here is made up of a bunch of letters, and spaces. Now, when we write by hand, we don't
+really think about the space between the words, do we? If we truly ignored the notion of space between the words, wewouldendupwithtextlikethis. And while it is possible to read, our modern eyes are trained on well-edited texts; having no spaces tires us pretty quickly.
+
+So yes, what we see as text in this book is really a series of letters and spaces strung together in a line - line after line, paragraph after paragraph.
+In modern computing, that kind of data is often called a *String*.
+It is one of the most fundamental aspects of coding: the manipulation of strings by programs to transform, present or store text in some fashion.
+
+Many programming languages use some kind of quote or double quote to show where strings start and end. 
+There is really no difference between using single or double quotes in JavaScript.
+So a string like "the quick brown fox" would be a string from the 't' to the 'x'. And notice the three spaces within the string.
+If they were not there, the string would be "thequickbrownfox".
+And that's important, because to the computer, if it keeps these two strings around, it doesn't really understand that 'the' and 'quick' are just two common English words. 
+The spaces are there to retain more of what the human meant.
+
+No, to the computer, each letter, including the space 'letter', is just a piece of data and very important.
+
+String - a string of letters and numbers and spaces and punctuation, kept altogether for some use.
+Here are some strings for you to consider.
+
+[source]
+----
+"the quick brown fox"
+"The New York Times"
+"And lo, like wave was he..."
+"oops"
+"Hello, World!"
+"supercalifraglisticexpealadocious"
+"On sale for $123.99!!"
+"Pi is approximately 3.14159"
+"Merge left at the ramp to the right, the restaurant is on the right"
+"He said, \"Wait there is more!\""
+----
+
+Think of strings as a tightly packed list. Each item and letter is numbered. 
+The entire string can be "indexed", meaning I can reach in and copy out, say, the fifth letter easily.
+String indexes are zero-based; therefore, the first character (element) is in index position 0.
+
+[source]
+----
+Index  -> 012345
+String -> Hello
+----
+So here, "H" is at 0, "e" is at 1, 'l' is at 2 & 3, and 'o' is at index position 4.
+Computers often start numbering things like strings, lists, and arrays at 0, not at one. It's just one of those things: all strings and arrays (which are coming up) start at zero.
+
+=== Declaring a string 
+
+[source]
+----
+let name = "Wacka Flocka";
+----
+
+Now we have a string variable named *name* and it's value is "Wacka Flocka".
+
+=== String Properties
+
+A common and often used string property is *length*.
+
+We can use `.length` to find the length of a string
+
+[source]
+----
+let str = "Wakanda Forever!";
+let answer = str.length;
+console.log(answer); // -> 16
+----
+
+=== Accessing Characters in a String
+
+As mentioned before, we can reach into a string and copy out the stuff we find there.
+
+[source]
+----
+let word = "Hello";
+// Access the the first character (first by index, second by function)
+console.log(word[0]); // H
+console.log(word.charAt(0)); // H
+// the last character
+console.log(word[word.length - 1]); // o
+console.log(word.charAt(word.length - 1)); // o
+----
+
+When you see something like *word[0]*, it is pronounced like "word sub zero". If you have
+*word[5]*, you would say "word sub five". This is just verbal shorthand for the expression.
+
+=== String Concatenation (Joining strings)
+
+This simply means joining strings together using the + operator or the concat( ) method. Either one is commonly used. 
+
+[source]
+----
+let price = 20;
+let dollarSign = "$";
+let priceTag = dollarSign + price; // $20
+//or
+let priceTag = dollarSign.concat(price); // $20
+console.log(priceTag); // -> $20
+----
+
+Or perhaps a little more useful example:
+
+[source]
+----
+let name = "Mikaila";
+let hoursWorked = 12;
+
+let workReport = "Today, " + name + " worked a total of " + hoursWorked + " hours."
+console.log(workReport);
+----
+
+The output would be:
+
+****
+Today, Mikaila worked a total of 12 hours.
+****
+
+=== SubStrings
+
+Getting a substring is a common operation. This is how we extract the characters from a string, between two specified indices. (Which is why it's important to remember the indexes start at 0.)
+There are 3 methods in JavaScript to get a substring: substring, substr and slice. Let's look
+at each one. They have very slight differences, so you may want to pick one and memorize what your choice does.
+
+_someString.*substring*(start, end)_
+
+_someString.*substr*(start, end)_
+
+_someString.*slice*(start, end)_
+
+A start position is required, where to begin the extraction. Remember, first character is at position 0. 
+Characters are extracted from a string between "start" and "end", not including "end" itself.
+
+[source]
+----
+let firstName = "Christopher";
+----
+
+Now let's use the 3 substring methods on firstName and extract and print out "Chris"
+
+[source]
+----
+let firstName = "Christopher";
+console.log(firstName.substring(0,5)); // "Chris"
+//or
+let a = firstName.slice(0,5); // "Chris"
+console.log(a);
+//or
+let b = firstName.substr(0,5); // "Chris"
+console.log(b);
+----
+
+Yep. They all print "Chris". (Act impressed... thanks!) BUT, let's try to extract the string "stop" from the name.
+
+[source]
+----
+let firstName = "Christopher";
+console.log(firstName.substring(4,8)); // "stop"
+//or
+let a = firstName.slice(4,8); // "stop"
+console.log(a);
+//or
+let b = firstName.substr(4,4); // "stop"
+console.log(b);
+----
+
+Notice how the arguments to the functions are *slightly* different. This is why it might be best to pick to memorize and use that one.
+
+Let's try a little harder idea...
+
+[TIP]
+====
+[source]
+----
+let fName = "Christopher";
+----
+- Your turn to use the substring/substr/slice method on firstName
+- Extract and print out "STOP" from inside the string above
+- And make it uppercase! ("stop" to "STOP") footnote:[You could google how to do this, try "javascript string make upper case"]
+====
+
+Well?
+
+[source]
+----
+let fName = "Christopher";
+console.log(fName.substring(4,8).toUpperCase());
+----
+
+Want to bet there is also a "toLowerCase()" method as well?
+
+=== Summary of substring methods
+
+Take a look at these various ways to copy out a substring from the source string named 'rapper', which contains the string 'mikaila'. 
+
+[source]
+----
+let rapper = "mikaila";
+
+console.log(rapper.substr(0,4));  // mika
+console.log(rapper.substr(1,3));  // ika
+
+console.log(rapper.substring(0,4));  // mika
+console.log(rapper.substring(1,4));  // ika
+
+console.log(rapper.slice(0,4)); // mika
+console.log(rapper.slice(1,4)); // ika
+console.log(rapper.slice(1,3)); // ik
+----
+
+We're using each of the three different substring methods to copy out some smaller piece of the 'rapper' string.
+
+=== Reverse a String
+
+Now let's reverse the string "STOP" to say "POTS".
+
+[TIP]
+==== 
+To Reverse a String
+
+Step 1 - Use the split() to return an array of strings
+
+Step 2 - Use the reverse() method to reverse the newly created array of string characters
+
+Step 3 - Use the join() method to join all elements into a String
+====
+
+Solution
+
+[source]
+----
+var str = "Christopher";
+var res = str.substring(4, 8).toUpperCase(); // -> "STOP"
+var spl = res.split("");  // -> ["S", "T", "O", "P"]
+var rev = spl.reverse();  // -> ["P", "O", "T", "S"]
+var result = rev.join("");  // -> "POTS"
+console.log(result); // -> POTS
+----
+
+Strings are perhaps the most important data type in almost any language. Being able to manipulate them easily and do powerful things with them in JavaScript, makes you a better coder.
+

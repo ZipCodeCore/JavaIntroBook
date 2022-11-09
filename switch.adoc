@@ -1,0 +1,59 @@
+
+=== Switch Statement
+
+Switch statements are used to perform different actions based on different conditions.
+
+Here we have a long example, where the user types a command, and the program runs the code for a given command.
+(This is sometimes referred to as a shell or command loop). 
+
+Notice how we first get a command from the user, look at each possibility, and do something specific if we find a matching command string. Otherwise, we print an error message.
+
+[source, js]
+----
+let lastCommand = getCommandFromUser();
+
+switch(lastCommand){
+    case "exit": 
+        console.log("so long!");
+        break;
+    case "run":
+        console.log("running simulation...");
+        runSim();
+        break;
+    case: "rename":
+        renameSim();
+        break;
+    case: "delete":
+        if (makeSureDeleteIsOkay()) {
+            deleteSim();
+        } else {
+           console.log("delete cancelled..."); 
+        }
+        break;
+    case: "new":
+        createNewSim();
+        break;
+    case: "help":
+        showHelpToUser();
+        break;
+    default:
+        console.log("command not found: try again or type help");
+}
+----
+
+Switch statements can be quite elaborate (and in this case much better than a whole lot of IF statements).
+
+Here's the exercise from the _if_ section. Oftentimes, you can write a switch statement in _if_ statements, or a bunch of _if_ statements as a _switch_ statement. 
+This time, you should use a *switch* statement.
+
+[TIP]
+====
+Write code to check if a user is old enough to drink. (Using a switch)
+
+- if the user is under 18. Print out "cannot party with us"
+- Else if the user is 18 or over. Print out "party over here"
+- Else print out "I do not recognize your age"
+====
+ 
+Finally, make sure to change the value of the age variable to output different results.
+

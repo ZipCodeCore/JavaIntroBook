@@ -1,0 +1,92 @@
+
+== Conditional Statements
+
+We have been seeing programs which consist of a list of statements, one after another, where the "flow of control" goes from one line to the next, top to bottom, and so on to the end of the list of lines.
+There are more useful ways of breaking up the "control flow" of a program. JavaScript has several conditional statements that let the programmer do things based on conditions in the data. 
+
+=== If statement
+
+The first conditional statement  is the *if* statement.
+
+[source]
+----
+if (something-is-true) doSomething;
+----
+
+Here are a few simple examples.
+
+[source]
+----
+if (speed > speedLimit) 
+    driver.getsATicket();
+
+if (x <= -1) 
+    console.log("Cannot have negative numbers!");
+
+if (account.balance >= amountRequested) {
+    subtract(account, amountRequested);
+    produceCash(amountRequested);
+    printReceipt(amountRequested);
+}
+----
+
+JavaScript also has an *else* part to the *if* statement. When the *if* condition is False, the else part gets run. Here, if the account doesn't have enough money to fulfill the amountRequested, the else part of the statement gets run, and the customer gets an insufficient funds receipt.
+
+[source]
+----
+if (account.balance >= amountRequested) {
+    // let customer have money
+} else {
+    printReceipt("Sorry, you don't have enough money in your account!")
+}
+----
+
+JavaScript can also "nest" if statements, making them very flexible for complicated situations. You can also see here how curly-braces make it clear what statements get executed based on which case or condition is true.
+
+[source]
+----
+let timeOfDay = "Afternoon";
+
+if (timeOfDay === "Morning") {
+    console.log("Time to eat breakfast");
+    eatCereal();
+} else if (timeOfDay === "Afternoon") {
+    console.log("Time to eat lunch");
+    haveASandwich();
+} else {
+    console.log("Time to eat dinner");
+    makeDinner();
+    eatDinner();
+    doDishes();
+}
+----
+
+Notice how this becomes a 3-way choice, depending on the timeOfDay.
+
+[TIP]
+====
+Write code to check if a user is old enough to drink.
+
+* if the user's age is under 18. Print out "Cannot party with us"
+* Else if the user's age is 18 or over, Print out "Party over here"
+* Else print out, "I do not recognize your age"
+====
+You should use an if statement for your solution!
+
+Finally, make sure to change the value of the age variable in the repl, to output out different results and test that all three options can happen. What do you have to do to make the `else` clause happen?
+
+[source]
+----
+let userAge = 17;
+if (userAge < 18) {
+    console.log("Cannot party with us");
+} else if (userAge >= 18) {
+    console.log("Party over here");
+} else {
+    console.log("I do not recognize your age");
+}
+----
+
+If statements are one of the most commonly used statements to express logic in a JavaScript program. It's important to know them well.
+
+

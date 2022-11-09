@@ -1,0 +1,201 @@
+:doctype: book
+:title-page:
+= Zip Code Wilmington's Programming in JavaScript
+Kristofer Younger <kris@zipcodewilmington.com>
+v1.8.7, 2021-05-12
+:imagesdir: images
+:rouge-style: github
+:source-language: javascript
+:icons: font
+:homepage: https://zipcodewilmington.com/jsprep
+:pdf-page-size:  [5.5in, 8.5in]
+:front-cover-image: ZCW_JS-Book-FNL.png
+:toc:
+
+[colophon]
+== Colophon
+
+Zip Code Wilmington's Programming in JavaScript
+by Kristofer Younger
+
+Copyright (C) 2020-2021 by Zip Code Wilmington. All Rights Reserved.
+
+Cover Design: Janelle Bowman
+
+Published in the U.S.A.
+
+May 2021: Second Edition
+
+While the publisher and author have used good faith efforts to ensure that the information
+and instructions contained in this work are accurate, the publisher and author disclaim
+all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work.
+Use of the information and instructions in this work is at your own risk. If any code samples or other information this work contains or describes is subject to open source licenses or the intellectual property rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights. 
+
+[preface]
+== Preface
+
+I'd like to thank the instructors of ZipCodeWilmington for inspiring this book: Chris Nobles, Roberto DeDeus, Tyrell Hoxter, L. Dolio Durant, and Mikaila Akeredolu. 
+Without them, this book would have remained in "maybe some day" category. 
+My thanks to Dan Stabb and Roberto, who made corrections to the text. 
+I hope you get a chance to code someday, Dan! 
+I especially wish to thank Mikaila: without his brilliant prep session slides as the starting point for this book, I would never have thought a small book on the basic fundamentals of programming would be possible or even useful. 
+
+Zip Code Wilmington is a non-profit coding boot-camp in Delaware for people who wish to change their lives by becoming proficient at coding. Find out more about us at https://zipcodewilmington.com
+
+== About this book
+
+This book's aim is to provide you with the most basic of fundamentals regarding JavaScript, the world's most popular programming language. 
+It comes from the preparation sessions we often give prospective Zip Code applicants on how to do well on the Zip Code application coding assessment. 
+By reading this book or taking one of those prep sessions, someone who has never coded in any language before can use this as a place to start, study and get ready to take that assessment. 
+To someone who has spent some time with programming languages, this might be just a breezy intro to JavaScript. 
+If you have almost any serious coding experience, this book is probably too elementary for you.
+You might, however, find the ideas in the Appendices interesting.
+There I've added some material that have a few advanced ideas in them, plus there is a full code listing of a mars lander simulation.
+
+You may be aware that Zip Code doesn't focus on JavaScript _per se_, and that can leave you wondering why the first book we wrote was all about JavaScript. Well...
+
+=== JavaScript: Easy to Understand
+
+JavaScript is a fairly easy programming language to learn, and we're going to use it in this book to describe the basic fundamentals of coding. Its form is modern and it is widely used. It can be used for many purposes, from web applications to back-end server processing. We're going to use it for learning simple, programming-in-the-small, methods and concepts; but make no mistake - JavaScript is world-class language capable of amazing things.
+
+==== Simple to Use
+
+JavaScript also has the advantage that one can learn to use it without a lot of setup on a computer. In fact, we recommend the use of a "REPL" for the running of the JavaScript examples you'll find in this book. The REPL at https://code.zipcode.rocks is a simple webpage where you can edit JavaScript scripts and run them. You can run almost every code snippet in the book and _see_ what the code does.
+
+==== Focuses on coding
+
+Finally, because in this book all we aim to teach you is "programming in the small", JavaScript is great for that. Many of the examples here are significantly less that 20 lines in length. We want you to get better at looking at small blocks of code to see how they work. These smaller examples and concepts are a core building block as you become proficient in coding. 
+
+==== You'll learn it eventually
+
+The truth is, in today's coding world, all of us eventually learn to do things with JavaScript. 
+So, start early, get comfortable with it, and then go on and study other computer languages like Java or Python. 
+JavaScript will always be there, waiting patiently for you to return.
+
+=== Coding _The Hard Way_. 
+
+Zed A. Shaw is a popular author of several books where he describes learning a programming language _The Hard Way_. Zed suggests, and we at Zip Code agree with him whole-heartedly, that the best, most impactful, highest return for your investment when learning to code, is *type the code using your own fingers* footnote:[check out his terrific work: https://learncodethehardway.org]
+
+That's right. Whether you are a "visual learner", a "video learner", or someone who can read textbooks like novels (are there any more of these out there?), the best way to learn to code is *to code* and *to code by typing out the code with your own fingers*. This means you DO NOT do a lot of copy and paste of code blocks; you really put in the work, making your brain better wired to code by *coding with your own typing of the code.*
+
+You're here, reading this, because you're thinking (or maybe you know) that you want to become a coder. It's pretty straight-forward.
+
+You may have heard a friend wistfully dream of making a career at writing. "Oh," they say, "I wish I had time to write a great novel, I want to be a writer someday".
+
+So you can ask them: Did you write _today_? _How many words?_  
+And the excuses flow: "Oh, I have to pick up the kids" "Ran out of time, I'm so busy at work." "I had to cut the grass" and so on.
+Well, I'm here to tell you that all the excuses in the world don't stop a real writer from writing. They just sit down and do it. As often as they can, sometimes even when they can't (or shouldn't).
+
+Coding, like writing, isn't something you can do when all your other chores, obligations, and entertainments are done. If you're serious about learning coding, you must make time for coding. 
+
+Watching hours of YouTube videos _will not_ make you a coder.
+
+Reading dozens of blog posts, Medium articles, and books _will not_ make you a coder.
+
+Following along with endless step-by-step tutorials _will not_ make you a coder.
+
+The only way you're going to learn to code is by doing it. Trying to solve a problem. Making mistakes, fixing them, learning from what worked and what didn't at the keyboard. 
+
+Many have heard my often-repeated admonition: *If you coded today, you're a coder. If not, you're not a coder.* It really is as simple as that.
+
+=== Dedication to the mission
+
+I happen to be among those who feel anyone can learn to code. It's a 21st century superpower. When you code, you can change the world. Being proficient at coding can be a life-changing skill that impacts your life, your family's life and your future forever. 
+Time and time again, I've seen that the ability to learn to code is evenly distributed across the population, but the _opportunity to learn to code is not_. So, we run Zip Code to give people a shot at learning a 21st century superpower, no matter where you come from.
+
+And fortune favors the prepared. Some day, you may be working at a great company, making a decent living, working with professionals in a great technical job. Your friends may say "You are so lucky!"
+
+And you will think: *Nope. It wasn't luck.* You'll know that truly. You got there by preparing yourself to get there, and by working to get there, working _very hard_. Ain't no luck involved, just hard work. You make your own luck by working hard.
+
+As many know, getting a spot in a Zip Code cohort is a hard thing to do. Many try but only a  few manage it. I often get asked "what can I do to prepare to get into Zip Code?"
+
+The best way is to start solving coding problems on sites like https://hackerrank.com - HackerRank (among others) has many programming assignments, from extremely simple to very advanced. You login, and just do exercise after exercise, relieving you of one of the hardest of coding frustrations, that of trying to figure out *what* to code. Solving programming assignments is a good way to start to cultivate a coding mindset. Such a mindset is based on your ability to pay very close attention to detail, a desire to continually learn, and being able to stay focused on problem solving even if it takes a lot of grit and dedication. 
+
+Spending even 20 minutes a day, making progress on a programming task can make all the difference. Day after day your skills will grow, and before long you'll look back on the early things you did and be astonished as to how simple the assignments were. You may even experience embarrassment at remembering how hard these simple exercises seemed at the time you did them. (It's okay, we've all felt it. It's part of the gig.)
+
+Working on code every day makes you a coder. And coding everyday will help with your ability to eventually score high enough on the Zip Code admissions assessment that you get asked to group and potentially final interviews. And then, well, then you get to learn Java or Python and work yourself to exhaustion doing so. Lots and lots more hours. 
+
+Why? 
+
+You do that hard work, you put in those hours, you create lots of great code, 
+you'll make your own luck, and someone will be impressed and they will offer you a job. 
+And that is the point, right? A job, doing what you love, coding. Right? RIGHT?
+
+You're Welcome,
+
+_-Kristofer_
+
+Ready?
+
+Okay, let's go. 
+
+:sectnums:
+
+
+== Output console.log()
+
+include::consolelog.adoc[]
+
+== Variables and Data Types
+
+include::variables.adoc[]
+
+== Arithmetic Operators
+
+include::operators.adoc[]
+
+== Algebraic Equations
+
+include::arithmeticexpr.adoc[]
+
+include::simplecalc.adoc[]
+
+include::booleanexpr.adoc[]
+
+include::strings.adoc[]
+
+== Arrays
+
+include::arrays.adoc[]
+
+include::controlflow.adoc[]
+
+include::if.adoc[]
+
+include::switch.adoc[]
+
+include::whileloop.adoc[]
+
+include::forloop.adoc[]
+
+include::break.adoc[]
+
+include::patterns.adoc[]
+
+include::functions.adoc[]
+
+include::return.adoc[]
+
+include::modules.adoc[]
+
+include::objectsmethods.adoc[]
+
+include::appendixa.adoc[]
+
+include::appendixb.adoc[]
+
+[appendix]
+== Additional JavaScript Resources
+
+_Here are a series of other resources to go on from this point. Javascript.info is a really good one._
+
+Some JavaScript sites for you to explore:
+
+* https://javascript.info
+** https://javascript.info/first-steps
+* https://eloquentjavascript.net
+* http://jsforcats.com
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+
+If you're looking for more of a professional code tool, use an IDE like vscode: https://code.visualstudio.com (Many people use this these days.)
+
