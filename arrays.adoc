@@ -59,7 +59,7 @@ So let's think about an array of donuts for the following examples.
 
 === Declaring Arrays
 
-Declaring and initializing some arrays in JavaScript:
+Declaring and initializing some arrays in Java:
 
 [source]
 ----

@@ -1,8 +1,8 @@
 == Modules
 
-In JavaScript, modules allow for code to  loaded into a program only if it is needed. Modules are one of the advanced topics in JavaScript that we won't spend too much time on, but here are the basics.
+In Java, modules allow for code to  loaded into a program only if it is needed. Modules are one of the advanced topics in Java that we won't spend too much time on, but here are the basics.
 
-Most of your JavaScript programs are fairly small when you are creating solutions to HackerRank type problems. They can be seen as a simple script you store in a file on your computer. Usually, when they are stored on your computer, they are ".js" files.
+Most of your Java programs are fairly small when you are creating solutions to HackerRank type problems. They can be seen as a simple script you store in a file on your computer. Usually, when they are stored on your computer, they are ".js" files.
 
 [source]
 ----
@@ -12,11 +12,11 @@ _helloworld.js_
 
 If your program is much larger, it might be split into different files to keep it all more organized or readable. 
 All those files might be kept in a folder all together, as a project. 
-But again, this is beyond what you need to know to do HackerRank JavaScript problems.
+But again, this is beyond what you need to know to do HackerRank Java problems.
 
 Modules are also used to import code others have written that you wish to take advantage of. 
-There are millions of chunks of JavaScript you can find and use in your code. 
+There are millions of chunks of Java you can find and use in your code. 
 A lot of it is used by many, many people, and it's important to know where the code you use comes from. 
 It can be dangerous to use someone else's code that isn't trustworthy.
 
-See https://javascript.info/modules-intro for more on modules! Look for information on "import" and "export" to see how modules interact with your code.
+See https://Java.info/modules-intro for more on modules! Look for information on "import" and "export" to see how modules interact with your code.

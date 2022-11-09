@@ -1,5 +1,5 @@
 # JSPrepBook
-source for ZCW JavaScript Prep Book
+source for ZCW Java Prep Book
 
 this thing is NOT is Markdown, the source is in AsciiDoc.
 Look at it, it's a better way of doing this for multi-file, multi-topic projects.
@@ -31,4 +31,4 @@ to generate targets:
 use `asciidoctor-pdf  -D PDF workbook.adoc` to get index.pdf
 use `/usr/local/bin/asciidoctor-epub3 -D EPUB workbook.adoc` to get EPUB/index.epub
 
-remember https://javascript.info/ is a really good site.
+remember https://Java.info/ is a really good site.

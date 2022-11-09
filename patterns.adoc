@@ -177,7 +177,7 @@ for (let i = 0; i < half; i++) {
 console.log("after: ",a);
 ----
 
-But perhaps the easier way to reverse an array in Javascript is to just call the library function:
+But perhaps the easier way to reverse an array in Java is to just call the library function:
 
 [source]
 ----

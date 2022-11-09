@@ -1,5 +1,5 @@
 
-JavaScript can do math. And many early programming problems you will come across deal with doing fairly easy math. There are ways to do lots of useful things with numbers. 
+Java can do math. And many early programming problems you will come across deal with doing fairly easy math. There are ways to do lots of useful things with numbers. 
 
 === Basics
 
@@ -47,7 +47,7 @@ Using this as a model, how would you write programs to solve these problems?
 * Lab 4: Find remainder of A of b
 ====
 
-[source, javascript]
+[source, Java]
 ----
 let a = 9; 
 let b = 3;
@@ -156,7 +156,7 @@ There is a simple way to remember this.
 
 ==== P.E.M.D.A.S
 
-Use this phrase to memorize the default order of operations in JavaScript.
+Use this phrase to memorize the default order of operations in Java.
 
 ****
 Please Excuse My Dear Aunt Sally
@@ -185,7 +185,7 @@ So if we have "9 - 6 + 5", we subtract first and then add.
 Right way to solve 30 + 6 × 2 is first multiply, 6 × 2 = 12, then add 30 + 12 = 42
 ====
 
-This is because the multiplication is _higher priority_ than the addition, _even though the addition is before the multiplication_ in the expression. Let's check it in JavaScript:
+This is because the multiplication is _higher priority_ than the addition, _even though the addition is before the multiplication_ in the expression. Let's check it in Java:
 
 [source, js]
 ----
@@ -195,7 +195,7 @@ console.log(result);
 
 This gives us 42. 
 
-Now there is another way to force JavaScript to do things "out of order" with parenthesis. 
+Now there is another way to force Java to do things "out of order" with parenthesis. 
 
 [TIP]
 ====
@@ -212,9 +212,9 @@ console.log(result);
 
 What's going to happen? Will the answer be 42 or 72?
 
-=== JavaScript Math Object
+=== Java Math Object
 
-There is a useful thing in JavaScript called the Math object which allows you to perform mathematical tasks on numbers.
+There is a useful thing in Java called the Math object which allows you to perform mathematical tasks on numbers.
 
 
 * Math.PI; - returns 3.141592653589793
@@ -255,7 +255,7 @@ console.log(result);
 
 What will the answer be? 279936 or 41?
 
-How did JavaScript solve it?
+How did Java solve it?
 
 Well, 6^2^ is the same as 6 * 6.
 And 6 * 6 = 36,

@@ -1,16 +1,16 @@
 
 == Objects
 
-There are only a few data types in JavaScript. All but one of them are called “primitive” data types, because their values contain only a single thing (be it a string or a number or whatever).
+There are only a few data types in Java. All but one of them are called “primitive” data types, because their values contain only a single thing (be it a string or a number or whatever).
 
 In contrast, *objects* are used to store *keyed* collections of various data and more complex entities. 
-_Objects_ add tremendous power to Javascript and penetrate almost every aspect of the language. 
-Here are a few different objects, all these are actually objects in JavaScript, which makes the language rather elegant:
+_Objects_ add tremendous power to Java and penetrate almost every aspect of the language. 
+Here are a few different objects, all these are actually objects in Java, which makes the language rather elegant:
 
 * arrays
 * functions
 * regular expressions 
-* objects footnote:[Now, unlike a lot of languages, JavaScript has no notion of _classes_. It uses a different model of _prototypes_.]
+* objects footnote:[Now, unlike a lot of languages, Java has no notion of _classes_. It uses a different model of _prototypes_.]
 
 Objects are used to collect and organize data - and that data can be variable values, functions and other things. 
 Objects can also contain other objects(!), in kind of a "nesting" way. 
@@ -34,7 +34,7 @@ Notice how you use commas for all but the last one in the list?
 === Object Creation
 
 We can imagine an object as a container where everything has a key, and we can get data from the key, add data with a key to an object, and delete a key (with its data value) from the object.
-Each pair (of key and value) can be referred to as a *property*. Properties can be almost any JavaScript data type at all. Let's create a sample player object for a game:
+Each pair (of key and value) can be referred to as a *property*. Properties can be almost any Java data type at all. Let's create a sample player object for a game:
 
 [source]
 ----
@@ -134,7 +134,7 @@ delete flight77.origin;
 
 === Object Functions
 
-Now to make things even more powerful, JavaScript objects can have _functions_ attached to them.
+Now to make things even more powerful, Java objects can have _functions_ attached to them.
 Let's build a special counter object, something we might use in a program or app somewhere.
 
 As you may be aware, in American football there are four common changes to a team's score during a game:
@@ -178,19 +178,19 @@ console.log(scoreCounter.get_score()); // ??
 
 There are two data properties (options and score), and 5(!) functions. These functions are called *methods* (functions which are attached to an object), and get invoked when you make the _method call_ (or _invoke_ the method on the _object_).
 
-Notice the *this* variable. _This_ is the special variable used to refer to the _object itself_. (which is a rather advanced topic for this book, so, we'll leave it right there. When you get a chance, read about _this_ in a deeper JavaScript resource.)
+Notice the *this* variable. _This_ is the special variable used to refer to the _object itself_. (which is a rather advanced topic for this book, so, we'll leave it right there. When you get a chance, read about _this_ in a deeper Java resource.)
 
 === Follow Ons
 
-We have tried to give you some of the very basic parts of JavaScript, in order for you to be able to
-do well on the Zip Code Wilmington assessment. (Or for you to get a very basic understanding of coding in JavaScript and whether or not you enjoy learning this sort of thing.)
+We have tried to give you some of the very basic parts of Java, in order for you to be able to
+do well on the Zip Code Wilmington assessment. (Or for you to get a very basic understanding of coding in Java and whether or not you enjoy learning this sort of thing.)
 
-There are a number of very powerful things we have left out of this discussion about JavaScript objects.
+There are a number of very powerful things we have left out of this discussion about Java objects.
 We have not covered the ideas of *prototypes* and the *prototype chain* here, which are not really needed for the assessment you may be taking. 
 
-We also have not discussed an extremely powerful concept, *closures*. But rest assured, there is much much more for you to learn about Objects in JavaScript. 
+We also have not discussed an extremely powerful concept, *closures*. But rest assured, there is much much more for you to learn about Objects in Java. 
 
 Master what we've written about here and then forge ahead into more complicated and powerful capabilities.
 
-There is a lot more to learn about JavaScript.
+There is a lot more to learn about Java.
 But you made it this far, so perhaps you have what it takes to learn the 21st century super-power of coding.

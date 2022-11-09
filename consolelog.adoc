@@ -1,6 +1,6 @@
 
 Let's start with a really simple program.
-Perhaps the simplest JavaScript program is:
+Perhaps the simplest Java program is:
 
 [source]
 ----
@@ -9,13 +9,13 @@ console.log("Hello, World!");
 
 This program just prints "Hello, World!". footnote:[And while you might _not yet_ understand this _technical description_, it is a program of one _line_ of code, which says "call the 'log' method on the 'console' object, using the string "Hello, World!" as the argument to be logged."]
 
-Logging, in this case, means _outputting_ or _printing_ the "Hello, World!" somewhere. That somewhere is the _console_, a place JavaScript uses to communicate with a user (in this case, us, the programmers.)
+Logging, in this case, means _outputting_ or _printing_ the "Hello, World!" somewhere. That somewhere is the _console_, a place Java uses to communicate with a user (in this case, us, the programmers.)
 
 (And if you haven't done it yet, go to https://code.zipcode.rocks and make a browser bookmark for yourself. Once that's done, you can use that REPL footnote:[a REPL is short for "read-evaluate-print loop", a special kind of computer program that lets you run code of a given language.] as a place where you can type in the code from this book and run it to see what each code snippet does.)
 
-We will use `console.log` to do a lot in the coming pages. It's a simple statement, one that in other languages might be `print` or `write` or `puts` (and why we all cannot just agree on one way to do this, well, beats me. JavaScript's is `console.log`)
+We will use `console.log` to do a lot in the coming pages. It's a simple statement, one that in other languages might be `print` or `write` or `puts` (and why we all cannot just agree on one way to do this, well, beats me. Java's is `console.log`)
 
-Here's your second JavaScript program: 
+Here's your second Java program: 
 
 [source]
 ----
@@ -29,14 +29,14 @@ If you typed into your REPL and clicked the "Run" button, you should have seen t
 Car's Speed:  55
 ****
 
-Cool, huh? The ability to communicate with you is one of JavaScript's most fundamental capabilities. And you've run two JavaScript programs. Congratulations, you're a coder. (Well, at least for today you are.)
+Cool, huh? The ability to communicate with you is one of Java's most fundamental capabilities. And you've run two Java programs. Congratulations, you're a coder. (Well, at least for today you are.)
 
 == Comments
 
-While you're not thinking about the long term, or about large JavaScript programs, there is a powerful thing in JavaScript that helps with tracking comments and notes about the code.
+While you're not thinking about the long term, or about large Java programs, there is a powerful thing in Java that helps with tracking comments and notes about the code.
 
-In your program, you can write stuff that JavaScript will ignore, it's just there for you (or readers of your code). We use two slashes to start a comment, and the comment goes to the end of the line.
-Javascript will ignore anything on a line after two forward slashes. "//"
+In your program, you can write stuff that Java will ignore, it's just there for you (or readers of your code). We use two slashes to start a comment, and the comment goes to the end of the line.
+Java will ignore anything on a line after two forward slashes. "//"
 
 [source]
 ----
@@ -66,13 +66,13 @@ let flourAmount = 3.5;
 console.log("We need", flourAmount, "cups of flour."); // -> We need 3.5 cups of flour.
 ----
 
-See how JavaScript types it all out as a useful phrase? That proves to be very handy in a million-plus (or more) cases.
+See how Java types it all out as a useful phrase? That proves to be very handy in a million-plus (or more) cases.
 
 Comments can be used to explain tricky bits of code, or describe what you should see in output. Comments are your friend. 
 
 == Statements and Expressions
 
-In JavaScript, there are parts of a program and different parts have different names. Two of the most basic (and fundamental) are *statements* and *expressions*.
+In Java, there are parts of a program and different parts have different names. Two of the most basic (and fundamental) are *statements* and *expressions*.
 
 === Expressions
 
@@ -87,7 +87,7 @@ speed > 55.0
 regularPrice * (1.0 - salePercentOff)
 ----
 
-Each of these lines is something we'd like JavaScript to *compute* for us. That computation is often referred to as "evaluation" or "evaluate the expression" to get to the answer. There are two kinds of expressions in JavaScript, _arithmetic expressions_ and _boolean expressions_.
+Each of these lines is something we'd like Java to *compute* for us. That computation is often referred to as "evaluation" or "evaluate the expression" to get to the answer. There are two kinds of expressions in Java, _arithmetic expressions_ and _boolean expressions_.
 
 *Arithmetic expressions* are, as their name implies, something that require arithmetic to get the answer. An expression like "5 + 8 - 3" gets _evaluated_ to 10.
 
@@ -95,7 +95,7 @@ Each of these lines is something we'd like JavaScript to *compute* for us. That 
 
 === Statements
 
-A *statement* is just a line of JavaScript. It ends with a ';' (semi-colon).
+A *statement* is just a line of Java. It ends with a ';' (semi-colon).
 
 [source]
 ----
@@ -108,15 +108,15 @@ salesTax = totalGroceries * salesTaxRate;
 
 chargeToCard = totalGroceries + salesTax;
 ----
-And this is what a JavaScript program looks like. It's just a list of statements, one after the other, that get computed from the top down.
+And this is what a Java program looks like. It's just a list of statements, one after the other, that get computed from the top down.
 
 Some of the statements have expressions in them (like totalGroceries * salesTaxRate), while some are just simple *assignment* statements (like totalGroceries = 38.99, where we assign the variable 'totalGroceries' the value 38.99). 
-Don't panic. These are just some simple examples of JavaScript to give you a feel for it. 
+Don't panic. These are just some simple examples of Java to give you a feel for it. 
 We'll go thru each of these kinds of things slowly in sections ahead.
 
 === Multi-line Statements
 
-In this book, you may see that the code used in examples is longer than can fit on one line in the code boxes. Well, JavaScript doesn't care. That's why it has *semi-colons* ';' at the end of the statements. So to be clear, a statement with long variable names is the same as one with a short name.
+In this book, you may see that the code used in examples is longer than can fit on one line in the code boxes. Well, Java doesn't care. That's why it has *semi-colons* ';' at the end of the statements. So to be clear, a statement with long variable names is the same as one with a short name.
 
 [source]
 ----
@@ -125,11 +125,11 @@ k = h * kph - (rest / 60);
 kilometersCycled = numberOfHoursPedalled * kilometersPerHour - (totalMinutesOfRest / 60);
 ----
 
-When you come across code that goes onto multiple lines, do like JavaScript does, read until you find the ';'. It's like a period in an English sentence.
+When you come across code that goes onto multiple lines, do like Java does, read until you find the ';'. It's like a period in an English sentence.
 
 === Block Statement
 
-Very often in JavaScript, we will see a *block* of statements. It is a list of statements inside of a pair of curly-braces "{ }". It acts like a container to make clear what statements are included in the block.
+Very often in Java, we will see a *block* of statements. It is a list of statements inside of a pair of curly-braces "{ }". It acts like a container to make clear what statements are included in the block.
 
 [source]
 ----
@@ -142,5 +142,5 @@ if (magePower > 120.0) {
 // some more code
 ----
 
-See those curly-braces? They start and stop the _block_, and contain the statements within. You can also see how the code is indented, but the real key are those braces. You'll see lots of blocks when you're looking at JavaScript code.
+See those curly-braces? They start and stop the _block_, and contain the statements within. You can also see how the code is indented, but the real key are those braces. You'll see lots of blocks when you're looking at Java code.
 

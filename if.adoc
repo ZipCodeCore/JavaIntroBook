@@ -2,7 +2,7 @@
 == Conditional Statements
 
 We have been seeing programs which consist of a list of statements, one after another, where the "flow of control" goes from one line to the next, top to bottom, and so on to the end of the list of lines.
-There are more useful ways of breaking up the "control flow" of a program. JavaScript has several conditional statements that let the programmer do things based on conditions in the data. 
+There are more useful ways of breaking up the "control flow" of a program. Java has several conditional statements that let the programmer do things based on conditions in the data. 
 
 === If statement
 
@@ -30,7 +30,7 @@ if (account.balance >= amountRequested) {
 }
 ----
 
-JavaScript also has an *else* part to the *if* statement. When the *if* condition is False, the else part gets run. Here, if the account doesn't have enough money to fulfill the amountRequested, the else part of the statement gets run, and the customer gets an insufficient funds receipt.
+Java also has an *else* part to the *if* statement. When the *if* condition is False, the else part gets run. Here, if the account doesn't have enough money to fulfill the amountRequested, the else part of the statement gets run, and the customer gets an insufficient funds receipt.
 
 [source]
 ----
@@ -41,7 +41,7 @@ if (account.balance >= amountRequested) {
 }
 ----
 
-JavaScript can also "nest" if statements, making them very flexible for complicated situations. You can also see here how curly-braces make it clear what statements get executed based on which case or condition is true.
+Java can also "nest" if statements, making them very flexible for complicated situations. You can also see here how curly-braces make it clear what statements get executed based on which case or condition is true.
 
 [source]
 ----
@@ -87,6 +87,6 @@ if (userAge < 18) {
 }
 ----
 
-If statements are one of the most commonly used statements to express logic in a JavaScript program. It's important to know them well.
+If statements are one of the most commonly used statements to express logic in a Java program. It's important to know them well.
 
 

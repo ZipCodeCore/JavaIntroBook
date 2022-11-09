@@ -1,7 +1,7 @@
 
 === Variables
 
-In JavaScript, variables are containers used to store data while the program is running. Variables can be named just about anything, and often are named things that make you think about what you store there.
+In Java, variables are containers used to store data while the program is running. Variables can be named just about anything, and often are named things that make you think about what you store there.
 
 Think of them as little boxes you can put data into, to keep it there and not lose it.
 
@@ -12,10 +12,10 @@ There are some rules about variables.
 - Names must begin with a letter
 - Names can also begin with $ and _ but are often used in special cases
 - Names are case sensitive (y and Y are different variables)
-- Reserved words (like JavaScript keywords) cannot be used as names
+- Reserved words (like Java keywords) cannot be used as names
 - All variable names must be unique (no two alike)
 
-So this means the following are fine for variable names in JavaScript:
+So this means the following are fine for variable names in Java:
 
 [source]
 ----
@@ -103,9 +103,9 @@ console.log(age); // -> 5
 
 Notice here how age's current value is used, added one to it, and re-assigned _back into the variable *age*_.
 
-Now, one of the weird (to me anyway) things JavaScript can do is change the type of a variable while the program is running.
-A lot of languages won't let you do this. But it can be handy in JavaScript.
-In JavaScript, variables are dynamic (can contain any data) which means a variable can be a string and later be a number.
+Now, one of the weird (to me anyway) things Java can do is change the type of a variable while the program is running.
+A lot of languages won't let you do this. But it can be handy in Java.
+In Java, variables are dynamic (can contain any data) which means a variable can be a string and later be a number.
 
 [source]
 ----
@@ -134,7 +134,7 @@ An attempt to re-assign a value to a constant will fail.
 
 === Data Types
 
-JavaScript can keep track of a number of different kinds of data, and these are known
+Java can keep track of a number of different kinds of data, and these are known
 as "primitive data types". There are 5 of them.
 
 * *Number* - there are two kinds of numbers: integers and floats
@@ -152,7 +152,7 @@ It is common for a computer language to want to know if data is a bunch numbers 
 what _type_ a piece of data is is very important. And it is the programmer's job to make sure all the 
 data get handled in the right ways. 
 
-So JavaScript has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
+So Java has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
 
 [TIP]
 ====

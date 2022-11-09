@@ -2,7 +2,7 @@
 [appendix]
 == Mars Lander
 
-This is some code to show you how you might write a simple mars lander simulation in JavaScript. It's taken from history, way back in the 1970's - this idea was passed around as some of the very first open source programs.
+This is some code to show you how you might write a simple mars lander simulation in Java. It's taken from history, way back in the 1970's - this idea was passed around as some of the very first open source programs.
 
 Meant as an example of a longer program (159 lines) to get you thinking, it's really not very complicated. 
 The general idea is you have a series of "burns" in a list, and the game (or simulator, if you will) steps through the list applying each burn. 

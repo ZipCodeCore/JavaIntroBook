@@ -56,7 +56,7 @@ while (idx < groceries.length) {
 }
 ----
 
-This is a very common code pattern in JavaScript. 
+This is a very common code pattern in Java. 
 It's also fraught with possible errors. 
 It relies on the `idx` variable. 
 If we forget or mess up the increment step at the end of the loop, we could be in trouble. 
@@ -182,9 +182,9 @@ I've defined two functions, `filter` and `even`.
 Then created a short array/list called `dataList`. 
 Finally, I've printed the result of calling `filter(dataList,even)`. 
 Wait, what? I passed the function's name, `even` as an argument to another function. 
-Well, sure, why not? Functions in JavaScript are called `first class objects`, just like a variable or an object or a value.
+Well, sure, why not? Functions in Java are called `first class objects`, just like a variable or an object or a value.
 
-And it turns out JavaScript already has a function called `filter`, a higher order function. 
+And it turns out Java already has a function called `filter`, a higher order function. 
 And I can reduce it even more to something like this:
 
 [source]
@@ -281,7 +281,7 @@ This re-factor effectively decouples the data we use from the core calculation l
 
 One of the ways we do a lot of this kind of simplification within code is by replacing more complex logic with simpler forms. 
 
-In JavaScript, we have function expressions which give us an anonymous function (a function without a name). Here we are creating an anonymous function and assigning it to a variable.
+In Java, we have function expressions which give us an anonymous function (a function without a name). Here we are creating an anonymous function and assigning it to a variable.
 
 [source]
 ----
@@ -435,7 +435,7 @@ Two different ways of calculating the area of a shape, depending on the kind of 
 Each of these shapes would have it's own class, each with a different definition of how to find the area of the shape.
 That's polymorphism in a nutshell.
 
-Each of these techniques are currently considered "advanced" JavaScript, even though in many cases they are simpler and less error-prone than more "traditional" loops and conditionals.
+Each of these techniques are currently considered "advanced" Java, even though in many cases they are simpler and less error-prone than more "traditional" loops and conditionals.
 
 Be sure to consider how each of them are largely the same in functionality but simpler in expressing the logic of your program. 
 Remember to make your code more elegant by adding more simplicity.

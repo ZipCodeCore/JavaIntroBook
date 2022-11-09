@@ -1,9 +1,9 @@
 
 == Functions
 
-A function is a block of code designed to perform a particular task. A function encloses a set of statements and is a fundamental modular unit of JavaScript. They let you reuse code, and provide a way for you to organize your programs, keeping them easier to understand and easier to modify. It's often said that the craft of programming is the creation of a set of functions and data structures which implement a solution to some problem or set of requirements.
+A function is a block of code designed to perform a particular task. A function encloses a set of statements and is a fundamental modular unit of Java. They let you reuse code, and provide a way for you to organize your programs, keeping them easier to understand and easier to modify. It's often said that the craft of programming is the creation of a set of functions and data structures which implement a solution to some problem or set of requirements.
  
-Functions are objects, like many things in JavaScript. They can be stored in variables, other objects, or even collected into arrays. Functions are very powerful because in JavaScript, they can be passed as arguments to other functions, returned from functions, and can even have methods attached to them. The most important thing that functions can do is get *invoked*.
+Functions are objects, like many things in Java. They can be stored in variables, other objects, or even collected into arrays. Functions are very powerful because in Java, they can be passed as arguments to other functions, returned from functions, and can even have methods attached to them. The most important thing that functions can do is get *invoked*.
 
 You create functions easily.
 
@@ -68,7 +68,7 @@ You can see how functions let you perform different things in a particular order
 
 === Anonymous Functions
 
-A common pattern used in JavaScript revolves around an *anonymous* function. It's a function without a name, and one that probably only gets called _once_. Something like:
+A common pattern used in Java revolves around an *anonymous* function. It's a function without a name, and one that probably only gets called _once_. Something like:
 
 [source]
 ----
@@ -84,7 +84,7 @@ function () {
 
 Look at that last line. What's going on here? Well, first we are creating a function object _without a name_ (so it's _anonymous_). Then on the last line, we are _invoking_ the function once (see those two parentheses? '()'?), so all the code inside gets run. (x get printed out).
 
-You see this often in JavaScript. It's a way to put some code into an argument to another function call.
+You see this often in Java. It's a way to put some code into an argument to another function call.
 
 [source]
 ----
@@ -99,7 +99,7 @@ See how we pass an anonymous function to 'setTimeout' as one argument, and a tim
 
 === Function Return
 
-Once JavaScript reaches a return statement, the function will stop executing. Functions often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a functions, depending on how the flow of control is changed.
+Once Java reaches a return statement, the function will stop executing. Functions often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a functions, depending on how the flow of control is changed.
 
 [source]
 ----

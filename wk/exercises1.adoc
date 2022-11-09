@@ -105,7 +105,7 @@ What is S if (V = 17), (A = 2), (T = 14)?
 
 Sometimes you will see a formula expressed as a function which takes one parameter, *x*. 
 an _parameter_ to a function is it's input value.
-This is an algebraic (or math) function, not a Javascript function.
+This is an algebraic (or math) function, not a Java function.
 
 ****
 F(x) = 3x + 4
@@ -123,7 +123,7 @@ y = 3x + 4
 So is _F of x_ is also the answer to the computation.
 Don't overthink this, *y* and *f of x* are just two ways of saying the same thing.
 
-The other thing to notice is the *3x* portion. In JavaScript, you need to change it to *3 * x* so a correct form of a JavaScript function would be 
+The other thing to notice is the *3x* portion. In Java, you need to change it to *3 * x* so a correct form of a Java function would be 
 
 ----
 function f(x) {
@@ -131,7 +131,7 @@ function f(x) {
 }
 ----
 
-Write out these three formulas as JavaScript functions.
+Write out these three formulas as Java functions.
 Use the example above to help with your answers.
 
 ==== ? 
@@ -162,7 +162,7 @@ They allow the code to be called many times without repetition.
 
 So, a programmer bundles up smaller pieces of their program into functions.
 
-In JavaScript, and many other programming languages (yes, there are many!), we often need to supply a function with data.
+In Java, and many other programming languages (yes, there are many!), we often need to supply a function with data.
 And that data can often change.
 
 When we supply a function with data, we *pass* some *parameters* to the function.
@@ -248,7 +248,7 @@ If the above expressions are true, what is the answer to this?
 dog + bird + fish = ?
 ----
 
-== JavaScript Coding
+== Java Coding
 
 === Area of a Triangle
   
@@ -287,7 +287,7 @@ console.log(triangleArea(4,5));
 console.log(triangleArea(2,6));
 ----
 
-=== Javascript Math
+=== Java Math
 
 If asked to write a function to calculate and return a number divided by 2, you would code
 
@@ -364,7 +364,7 @@ function one() {
 }
 ----
 
-Write out a series of JavaScript variables.
+Write out a series of Java variables.
 
 
 ----
@@ -390,7 +390,7 @@ Make a function that returns the string value "Zip Code" from the given function
 
 ==== Length of String
 
-Using the JavaScript length method, return the length of the string "ZipCodeRocks" using the given function.
+Using the Java length method, return the length of the string "ZipCodeRocks" using the given function.
  
 Example 1
 input: "hello".length

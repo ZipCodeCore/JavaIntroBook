@@ -2,7 +2,7 @@
 
 === How far can we go in the car?
 
-Let's create a simple problem to solve with Javascript.
+Let's create a simple problem to solve with Java.
 
 ****
 Our car's gas tank can hold 12.0 gallons of gas. 
@@ -49,7 +49,7 @@ You probably know that if you multiply the milesPerGallon by the totalGasGallons
 that will give you totalMilesDriven.
 And if you divide the totalMilesDriven by the milesPerHour, you will get the totalHoursTaken.
 
-So let's add those as JavaScript statements.
+So let's add those as Java statements.
 
 ----
 let totalMilesDriven = 0;
@@ -67,7 +67,7 @@ console.log(totalMilesDriven, totalHoursTaken);
 ----
 
 We get as a result 264 miles driven in 4.8 hours.
-And that's how a simple JavaScript program can get written.
+And that's how a simple Java program can get written.
 
 Let's do another.
 

@@ -36,7 +36,7 @@ console.log(triangleArea(4,5));
 console.log(triangleArea(2,6));
 ----
 
-=== Javascript Math
+=== Java Math
 
 If asked to write a function to calculate and return a number divided by 2, you would code
 
@@ -128,7 +128,7 @@ function one() {
 }
 ----
 
-Write out a series of JavaScript variables.
+Write out a series of Java variables.
 
 
 ----
@@ -154,7 +154,7 @@ Make a function that returns the string value "Zip Code" from the given function
 
 ==== Length of String
 
-Using the JavaScript length method, return the length of the string "ZipCodeRocks" using the given function.
+Using the Java length method, return the length of the string "ZipCodeRocks" using the given function.
  
 Example 1
 input: "hello".length

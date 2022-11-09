@@ -1,13 +1,13 @@
 :doctype: book
 :title-page:
-= Zip Code Wilmington's Programming in JavaScript
+= Zip Code Wilmington's Programming in Java
 Kristofer Younger <kris@zipcodewilmington.com>
 v1.8.7, 2021-05-12
 :imagesdir: images
 :rouge-style: github
-:source-language: javascript
+:source-language: Java
 :icons: font
-:homepage: https://zipcodewilmington.com/jsprep
+:homepage: https://zipcodewilmington.com/javabook
 :pdf-page-size:  [5.5in, 8.5in]
 :front-cover-image: ZCW_JS-Book-FNL.png
 :toc:
@@ -15,16 +15,16 @@ v1.8.7, 2021-05-12
 [colophon]
 == Colophon
 
-Zip Code Wilmington's Programming in JavaScript
+Zip Code Wilmington's Programming in Java
 by Kristofer Younger
 
-Copyright (C) 2020-2021 by Zip Code Wilmington. All Rights Reserved.
+Copyright (C) 2020-2023 by Zip Code Wilmington. All Rights Reserved.
 
 Cover Design: Janelle Bowman
 
 Published in the U.S.A.
 
-May 2021: Second Edition
+November 2022: First Edition
 
 While the publisher and author have used good faith efforts to ensure that the information
 and instructions contained in this work are accurate, the publisher and author disclaim
@@ -34,7 +34,7 @@ Use of the information and instructions in this work is at your own risk. If any
 [preface]
 == Preface
 
-I'd like to thank the instructors of ZipCodeWilmington for inspiring this book: Chris Nobles, Roberto DeDeus, Tyrell Hoxter, L. Dolio Durant, and Mikaila Akeredolu. 
+I'd like to thank the instructors of ZipCodeWilmington for inspiring my series of programming books: Chris Nobles, Roberto DeDeus, Tyrell Hoxter, L. Dolio Durant, and Mikaila Akeredolu. 
 Without them, this book would have remained in "maybe some day" category. 
 My thanks to Dan Stabb and Roberto, who made corrections to the text. 
 I hope you get a chance to code someday, Dan! 
@@ -44,33 +44,15 @@ Zip Code Wilmington is a non-profit coding boot-camp in Delaware for people who 
 
 == About this book
 
-This book's aim is to provide you with the most basic of fundamentals regarding JavaScript, the world's most popular programming language. 
-It comes from the preparation sessions we often give prospective Zip Code applicants on how to do well on the Zip Code application coding assessment. 
-By reading this book or taking one of those prep sessions, someone who has never coded in any language before can use this as a place to start, study and get ready to take that assessment. 
-To someone who has spent some time with programming languages, this might be just a breezy intro to JavaScript. 
+This book's aim is to provide you with the most basic of fundamentals regarding Java, the programming language we have been teaching at Zip Code Wilmington for more than 8 years. 
+To someone who has spent some time with programming languages, this might be just a breezy intro to Java. 
 If you have almost any serious coding experience, this book is probably too elementary for you.
 You might, however, find the ideas in the Appendices interesting.
 There I've added some material that have a few advanced ideas in them, plus there is a full code listing of a mars lander simulation.
 
-You may be aware that Zip Code doesn't focus on JavaScript _per se_, and that can leave you wondering why the first book we wrote was all about JavaScript. Well...
+=== Java: Pretty Easy to Understand
 
-=== JavaScript: Easy to Understand
-
-JavaScript is a fairly easy programming language to learn, and we're going to use it in this book to describe the basic fundamentals of coding. Its form is modern and it is widely used. It can be used for many purposes, from web applications to back-end server processing. We're going to use it for learning simple, programming-in-the-small, methods and concepts; but make no mistake - JavaScript is world-class language capable of amazing things.
-
-==== Simple to Use
-
-JavaScript also has the advantage that one can learn to use it without a lot of setup on a computer. In fact, we recommend the use of a "REPL" for the running of the JavaScript examples you'll find in this book. The REPL at https://code.zipcode.rocks is a simple webpage where you can edit JavaScript scripts and run them. You can run almost every code snippet in the book and _see_ what the code does.
-
-==== Focuses on coding
-
-Finally, because in this book all we aim to teach you is "programming in the small", JavaScript is great for that. Many of the examples here are significantly less that 20 lines in length. We want you to get better at looking at small blocks of code to see how they work. These smaller examples and concepts are a core building block as you become proficient in coding. 
-
-==== You'll learn it eventually
-
-The truth is, in today's coding world, all of us eventually learn to do things with JavaScript. 
-So, start early, get comfortable with it, and then go on and study other computer languages like Java or Python. 
-JavaScript will always be there, waiting patiently for you to return.
+Java is a fairly easy programming language to learn, and we're going to use it in this book to describe the basic fundamentals of coding. Its form is modern and it is widely used. It can be used for many purposes, from web applications to back-end server processing. We're going to use it for learning simple, programming-in-the-small, object-orientation, methods and concepts; but make no mistake - Java is world-class language capable of amazing things.
 
 === Coding _The Hard Way_. 
 
@@ -185,17 +167,15 @@ include::appendixa.adoc[]
 include::appendixb.adoc[]
 
 [appendix]
-== Additional JavaScript Resources
+== Additional Java Resources
 
-_Here are a series of other resources to go on from this point. Javascript.info is a really good one._
+_Here are a series of other resources to go on from this point. Dev.java is a really good one._
 
-Some JavaScript sites for you to explore:
+Some Java sites for you to explore:
 
-* https://javascript.info
-** https://javascript.info/first-steps
-* https://eloquentjavascript.net
-* http://jsforcats.com
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+* https://dev.java
+** https://dev.java/learn/getting-started-with-java/
+** https://dev.java/learn/java-language-basics/
 
 If you're looking for more of a professional code tool, use an IDE like vscode: https://code.visualstudio.com (Many people use this these days.)
 

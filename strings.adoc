@@ -1,7 +1,7 @@
 
 == Strings
 
-Strings are perhaps the most important data type in JavaScript. Many other computer languages have strings, and they are used in almost ALL modern programs. Knowing how to manage them, create and modify them to do what you need them to do, is a "sub-superpower" within JavaScript.
+Strings are perhaps the most important data type in Java. Many other computer languages have strings, and they are used in almost ALL modern programs. Knowing how to manage them, create and modify them to do what you need them to do, is a "sub-superpower" within Java.
 
 Pay close attention; this stuff is VERY important.
 
@@ -15,7 +15,7 @@ In modern computing, that kind of data is often called a *String*.
 It is one of the most fundamental aspects of coding: the manipulation of strings by programs to transform, present or store text in some fashion.
 
 Many programming languages use some kind of quote or double quote to show where strings start and end. 
-There is really no difference between using single or double quotes in JavaScript.
+There is really no difference between using single or double quotes in Java.
 So a string like "the quick brown fox" would be a string from the 't' to the 'x'. And notice the three spaces within the string.
 If they were not there, the string would be "thequickbrownfox".
 And that's important, because to the computer, if it keeps these two strings around, it doesn't really understand that 'the' and 'quick' are just two common English words. 
@@ -126,7 +126,7 @@ Today, Mikaila worked a total of 12 hours.
 === SubStrings
 
 Getting a substring is a common operation. This is how we extract the characters from a string, between two specified indices. (Which is why it's important to remember the indexes start at 0.)
-There are 3 methods in JavaScript to get a substring: substring, substr and slice. Let's look
+There are 3 methods in Java to get a substring: substring, substr and slice. Let's look
 at each one. They have very slight differences, so you may want to pick one and memorize what your choice does.
 
 _someString.*substring*(start, end)_
@@ -183,7 +183,7 @@ let fName = "Christopher";
 ----
 - Your turn to use the substring/substr/slice method on firstName
 - Extract and print out "STOP" from inside the string above
-- And make it uppercase! ("stop" to "STOP") footnote:[You could google how to do this, try "javascript string make upper case"]
+- And make it uppercase! ("stop" to "STOP") footnote:[You could google how to do this, try "Java string make upper case"]
 ====
 
 Well?
@@ -244,5 +244,5 @@ var result = rev.join("");  // -> "POTS"
 console.log(result); // -> POTS
 ----
 
-Strings are perhaps the most important data type in almost any language. Being able to manipulate them easily and do powerful things with them in JavaScript, makes you a better coder.
+Strings are perhaps the most important data type in almost any language. Being able to manipulate them easily and do powerful things with them in Java, makes you a better coder.
 

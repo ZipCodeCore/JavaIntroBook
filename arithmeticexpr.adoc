@@ -18,7 +18,7 @@ is to
 
 [source]
 ----
-// And in JavaScript:
+// And in Java:
 // a = b3 - 6 
 
 let b = 3;
@@ -30,7 +30,7 @@ Now you try it.
 
 [TIP]
 ====
-Solve the equation with JavaScript...
+Solve the equation with Java...
 
 q = 2j + 20
 
@@ -51,7 +51,7 @@ Let's try another...
 
 [TIP]
 ====
-Solve the equation with JavaScript...
+Solve the equation with Java...
 
 x = 5y + y^3^ - 7
 
@@ -81,7 +81,7 @@ Therefore we just need to create variables for each and use the operators to cal
 
 [TIP]
 ====
-Calculate Area of a Triangle in JavaScript
+Calculate Area of a Triangle in Java
 Height is 20
 Base is 10
 Formula: A = h * b / 2

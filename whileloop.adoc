@@ -1,7 +1,7 @@
 
 == Loops
 
-Loops allow you control over repetitive steps you need to do in your _control flow_. JavaScript has two different kinds of loops we will talk about: *while* loops and *for* loops. 
+Loops allow you control over repetitive steps you need to do in your _control flow_. Java has two different kinds of loops we will talk about: *while* loops and *for* loops. 
 Either one can be used interchangeably; but, as you will see there are couple cases where using one over the other makes more sense.
 
 The primary purpose of loops is to avoid having lots of repetitive code.
@@ -24,7 +24,7 @@ In this case, we start with a simple counter in x = 1. Then, after the loop star
 
 Then, x is incremented to 6, and the check is made again, 6 < 6 ... well, no that is false. So we don't execute the loop's body and we fall through to the last console.log line, and print out x.
 
-[source,javascript]
+[source,Java]
 ----
 let x = 1;
 
@@ -76,7 +76,7 @@ Why? well, sometimes you need a loop to go at least once, no matter what
 and continue until the condition on the loop becomes false. These are used only occasionally,
 and only in very specific situations.
 
-[source,javascript]
+[source,Java]
 ----
 let x = 0;
 

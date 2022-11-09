@@ -9,7 +9,7 @@ When you are coding, you often have to make a choice about what to do next based
 
 And while this may seem super simple to you, and it is, it is also very powerful when used in a program. 
 
-This idea of a condition that is either TRUE or FALSE, is known as a *boolean expression*. And in JavaScript, they crop up everywhere. They are in _conditional statements_ and they are part of _loops_. 
+This idea of a condition that is either TRUE or FALSE, is known as a *boolean expression*. And in Java, they crop up everywhere. They are in _conditional statements_ and they are part of _loops_. 
 
 Boolean expressions can be very complex, or very simple:
 
@@ -33,7 +33,7 @@ We also need more kinds of boolean expressions when we are programming. Things l
 
 === Comparison Operators
 
-[source, JavaScript]
+[source, Java]
 ----
 let healthScore = 5;
 ----
@@ -70,13 +70,13 @@ totalCargoWeight < 6.0  // more than 6 tons and we can't take off!
 pilot.isAlive() && copilot.isAlive()  // everything is fine, keep flying.
 ----
 
-If you're puzzling about the difference between the '===' equals and the '==' equals, until you learn a lot more about JavaScript, just use the triple '===' equals. That goes for the 'not equals' too; always use the '!==' not equals.
+If you're puzzling about the difference between the '===' equals and the '==' equals, until you learn a lot more about Java, just use the triple '===' equals. That goes for the 'not equals' too; always use the '!==' not equals.
 
-Like the ANDs in the examples above or this last boolean expression with the "&&" in it, we have in JavaScript the ability to combine expressions into larger more complex expressions using AND and OR.
+Like the ANDs in the examples above or this last boolean expression with the "&&" in it, we have in Java the ability to combine expressions into larger more complex expressions using AND and OR.
 
 === Logical Operators
 
-The *logical operators* are AND and OR, except in JavaScript we use *&&* for AND and *||* for OR.
+The *logical operators* are AND and OR, except in Java we use *&&* for AND and *||* for OR.
 
 [cols=",,",options="header",]
 |===
@@ -129,7 +129,7 @@ why coders need to be able to use them to get the software *just right*.
 [TIP]
 ====
 * Create 2 variables to use for a comparison 
-* Use at least two comparison operators in JavaScript
+* Use at least two comparison operators in Java
 * And print them "console.log(2 > 1)"
 ====
 
