@@ -1,5 +1,7 @@
 
-Java can do math. And many early programming problems you will come across deal with doing fairly easy math. There are ways to do lots of useful things with numbers. 
+== Arithmetic Operators
+
+Java can do math. And many early programming exercises you will come across deal with doing fairly easy math. There are ways to do lots of useful things with numbers. 
 
 === Basics
 
@@ -18,20 +20,28 @@ Java can do math. And many early programming problems you will come across deal 
 Say we needed to multiply two numbers. Maybe 2 times 3. Now we could easily write a program
 that printed that result.
 
-[source, js]
+[source, Java]
 ----
-System.out.println(2 * 3); 
+public class Main {
+  public static void main(String[] args) {
+    System.out.println(2 * 3); 
+  }
+}
 ----
 And that will print 6 on the console. But maybe we'd like to make it a little more
 complete.
 
-[source, js]
+[source, Java]
 ----
-int a = 2; 
-int b = 3;
-// Multiply a times b
-int answer = a * b;
-System.out.println(answer); // -> 6
+public class Main {
+  public static void main(String[] args) {
+    int a = 2; 
+    int b = 3;
+    // Multiply a times b
+    int answer = a * b;
+    System.out.println(answer); // -> 6
+  }
+}
 ----
 
 Here we have set up two variables, a and b, for our _operands_ and a final _answer_ variable.
@@ -41,29 +51,34 @@ Using this as a model, how would you write programs to solve these problems?
 
 [TIP]
 ====
-* Lab 1: Subtract A from B and print the result
-* Lab 2: Divide A by B and print the result
-* Lab 3: Use an operator to increase A by 1 and print result
-* Lab 4: Find remainder of A of b
+* Exercise 1: Subtract A from B and print the result
+* Exercise 2: Divide A by B and print the result
+* Exercise 3: Use an operator to increase A by 1 and print result
+* Exercise 4: Find remainder of A of b
 ====
 
 [source, Java]
 ----
-int a = 9; 
-int b = 3;
+public class Main {
+  public static void main(String[] args) {
 
-int L1 = b - a;
-int L2 = a / b;
-int L3 = a + 1;
-//or using increment
-L3 = a++;
-int L4 = a % b;
-System.out.println(L1); // -> -6
-System.out.println(L2); // -> 3
-System.out.println(L3); // -> 10
-System.out.println(L4); // -> 0
-L4 = 10 % b;
-System.out.println(L4); // now -> 1
+    int a = 9; 
+    int b = 3;
+
+    int L1 = b - a;
+    int L2 = a / b;
+    int L3 = a + 1;
+    //or using increment
+    L3 = a++;
+    int L4 = a % b;
+    System.out.println(L1); // -> -6
+    System.out.println(L2); // -> 3
+    System.out.println(L3); // -> 10
+    System.out.println(L4); // -> 0
+    L4 = 10 % b;
+    System.out.println(L4); // now -> 1
+  }
+}
 ----
 
 === Division and Remainder
@@ -71,19 +86,26 @@ System.out.println(L4); // now -> 1
 We know that we can do regular division. If have a simple program like this, we know 
 what to expect:
 
+[source, Java]
 ----
 int a = 6 / 3; // -> 2
 int a = 12 / 3; // -> 4
 int a = 15 / 3; // -> 5
-int a = 10 / 4; // -> 2.5
+int a = 10 / 4; // -> 2 (what??)
 ----
 
-But sometimes, we have a need to know what the remainder of a division is.
-The remainder operator %, despite its appearance, is not related to percents.
+When we are dividing _int_s, we always get an _int_ as a result.
+So, somewhat confusingly, when we evaluate `10 / 4` we get `2`.
+(and remember in school when the teacher would say, "10 / 4 is 2 with a remainder of 2"??
+yes, remainders aare still with us.)
+
+But sometimes, we have a need to know what the _remainder_ of an integer division is.
+The remainder operator % (the percent sign), despite its appearance, is not related to percents.
 
 The result of a % b is the remainder of the integer division of a by b.
+So as above, if we evaluate `10 % 4` we will get the remainder of `2`.
 
-[source, js]
+[source, Java]
 ----
 System.out.println( 5 % 2 ); // 1, a remainder of 5 divided by 2
 System.out.println( 8 % 3 ); // 2, a remainder of 8 divided by 3
@@ -91,42 +113,56 @@ System.out.println( 8 % 3 ); // 2, a remainder of 8 divided by 3
 
 Now what's this about '%' (the remainder) operator?
 
-[source, js]
+[source, Java]
 ----
-int a = 3; 
-int b = 2;
-// Modulus (Remainder)
-int answer = a % b;
-System.out.println(answer); // -> 1
-----
-
-[source, js]
-----
-int a = 19; 
-int b = 4;
-// Remainder
-int answer = a % b;
-System.out.println(answer); // -> 3
-----
-
-[source, js]
-----
-int a = 4; 
-int b = 4;
-// Remainder
-
-for (a = 4; a < 13; a++) {
-    System.out.println(a, a % b); // would produce
+public class Main {
+  public static void main(String[] args) {
+    int a = 3; 
+    int b = 2;
+    // Modulus (Remainder)
+    int answer = a % b;
+    System.out.println(answer); // -> 1
+  }
 }
-// 4 0
-// 5 1
-// 6 2
-// 7 3
-// 8 0
-// 9 1
-// 10 2
-// 11 3
-// 12 0
+----
+
+[source, Java]
+----
+public class Main {
+  public static void main(String[] args) {
+    int a = 19; 
+    int b = 4;
+    // Remainder
+    int answer = a % b;
+    System.out.println(answer); // -> 3
+  }
+}
+----
+
+[source, Java]
+----
+public class Main {
+  public static void main(String[] args) {
+    int a = 4; 
+    int b = 4;
+    // Remainder
+
+    for (a = 4; a < 13; a++) {
+        System.out.println(a, a % b); // would produce 
+    }
+    // output of
+    // 4 0
+    // 5 1
+    // 6 2
+    // 7 3
+    // 8 0
+    // 9 1
+    // 10 2
+    // 11 3
+    // 12 0
+  }
+}
+
 ----
 
 === Order is Important
@@ -187,10 +223,14 @@ Right way to solve 30 + 6 × 2 is first multiply, 6 × 2 = 12, then add 30 + 12 
 
 This is because the multiplication is _higher priority_ than the addition, _even though the addition is before the multiplication_ in the expression. Let's check it in Java:
 
-[source, js]
+[source, Java]
 ----
-int result = 30 + 6 * 2;
-System.out.println(result);
+public class Main {
+  public static void main(String[] args) {
+    int result = 30 + 6 * 2;
+    System.out.println(result);
+  }
+}
 ----
 
 This gives us 42. 
@@ -204,13 +244,17 @@ Now there is another way to force Java to do things "out of order" with parenthe
 What happens now?
 ====
 
-[source, js]
+[source, Java]
 ----
-int result = (30 + 6) * 2;
-System.out.println(result);
+public class Main {
+  public static void main(String[] args) {
+    int result = (30 + 6) * 2;
+    System.out.println(result);
+  }
+}
 ----
 
-What's going to happen? Will the answer be 42 or 72?
+What's going to happen? Will the answer be 42 or 72? Paste it into the REPL.it and find out!
 
 === Java Math Object
 
@@ -231,10 +275,14 @@ What does "returns" mean?
 
 When we ask a 'function' like sqrt to do some work for us, we have to code something like:
 
-[source]
+[source, Java]
 ----
-int squareRootTwo = Math.sqrt(2.0);
-System.out.println(squareRootTwo);
+public class Main {
+  public static void main(String[] args) {
+    double squareRootTwo = Math.sqrt(2.0);
+    System.out.println(squareRootTwo);
+  }
+}
 ----
 
 We will get "1.4142135623730951" in the output. That number (squareRootTwo) 
@@ -247,18 +295,23 @@ the result of the function and _what the function sqrt "returns"'_.
 
 Say we need to compute "6^2^ + 5"
 
-[source]
+[source, Java]
 ----
-int result = Math.pow(6,2) + 5;
-System.out.println(result);
+public class Main {
+  public static void main(String[] args) {
+    double result = Math.pow(6,2) + 5;
+    System.out.println(result); // -> 41.0
+  }
+}
 ----
 
-What will the answer be? 279936 or 41?
+What will the answer be? 279936.0 or 41.0?
 
 How did Java solve it?
 
-Well, 6^2^ is the same as 6 * 6.
+Well, 6^2 (6 squared) is the same as 6 * 6.
 And 6 * 6 = 36,
 then add 36 + 5 = 41.
 
-You'll learn a lot more about working with numbers in your career as a coder. This is really just the very basic of beginnings.
+You'll learn a lot more about working with numbers in your career as a coder. 
+This is really just the very basic of beginnings.

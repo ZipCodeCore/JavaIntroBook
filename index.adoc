@@ -122,7 +122,6 @@ include::consolelog.adoc[]
 
 include::variables.adoc[]
 
-== Arithmetic Operators
 
 include::operators.adoc[]
 

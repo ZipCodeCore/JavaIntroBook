@@ -8,7 +8,7 @@ Here we have a long example, where the user types a command, and the program run
 
 Notice how we first get a command from the user, look at each possibility, and do something specific if we find a matching command string. Otherwise, we print an error message.
 
-[source, js]
+[source, Java]
 ----
 int lastCommand = getCommandFromUser();
 
