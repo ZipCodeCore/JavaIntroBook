@@ -256,9 +256,9 @@ public class Main {
 
 What's going to happen? Will the answer be 42 or 72? Paste it into the REPL.it and find out!
 
-=== Java Math Object
+=== Java Math Class
 
-There is a useful thing in Java called the Math object which allows you to perform mathematical tasks on numbers.
+There is a useful thing in Java called the Math class which allows you to perform mathematical tasks on numbers.
 
 
 * Math.PI; - returns 3.141592653589793
