@@ -4,29 +4,39 @@ Perhaps the simplest Java program is:
 
 [source]
 ----
-console.log("Hello, World!");
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
 ----
 
-This program just prints "Hello, World!". footnote:[And while you might _not yet_ understand this _technical description_, it is a program of one _line_ of code, which says "call the 'log' method on the 'console' object, using the string "Hello, World!" as the argument to be logged."]
+This program just prints "Hello, World!".
 
-Logging, in this case, means _outputting_ or _printing_ the "Hello, World!" somewhere. That somewhere is the _console_, a place Java uses to communicate with a user (in this case, us, the programmers.)
+_System.out.println_, in this case, means _outputting_ or _printing_ the "Hello, World!" somewhere. That somewhere is probably the terminal where the program was run.
 
-(And if you haven't done it yet, go to https://code.zipcode.rocks and make a browser bookmark for yourself. Once that's done, you can use that REPL footnote:[a REPL is short for "read-evaluate-print loop", a special kind of computer program that lets you run code of a given language.] as a place where you can type in the code from this book and run it to see what each code snippet does.)
 
-We will use `console.log` to do a lot in the coming pages. It's a simple statement, one that in other languages might be `print` or `write` or `puts` (and why we all cannot just agree on one way to do this, well, beats me. Java's is `console.log`)
+We will use `System.out.println` to do a lot in the coming pages. It's a simple statement, one that in other languages might be `print` or `write` or `puts` (and why we all cannot just agree on one way to do this, well, beats me. Java's is `System.out.println`)
 
 Here's your second Java program: 
 
 [source]
 ----
-let milesPerHour = 55.0;
-console.log("Car's Speed: ", milesPerHour);
+public class Main {
+  public static void main(String[] args) {
+    double milesPerHour = 55.0;
+    System.out.println("Car's Speed: " + milesPerHour);
+  }
+}
 ----
 
-If you typed into your REPL and clicked the "Run" button, you should have seen this as your output:
+Now, how do we `run` this program? Use a REPLI.it!!
 
 ****
-Car's Speed:  55
+> sh -c javac -classpath .:target/dependency/* -d . $(find . -type f -name '*.java')
+> java -classpath .:target/dependency/* Main
+Car's Speed: 55.0
+>  
 ****
 
 Cool, huh? The ability to communicate with you is one of Java's most fundamental capabilities. And you've run two Java programs. Congratulations, you're a coder. (Well, at least for today you are.)
@@ -41,18 +51,21 @@ Java will ignore anything on a line after two forward slashes. "//"
 [source]
 ----
 // this is a comment. it might describe something in the code.
-console.log('Hello');
+int x = 53 - 11;
 
-console.log('World'); // this is also a comment.
+int y = x * 4; // this is also a comment.
 ----
 
 Often, you'll see something like this in this book.
 
 [source]
 ----
-let flourAmount = 3.5;
-
-console.log(flourAmount); // -> 3.5
+public class Main {
+  public static void main(String[] args) {
+    double flourAmount = 3.5;
+    System.out.println(flourAmount); // -> 3.5
+  }
+}
 ----
 
 That comment at the end of the console.log line is showing what you can expect to see in the output. Here it would be "3.5" printed by itself. Try it in your bookmarked Repl.
@@ -61,14 +74,37 @@ We can also add useful stuff to the .log call.
 
 [source]
 ----
-let flourAmount = 3.5;
-
-console.log("We need", flourAmount, "cups of flour."); // -> We need 3.5 cups of flour.
+public class Main {
+  public static void main(String[] args) {
+    double flourAmount = 3.5;
+    System.out.println("We need " + flourAmount + " cups of flour."); // -> 3.5
+  }
+}
 ----
 
 See how Java types it all out as a useful phrase? That proves to be very handy in a million-plus (or more) cases.
 
 Comments can be used to explain tricky bits of code, or describe what you should see in output. Comments are your friend. 
+
+== BUT WAIT!!!
+
+What does `int` and `double` signify? Well, see how they proceed another word?
+
+[source]
+----
+public class Main {
+  public static void main(String[] args) {
+    double flourAmount = 3.5;
+//  ^^^^^^ ^^^^^^^^^^^  
+    System.out.println("We need " + flourAmount + " cups of flour."); // -> 3.5
+  }
+}
+----
+
+It is our way of telling Java what `flourAmount` is. We want `flourAmount` to be place holder for the number `3.5`, because makes
+the code easier to read and understand. See much more on this, up ahead, in `variables`.
+
+Oh, and `int`?? Well, it means a number, but just an integer like 0, 1, 2, 42, 99, etc. A `double` can have decimal point and some number after, so I can write `3.5` or `42.0`.
 
 == Statements and Expressions
 
@@ -76,7 +112,7 @@ In Java, there are parts of a program and different parts have different names. 
 
 === Expressions
 
-An *expression* is something that needs to be computed to find out the answer. Here are a few simple ones.
+An *expression* is something that needs to be _computed_ to find out the answer. Here are a few simple ones.
 
 [source]
 ----
@@ -87,11 +123,17 @@ speed > 55.0
 regularPrice * (1.0 - salePercentOff)
 ----
 
-Each of these lines is something we'd like Java to *compute* for us. That computation is often referred to as "evaluation" or "evaluate the expression" to get to the answer. There are two kinds of expressions in Java, _arithmetic expressions_ and _boolean expressions_.
+Each of these lines is something we'd like Java to *compute* for us. That computation is often referred to as "evaluation" or "evaluate the expression" to get to the answer. 
+There are two kinds of expressions in Java, _arithmetic expressions_ and _boolean expressions_.
 
-*Arithmetic expressions* are, as their name implies, something that require arithmetic to get the answer. An expression like "5 + 8 - 3" gets _evaluated_ to 10.
+*Arithmetic expressions* are, as their name implies, something that require arithmetic to get the answer. An expression like "5 + 8 - 3" gets _evaluated_ to 10. 
+So an arithmetic expression will end up being a _number_.
 
-*Boolean expressions* result in either a True or a False value. Example: "maxSpeed > 500.0" - this is either true or false depending on the value of maxSpeed.
+*Boolean expressions* result in either a True or a False value. 
+Example: "maxSpeed > 500.0" - this is either true or false depending on the value of maxSpeed. 
+Or "homeTeamScore > visitorTeamScore" which will be true is and only if the Home team's score is greater than
+the Visitor team's score. Both _scores_ are numbers, the result of the **greater than** makes the result of the
+epxression a _boolean expression_ (either **true** or **false**). 
 
 === Statements
 
@@ -99,14 +141,16 @@ A *statement* is just a line of Java. It ends with a ';' (semi-colon).
 
 [source]
 ----
-// at the Grocery
+public class Main {
+  public static void main(String[] args) {
+    // at the Grocery
 
-salesTaxRate = 0.06;
-
-totalGroceries = 38.99;
-salesTax = totalGroceries * salesTaxRate;
-
-chargeToCard = totalGroceries + salesTax;
+    double salesTaxRate = 0.06;
+    double totalGroceries = 38.99;
+    double salesTax = totalGroceries * salesTaxRate;
+    double chargeToCard = totalGroceries + salesTax;
+  }
+}
 ----
 And this is what a Java program looks like. It's just a list of statements, one after the other, that get computed from the top down.
 
@@ -143,4 +187,25 @@ if (magePower > 120.0) {
 ----
 
 See those curly-braces? They start and stop the _block_, and contain the statements within. You can also see how the code is indented, but the real key are those braces. You'll see lots of blocks when you're looking at Java code.
+
+And, it's a bad idea, but this code:
+
+[source]
+----
+if (wizardStrength > 120.0) { maxMagic = Wizard.maxpower(); lifeSpan = Wizard.maxlife(); maxWeapons = wizardStrength * numberOfWands; }
+----
+
+is identical to this:
+
+[source]
+----
+if (wizardStrength > 120.0) { 
+    maxMagic = Wizard.maxpower();
+    lifeSpan = Wizard.maxlife();
+    maxWeapons = wizardStrength * numberOfWands;
+}
+----
+
+But the SECOND example is formatted much cleaner, making it more readable and therefore easier to understand.
+
 

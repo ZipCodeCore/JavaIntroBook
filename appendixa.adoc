@@ -1,5 +1,35 @@
 
 [appendix]
+== Kris' Special Class
+
+In this book, we use a simple template for all your early Java programs.
+Why?
+Well, in many books, tutorials, etcetera for Java, they use a very simple (well, for Java, simple) _Hello World_ program.
+
+*blah, blah, blah*
+
+But in this book, I use a special template. One that you should use when working thru the examples and exercises in this book.
+
+=== The SPECIAL ZipCode java template!
+
+``` Java
+public class ZipCode {
+
+  void compute() {
+
+    //Your code goes in here...
+
+  }
+
+
+  // don't change this...
+  public static void main(String args { new ZipCode().compute(); }
+}
+
+// NOTICE the } in the previous line? it's crucial
+```
+
+[appendix]
 == Advanced Ideas
 
 We're going to look at a few "modern" ways of handling a collection of data. 
