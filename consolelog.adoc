@@ -68,7 +68,7 @@ public class Main {
 }
 ----
 
-That comment at the end of the console.log line is showing what you can expect to see in the output. Here it would be "3.5" printed by itself. Try it in your bookmarked Repl.
+That comment at the end of the System.out.println line is showing what you can expect to see in the output. Here it would be "3.5" printed by itself. Try it in your bookmarked Repl.
 
 We can also add useful stuff to the .log call. 
 

@@ -79,9 +79,9 @@ Now, if you wanted to print out each item's name in the grocery list to the cons
 
 [source]
 ----
-let idx = 0;
+int idx = 0;
 while (idx < groceries.length) {
-  console.log(groceries[idx].name);
+  System.out.println(groceries[idx].name);
   idx = idx + 1;
 }
 ----
@@ -95,7 +95,7 @@ Rather, how about this:
 [source]
 ----
 groceries.forEach((item) => {
-  console.log(item.name);
+  System.out.println(item.name);
 });
 ----
 
@@ -113,7 +113,7 @@ Say we wanted to get a list of just the prices of our grocery list. If we use a 
 
 [source]
 ----
-let index = 0;
+int index = 0;
 const prices = [];
 while (index < groceries.length) {
   prices.push(groceries[index].price);
@@ -125,7 +125,7 @@ But if we use a different higher-order function, `map`:
 
 [source]
 ----
-let prices = groceries.map((item) => {
+int prices = groceries.map((item) => {
   return item.price;
 });
 ----
@@ -134,8 +134,8 @@ The value of prices would be: `[5.5,14.99,6.49,4.79,3.99]`. And if we were to wa
 
 [source]
 ----
-let index = 0;
-let total = 0;
+int index = 0;
+int total = 0;
 while (index < groceries.length) {
   total = total + groceries[index].price;
   index = index + 1;
@@ -149,7 +149,7 @@ But look how much simpler our code can be if we use `reduce`, another higher-ord
 
 [source]
 ----
-let total = groceries.reduce((sum, item) => {
+int total = groceries.reduce((sum, item) => {
   return sum += item.price;
 }, 0);
 ----
@@ -164,7 +164,7 @@ function even (value) {
     return value % 2 === 0;
 }
 
-console.log(even(3), even(4), even(126));
+System.out.println(even(3), even(4), even(126));
 
 // giving us 'false true true'
 ----
@@ -197,9 +197,9 @@ function even (value) {
     return value % 2 === 0;
 }
 
-let dataList = [1,2,3,4];
+int dataList = [1,2,3,4];
 
-console.log(
+System.out.println(
     filter(dataList, even)
 ); // produces [2,4]
 
@@ -219,12 +219,12 @@ And I can reduce it even more to something like this:
 
 [source]
 ----
-let result = [1,2,3,4].filter(
+int result = [1,2,3,4].filter(
     function (value) {return value % 2 === 0}
 );
 
 // or, If I have 'dataList' defined as [1,2,3,4]
-let result = dataList.filter(
+int result = dataList.filter(
     function (value) {return value % 2 === 0}
 );
 ----
@@ -260,7 +260,7 @@ const discount = (amount, code) => {
   }
 }; // whew! that a lot of braces.
 
-let netprice = discount(200.00, 'HALFOFF'); // would be 100.
+int netprice = discount(200.00, 'HALFOFF'); // would be 100.
 ----
 
 But think about adding another discount, we'd have to add another `if`, more braces, and make sure we nest it in there carefully, otherwise we break the whole, rickety, mess.
@@ -282,7 +282,7 @@ const discount = (amount, code) => {
   }
 };
 
-let netprice = discount(200.00, 'HALFOFF'); // would be 100.
+int netprice = discount(200.00, 'HALFOFF'); // would be 100.
 ----
 
 We have to add two lines of code for each `case`. 

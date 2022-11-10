@@ -49,12 +49,12 @@ Turns out there is a very easy pattern to learn here.
 
 [source]
 ----
-let sum = 0;
-let n = 100;
+int sum = 0;
+int n = 100;
 for (let i = 1; i < n; i++) {
     sum = sum + i;
 }
-console.log(sum);
+System.out.println(sum);
 ----
 
 Now, if you wanted to find the average of a bunch of numbers, that's as easy as taking the sum of the numbers and dividing the sum by the number of numbers (or n).
@@ -62,25 +62,25 @@ Now, if you wanted to find the average of a bunch of numbers, that's as easy as 
 
 [source]
 ----
-let sum = 0;
-let n = 100;
+int sum = 0;
+int n = 100;
 for (let i = 1; i < n; i++) {
     sum = sum + i;
 }
-let average = sum / n;
-console.log(average);
+int average = sum / n;
+System.out.println(average);
 ----
 
 Pretty easy, yes? And the other common pattern here is doing a *product* of all the numbers from 1 to n. (Let's try 20)
 
 [source]
 ----
-let product = 1;
-let n = 20;
+int product = 1;
+int n = 20;
 for (let i = 1; i < n; i++) {
     product = product * i;
 }
-console.log(product);
+System.out.println(product);
 ----
 
 Perhaps you want to print a table of values of some equation.
@@ -88,7 +88,7 @@ Perhaps you want to print a table of values of some equation.
 [source]
 ----
 for (let i = 0; i <= n; i++) {
-    console.log(i + " " + i*i/2);
+    System.out.println(i + " " + i*i/2);
 }
 ----
 
@@ -100,7 +100,7 @@ The array we are going to use in all these cases is pretty simple. It's an array
 
 [source]
 ----
-let a = [ 4, 3, 7, 0, -4, 1, 8];
+int a = [ 4, 3, 7, 0, -4, 1, 8];
 ----
 
 Here how to print out the array, one value per line.
@@ -108,7 +108,7 @@ Here how to print out the array, one value per line.
 [source]
 ----
 for (let i = 0; i < a.length; i++) {
-    console.log(i, a[i]); // print the index and value of an array element.
+    System.out.println(i, a[i]); // print the index and value of an array element.
 }
 ----
 
@@ -116,11 +116,11 @@ If we needed to find the *smallest* number in the array, we could do:
 
 [source]
 ----
-let min = a[0];
+int min = a[0];
 for (let i = 1; i < a.length; i++) {
     if (a[i] < min) min = a[i];
 }
-console.log(min);
+System.out.println(min);
 ----
 
 We should look carefully here. 
@@ -132,11 +132,11 @@ NOW, if you wanted to find the *largest* value in the array, you really only hav
 
 [source]
 ----
-let max = a[0];
+int max = a[0];
 for (let i = 1; i < a.length; i++) {
     if (a[i] > max) max = a[i];
 }
-console.log(max);
+System.out.println(max);
 ----
 
 Carefully look at the code, comparing to the one above. 
@@ -151,13 +151,13 @@ What about finding the average of the values in the array? Well, we do it a lot 
 
 [source]
 ----
-let sum = 0;
+int sum = 0;
 for (let i = 0; i < a.length; i++) {
     sum = sum + a[i];
 }
-let average = sum / a.length ; // whoa! lookee there?
+int average = sum / a.length ; // whoa! lookee there?
 
-console.log(average);
+System.out.println(average);
 ----
 
 Yep, the "a.length" is very handy, it has exactly the count of the numbers in the array!
@@ -166,15 +166,15 @@ Finally, if we wanted to reverse the values in the array, we could write some co
 
 [source]
 ----
-console.log("before:", a);
-let n = a.length;
-let half = Math.ceil(n / 2);
+System.out.println("before:", a);
+int n = a.length;
+int half = Math.ceil(n / 2);
 for (let i = 0; i < half; i++) {
     let t = a[i];
     a[i] = a[n-1-i];
     a[n-i-1] = t;
 }
-console.log("after: ",a);
+System.out.println("after: ",a);
 ----
 
 But perhaps the easier way to reverse an array in Java is to just call the library function:
@@ -182,7 +182,7 @@ But perhaps the easier way to reverse an array in Java is to just call the libra
 [source]
 ----
 a = a.reverse();
-console.log(a);
+System.out.println(a);
 ----
 
 It can be useful to look at the "longer" way to continue to get a feel for how to do small, useful things with simple logic.

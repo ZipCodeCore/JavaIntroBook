@@ -283,8 +283,8 @@ function triangleArea(h, b) {
     return area
 }
 
-console.log(triangleArea(4,5));
-console.log(triangleArea(2,6));
+System.out.println(triangleArea(4,5));
+System.out.println(triangleArea(2,6));
 ----
 
 === Java Math

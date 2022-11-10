@@ -6,8 +6,8 @@ As you have seen, _functions_ are used to make code more understandable, cleaner
 
 [source]
 ----
-let minorHit = 3;
-let majorHit = 7;
+int minorHit = 3;
+int majorHit = 7;
 
 function adjustHealth(player, hit) {
     player.health = player.health - hit;

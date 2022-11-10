@@ -32,8 +32,8 @@ function triangleArea(h, b) {
     return area
 }
 
-console.log(triangleArea(4,5));
-console.log(triangleArea(2,6));
+System.out.println(triangleArea(4,5));
+System.out.println(triangleArea(2,6));
 ----
 
 === Java Math
@@ -171,11 +171,11 @@ Here is an example of an array of fruits.
 
 [source]
 ----
-let fruits = ["Apple", "Orange", "Plum"];
+int fruits = ["Apple", "Orange", "Plum"];
 
-console.log( fruits[0] ); // Apple
-console.log( fruits[1] ); // Orange
-console.log( fruits[2] ); // Plum
+System.out.println( fruits[0] ); // Apple
+System.out.println( fruits[1] ); // Orange
+System.out.println( fruits[2] ); // Plum
 ----
 
 Notice how the phrase *fruits[0]* prints out just *Apple* from the array.
@@ -184,7 +184,7 @@ We can also find out the length of the array by asking for its *length* property
 
 [source]
 ----
-console.log( fruits.length ); // 3
+System.out.println( fruits.length ); // 3
 ----
 
 Now, use a *for* loop to print out each item of our *fruits* array.
@@ -217,7 +217,7 @@ And finally, we print out each item in the array.
 function printFruits() {
     let fruits = ["Apple", "Orange", "Plum"];
     for (let i = 0; i < fruits.length; i++) {
-        console.log( fruits[i] );
+        System.out.println( fruits[i] );
     }
 }
 ----
@@ -272,7 +272,7 @@ Imagine we have an array of numbers like this:
 
 [source]
 ----
-let numbers = [3, 8, 5, 7, 9, 2, 13];
+int numbers = [3, 8, 5, 7, 9, 2, 13];
 ----
 
 [sidebar]
@@ -354,9 +354,9 @@ function arraySum(aList) {
     return runningSum;
 }
 
-let numbers = [3, 8, 5, 7, 9, 2, 13];
+int numbers = [3, 8, 5, 7, 9, 2, 13];
 
-console.log( arraySum(numbers) ); // answer should be 47.
+System.out.println( arraySum(numbers) ); // answer should be 47.
 ----
 
 Now, you change the loop used to the *for* loop with an index, and test it out.
@@ -371,7 +371,7 @@ function arraySum(aList) {
     return runningSum;
 }
 
-let numbers = [3, 8, 5, 7, 9, 2, 13];
+int numbers = [3, 8, 5, 7, 9, 2, 13];
 
-console.log( arraySum(numbers) ); // answer should be 47.
+System.out.println( arraySum(numbers) ); // answer should be 47.
 ----

@@ -20,18 +20,18 @@ that printed that result.
 
 [source, js]
 ----
-console.log(2 * 3); 
+System.out.println(2 * 3); 
 ----
 And that will print 6 on the console. But maybe we'd like to make it a little more
 complete.
 
 [source, js]
 ----
-let a = 2; 
-let b = 3;
+int a = 2; 
+int b = 3;
 // Multiply a times b
-let answer = a * b;
-console.log(answer); // -> 6
+int answer = a * b;
+System.out.println(answer); // -> 6
 ----
 
 Here we have set up two variables, a and b, for our _operands_ and a final _answer_ variable.
@@ -49,21 +49,21 @@ Using this as a model, how would you write programs to solve these problems?
 
 [source, Java]
 ----
-let a = 9; 
-let b = 3;
+int a = 9; 
+int b = 3;
 
-let L1 = b - a;
-let L2 = a / b;
-let L3 = a + 1;
+int L1 = b - a;
+int L2 = a / b;
+int L3 = a + 1;
 //or using increment
 L3 = a++;
-let L4 = a % b;
-console.log(L1); // -> -6
-console.log(L2); // -> 3
-console.log(L3); // -> 10
-console.log(L4); // -> 0
+int L4 = a % b;
+System.out.println(L1); // -> -6
+System.out.println(L2); // -> 3
+System.out.println(L3); // -> 10
+System.out.println(L4); // -> 0
 L4 = 10 % b;
-console.log(L4); // now -> 1
+System.out.println(L4); // now -> 1
 ----
 
 === Division and Remainder
@@ -72,10 +72,10 @@ We know that we can do regular division. If have a simple program like this, we 
 what to expect:
 
 ----
-let a = 6 / 3; // -> 2
-let a = 12 / 3; // -> 4
-let a = 15 / 3; // -> 5
-let a = 10 / 4; // -> 2.5
+int a = 6 / 3; // -> 2
+int a = 12 / 3; // -> 4
+int a = 15 / 3; // -> 5
+int a = 10 / 4; // -> 2.5
 ----
 
 But sometimes, we have a need to know what the remainder of a division is.
@@ -85,38 +85,38 @@ The result of a % b is the remainder of the integer division of a by b.
 
 [source, js]
 ----
-console.log( 5 % 2 ); // 1, a remainder of 5 divided by 2
-console.log( 8 % 3 ); // 2, a remainder of 8 divided by 3
+System.out.println( 5 % 2 ); // 1, a remainder of 5 divided by 2
+System.out.println( 8 % 3 ); // 2, a remainder of 8 divided by 3
 ----
 
 Now what's this about '%' (the remainder) operator?
 
 [source, js]
 ----
-let a = 3; 
-let b = 2;
+int a = 3; 
+int b = 2;
 // Modulus (Remainder)
-let answer = a % b;
-console.log(answer); // -> 1
+int answer = a % b;
+System.out.println(answer); // -> 1
 ----
 
 [source, js]
 ----
-let a = 19; 
-let b = 4;
+int a = 19; 
+int b = 4;
 // Remainder
-let answer = a % b;
-console.log(answer); // -> 3
+int answer = a % b;
+System.out.println(answer); // -> 3
 ----
 
 [source, js]
 ----
-let a = 4; 
-let b = 4;
+int a = 4; 
+int b = 4;
 // Remainder
 
 for (a = 4; a < 13; a++) {
-    console.log(a, a % b); // would produce
+    System.out.println(a, a % b); // would produce
 }
 // 4 0
 // 5 1
@@ -189,8 +189,8 @@ This is because the multiplication is _higher priority_ than the addition, _even
 
 [source, js]
 ----
-let result = 30 + 6 * 2;
-console.log(result);
+int result = 30 + 6 * 2;
+System.out.println(result);
 ----
 
 This gives us 42. 
@@ -206,8 +206,8 @@ What happens now?
 
 [source, js]
 ----
-let result = (30 + 6) * 2;
-console.log(result);
+int result = (30 + 6) * 2;
+System.out.println(result);
 ----
 
 What's going to happen? Will the answer be 42 or 72?
@@ -233,8 +233,8 @@ When we ask a 'function' like sqrt to do some work for us, we have to code somet
 
 [source]
 ----
-let squareRootTwo = Math.sqrt(2.0);
-console.log(squareRootTwo);
+int squareRootTwo = Math.sqrt(2.0);
+System.out.println(squareRootTwo);
 ----
 
 We will get "1.4142135623730951" in the output. That number (squareRootTwo) 
@@ -249,8 +249,8 @@ Say we need to compute "6^2^ + 5"
 
 [source]
 ----
-let result = Math.pow(6,2) + 5;
-console.log(result);
+int result = Math.pow(6,2) + 5;
+System.out.println(result);
 ----
 
 What will the answer be? 279936 or 41?

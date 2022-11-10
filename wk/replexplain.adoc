@@ -21,7 +21,7 @@ That is how you run Java in this REPL.
 
 Now, what does *REPL* stand for? Well, it means "Read Evaluate Print Loop" (R-E-P-L).
 A REPL is a program that reads in your code (here it is Java), evaluates what it means, and then prints out any output the program might have.
-Here, we are using the command _console.log()_ to print out a series of output values.
+Here, we are using the command _System.out.println()_ to print out a series of output values.
 
 
 === Editing Java Code
@@ -53,7 +53,7 @@ Now, type onto line 1,
 
 [source]
 ----
-console.log("My First Program!");
+System.out.println("My First Program!");
 ----
 
 Take care to notice the double quotes (") AND notice the semicolon (;) at the end of the line.

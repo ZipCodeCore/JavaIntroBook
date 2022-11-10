@@ -13,7 +13,7 @@ Two examples of how you write a function literal:
 
 [source]
 ----
-let add = function (parameter1, parameter2) {
+int add = function (parameter1, parameter2) {
     return parameter1 + parameter2; 
 }
 ----
@@ -32,7 +32,7 @@ In both of these cases, you end up with a function named 'add' that takes two pa
 [source]
 ----
 function greetUser(username) {
-    console.log( "Hello " + username);
+    System.out.println( "Hello " + username);
     return;
 }
 
@@ -78,7 +78,7 @@ function () {
     while (x < 100) {
         x = x + y;
     }
-    console.log("x is", x);
+    System.out.println("x is", x);
 } () ;
 ----
 
@@ -88,10 +88,10 @@ You see this often in Java. It's a way to put some code into an argument to anot
 
 [source]
 ----
-let milliSecInASecond = 1000;
+int milliSecInASecond = 1000;
 
 setTimeout(function () {
-    console.log('We waited for 5 seconds, to print this')
+    System.out.println('We waited for 5 seconds, to print this')
 }, 5 * milliSecInASecond);
 ----
 
@@ -107,9 +107,9 @@ function greetUser(username) {
     return "Hello " + username;
 }
 
-let result = greetUser("Welcome back, Mike Jones");
+int result = greetUser("Welcome back, Mike Jones");
 
-console.log(result); // will print "Hello Welcome back, Mike Jones" 
+System.out.println(result); // will print "Hello Welcome back, Mike Jones" 
 ----
 
 Or like this:
@@ -133,12 +133,12 @@ Again, to be clear, we might use this function like this:
 [source]
 ----
 
-let home = {
+int home = {
     name = "Fightin Cats"
     score = 0;
 }
 
-let visitor = {
+int visitor = {
     name = "Wild Horses"
     score = 0;
 }
@@ -146,10 +146,10 @@ let visitor = {
 playGame(home, visitor); // a lot of work done in this function(!)
 
 // game is done
-let result = determineWinner(home, visitor);
+int result = determineWinner(home, visitor);
 
 // and then print the result..
-console.log(result);
+System.out.println(result);
 ----
 
 === Function Parameters
@@ -192,9 +192,9 @@ So to see if a number is even, we could use '(number % 2 == 0)':
 
 [source]
 ----
-console.log((8 % 2 === 0)); // true
-console.log((7 % 2 === 0)); // false
-console.log((4 % 2 === 0)); // true
+System.out.println((8 % 2 === 0)); // true
+System.out.println((7 % 2 === 0)); // false
+System.out.println((4 % 2 === 0)); // true
 ----
 And we can use the same technique to see if a number is evenly divisible by 3 or 5.
 
@@ -233,9 +233,9 @@ Well, here's one solution:
 // Function ZipCoder
 
 function zipCoder(aNumber) {
-if (aNumber % 15 == 0) console.log("ZipCoder");
-else if (aNumber % 3 == 0) console.log("Zip");
-else if (aNumber % 5 == 0) console.log("Coder");
+if (aNumber % 15 == 0) System.out.println("ZipCoder");
+else if (aNumber % 3 == 0) System.out.println("Zip");
+else if (aNumber % 5 == 0) System.out.println("Coder");
 }
 
 zipCoder(45); // -> ZipCoder

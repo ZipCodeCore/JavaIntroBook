@@ -13,7 +13,7 @@ while (true) {
 
   execute(cmd);
 }
-console.log("Exiting.")
+System.out.println("Exiting.")
 ----
 
 Here, you are asking the user to type in a command. If the command is "exit", then quit the loop and output "Exiting", and end the program.
@@ -33,7 +33,7 @@ for (let i = 0; i < 10; i++) {
   // will only be true if the number is even
   if (i % 2 === 0) continue;
 
-  console.log(i); // prints 1, then 3, 5, 7, 9
+  System.out.println(i); // prints 1, then 3, 5, 7, 9
 }
 ----
 
@@ -41,5 +41,5 @@ What's interesting here is the use of the remainder operator (%) to see if a num
 The expression (i % 2) is zero if the number is even, if not, the number must be odd.
 You want to remember this trick of how to find odd or even numbers. 
 It's a common programming problem that you will get asked. 
-The continue statement starts the loop over, not letting the console.log to print out the number when it's even.
+The continue statement starts the loop over, not letting the System.out.println to print out the number when it's even.
 

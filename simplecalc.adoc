@@ -20,10 +20,10 @@ What do we need figure out? We need a variable for our
 result: totalMilesDriven. So we start our program this way...
 
 ----
-let totalMilesDriven = 0;
+int totalMilesDriven = 0;
 
 // print result of computation
-console.log(totalMilesDriven);
+System.out.println(totalMilesDriven);
 ----
 
 It's often good to start with a very simple template. If we run that, we will see 0 (zero) as the result, right?
@@ -31,15 +31,15 @@ It's often good to start with a very simple template. If we run that, we will se
 Next step, let's add the variables we know.
 
 ----
-let totalMilesDriven = 0;
-let totalHoursTaken = 0;
+int totalMilesDriven = 0;
+int totalHoursTaken = 0;
 
-let totalGasGallons = 12.0;
-let milesPerGallon = 22.0;
-let milesPerHour = 55.0;
+int totalGasGallons = 12.0;
+int milesPerGallon = 22.0;
+int milesPerHour = 55.0;
 
 // print result of computation
-console.log(totalMilesDriven);
+System.out.println(totalMilesDriven);
 ----
 
 Okay, good. We've added all the stuff we know about the computation. Well, except
@@ -52,18 +52,18 @@ And if you divide the totalMilesDriven by the milesPerHour, you will get the tot
 So let's add those as Java statements.
 
 ----
-let totalMilesDriven = 0;
-let totalHoursTaken = 0;
+int totalMilesDriven = 0;
+int totalHoursTaken = 0;
 
-let totalGasGallons = 12.0;
-let milesPerGallon = 22.0;
-let milesPerHour = 55.0;
+int totalGasGallons = 12.0;
+int milesPerGallon = 22.0;
+int milesPerHour = 55.0;
 
 totalMilesDriven = milesPerGallon * totalGasGallons;
 totalHoursTaken = totalMilesDriven / milesPerHour;
 
 // print result of computation
-console.log(totalMilesDriven, totalHoursTaken);
+System.out.println(totalMilesDriven, totalHoursTaken);
 ----
 
 We get as a result 264 miles driven in 4.8 hours.
@@ -91,16 +91,16 @@ we then know that we need 365 cans of food. So we can describe that as
 
 [source]
 ----
-let totalCost = 0;
-let cansNeeded = 365;
-let costPerCan = 2.0 / 3.0;
+int totalCost = 0;
+int cansNeeded = 365;
+int costPerCan = 2.0 / 3.0;
 
 totalCost = cansNeeded * costPerCan; // right?
 
-let monthsPerYear = 12;
-let costPerMonth = totalCost / monthsPerYear;
+int monthsPerYear = 12;
+int costPerMonth = totalCost / monthsPerYear;
 // print result of computation
-console.log(totalCost, costPerMonth);
+System.out.println(totalCost, costPerMonth);
 ----
 
 What's going to be the answer? footnote:[totalCost will be $243.33 and $20.28 per month.] Run it in your Repl window to work it all out.
@@ -113,10 +113,10 @@ A cell phone company charges a monthly rate of $12.95 and $1.00 a gigabyte of da
 
 [source]
 ----
-let dataUsed = 0.0;
+int dataUsed = 0.0;
 
 // print result of computation
-console.log("total data used (GB)", dataUsed);
+System.out.println("total data used (GB)", dataUsed);
 ----
 
 Let's add what we know: that the monthly base charge (for calls, and so on) is $12.95 
@@ -126,31 +126,31 @@ that written down.
 
 [source]
 ----
-let dataUsed = 0.0;
-let costPerGB = 1.0;
-let monthlyRate = 12.95;
+int dataUsed = 0.0;
+int costPerGB = 1.0;
+int monthlyRate = 12.95;
 
-let thisBill = 21.20;
+int thisBill = 21.20;
 
 // print result of computation
-console.log("total data used (GB)", dataUsed);
+System.out.println("total data used (GB)", dataUsed);
 ----
 Now we're ready to do the computation. If we subtract the monthlyRate from thisBill, we get the total cost of data. Then, if we divide the total cost of data by the cost per gigabyte, we
 will get the dataUsed.
 
 [source]
 ----
-let dataUsed = 0.0;
-let costPerGB = 1.0;
-let monthlyRate = 12.95;
+int dataUsed = 0.0;
+int costPerGB = 1.0;
+int monthlyRate = 12.95;
 
-let thisBill = 21.20;
-let totalDataCost = thisBill - monthlyRate;
+int thisBill = 21.20;
+int totalDataCost = thisBill - monthlyRate;
 
 dataUsed = totalDataCost / costPerGB;
 
 // print result of computation
-console.log("total data used (GB)", dataUsed);
+System.out.println("total data used (GB)", dataUsed);
 ----
 
 How many GBs of data did we use? Turns out to be 8.25 gigabytes.

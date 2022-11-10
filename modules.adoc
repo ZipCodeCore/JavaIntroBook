@@ -6,7 +6,7 @@ Most of your Java programs are fairly small when you are creating solutions to H
 
 [source]
 ----
-console.log("Hello, World!");
+System.out.println("Hello, World!");
 ----
 _helloworld.js_
 

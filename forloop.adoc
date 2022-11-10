@@ -18,7 +18,7 @@ Here's one where we go from 1 to 5.
 ----
 for(let j = 1; j < 6;  j++){
     // loop body code
-    console.log(j);
+    System.out.println(j);
 }
 ----
 
@@ -42,7 +42,7 @@ Notice how there are THREE parts to the FOR loop's mechanism.
 
 and
 
-* body:	console.log()  // Runs again and again while the condition is true.
+* body:	System.out.println()  // Runs again and again while the condition is true.
 
 Let's show you another glimpse of the *break* statement.
 
@@ -52,7 +52,7 @@ for(let p = 1; p < 6; p++){
     if(p === 4){
         break;
     }
-console.log("Loop " + p + " times");
+System.out.println("Loop " + p + " times");
 }	
 ----
 
@@ -81,7 +81,7 @@ You can do it, I know you can!
 [source]
 ----
 for(let x = 0; x < donuts.length; x++){
-    console.log(donuts[x]);
+    System.out.println(donuts[x]);
 }
 ----
 

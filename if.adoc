@@ -21,7 +21,7 @@ if (speed > speedLimit)
     driver.getsATicket();
 
 if (x <= -1) 
-    console.log("Cannot have negative numbers!");
+    System.out.println("Cannot have negative numbers!");
 
 if (account.balance >= amountRequested) {
     subtract(account, amountRequested);
@@ -45,16 +45,16 @@ Java can also "nest" if statements, making them very flexible for complicated si
 
 [source]
 ----
-let timeOfDay = "Afternoon";
+int timeOfDay = "Afternoon";
 
 if (timeOfDay === "Morning") {
-    console.log("Time to eat breakfast");
+    System.out.println("Time to eat breakfast");
     eatCereal();
 } else if (timeOfDay === "Afternoon") {
-    console.log("Time to eat lunch");
+    System.out.println("Time to eat lunch");
     haveASandwich();
 } else {
-    console.log("Time to eat dinner");
+    System.out.println("Time to eat dinner");
     makeDinner();
     eatDinner();
     doDishes();
@@ -77,13 +77,13 @@ Finally, make sure to change the value of the age variable in the repl, to outpu
 
 [source]
 ----
-let userAge = 17;
+int userAge = 17;
 if (userAge < 18) {
-    console.log("Cannot party with us");
+    System.out.println("Cannot party with us");
 } else if (userAge >= 18) {
-    console.log("Party over here");
+    System.out.println("Party over here");
 } else {
-    console.log("I do not recognize your age");
+    System.out.println("I do not recognize your age");
 }
 ----
 

@@ -5,24 +5,24 @@ In many of these examples so far, we see a very simple *control flow*. The progr
 
 [source]
 ----
-let q = 0; 
-let j = 5;
+int q = 0; 
+int j = 5;
 q = j * 4 - 20;
-console.log(q); // -> 0
+System.out.println(q); // -> 0
 ----
 
 When programs start to get more sophisticated, the _control flow_ can be changed. There are various conditional statements, loop statements, and functions that can cause the control flow to move around within the code. Here we see using both a loop and a conditional IF statement to change the flow of control.
 
 [source]
 ----
-let q = 0; 
-let j = 6;
+int q = 0; 
+int j = 6;
 while (j > 0) {
     q = j * 4 - 20;
-    console.log(q);
+    System.out.println(q);
     j--;
     if (q > 0) {
-        console.log("q is still positive");
+        System.out.println("q is still positive");
     }
 }
 ----

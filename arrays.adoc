@@ -7,11 +7,11 @@ Now, if you're the coder of this game you could keep track of each player's heal
 
 [source]
 ----
-let playerZeroHealthScore = 100;
-let playerOneHealthScore = 100;
-let playerTwoHealthScore = 100;
-let playerThreeHealthScore = 100;
-let playerFourHealthScore = 100;
+int playerZeroHealthScore = 100;
+int playerOneHealthScore = 100;
+int playerTwoHealthScore = 100;
+int playerThreeHealthScore = 100;
+int playerFourHealthScore = 100;
 ----
 
 If we setup these 5 variables, our game can track 5 players! But *we'd have to change the game's code to track SIX players.* Well, that not good. Kind of silly actually. 
@@ -20,7 +20,7 @@ To get around this kind of problem we use an *array*. We could ask, "how many pl
 
 [source]
 ----
-let playerHealthScores = [100, 100, 100, 100, 100];
+int playerHealthScores = [100, 100, 100, 100, 100];
 ----
 
 Now, like a _string_, array indexes start at zero.
@@ -28,7 +28,7 @@ Now, like a _string_, array indexes start at zero.
 [source]
 ----
                       //   0    1    2    3    4
-let playerHealthScores = [100, 100, 100, 100, 100];
+int playerHealthScores = [100, 100, 100, 100, 100];
 ----
 
 This array is a *data structure* - a way for us to keep track of lots of data in a controlled fashion. (We can make arrays any size.)
@@ -63,11 +63,11 @@ Declaring and initializing some arrays in Java:
 
 [source]
 ----
-let donuts = ["chocolate", "glazed", "jelly"];
+int donuts = ["chocolate", "glazed", "jelly"];
 
-let arrayofLetters = ['c','h','r','i','s'];
+int arrayofLetters = ['c','h','r','i','s'];
 
-let mixedData = ['one', 2, true];  // a string, a number and a boolean!
+int mixedData = ['one', 2, true];  // a string, a number and a boolean!
 ----
 
 === Accessing elements of an Array
@@ -77,11 +77,11 @@ strings to identify our donuts. Sometimes, we say something like "donuts sub 2" 
 
 [source]
 ----
-let donuts = ["chocolate", "glazed", "jelly"];
+int donuts = ["chocolate", "glazed", "jelly"];
 
-console.log(donuts[0]);  // "chocolate" (we could say "donuts sub zero")
+System.out.println(donuts[0]);  // "chocolate" (we could say "donuts sub zero")
 
-console.log(donuts[2]);  // "jelly"
+System.out.println(donuts[2]);  // "jelly"
 ----
 === Adding to an Array
 
@@ -89,11 +89,11 @@ We can also add things to the end of the array.
 
 [source]
 ----
-let donuts = ["chocolate", "glazed", "jelly"];
+int donuts = ["chocolate", "glazed", "jelly"];
 
 donuts[3] = "strawberry"   // notice there is no element 3 before this,
 
-console.log(donuts);  // but after, there are now 4 things in the array.
+System.out.println(donuts);  // but after, there are now 4 things in the array.
 ----
 
 === Get the size of an Array
@@ -102,9 +102,9 @@ We can use the *length* property to find the size of an array.
 
 [source]
 ----
-let donuts = ["chocolate", "glazed", "jelly"];
+int donuts = ["chocolate", "glazed", "jelly"];
 
-console.log(donuts.length);  // it'll print 3
+System.out.println(donuts.length);  // it'll print 3
 ----
 
 Note: A string is an ARRAY of single characters
@@ -116,15 +116,15 @@ If we use the _length_ property carefully, we can always get the last element in
 
 [source]
 ----
-let donuts = ["chocolate", "glazed", "jelly"];
+int donuts = ["chocolate", "glazed", "jelly"];
 
 donuts[3] = "strawberry";    // -> ["chocolate", "glazed", "jelly", "strawberry"]
 
-console.log(donuts[donuts.length - 1]); // strawberry
+System.out.println(donuts[donuts.length - 1]); // strawberry
 
 donuts[4] = "powdered"    // -> ["chocolate", "glazed", "jelly", "strawberry", "powdered"]
 
-console.log(donuts[donuts.length - 1]); // powdered
+System.out.println(donuts[donuts.length - 1]); // powdered
 ----
 
 === Append to the Array
@@ -133,13 +133,13 @@ We can also use the `.length` to add to the end of the array!
 
 [source]
 ----
-let donuts = ["chocolate", "glazed", "jelly"];
+int donuts = ["chocolate", "glazed", "jelly"];
 
 donuts[donuts.length] = "strawberry";   
-console.log(donuts[donuts.length - 1]); // strawberry
+System.out.println(donuts[donuts.length - 1]); // strawberry
 
 donuts[donuts.length] = "powdered";
 
-console.log(donuts[donuts.length - 1]); // powdered
+System.out.println(donuts[donuts.length - 1]); // powdered
 ----
 

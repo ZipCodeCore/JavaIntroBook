@@ -35,7 +35,7 @@ We also need more kinds of boolean expressions when we are programming. Things l
 
 [source, Java]
 ----
-let healthScore = 5;
+int healthScore = 5;
 ----
 
 We need a way to ask about expressions like "is healthScore less than 7?? (very healthy)" or
@@ -130,20 +130,20 @@ why coders need to be able to use them to get the software *just right*.
 ====
 * Create 2 variables to use for a comparison 
 * Use at least two comparison operators in Java
-* And print them "console.log(2 > 1)"
+* And print them "System.out.println(2 > 1)"
 ====
 
 Here is an example:
 
 [source]
 ----
-let houseTemp = 67.0;
-let thermostatSetting = 70.0;
+int houseTemp = 67.0;
+int thermostatSetting = 70.0;
 
-console.log(houseTemp >= 55.0);
-console.log(houseTemp <= thermostatSetting);
-console.log(thermostatSetting != 72.0);
-console.log(houseTemp > 65.0 && thermostatSetting == 68.0)
+System.out.println(houseTemp >= 55.0);
+System.out.println(houseTemp <= thermostatSetting);
+System.out.println(thermostatSetting != 72.0);
+System.out.println(houseTemp > 65.0 && thermostatSetting == 68.0)
 ----
 
 These log statements should produce TRUE, TRUE, TRUE and FALSE.

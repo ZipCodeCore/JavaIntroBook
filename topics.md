@@ -1,6 +1,6 @@
 # Topics
 
-- console.log()
+- System.out.println()
 - variables and data types
 - operators
 - arithmetic expressions

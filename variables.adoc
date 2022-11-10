@@ -1,11 +1,23 @@
 
 === Variables
 
-In Java, variables are containers used to store data while the program is running. Variables can be named just about anything, and often are named things that make you think about what you store there.
+In Java, variables are containers used to store data while the program is running. 
+Variables can be named just about anything, and often are named things that make you think about what you store there.
 
 Think of them as little boxes you can put data into, to keep it there and not lose it.
+If you wanted to track a number, an age of someone, you can create a variable to keep it in.
 
-There are some rules about variables. 
+[source]
+----
+int age = 3;
+// let's have a birthday
+age = age + 1;
+// let's have another birthday
+age = age + 1;
+// age is now equal to 5...
+----
+
+There are some rules about variable names. 
 
 - All Variables must be named.
 - Names can contain letters, digits, underscores, and dollar signs
@@ -37,8 +49,9 @@ though they are based on the same word(s).
 
 [source]
 ----
-Current_Speed
+currentSpeed
 current_speed
+currentspeed
 CURRENT_SPEED
 ----
 
@@ -48,57 +61,62 @@ So be careful with UPPERCASE and lowercase letters in variable names.
 
 [source]
 ----
-let x;
+int x;
 ----
-This creates a variable *x* that can hold any primitive type. But it has NO value assigned to it, so if we...
+This creates a variable *x* that can hold an integer (int) primitive type. But it has NO value assigned to it, so if we...
 
 [source]
 ----
-console.log(x);  // -> undefined
+System.out.println(x);  // -> undefined, although it will probably print zero.
 ----
 There is _nothing_ there. 
 
-If we were to declare a variable named 'cats' and assign it the value 3:
+If we were to declare a variable named 'cats' and assign it the value 3 (because we have 3 cats?):
 
 [source]
 ----
-let cats = 3;
-console.log(cats);  // -> 3
+int cats = 3;
+System.out.println(cats);  // -> 3
 ----
 
 ==== Assign a value to a variable
 
 [source]
 ----
-let age = 19; 
-let name = "James";
-console.log(name, "is", age, "years old"); // -> James is 19 years old
+int age = 19; 
+String name = "James";
+System.out.println(name, "is", age, "years old"); // -> James is 19 years old
 age = 21;
 name = "Gina";
-console.log(name, "is", age, "years old"); // -> Gina is 21 years old
+System.out.println(name, "is", age, "years old"); // -> Gina is 21 years old
 ----
+
+_NOTICE_ how the **first time** we use _age_ and _name_ we must _declare_ those variables.
+But the _second time_ (and any use thereafter) we don't have to put _int_ or _String_ in front of the name.
+
+This is how we make sure we don't use variables we have not declared (which in Java is a _syntax_ error).
 
 ==== Reassigning a value to a variable
 
 [source]
 ----
-let x = "five";
-console.log(x); // -> five
+String x = "five";
+System.out.println(x); // -> five
 x = "nineteen";
-console.log(x); // -> nineteen
+System.out.println(x); // -> nineteen
 ----
 
-Notice how we don't use "let" again, when we assign "nineteen" to x. We can assign a variable as many times as
-we might need to.
+Notice how we don't use "String" again, when we assign "nineteen" to x. 
+We can assign a variable as many times as we might need to.
 
 [source]
 ----
-let age = 3;
+int age = 3;
 // have a birthday
 age = age + 1;
 // have another birthday
 age = age + 1;
-console.log(age); // -> 5
+System.out.println(age); // -> 5
 ----
 
 Notice here how age's current value is used, added one to it, and re-assigned _back into the variable *age*_.
@@ -109,11 +127,11 @@ In Java, variables are dynamic (can contain any data) which means a variable can
 
 [source]
 ----
-let height = 62.0; // inches maybe?
-console.log(height); // -> 62
+int height = 62.0; // inches maybe?
+System.out.println(height); // -> 62
 
 height = "very tall";
-console.log(height); // -> very tall
+System.out.println(height); // -> very tall
 // yep, first height is a number
 // and then it's a string.
 ----
@@ -172,16 +190,16 @@ Store a value in each.
 // Here are some samples. 
 
 // integer
-let x = 0;
+int x = 0;
 
 // boolean
-let playerOneAlive = true;
+int playerOneAlive = true;
 
 // float
-let currentSpeed = 55.0;
+int currentSpeed = 55.0;
 
 // string
-let playerOneName = "Rocco";
+int playerOneName = "Rocco";
 
 // constant integer
 

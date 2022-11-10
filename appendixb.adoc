@@ -115,7 +115,7 @@ function printString(string) {
     // print long strings with new lines the them.
     let a = string.split(/\r?\n/);
     for (i = 0; i < a.length; i++) {
-        console.log(a[i]);
+        System.out.println(a[i]);
     }
 }
 
