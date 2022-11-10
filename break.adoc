@@ -3,7 +3,7 @@
 
 Normally, a loop exits when its condition becomes false. But we can force the exit at any time using the special *break* statement.
 
-[source]
+[source, Java]
 ----
 while (true) {
 
@@ -25,7 +25,7 @@ The continue statement doesn’t stop the whole loop. Instead, it stops the curr
 
 We can use it if we’re done with the current iteration and would like to move on to the next one. This loops prints odd number less than 10.
 
-[source]
+[source, Java]
 ----
 for (let i = 0; i < 10; i++) {
 

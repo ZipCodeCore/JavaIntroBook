@@ -2,7 +2,7 @@
 
 The *for* loop is more complex, but it’s also the most commonly used loop.
 
-[source]
+[source, Java]
 ----
 for (begin; condition; step) {
 
@@ -14,7 +14,7 @@ for (begin; condition; step) {
 
 Here's one where we go from 1 to 5.
 
-[source]
+[source, Java]
 ----
 for(let j = 1; j < 6;  j++){
     // loop body code
@@ -24,7 +24,7 @@ for(let j = 1; j < 6;  j++){
 
 This loop will print out: 
 
-[source]
+[source, Java]
 ----
 // print 
 1 
@@ -46,7 +46,7 @@ and
 
 Let's show you another glimpse of the *break* statement.
 
-[source]
+[source, Java]
 ----
 for(let p = 1; p < 6; p++){
     if(p === 4){
@@ -78,7 +78,7 @@ Stretch Goal: S/he who dares wins!
 
 You can do it, I know you can!
 
-[source]
+[source, Java]
 ----
 for(let x = 0; x < donuts.length; x++){
     System.out.println(donuts[x]);

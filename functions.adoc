@@ -11,14 +11,14 @@ You create functions easily.
 
 Two examples of how you write a function literal:
 
-[source]
+[source, Java]
 ----
 int add = function (parameter1, parameter2) {
     return parameter1 + parameter2; 
 }
 ----
 
-[source]
+[source, Java]
 ----
 function add(p1, p2) {
     return p1 + p2;
@@ -29,7 +29,7 @@ In both of these cases, you end up with a function named 'add' that takes two pa
 
 === Creating a Function
 
-[source]
+[source, Java]
 ----
 function greetUser(username) {
     System.out.println( "Hello " + username);
@@ -46,7 +46,7 @@ Functions are meant to be _invoked_. So you can have one function call another f
 
 Imagine we have a program that gets an airplane ready for flight. We can imagine a whole series of functions we'd have to write. Things like 'loadPassengers', 'loadBaggage', 'loadFuel', 'checkTirePressures', and so on. Then we might have a 'higher level' functions which brings all these pieces together:
 
-[source]
+[source, Java]
 ----
 function prepFlight(airplane) {
     loadBaggage(airplane);
@@ -70,7 +70,7 @@ You can see how functions let you perform different things in a particular order
 
 A common pattern used in Java revolves around an *anonymous* function. It's a function without a name, and one that probably only gets called _once_. Something like:
 
-[source]
+[source, Java]
 ----
 function () {
     let x = 5;
@@ -86,7 +86,7 @@ Look at that last line. What's going on here? Well, first we are creating a func
 
 You see this often in Java. It's a way to put some code into an argument to another function call.
 
-[source]
+[source, Java]
 ----
 int milliSecInASecond = 1000;
 
@@ -101,7 +101,7 @@ See how we pass an anonymous function to 'setTimeout' as one argument, and a tim
 
 Once Java reaches a return statement, the function will stop executing. Functions often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a functions, depending on how the flow of control is changed.
 
-[source]
+[source, Java]
 ----
 function greetUser(username) {
     return "Hello " + username;
@@ -114,7 +114,7 @@ System.out.println(result); // will print "Hello Welcome back, Mike Jones"
 
 Or like this:
 
-[source]
+[source, Java]
 ----
 function determineWinner(home, visitor) {
     if (home.score > visitor.score) {
@@ -130,7 +130,7 @@ Notice how in this case, we check to see the scoring results with two conditions
 
 Again, to be clear, we might use this function like this:
 
-[source]
+[source, Java]
 ----
 
 int home = {
@@ -156,7 +156,7 @@ System.out.println(result);
 
 Functions can also take parameters to be used within a function. 
 
-[source]
+[source, Java]
 ----
 function addThreeNumbers(a, b, c) {
     return (a + b + c);
@@ -183,14 +183,14 @@ function makeNegative(number) {
 Remember how we had the expression ot see if a number was even? ( x % 2 === 0)
 Now, here's a way to decide is number was divisible cleanly by another, it's a standard arithmetic expression:
 
-[source]
+[source, Java]
 ----
 (number % divisor === 0)
 ----
 
 So to see if a number is even, we could use '(number % 2 == 0)':
 
-[source]
+[source, Java]
 ----
 System.out.println((8 % 2 === 0)); // true
 System.out.println((7 % 2 === 0)); // false
@@ -228,7 +228,7 @@ Do you want to be a ZipCoder, or just a Copy-Paste Stylist?
 
 Well, here's one solution:
 
-[source]
+[source, Java]
 ----
 // Function ZipCoder
 

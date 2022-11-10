@@ -4,7 +4,7 @@ The *return* statement is a very simple one. It just finishes the running of cod
 
 As you have seen, _functions_ are used to make code more understandable, cleaner and more organized. Say we have a couple of functions in our program:
 
-[source]
+[source, Java]
 ----
 int minorHit = 3;
 int majorHit = 7;
@@ -31,7 +31,7 @@ function isAlive(player, hit) {
 
 If someplace in our code we were to do something like:
 
-[source]
+[source, Java]
 ----
 // big hit!
 continuePlaying = adjustHealth(playerOne, majorHit);

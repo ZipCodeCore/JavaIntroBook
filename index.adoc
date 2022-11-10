@@ -125,8 +125,6 @@ include::variables.adoc[]
 
 include::operators.adoc[]
 
-== Algebraic Equations
-
 include::arithmeticexpr.adoc[]
 
 include::simplecalc.adoc[]

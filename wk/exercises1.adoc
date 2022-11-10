@@ -168,7 +168,7 @@ And that data can often change.
 When we supply a function with data, we *pass* some *parameters* to the function.
 
 Say I have a function that does something really simple:
-[source]
+[source, Java]
 ----
 function halve(x) {
     return x / 2;
@@ -276,7 +276,7 @@ What is Area, if h = 2 and b = 6 ?
 
 What do you need to do to this function to make it use the triangle equation?
 
-[source]
+[source, Java]
 ----
 function triangleArea(h, b) {
     area = 0;

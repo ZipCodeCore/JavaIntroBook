@@ -7,14 +7,14 @@ Variables can be named just about anything, and often are named things that make
 Think of them as little boxes you can put data into, to keep it there and not lose it.
 If you wanted to track a number, an age of someone, you can create a variable to keep it in.
 
-[source]
+[source, Java]
 ----
 int age = 3;
 ----
 
 Now, if we wanted to indicate that someone had a birthday, we might add 1 to the variable.
 
-[source]
+[source, Java]
 ----
 int age = age + 1;
 ----
@@ -35,7 +35,7 @@ There are some rules about variable names.
 
 So this means the following are fine for variable names in Java:
 
-[source]
+[source, Java]
 ----
 x
 area
@@ -53,7 +53,7 @@ And uppercase and lowercase letters are different.
 So each of these are DIFFERENT variables even 
 though they are based on the same word(s).
 
-[source]
+[source, Java]
 ----
 currentSpeed
 current_speed
@@ -65,20 +65,20 @@ So be careful with UPPERCASE and lowercase letters in variable names.
 
 ==== Declaring a Variable
 
-[source]
+[source, Java]
 ----
 int x;
 ----
 This creates a variable *x* that can hold an integer (int) primitive type. But it has NO value assigned to it, so if we...
 
-[source]
+[source, Java]
 ----
 System.out.println(x);  // -> undefined, although it will probably print zero.
 ----
 
 If we were to declare a variable named 'cats' and assign it the value 3 (because we have 3 cats?):
 
-[source]
+[source, Java]
 ----
 int cats = 3;
 System.out.println(cats);  // -> 3
@@ -86,7 +86,7 @@ System.out.println(cats);  // -> 3
 
 ==== Assign a value to a variable
 
-[source]
+[source, Java]
 ----
 int age = 19; 
 String name = "James";
@@ -103,7 +103,7 @@ This is how we make sure we don't use variables we have not declared (which in J
 
 ==== Reassigning a value to a variable
 
-[source]
+[source, Java]
 ----
 String x = "five";
 System.out.println(x); // -> five
@@ -114,7 +114,7 @@ System.out.println(x); // -> nineteen
 Notice how we don't use "String" again, when we assign "nineteen" to x. 
 We can assign a variable as many times as we might need to.
 
-[source]
+[source, Java]
 ----
 int age = 3;
 // have a birthday
@@ -127,7 +127,7 @@ System.out.println(age); // -> 5
 Notice here how age's current value is used, added one to it, and re-assigned _back into the variable *age*_.
 
 Jav, once you declare a variable as an _int_
-[source]
+[source, Java]
 ----
 int height = 62.0; // inches maybe?
 System.out.println(height); // -> 62
@@ -144,7 +144,7 @@ _You can't see it, but I am slowly shaking my head in disbelief. Some day, maybe
 
 Constants are like let variables but they contain values that do NOT change such as a person’s date of birth. Convention is to capitalize constant variable names.
 
-[source]
+[source, Java]
 ----
 const DATE_OF_BIRTH = "04-02-2005";
 DATE_OF_BIRTH = "04-10-2005"; // <-error
@@ -187,7 +187,7 @@ Create variables for each primitive data type:
 Store a value in each.
 ====
 
-[source]
+[source, Java]
 ----
 // Here are some samples. 
 

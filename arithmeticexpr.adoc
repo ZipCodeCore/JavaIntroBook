@@ -1,4 +1,5 @@
 
+== Algebraic Equations
 
 Some of the most fundamental of computer programs have been ones that
 take the drudgery of doing math by a person, and making the computer do the math.
@@ -16,7 +17,7 @@ is to
 - figure out what b times 3 is (well, if b equals 3, then 3 times 3 is 9)
 - subtract 6 from b times 3 (and then 9 minus 6 is 3)
 
-[source]
+[source, Java]
 ----
 // And in Java:
 // a = b3 - 6 
@@ -39,7 +40,7 @@ if j = 5, then q = ?
 Take a moment and write down your solution before reading on.
 ====
 
-[source]
+[source, Java]
 ----
 int q = 0; 
 int j = 5;
@@ -62,7 +63,7 @@ and print out x.
 
 
 My solution is pretty simple.
-[source]
+[source, Java]
 ----
 int y = 2; 
 int x = 5 * y + Math.pow(y, 3) - 7;
@@ -87,7 +88,7 @@ Base is 10
 Formula: A = h * b / 2
 ====
 
-[source]
+[source, Java]
 ----
 int height = 20;
 int base = 10;	
@@ -104,7 +105,7 @@ Formula: area = Pi * radius^2^
 Hint: You'll need to use a constant Math property!
 
 
-[source]
+[source, Java]
 ----
 int radius = 7.7;	
 int area  =  Math.PI * Math.pow(radius, 2);
