@@ -94,17 +94,77 @@ What does `int` and `double` signify? Well, see how they proceed another word?
 ----
 public class Main {
   public static void main(String[] args) {
+    int loavesToMake = 2;
     double flourAmount = 3.5;
 //  ^^^^^^ ^^^^^^^^^^^  
-    System.out.println("We need " + flourAmount + " cups of flour."); // -> 3.5
+    System.out.println("We need " + flourAmount 
+      + " cups of flour to make "+loavesToMake+" loaves."); // -> 3.5
   }
 }
 ----
 
-It is our way of telling Java what `flourAmount` is. We want `flourAmount` to be place holder for the number `3.5`, because makes
-the code easier to read and understand. See much more on this, up ahead, in `variables`.
+It is our way of telling Java what `flourAmount` is. 
+We want `flourAmount` to be place holder for the number `3.5`, 
+because makes the code easier to read and understand. See much more on this, up ahead, in `variables`.
 
-Oh, and `int`?? Well, it means a number, but just an integer like 0, 1, 2, 42, 99, etc. A `double` can have decimal point and some number after, so I can write `3.5` or `42.0`.
+=== Two kinds of Numbers in Java
+
+There are times when I cannot believe I have to make this point. 
+It just seems like, "well, if Java is so smart why do I have to care about this."
+
+What am I complaining about?
+
+Well, to make a strange distinction between **two** types of numbers, Java has a bunch different types of numbers.
+
+In Java, we have to decide what **type** of number we are going use with a variables like _flourAmount_ and 
+_loavesToMake_.
+
+If you're just going to _count_ things (like say the number of birthdays a person has had), we will
+use _integers_ for that. _integers_ in Java, are called **int**.
+A `int` means a number, but just an integer like 0, 1, 2, 42, 99, etc. 
+It even means negative numbers -5 or -123487262. The math teacher might say that _integers_ are _whole  numbers_.
+
+But a **lot** of things need a lot more flexibility. 
+The value of your debit account could be $105.55, which is a number _between_ 105 and 106. 
+The amount of fuel in your car's gas tank isn't 1 or 6 gallons, it's probably something like 7.42 gallons, and changes by small amounts as you drive.
+
+So Java has another **type** of number, a **floating point number** and in these early days in this book, we will use **double** as the kind of number we use when we need a number that might not be a _whole number_, but rather _real numbers_.
+A **double** can have decimal point and some number after, so I can write `3.5` or `42.0`. 
+Or even more complicated numbers like:
+
+[source]
+----
+3.14159
+1000000.000001
+7.5
+55.0
+14.0506
+0.00678
+----
+
+We will use throughout this book, two _types_ of numbers. **int**s which are whole numbers like 
+
+[source]
+----
+2
+0
+-16
+4560072615728
+----
+
+And there are **double**s which are real numbers like
+
+[source]
+----
+1.5
+0.0
+-7.005
+822.98676253
+----
+
+And it turns out Java has a few more **types** of numbers, more than just **int** and **double**. 
+I'll list them, but you'll need to go to a larger Java book or website to understand how they are different from _int_ and _double_.
+They are four more **types** of numbers: **long**, **short**, **byte**, and **float**. 
 
 == Statements and Expressions
 
@@ -207,5 +267,5 @@ if (wizardStrength > 120.0) {
 ----
 
 But the SECOND example is formatted much cleaner, making it more readable and therefore easier to understand.
-
+So I encourage you to your code easy to read by keeping it tidy.
 

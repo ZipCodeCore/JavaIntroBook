@@ -10,12 +10,18 @@ If you wanted to track a number, an age of someone, you can create a variable to
 [source]
 ----
 int age = 3;
-// let's have a birthday
-age = age + 1;
-// let's have another birthday
-age = age + 1;
-// age is now equal to 5...
 ----
+
+Now, if we wanted to indicate that someone had a birthday, we might add 1 to the variable.
+
+[source]
+----
+int age = age + 1;
+----
+
+At this point, the _age_ variable as 4 in it.
+
+
 
 There are some rules about variable names. 
 
@@ -32,9 +38,9 @@ So this means the following are fine for variable names in Java:
 [source]
 ----
 x
-AREA
+area
 height
-Width
+width
 currentScore
 playerOne
 playerTwo
@@ -69,7 +75,6 @@ This creates a variable *x* that can hold an integer (int) primitive type. But i
 ----
 System.out.println(x);  // -> undefined, although it will probably print zero.
 ----
-There is _nothing_ there. 
 
 If we were to declare a variable named 'cats' and assign it the value 3 (because we have 3 cats?):
 
@@ -121,10 +126,7 @@ System.out.println(age); // -> 5
 
 Notice here how age's current value is used, added one to it, and re-assigned _back into the variable *age*_.
 
-Now, one of the weird (to me anyway) things Java can do is change the type of a variable while the program is running.
-A lot of languages won't let you do this. But it can be handy in Java.
-In Java, variables are dynamic (can contain any data) which means a variable can be a string and later be a number.
-
+Jav, once you declare a variable as an _int_
 [source]
 ----
 int height = 62.0; // inches maybe?
