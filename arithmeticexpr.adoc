@@ -75,8 +75,8 @@ My solution is pretty simple.
 ----
 public class Main {
   public static void main(String[] args) {
-    int y = 2; 
-    int x = 5 * y + Math.pow(y, 3) - 7;
+    double y = 2; 
+    double x = 5 * y + Math.pow(y, 3) - 7;
     System.out.println(x); // -> 11
   }
 }
@@ -104,9 +104,9 @@ Formula: A = h * b / 2
 ----
 public class Main {
   public static void main(String[] args) {
-    int height = 20;
-    int base = 10;	
-    int areaOfaTriangle  =  height * base / 2;
+    double height = 20;
+    double base = 10;	
+    double areaOfaTriangle  =  height * base / 2;
     System.out.println(areaOfaTriangle); // -> 100
   }
 }
@@ -125,8 +125,8 @@ Hint: You'll need to use a constant Math property!
 ----
 public class Main {
   public static void main(String[] args) {
-    int radius = 7.7;	
-    int area  =  Math.PI * Math.pow(radius, 2);
+    double radius = 7.7;	
+    double area  =  Math.PI * Math.pow(radius, 2);
     System.out.println(area); // -> 186.26502843133886 (wow)
   }
 }

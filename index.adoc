@@ -2,7 +2,7 @@
 :title-page:
 = Zip Code Wilmington's Programming in Java
 Kristofer Younger <kris@zipcodewilmington.com>
-v1.8.7, 2021-05-12
+v0.2, 2022-11-10
 :imagesdir: images
 :rouge-style: github
 :source-language: Java

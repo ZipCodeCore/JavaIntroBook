@@ -32,12 +32,21 @@ public class Main {
 
 Now, how do we `run` this program? Use a REPLI.it!!
 
-****
+Go to `https://replit.com/` and get a free account. Create a Repl and choose the language to be Java. 
+
+Whenever you see code that starts with the line `public class Main {`, that means you can copy and paste the entire snippet right into your Java `replit` and click the big green **Run >** button to  run the code and see the output.
+
+(I'll add some images here of what the replit looks like).
+
+This is an example of the output of the replit.
+
+[source]
+----
 > sh -c javac -classpath .:target/dependency/* -d . $(find . -type f -name '*.java')
 > java -classpath .:target/dependency/* Main
 Car's Speed: 55.0
 >  
-****
+----
 
 Cool, huh? The ability to communicate with you is one of Java's most fundamental capabilities. And you've run two Java programs. Congratulations, you're a coder. (Well, at least for today you are.)
 
