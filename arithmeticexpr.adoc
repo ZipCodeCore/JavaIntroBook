@@ -19,12 +19,16 @@ is to
 
 [source, Java]
 ----
-// And in Java:
-// a = b3 - 6 
+public class Main {
+  public static void main(String[] args) {
+    // And in Java:
+    // a = b3 - 6 
 
-int b = 3;
-int a = b * 3 - 6;
-System.out.println(a); // -> 3
+    int b = 3;
+    int a = b * 3 - 6;
+    System.out.println(a); // -> 3
+  }
+}
 ----
 
 Now you try it. 
@@ -42,10 +46,14 @@ Take a moment and write down your solution before reading on.
 
 [source, Java]
 ----
-int q = 0; 
-int j = 5;
-q = 2 * j + 20;
-System.out.println(q); // -> 30
+public class Main {
+  public static void main(String[] args) {
+    int q = 0; 
+    int j = 5;
+    q = 2 * j + 20;
+    System.out.println(q); // -> 30
+  }
+}
 ----
 
 Let's try another...
@@ -65,9 +73,13 @@ and print out x.
 My solution is pretty simple.
 [source, Java]
 ----
-int y = 2; 
-int x = 5 * y + Math.pow(y, 3) - 7;
-System.out.println(x); // -> 11
+public class Main {
+  public static void main(String[] args) {
+    int y = 2; 
+    int x = 5 * y + Math.pow(y, 3) - 7;
+    System.out.println(x); // -> 11
+  }
+}
 ----
 
 === _Trigonometry_
@@ -90,10 +102,14 @@ Formula: A = h * b / 2
 
 [source, Java]
 ----
-int height = 20;
-int base = 10;	
-int areaOfaTriangle  =  height * base / 2;
-System.out.println(areaOfaTriangle); // -> 100
+public class Main {
+  public static void main(String[] args) {
+    int height = 20;
+    int base = 10;	
+    int areaOfaTriangle  =  height * base / 2;
+    System.out.println(areaOfaTriangle); // -> 100
+  }
+}
 ----
 
 
@@ -107,9 +123,13 @@ Hint: You'll need to use a constant Math property!
 
 [source, Java]
 ----
-int radius = 7.7;	
-int area  =  Math.PI * Math.pow(radius, 2);
-System.out.println(area); // -> 186.26502843133886 (wow)
+public class Main {
+  public static void main(String[] args) {
+    int radius = 7.7;	
+    int area  =  Math.PI * Math.pow(radius, 2);
+    System.out.println(area); // -> 186.26502843133886 (wow)
+  }
+}
 ----
 
 
