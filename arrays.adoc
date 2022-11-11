@@ -5,7 +5,7 @@ Imagine you have a small number of things you want to track. Let's use our vague
 
 Now, if you're the coder of this game you could keep track of each player's healthScore by have 5 different variables. (for players Zero to Four)
 
-[source, Java]
+[source]
 ----
 int playerZeroHealthScore = 100;
 int playerOneHealthScore = 100;
@@ -18,14 +18,14 @@ If we setup these 5 variables, our game can track 5 players! But *we'd have to c
 
 To get around this kind of problem we use an *array*. We could ask, "how many players are playing?", and then make an array that size. We know we need to track each player's healthScore, so we create an array:
 
-[source, Java]
+[source]
 ----
 int playerHealthScores = [100, 100, 100, 100, 100];
 ----
 
 Now, like a _string_, array indexes start at zero.
 
-[source, Java]
+[source]
 ----
                       //   0    1    2    3    4
 int playerHealthScores = [100, 100, 100, 100, 100];
@@ -34,7 +34,7 @@ int playerHealthScores = [100, 100, 100, 100, 100];
 This array is a *data structure* - a way for us to keep track of lots of data in a controlled fashion. (We can make arrays any size.)
 If we need to deduct health points from one of the players, we can do something like this:
 
-[source, Java]
+[source]
 ----
 majorHit = 50;
 
@@ -61,7 +61,7 @@ So let's think about an array of donuts for the following examples.
 
 Declaring and initializing some arrays in Java:
 
-[source, Java]
+[source]
 ----
 int donuts = ["chocolate", "glazed", "jelly"];
 
@@ -75,7 +75,7 @@ int mixedData = ['one', 2, true];  // a string, a number and a boolean!
 We use square brackets to get elements by their index. We'll use an array of
 strings to identify our donuts. Sometimes, we say something like "donuts sub 2" to mean _donuts[2]_.
 
-[source, Java]
+[source]
 ----
 int donuts = ["chocolate", "glazed", "jelly"];
 
@@ -87,7 +87,7 @@ System.out.println(donuts[2]);  // "jelly"
 
 We can also add things to the end of the array.
 
-[source, Java]
+[source]
 ----
 int donuts = ["chocolate", "glazed", "jelly"];
 
@@ -100,7 +100,7 @@ System.out.println(donuts);  // but after, there are now 4 things in the array.
 
 We can use the *length* property to find the size of an array.
 
-[source, Java]
+[source]
 ----
 int donuts = ["chocolate", "glazed", "jelly"];
 
@@ -114,7 +114,7 @@ Note: A string is an ARRAY of single characters
 
 If we use the _length_ property carefully, we can always get the last element in an array.
 
-[source, Java]
+[source]
 ----
 int donuts = ["chocolate", "glazed", "jelly"];
 
@@ -131,7 +131,7 @@ System.out.println(donuts[donuts.length - 1]); // powdered
 
 We can also use the `.length` to add to the end of the array!
 
-[source, Java]
+[source]
 ----
 int donuts = ["chocolate", "glazed", "jelly"];
 

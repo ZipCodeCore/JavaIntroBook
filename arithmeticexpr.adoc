@@ -17,7 +17,7 @@ is to
 - figure out what b times 3 is (well, if b equals 3, then 3 times 3 is 9)
 - subtract 6 from b times 3 (and then 9 minus 6 is 3)
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -44,7 +44,7 @@ if j = 5, then q = ?
 Take a moment and write down your solution before reading on.
 ====
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -71,7 +71,7 @@ and print out x.
 
 
 My solution is pretty simple.
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -100,7 +100,7 @@ Base is 10
 Formula: A = h * b / 2
 ====
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -121,13 +121,14 @@ Formula: area = Pi * radius^2^
 Hint: You'll need to use a constant Math property!
 
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
     double radius = 7.7;	
     double area  =  Math.PI * Math.pow(radius, 2);
-    System.out.println(area); // -> 186.26502843133886 (wow)
+    System.out.println(area); 
+    // -> 186.26502843133886 (wow)
   }
 }
 ----

@@ -33,7 +33,7 @@ We also need more kinds of boolean expressions when we are programming. Things l
 
 === Comparison Operators
 
-[source, Java]
+[source]
 ----
 int healthScore = 5;
 ----
@@ -58,7 +58,7 @@ To do that we need a bunch of *comparison operators*.
 
 Each of these can be used to make it very clear to someone reading your code what you meant. Imagine a flight simulator, where you're flying a big, old fashioned airplane. The code that keeps track of the status of the plane might need to be able to make decisions on boolean expressions like:
 
-[source, Java]
+[source]
 ----
 altitude > 500.0   // high enough to not hit any trees!
 airspeed >= 85.0   // fast enough to stay in the air.
@@ -87,7 +87,7 @@ The *logical operators* are AND and OR, except in Java we use *&&* for AND and *
 
 The AND operator, '&&', is an operator where BOTH sides have to be true for the expression to be true.
 
-[source, Java]
+[source]
 ----
 (5 < 9) && (6-3 === 3)  // true
 ----
@@ -97,7 +97,7 @@ See how both expressions on either side of the '&&' are true? That makes the ent
 The OR operator, '||' footnote:[shift-backslash '\' on most keyboards], is an operator where if ONE or the OTHER or BOTH boolean expressions are true, the entire expression is true.
 
 
-[source, Java]
+[source]
 ----
 (5 < 9) || (6-3 === 3) // true
 
@@ -109,7 +109,7 @@ The OR operator, '||' footnote:[shift-backslash '\' on most keyboards], is an op
 Both sides of a logical operator need to be Boolean expressions. So it's all right to
 use lots of different comparisons, and combine them with && and ||.
 
-[source, Java]
+[source]
 ----
 // deep in a cash machine application...
 (customer.balance() <= 20.00 
@@ -135,7 +135,7 @@ why coders need to be able to use them to get the software *just right*.
 
 Here is an example:
 
-[source, Java]
+[source]
 ----
 int houseTemp = 67.0;
 int thermostatSetting = 70.0;

@@ -11,7 +11,7 @@ If you think about it, I'm sure you can figure out what "let" variable declarati
 
 If you wanted to find the larger of two values, x and y and assign it to 'max':
 
-[source, Java]
+[source]
 ----
 if (x > y) {
     max = x;
@@ -22,7 +22,7 @@ if (x > y) {
 
 Related to it, if we have two variables x and y, and we want the smaller in x, and the larger in y.
 
-[source, Java]
+[source]
 ----
 if (x > y) {
     let t = x;
@@ -35,7 +35,7 @@ Do you see the three statements in the block there? That's called a 'swap'. If y
 
 If I needed to make sure a number is always positive (greater than zero), it's easy - this is called taking the "absolute value" of a number.
 
-[source, Java]
+[source]
 ----
 if (n < 0) n = -n;
 ----
@@ -47,7 +47,7 @@ Imagine a problem where you have to "add all the numbers from 1 to 100 and print
 It might also be expressed as "*sum* all the number from x to y" (where x and y are two integers).
 Turns out there is a very easy pattern to learn here.
 
-[source, Java]
+[source]
 ----
 int sum = 0;
 int n = 100;
@@ -60,7 +60,7 @@ System.out.println(sum);
 Now, if you wanted to find the average of a bunch of numbers, that's as easy as taking the sum of the numbers and dividing the sum by the number of numbers (or n).
 
 
-[source, Java]
+[source]
 ----
 int sum = 0;
 int n = 100;
@@ -73,7 +73,7 @@ System.out.println(average);
 
 Pretty easy, yes? And the other common pattern here is doing a *product* of all the numbers from 1 to n. (Let's try 20)
 
-[source, Java]
+[source]
 ----
 int product = 1;
 int n = 20;
@@ -85,7 +85,7 @@ System.out.println(product);
 
 Perhaps you want to print a table of values of some equation.
 
-[source, Java]
+[source]
 ----
 for (let i = 0; i <= n; i++) {
     System.out.println(i + " " + i*i/2);
@@ -98,14 +98,14 @@ Arrays are often something that confuses beginning coders. Let's look at some co
 
 The array we are going to use in all these cases is pretty simple. It's an array of 7 numbers.
 
-[source, Java]
+[source]
 ----
 int a = [ 4, 3, 7, 0, -4, 1, 8];
 ----
 
 Here how to print out the array, one value per line.
 
-[source, Java]
+[source]
 ----
 for (let i = 0; i < a.length; i++) {
     System.out.println(i, a[i]); // print the index and value of an array element.
@@ -114,7 +114,7 @@ for (let i = 0; i < a.length; i++) {
 
 If we needed to find the *smallest* number in the array, we could do:
 
-[source, Java]
+[source]
 ----
 int min = a[0];
 for (let i = 1; i < a.length; i++) {
@@ -130,7 +130,7 @@ Then we step through the array, looking at each value and if the new value is sm
 
 NOW, if you wanted to find the *largest* value in the array, you really only have to change a couple things.
 
-[source, Java]
+[source]
 ----
 int max = a[0];
 for (let i = 1; i < a.length; i++) {
@@ -149,7 +149,7 @@ In both of these cases, we start with an initial value, then we step through the
 
 What about finding the average of the values in the array? Well, we do it a lot like the average of the series of numbers.
 
-[source, Java]
+[source]
 ----
 int sum = 0;
 for (let i = 0; i < a.length; i++) {
@@ -164,7 +164,7 @@ Yep, the "a.length" is very handy, it has exactly the count of the numbers in th
 
 Finally, if we wanted to reverse the values in the array, we could write some code:
 
-[source, Java]
+[source]
 ----
 System.out.println("before:", a);
 int n = a.length;
@@ -179,7 +179,7 @@ System.out.println("after: ",a);
 
 But perhaps the easier way to reverse an array in Java is to just call the library function:
 
-[source, Java]
+[source]
 ----
 a = a.reverse();
 System.out.println(a);

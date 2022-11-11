@@ -89,7 +89,7 @@ So how much will it cost to feed the cat for a year?
 Looking at it, this may be quite simple. If we know each can feeds the cat for a day,
 we then know that we need 365 cans of food. So we can describe that as
 
-[source, Java]
+[source]
 ----
 int totalCost = 0;
 int cansNeeded = 365;
@@ -111,7 +111,7 @@ And let's do one more.
 
 A cell phone company charges a monthly rate of $12.95 and $1.00 a gigabyte of data. The bill for this month is $21.20. How many gigabytes of data did we use? Again, let's use a simple template to get started.
 
-[source, Java]
+[source]
 ----
 int dataUsed = 0.0;
 
@@ -124,7 +124,7 @@ and that data costs 1 dollar per gigabyte.
 We also know the monthly bill is $21.20. Let's get all
 that written down.
 
-[source, Java]
+[source]
 ----
 int dataUsed = 0.0;
 int costPerGB = 1.0;
@@ -138,7 +138,7 @@ System.out.println("total data used (GB)", dataUsed);
 Now we're ready to do the computation. If we subtract the monthlyRate from thisBill, we get the total cost of data. Then, if we divide the total cost of data by the cost per gigabyte, we
 will get the dataUsed.
 
-[source, Java]
+[source]
 ----
 int dataUsed = 0.0;
 int costPerGB = 1.0;

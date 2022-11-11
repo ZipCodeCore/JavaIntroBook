@@ -26,7 +26,7 @@ No, to the computer, each letter, including the space 'letter', is just a piece 
 String - a string of letters and numbers and spaces and punctuation, kept altogether for some use.
 Here are some strings for you to consider.
 
-[source, Java]
+[source]
 ----
 "the quick brown fox"
 "The New York Times"
@@ -44,7 +44,7 @@ Think of strings as a tightly packed list. Each item and letter is numbered.
 The entire string can be "indexed", meaning I can reach in and copy out, say, the fifth letter easily.
 String indexes are zero-based; therefore, the first character (element) is in index position 0.
 
-[source, Java]
+[source]
 ----
 Index  -> 012345
 String -> Hello
@@ -54,7 +54,7 @@ Computers often start numbering things like strings, lists, and arrays at 0, not
 
 === Declaring a string 
 
-[source, Java]
+[source]
 ----
 int name = "Wacka Flocka";
 ----
@@ -67,7 +67,7 @@ A common and often used string property is *length*.
 
 We can use `.length` to find the length of a string
 
-[source, Java]
+[source]
 ----
 int str = "Wakanda Forever!";
 int answer = str.length;
@@ -78,7 +78,7 @@ System.out.println(answer); // -> 16
 
 As mentioned before, we can reach into a string and copy out the stuff we find there.
 
-[source, Java]
+[source]
 ----
 int word = "Hello";
 // Access the the first character (first by index, second by function)
@@ -96,7 +96,7 @@ When you see something like *word[0]*, it is pronounced like "word sub zero". If
 
 This simply means joining strings together using the + operator or the concat( ) method. Either one is commonly used. 
 
-[source, Java]
+[source]
 ----
 int price = 20;
 int dollarSign = "$";
@@ -108,7 +108,7 @@ System.out.println(priceTag); // -> $20
 
 Or perhaps a little more useful example:
 
-[source, Java]
+[source]
 ----
 int name = "Mikaila";
 int hoursWorked = 12;
@@ -138,14 +138,14 @@ _someString.*slice*(start, end)_
 A start position is required, where to begin the extraction. Remember, first character is at position 0. 
 Characters are extracted from a string between "start" and "end", not including "end" itself.
 
-[source, Java]
+[source]
 ----
 int firstName = "Christopher";
 ----
 
 Now let's use the 3 substring methods on firstName and extract and print out "Chris"
 
-[source, Java]
+[source]
 ----
 int firstName = "Christopher";
 System.out.println(firstName.substring(0,5)); // "Chris"
@@ -159,7 +159,7 @@ System.out.println(b);
 
 Yep. They all print "Chris". (Act impressed... thanks!) BUT, let's try to extract the string "stop" from the name.
 
-[source, Java]
+[source]
 ----
 int firstName = "Christopher";
 System.out.println(firstName.substring(4,8)); // "stop"
@@ -177,7 +177,7 @@ Let's try a little harder idea...
 
 [TIP]
 ====
-[source, Java]
+[source]
 ----
 int fName = "Christopher";
 ----
@@ -188,7 +188,7 @@ int fName = "Christopher";
 
 Well?
 
-[source, Java]
+[source]
 ----
 int fName = "Christopher";
 System.out.println(fName.substring(4,8).toUpperCase());
@@ -200,7 +200,7 @@ Want to bet there is also a "toLowerCase()" method as well?
 
 Take a look at these various ways to copy out a substring from the source string named 'rapper', which contains the string 'mikaila'. 
 
-[source, Java]
+[source]
 ----
 int rapper = "mikaila";
 
@@ -234,7 +234,7 @@ Step 3 - Use the join() method to join all elements into a String
 
 Solution
 
-[source, Java]
+[source]
 ----
 var str = "Christopher";
 var res = str.substring(4, 8).toUpperCase(); // -> "STOP"

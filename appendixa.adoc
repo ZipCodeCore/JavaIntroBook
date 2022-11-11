@@ -45,7 +45,7 @@ By studying each one and comparing it to the ways we've discussed before using l
 
 Let's use this array for the following examples. 
 
-[source, Java]
+[source]
 ----
 const groceries = [
   {
@@ -77,7 +77,7 @@ A common grocery list, we have this as a list (or array) of objects (what's know
 
 Now, if you wanted to print out each item's name in the grocery list to the console, you could do something like this: 
 
-[source, Java]
+[source]
 ----
 int idx = 0;
 while (idx < groceries.length) {
@@ -92,7 +92,7 @@ It relies on the `idx` variable.
 If we forget or mess up the increment step at the end of the loop, we could be in trouble. 
 Rather, how about this:
 
-[source, Java]
+[source]
 ----
 groceries.forEach((item) => {
   System.out.println(item.name);
@@ -111,7 +111,7 @@ A higher-order function is a function that does at least one of the following:
 Let's look at a few other uses of higher-order functions.
 Say we wanted to get a list of just the prices of our grocery list. If we use a loop, we have a very recognizable pattern.
 
-[source, Java]
+[source]
 ----
 int index = 0;
 const prices = [];
@@ -123,7 +123,7 @@ while (index < groceries.length) {
 
 But if we use a different higher-order function, `map`:
 
-[source, Java]
+[source]
 ----
 int prices = groceries.map((item) => {
   return item.price;
@@ -132,7 +132,7 @@ int prices = groceries.map((item) => {
 
 The value of prices would be: `[5.5,14.99,6.49,4.79,3.99]`. And if we were to want something a little more useful than just producing a list, we would do this when using a loop: 
 
-[source, Java]
+[source]
 ----
 int index = 0;
 int total = 0;
@@ -147,7 +147,7 @@ With the sum of all the prices ending up in `total`.
 
 But look how much simpler our code can be if we use `reduce`, another higher-order function. 
 
-[source, Java]
+[source]
 ----
 int total = groceries.reduce((sum, item) => {
   return sum += item.price;
@@ -158,7 +158,7 @@ The result, if we print `total` is the awkward number `35.760000000000005`, and 
 
 If we wanted to pull out all the even numbers from a list of numbers, we'd need a function like this to decide if a number if even. (Remember the trick using modulus?)
 
-[source, Java]
+[source]
 ----
 function even (value) {
     return value % 2 === 0;
@@ -171,7 +171,7 @@ System.out.println(even(3), even(4), even(126));
 
 If we remove the name `even` from the definition, and use a higher-order function named `filter`, we have something like this.
 
-[source, Java]
+[source]
 ----
 numList = [1,2,3,4,5,6,7,8];
 numList.filter(
@@ -181,7 +181,7 @@ numList.filter(
 
 `filter` is a function which filters out the elements in an array that don’t pass a test. You can visualize it this way:
 
-[source, Java]
+[source]
 ----
 function filter(array, test) {
   let passed = [];
@@ -217,7 +217,7 @@ Well, sure, why not? Functions in Java are called `first class objects`, just li
 And it turns out Java already has a function called `filter`, a higher order function. 
 And I can reduce it even more to something like this:
 
-[source, Java]
+[source]
 ----
 int result = [1,2,3,4].filter(
     function (value) {return value % 2 === 0}
@@ -246,7 +246,7 @@ But they can also get in the way when you want to write clean, extensible code.
 Let's create a function that computes a discount for a price amount based on sone discount code.
 We might, happily, build something like this:
 
-[source, Java]
+[source]
 ----
 const discount = (amount, code) => {
   if (code == 'TWENTYOFF') {
@@ -269,7 +269,7 @@ I know! Let's use a `switch` statement, and simplify! Well...
 
 Switch statements too, have a way of expanding on you, getting long, and sometimes complex, requiring care to maintain and/or extend. Say you wanted to add some more discounts to the following switch statement?
 
-[source, Java]
+[source]
 ----
 const discount = (amount, code) => {
   switch (code) {
@@ -290,7 +290,7 @@ And if you make a mistake, you break the whole contraption.
 
 But consider this idea: use a combination of a simple data structure and a small piece of code (called an arrow function (or "lambda")). 
 
-[source, Java]
+[source]
 ----
 const DISCOUNT_MULTIPLIER = {
   'TWENTYOFF': 0.80,
@@ -313,7 +313,7 @@ One of the ways we do a lot of this kind of simplification within code is by rep
 
 In Java, we have function expressions which give us an anonymous function (a function without a name). Here we are creating an anonymous function and assigning it to a variable.
 
-[source, Java]
+[source]
 ----
 var anon = function (a, b) { return a + b };
 
@@ -328,7 +328,7 @@ It's really just a different form of the same thing.
 But we also have `lambdas` or `arrow functions` with a more flexible syntax that has some bonus features and gotchas. 
 We could write the above example as:
 
-[source, Java]
+[source]
 ----
 var anon = function (a, b) { return a + b }; // from above
 
@@ -360,7 +360,7 @@ Yeah, we suffer from over-complicating things in coding as well.
 Another way to replace conditionals is by using a key feature of object-oriented programming languages: polymorphism. 
 Let's show some code which helps bill a customer.
 
-[source, Java]
+[source]
 ----
 // list of customers we want to 'checkout'
 const customers = [
@@ -385,7 +385,7 @@ const customers = [
 I'm going to gloss over the code needed to do each of the three kinds of payment.
 But show you how I might have to account for all three inside a `checkout` function.
 
-[source, Java]
+[source]
 ----
 const checkout = (amount, paymentMethod) => {
   switch (paymentMethod) {
@@ -404,7 +404,7 @@ const checkout = (amount, paymentMethod) => {
 
 Now, I'd like to take the list of customers, and checkout each one. (Notice how I'm using the higher-order function here, not a `for` loop.)
 
-[source, Java]
+[source]
 ----
 customers.forEach(({ amount, paymentMethod }) => {
   checkout(amount, paymentMethod);
@@ -414,7 +414,7 @@ customers.forEach(({ amount, paymentMethod }) => {
 But if I use `polymorphism`, I can make each customer's checkout method wired directly to the data list. 
 And look how I have broken the large function up, into three simpler things.
 
-[source, Java]
+[source]
 ----
 class CreditCardCheckout {
   static charge(amount) {

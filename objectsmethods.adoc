@@ -19,7 +19,7 @@ This allows for large data structures to be built using a very simple and elegan
 An object (in this case an _object literal_) can be created with curly braces {…} with an optional list of properties. 
 A property is a “key: value” pair, where key is a string (also called a “property name”), and value can be anything. footnote:[In some languages, a listing of key/value pairs is called a dictionary, an associative array or a hashtable.]
 
-[source, Java]
+[source]
 ----
 int katniss = {
     firstname: "Katniss",
@@ -36,7 +36,7 @@ Notice how you use commas for all but the last one in the list?
 We can imagine an object as a container where everything has a key, and we can get data from the key, add data with a key to an object, and delete a key (with its data value) from the object.
 Each pair (of key and value) can be referred to as a *property*. Properties can be almost any Java data type at all. Let's create a sample player object for a game:
 
-[source, Java]
+[source]
 ----
 int player1 = {
     name: "Rocco",
@@ -62,7 +62,7 @@ One of those key/value pairs is a nested object, the 'weapons' key has another o
 
 Values can be retrieved from inside an object by using a string expression in a [ ] (bracket) pair. You can also use "dot notation". 
 
-[source, Java]
+[source]
 ----
 player1[name] // "Rocco"
 player.name   // "Rocco"
@@ -77,7 +77,7 @@ player1.nickname  // undefined
 
 If we were to use an assignment statement, we can change the properties inside of the object.
 
-[source, Java]
+[source]
 ----
 player1.name = "Gina";
 player1[species] = "Mage";
@@ -92,7 +92,7 @@ This next little bit will stretch your mind a bit.
 
 If we have an object:
 
-[source, Java]
+[source]
 ----
 int airplane512 = {
     type: "airbusA330",
@@ -104,7 +104,7 @@ int airplane512 = {
 
 We have built a plane object.
 
-[source, Java]
+[source]
 ----
 int flight77 = airplane512;  // I'm assigning a plane to a flight
 
@@ -126,7 +126,7 @@ This is because both flight77 and airplane512 _refer to the *same* object. so wh
 
 Properties can be deleted as well.
 
-[source, Java]
+[source]
 ----
 delete flight77.destination;
 delete flight77.origin;
@@ -139,7 +139,7 @@ Let's build a special counter object, something we might use in a program or app
 
 As you may be aware, in American football there are four common changes to a team's score during a game:
 
-[source, Java]
+[source]
 ----
 int scoreCounter = {
     options: {"fieldgoal": 3, "touchdown": 6, 
@@ -167,7 +167,7 @@ int scoreCounter = {
 
 We can use that object, with its function methods like this:
 
-[source, Java]
+[source]
 ----
 scoreCounter.touchdown(); // add 6
 scoreCounter.pat(); // add 1

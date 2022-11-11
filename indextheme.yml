@@ -1,0 +1,13 @@
+extends: default
+base:
+  font_size: 9.5
+  line_height_length: 11.0
+  # font-color: #ff0000
+  font_color: 333333
+heading:
+  font_color: $base_font_color
+  h2_font_size: floor($base_font_size * 1.8)
+  h3_font_size: floor($base_font_size * 1.5)
+code:
+  font_color: $base_font_color
+  font_size: $base_font_size - 1

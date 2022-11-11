@@ -2,7 +2,7 @@
 Let's start with a really simple program.
 Perhaps the simplest Java program is:
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -20,7 +20,7 @@ We will use `System.out.println` to do a lot in the coming pages. It's a simple 
 
 Here's your second Java program: 
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -57,7 +57,7 @@ While you're not thinking about the long term, or about large Java programs, the
 In your program, you can write stuff that Java will ignore, it's just there for you (or readers of your code). We use two slashes to start a comment, and the comment goes to the end of the line.
 Java will ignore anything on a line after two forward slashes. "//"
 
-[source, Java]
+[source]
 ----
 // this is a comment. it might describe something in the code.
 int x = 53 - 11;
@@ -67,7 +67,7 @@ int y = x * 4; // this is also a comment.
 
 Often, you'll see something like this in this book.
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -81,7 +81,7 @@ That comment at the end of the System.out.println line is showing what you can e
 
 We can also add useful stuff to the .log call. 
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -99,7 +99,7 @@ Comments can be used to explain tricky bits of code, or describe what you should
 
 What does `int` and `double` signify? Well, see how they proceed another word?
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -141,7 +141,7 @@ So Java has another **type** of number, a **floating point number** and in these
 A **double** can have decimal point and some number after, so I can write `3.5` or `42.0`. 
 Or even more complicated numbers like:
 
-[source, Java]
+[source]
 ----
 3.14159
 1000000.000001
@@ -153,7 +153,7 @@ Or even more complicated numbers like:
 
 We will use throughout this book, two _types_ of numbers. **int**s which are whole numbers like 
 
-[source, Java]
+[source]
 ----
 2
 0
@@ -163,7 +163,7 @@ We will use throughout this book, two _types_ of numbers. **int**s which are who
 
 And there are **double**s which are real numbers like
 
-[source, Java]
+[source]
 ----
 1.5
 0.0
@@ -183,7 +183,7 @@ In Java, there are parts of a program and different parts have different names. 
 
 An *expression* is something that needs to be _computed_ to find out the answer. Here are a few simple ones.
 
-[source, Java]
+[source]
 ----
 2 + 2 * 65536
 
@@ -208,7 +208,7 @@ epxression a _boolean expression_ (either **true** or **false**).
 
 A *statement* is just a line of Java. It ends with a ';' (semi-colon).
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -231,7 +231,7 @@ We'll go thru each of these kinds of things slowly in sections ahead.
 
 In this book, you may see that the code used in examples is longer than can fit on one line in the code boxes. Well, Java doesn't care. That's why it has *semi-colons* ';' at the end of the statements. So to be clear, a statement with long variable names is the same as one with a short name.
 
-[source, Java]
+[source]
 ----
 k = h * kph - (rest / 60);
 
@@ -244,7 +244,7 @@ When you come across code that goes onto multiple lines, do like Java does, read
 
 Very often in Java, we will see a *block* of statements. It is a list of statements inside of a pair of curly-braces "{ }". It acts like a container to make clear what statements are included in the block.
 
-[source, Java]
+[source]
 ----
 if (magePower > 120.0) {
     maxMagic = 500.0;
@@ -259,14 +259,14 @@ See those curly-braces? They start and stop the _block_, and contain the stateme
 
 And, it's a bad idea, but this code:
 
-[source, Java]
+[source]
 ----
 if (wizardStrength > 120.0) { maxMagic = Wizard.maxpower(); lifeSpan = Wizard.maxlife(); maxWeapons = wizardStrength * numberOfWands; }
 ----
 
 is identical to this:
 
-[source, Java]
+[source]
 ----
 if (wizardStrength > 120.0) { 
     maxMagic = Wizard.maxpower();

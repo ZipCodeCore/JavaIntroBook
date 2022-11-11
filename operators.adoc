@@ -20,7 +20,7 @@ Java can do math. And many early programming exercises you will come across deal
 Say we needed to multiply two numbers. Maybe 2 times 3. Now we could easily write a program
 that printed that result.
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class Main {
 And that will print 6 on the console. But maybe we'd like to make it a little more
 complete.
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -57,7 +57,7 @@ Using this as a model, how would you write programs to solve these problems?
 * Exercise 4: Find remainder of A of b
 ====
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -86,7 +86,7 @@ public class Main {
 We know that we can do regular division. If have a simple program like this, we know 
 what to expect:
 
-[source, Java]
+[source]
 ----
 int a = 6 / 3; // -> 2
 int a = 12 / 3; // -> 4
@@ -105,7 +105,7 @@ The remainder operator % (the percent sign), despite its appearance, is not rela
 The result of a % b is the remainder of the integer division of a by b.
 So as above, if we evaluate `10 % 4` we will get the remainder of `2`.
 
-[source, Java]
+[source]
 ----
 System.out.println( 5 % 2 ); // 1, a remainder of 5 divided by 2
 System.out.println( 8 % 3 ); // 2, a remainder of 8 divided by 3
@@ -113,7 +113,7 @@ System.out.println( 8 % 3 ); // 2, a remainder of 8 divided by 3
 
 Now what's this about '%' (the remainder) operator?
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -126,7 +126,7 @@ public class Main {
 }
 ----
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -139,7 +139,7 @@ public class Main {
 }
 ----
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -223,7 +223,7 @@ Right way to solve 30 + 6 × 2 is first multiply, 6 × 2 = 12, then add 30 + 12 
 
 This is because the multiplication is _higher priority_ than the addition, _even though the addition is before the multiplication_ in the expression. Let's check it in Java:
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -244,7 +244,7 @@ Now there is another way to force Java to do things "out of order" with parenthe
 What happens now?
 ====
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -275,7 +275,7 @@ What does "returns" mean?
 
 When we ask a 'function' like sqrt to do some work for us, we have to code something like:
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {
@@ -295,7 +295,7 @@ the result of the function and _what the function sqrt "returns"'_.
 
 Say we need to compute "6^2^ + 5"
 
-[source, Java]
+[source]
 ----
 public class Main {
   public static void main(String[] args) {

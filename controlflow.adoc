@@ -3,7 +3,7 @@
 
 In many of these examples so far, we see a very simple *control flow*. The program starts at the first line, and just goes line by line until runs out of statements.
 
-[source, Java]
+[source]
 ----
 int q = 0; 
 int j = 5;
@@ -13,7 +13,7 @@ System.out.println(q); // -> 0
 
 When programs start to get more sophisticated, the _control flow_ can be changed. There are various conditional statements, loop statements, and functions that can cause the control flow to move around within the code. Here we see using both a loop and a conditional IF statement to change the flow of control.
 
-[source, Java]
+[source]
 ----
 int q = 0; 
 int j = 6;

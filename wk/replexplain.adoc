@@ -51,7 +51,7 @@ This empties the blue editor of all the code that was there.
 
 Now, type onto line 1,
 
-[source, Java]
+[source]
 ----
 System.out.println("My First Program!");
 ----

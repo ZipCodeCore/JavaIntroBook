@@ -25,7 +25,7 @@ What is Area, if h = 2 and b = 6 ?
 
 What do you need to do to this function to make it use the triangle equation?
 
-[source, Java]
+[source]
 ----
 function triangleArea(h, b) {
     area = 0;
@@ -169,7 +169,7 @@ output: 8
 An array is a list of some kind of data. 
 Here is an example of an array of fruits.
 
-[source, Java]
+[source]
 ----
 int fruits = ["Apple", "Orange", "Plum"];
 
@@ -182,7 +182,7 @@ Notice how the phrase *fruits[0]* prints out just *Apple* from the array.
 The list of fruits is *ordered*, and *indexed* from 0 to 2.
 We can also find out the length of the array by asking for its *length* property.
 
-[source, Java]
+[source]
 ----
 System.out.println( fruits.length ); // 3
 ----
@@ -191,7 +191,7 @@ Now, use a *for* loop to print out each item of our *fruits* array.
 
 First, need to build an empty function.
 
-[source, Java]
+[source]
 ----
 function printFruits() {
     let fruits = ["Apple", "Orange", "Plum"];
@@ -200,7 +200,7 @@ function printFruits() {
 
 Second, we need to put in a loop that step through each string in the array.
 
-[source, Java]
+[source]
 ----
 function printFruits() {
     let fruits = ["Apple", "Orange", "Plum"];
@@ -212,7 +212,7 @@ function printFruits() {
 
 And finally, we print out each item in the array.
 
-[source, Java]
+[source]
 ----
 function printFruits() {
     let fruits = ["Apple", "Orange", "Plum"];
@@ -270,7 +270,7 @@ Constraint
 Below, we will be using a list of numbers.
 Imagine we have an array of numbers like this:
 
-[source, Java]
+[source]
 ----
 int numbers = [3, 8, 5, 7, 9, 2, 13];
 ----
@@ -300,7 +300,7 @@ How are we going to do this?
 
 Well, the first thing to solve this problem is to setup the function we will be writing.
 
-[source, Java]
+[source]
 ----
 function arraySum(aList) {
 
@@ -311,7 +311,7 @@ Okay, now we know we have to figure out the result of all the addition.
 Let's set up a variable called *runningSum* and set it to zero, and at the end of the function, return it as the result of the function.
 This will not give a working program yet, but it is meant to show how you can step through writing the function bit by bit.
 
-[source, Java]
+[source]
 ----
 function arraySum(aList) {
     let runningSum = 0;
@@ -328,7 +328,7 @@ This *for* loop takes the *aList* parameter and _for each_ item in *aList*, assi
 We then add *n* to our *runningSum*.
 At the end of the loop, we return the value of *runningSum*.
 
-[source, Java]
+[source]
 ----
 function arraySum(aList) {
     let runningSum = 0;
@@ -342,7 +342,7 @@ function arraySum(aList) {
 
 And when we test it, it should give us the right answer. (Use the REPL to see)
 
-[source, Java]
+[source]
 ----
 function arraySum(aList) {
     let runningSum = 0;
@@ -361,7 +361,7 @@ System.out.println( arraySum(numbers) ); // answer should be 47.
 
 Now, you change the loop used to the *for* loop with an index, and test it out.
 
-[source, Java]
+[source]
 ----
 function arraySum(aList) {
     let runningSum = 0;

@@ -8,14 +8,14 @@ There are more useful ways of breaking up the "control flow" of a program. Java 
 
 The first conditional statement  is the *if* statement.
 
-[source, Java]
+[source]
 ----
 if (something-is-true) doSomething;
 ----
 
 Here are a few simple examples.
 
-[source, Java]
+[source]
 ----
 if (speed > speedLimit) 
     driver.getsATicket();
@@ -32,7 +32,7 @@ if (account.balance >= amountRequested) {
 
 Java also has an *else* part to the *if* statement. When the *if* condition is False, the else part gets run. Here, if the account doesn't have enough money to fulfill the amountRequested, the else part of the statement gets run, and the customer gets an insufficient funds receipt.
 
-[source, Java]
+[source]
 ----
 if (account.balance >= amountRequested) {
     // let customer have money
@@ -43,7 +43,7 @@ if (account.balance >= amountRequested) {
 
 Java can also "nest" if statements, making them very flexible for complicated situations. You can also see here how curly-braces make it clear what statements get executed based on which case or condition is true.
 
-[source, Java]
+[source]
 ----
 int timeOfDay = "Afternoon";
 
@@ -75,7 +75,7 @@ You should use an if statement for your solution!
 
 Finally, make sure to change the value of the age variable in the repl, to output out different results and test that all three options can happen. What do you have to do to make the `else` clause happen?
 
-[source, Java]
+[source]
 ----
 int userAge = 17;
 if (userAge < 18) {
