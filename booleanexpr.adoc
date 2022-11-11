@@ -3,9 +3,15 @@
 
 When starting out in programming, the idea of a boolean variable, something that is either just true or false, seems like an overly simple thing... something that feels rather useless.
 
-In fact, booleans in computer code are *everywhere*. They are simple, but also useful in many ways. You've probably heard about how everything in computers is ones and zeros at the lowest level - and that's true. But on this super simple base of `0 and 1` is built all of the power of the internet, and all the apps you've ever used.
+In fact, booleans in computer code are *everywhere*. They are simple, but also useful in many ways. 
+You've probably heard about how everything in computers is ones and zeros at the lowest level - and that's true. 
+But on this super simple base of `0 and 1` is built all of the power of the internet, and all the apps you've ever used.
 
-When you are coding, you often have to make a choice about what to do next based on some kind of condition or to do something repetitively (over and over) based on some condition. Something like `is there gas in the car?` or `are we moving faster than 100mph?` In real life, these are considered to be YES or NO kinds of questions. If the gas tank is empty, the question results in a FALSE condition. If there is some gas in the tank, then the question's result is TRUE, "yes, there is some gas in the tank."
+When you are coding, you often have to make a choice about what to do next based on some kind of condition or to do something repetitively (over and over) based on some condition. 
+Something like `is there gas in the car?` or `are we moving faster than 100mph?` 
+In real life, these are considered to be YES (or **true**) or NO (or **false**) kinds of questions. 
+If the gas tank is empty, the question results in a FALSE condition. 
+If there is some gas in the tank, then the question's result is TRUE, "yes, there is some gas in the tank."
 
 And while this may seem super simple to you, and it is, it is also very powerful when used in a program. 
 
@@ -14,18 +20,20 @@ This idea of a condition that is either TRUE or FALSE, is known as a *boolean ex
 Boolean expressions can be very complex, or very simple:
 
 ****
-playerOne.isAlive() === true
+playerOne.isAlive() == true
 ****
 
 might be a key thing to know inside of a game. But it might be more complicated:
 
 ****
-player[1].isAlive() === true
-AND
-player[2].isAlive() === true
-AND
-spaceStation.hasAir() === true
+player[1].isAlive() == true
+&&
+player[2].isAlive() == true
+&&
+spaceStation.hasAir() == true
 ****
+
+(here, _&&_ means `and`)
 
 All three things need to be true to continue the game. Using boolean expressions, we can build very powerful tests to make sure everything is just as we need it to be.
 
@@ -67,12 +75,12 @@ fuelAvailable <= 5.0   // need to land to refuel!
 
 totalCargoWeight < 6.0  // more than 6 tons and we can't take off!
 
-pilot.isAlive() && copilot.isAlive()  // everything is fine, keep flying.
+pilot.isAlive() && copilot.isAlive()  // both are alive, keep flying.
 ----
 
-If you're puzzling about the difference between the '===' equals and the '==' equals, until you learn a lot more about Java, just use the triple '===' equals. That goes for the 'not equals' too; always use the '!==' not equals.
+In Java, ` == ` is used for _equals_ in numbers (both _int_ and _double_ AND _boolean_). But when we compare two Stings, we use `.equals()`, like this `player1name.equals("Roberto")`. In Java you almost *never* want to use `player1name == "Roberto"`, always use `.equals()` instead.
 
-Like the ANDs in the examples above or this last boolean expression with the "&&" in it, we have in Java the ability to combine expressions into larger more complex expressions using AND and OR.
+Like the && (and) in the examples above or this last boolean expression with the "&&" in it, we have in Java the ability to combine expressions into larger more complex expressions using `&&` (and) and `||` (or).
 
 === Logical Operators
 
@@ -137,13 +145,17 @@ Here is an example:
 
 [source]
 ----
-int houseTemp = 67.0;
-int thermostatSetting = 70.0;
+public class Main {
+  public static void main(String[] args) {
+    double houseTemp = 67.0;
+    double thermostatSetting = 70.0;
 
-System.out.println(houseTemp >= 55.0);
-System.out.println(houseTemp <= thermostatSetting);
-System.out.println(thermostatSetting != 72.0);
-System.out.println(houseTemp > 65.0 && thermostatSetting == 68.0)
+    System.out.println(houseTemp >= 55.0);
+    System.out.println(houseTemp <= thermostatSetting);
+    System.out.println(thermostatSetting != 72.0);
+    System.out.println(houseTemp > 65.0 && thermostatSetting == 68.0);
+  }
+}
 ----
 
 These log statements should produce TRUE, TRUE, TRUE and FALSE.
