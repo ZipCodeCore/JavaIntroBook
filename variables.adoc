@@ -168,19 +168,17 @@ An attempt to re-assign a value to a constant (something marked with _final_) wi
 Java can keep track of a number of different kinds of data, and these are known
 as "primitive data types". There are 5 of them.
 
-* *Number* - there are two kinds of numbers: integers and floats
-** *Integers* are like 0, -4, 5, 6, 1234
-** *Floats* are numbers where the decimals matter like  0.005, 1.7, 3.14159, -1600300.4329
+* *Number* - there are two kinds of numbers: integers and floating point
+** *Integers* (or **int**) are like 0, -4, 5, 6, 1234
+** *Floating Point* (or **double**) are numbers where the decimals matter like  0.005, 1.7, 3.14159, -1600300.4329
 * *String* - an array of characters - 
 ** like 'text' or "Hello, World!"
 * *Boolean* - is either *true* or *false*
 ** often used to decide things like isPlayer(1).alive() [true or false?]
-* *Null* - no value at all
-* *Undefined* - a variable not yet assigned - "let x;"
-** this is a weird type, and not very common.
+
 
 It is common for a computer language to want to know if data is a bunch numbers or text. Tracking
-what _type_ a piece of data is is very important. And it is the programmer's job to make sure all the 
+what **type** a piece of data is is very important. And it is the programmer's job to make sure all the 
 data get handled in the right ways. 
 
 So Java has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
@@ -189,13 +187,13 @@ So Java has a few fundamental *data types* that it can handle. And we will cover
 ====
 Create variables for each primitive data type:
 
-- boolean, 
-- float, 
-- integer, 
+- double
+- int
 - string 
-- constant (integer)
+- boolean
 
 Store a value in each.
+
 ====
 
 [source]
@@ -206,19 +204,40 @@ Store a value in each.
 int x = 0;
 
 // boolean
-int playerOneAlive = true;
+boolean playerOneAlive = true;
 
 // float
-int currentSpeed = 55.0;
+double currentSpeed = 55.0;
 
 // string
-int playerOneName = "Rocco";
+String playerOneName = "Rocco";
 
 // constant integer
 
-const maxPainScore = 150000;
+final int maxPainScore = 150000;
 ----
 
 Now, you try it. Write down a variable name and assign
 a normal value to it.
+
+[source]
+----
+// Here are some samples. 
+
+// integer
+int applesPerBushel =     ;
+
+// boolean
+boolean isEngineRunning =          ;
+
+// float
+double myGradePointAverage =       ;
+
+// string
+String myDogName =         ;
+
+// constant integer
+
+final int floorsInMyBuilding =         ;
+----
 
