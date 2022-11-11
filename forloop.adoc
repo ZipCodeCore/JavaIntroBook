@@ -16,7 +16,7 @@ Here's one where we go from 1 to 5.
 
 [source]
 ----
-for(let j = 1; j < 6;  j++){
+for(int j = 1; j < 6;  j++){
     // loop body code
     System.out.println(j);
 }
@@ -48,7 +48,7 @@ Let's show you another glimpse of the *break* statement.
 
 [source]
 ----
-for(let p = 1; p < 6; p++){
+for(int p = 1; p < 6; p++){
     if(p === 4){
         break;
     }
@@ -80,7 +80,7 @@ You can do it, I know you can!
 
 [source]
 ----
-for(let x = 0; x < donuts.length; x++){
+for(int x = 0; x < donuts.length; x++){
     System.out.println(donuts[x]);
 }
 ----

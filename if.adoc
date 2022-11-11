@@ -10,18 +10,22 @@ The first conditional statement  is the *if* statement.
 
 [source]
 ----
-if (something-is-true) doSomething;
+if (something-is-true) {
+    doSomething;
+}
 ----
 
 Here are a few simple examples.
 
 [source]
 ----
-if (speed > speedLimit) 
+if (speed > speedLimit) {
     driver.getsATicket();
+}
 
-if (x <= -1) 
+if (x <= -1) {
     System.out.println("Cannot have negative numbers!");
+}
 
 if (account.balance >= amountRequested) {
     subtract(account, amountRequested);

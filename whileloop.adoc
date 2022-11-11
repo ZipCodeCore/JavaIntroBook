@@ -50,7 +50,8 @@ This will keep letting player[1] take a turn in the game until the player dies. 
 describe them better after we're done with loops.
 
 ----
-int player = game.newPlayer();
+Game game = new Game();
+Player player = game.newPlayer();
 
 while (true) { // <- notice right here, an infinite loop
 

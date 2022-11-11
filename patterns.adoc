@@ -108,7 +108,7 @@ Here how to print out the array, one value per line.
 [source]
 ----
 for (let i = 0; i < a.length; i++) {
-    System.out.println(i, a[i]); // print the index and value of an array element.
+    System.out.println(i + " " + a[i]); // print the index and value of an array element.
 }
 ----
 
@@ -177,13 +177,4 @@ for (let i = 0; i < half; i++) {
 System.out.println("after: ",a);
 ----
 
-But perhaps the easier way to reverse an array in Java is to just call the library function:
-
-[source]
-----
-a = a.reverse();
-System.out.println(a);
-----
-
-It can be useful to look at the "longer" way to continue to get a feel for how to do small, useful things with simple logic.
 

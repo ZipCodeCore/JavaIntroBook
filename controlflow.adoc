@@ -27,4 +27,6 @@ while (j > 0) {
 }
 ----
 
-This ability to manipulate the control flow of a program is very important when you start developing logic for your apps and programs. Logic in programs depends heavily on being able to manipulate the control flows through the code. Let's take a look at how each kind of statement allows a programmer to change the flow of control in programs.
+This ability to manipulate the control flow of a program is very important when you start developing logic for your apps and programs. 
+Logic in programs depends heavily on being able to manipulate the control flows through the code. 
+Let's take a look at how each kind of statement allows a programmer to change the flow of control in programs.
