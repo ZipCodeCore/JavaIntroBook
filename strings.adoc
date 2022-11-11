@@ -56,20 +56,20 @@ Computers often start numbering things like strings, lists, and arrays at 0, not
 
 [source]
 ----
-int name = "Wacka Flocka";
+String name = "Wacka Flocka";
 ----
 
 Now we have a string variable named *name* and it's value is "Wacka Flocka".
 
 === String Properties
 
-A common and often used string property is *length*.
+A common and often used string property is *length()*.
 
 We can use `.length` to find the length of a string
 
 [source]
 ----
-int str = "Wakanda Forever!";
+String str = "Wakanda Forever!";
 int answer = str.length;
 System.out.println(answer); // -> 16
 ----
@@ -80,7 +80,7 @@ As mentioned before, we can reach into a string and copy out the stuff we find t
 
 [source]
 ----
-int word = "Hello";
+String word = "Hello";
 // Access the the first character (first by index, second by function)
 System.out.println(word[0]); // H
 System.out.println(word.charAt(0)); // H
@@ -99,10 +99,10 @@ This simply means joining strings together using the + operator or the concat( )
 [source]
 ----
 int price = 20;
-int dollarSign = "$";
-int priceTag = dollarSign + price; // $20
+String dollarSign = "$";
+String priceTag = dollarSign + price; // $20
 //or
-int priceTag = dollarSign.concat(price); // $20
+String priceTag = dollarSign.concat(price); // $20
 System.out.println(priceTag); // -> $20
 ----
 
@@ -110,10 +110,10 @@ Or perhaps a little more useful example:
 
 [source]
 ----
-int name = "Mikaila";
+String name = "Mikaila";
 int hoursWorked = 12;
 
-int workReport = "Today, " + name + " worked a total of " + hoursWorked + " hours."
+String workReport = "Today, " + name + " worked a total of " + hoursWorked + " hours."
 System.out.println(workReport);
 ----
 
@@ -126,49 +126,31 @@ Today, Mikaila worked a total of 12 hours.
 === SubStrings
 
 Getting a substring is a common operation. This is how we extract the characters from a string, between two specified indices. (Which is why it's important to remember the indexes start at 0.)
-There are 3 methods in Java to get a substring: substring, substr and slice. Let's look
-at each one. They have very slight differences, so you may want to pick one and memorize what your choice does.
 
 _someString.*substring*(start, end)_
-
-_someString.*substr*(start, end)_
-
-_someString.*slice*(start, end)_
 
 A start position is required, where to begin the extraction. Remember, first character is at position 0. 
 Characters are extracted from a string between "start" and "end", not including "end" itself.
 
 [source]
 ----
-int firstName = "Christopher";
+String firstName = "Christopher";
 ----
 
 Now let's use the 3 substring methods on firstName and extract and print out "Chris"
 
 [source]
 ----
-int firstName = "Christopher";
+String firstName = "Christopher";
 System.out.println(firstName.substring(0,5)); // "Chris"
-//or
-int a = firstName.slice(0,5); // "Chris"
-System.out.println(a);
-//or
-int b = firstName.substr(0,5); // "Chris"
-System.out.println(b);
 ----
 
 Yep. They all print "Chris". (Act impressed... thanks!) BUT, let's try to extract the string "stop" from the name.
 
 [source]
 ----
-int firstName = "Christopher";
+String firstName = "Christopher";
 System.out.println(firstName.substring(4,8)); // "stop"
-//or
-int a = firstName.slice(4,8); // "stop"
-System.out.println(a);
-//or
-int b = firstName.substr(4,4); // "stop"
-System.out.println(b);
 ----
 
 Notice how the arguments to the functions are *slightly* different. This is why it might be best to pick to memorize and use that one.
@@ -179,7 +161,7 @@ Let's try a little harder idea...
 ====
 [source]
 ----
-int fName = "Christopher";
+String fName = "Christopher";
 ----
 - Your turn to use the substring/substr/slice method on firstName
 - Extract and print out "STOP" from inside the string above
@@ -190,7 +172,7 @@ Well?
 
 [source]
 ----
-int fName = "Christopher";
+String fName = "Christopher";
 System.out.println(fName.substring(4,8).toUpperCase());
 ----
 
@@ -202,47 +184,16 @@ Take a look at these various ways to copy out a substring from the source string
 
 [source]
 ----
-int rapper = "mikaila";
-
-System.out.println(rapper.substr(0,4));  // mika
-System.out.println(rapper.substr(1,3));  // ika
+String rapper = "mikaila";
 
 System.out.println(rapper.substring(0,4));  // mika
 System.out.println(rapper.substring(1,4));  // ika
 
-System.out.println(rapper.slice(0,4)); // mika
-System.out.println(rapper.slice(1,4)); // ika
-System.out.println(rapper.slice(1,3)); // ik
+System.out.println(rapper.substring(4,7));  // ila
+System.out.println(rapper.substring(3,7));  // aila
+
 ----
 
 We're using each of the three different substring methods to copy out some smaller piece of the 'rapper' string.
 
-=== Reverse a String
-
-Now let's reverse the string "STOP" to say "POTS".
-
-[TIP]
-==== 
-To Reverse a String
-
-Step 1 - Use the split() to return an array of strings
-
-Step 2 - Use the reverse() method to reverse the newly created array of string characters
-
-Step 3 - Use the join() method to join all elements into a String
-====
-
-Solution
-
-[source]
-----
-var str = "Christopher";
-var res = str.substring(4, 8).toUpperCase(); // -> "STOP"
-var spl = res.split("");  // -> ["S", "T", "O", "P"]
-var rev = spl.reverse();  // -> ["P", "O", "T", "S"]
-var result = rev.join("");  // -> "POTS"
-System.out.println(result); // -> POTS
-----
-
-Strings are perhaps the most important data type in almost any language. Being able to manipulate them easily and do powerful things with them in Java, makes you a better coder.
 
