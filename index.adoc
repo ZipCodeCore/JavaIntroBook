@@ -154,11 +154,11 @@ include::break.adoc[]
 
 include::patterns.adoc[]
 
-//include::functions.adoc[]
+//include::classes.adoc[]
+
+//include::methods.adoc[]
 
 include::return.adoc[]
-
-//include::modules.adoc[]
 
 //include::objectsmethods.adoc[]
 

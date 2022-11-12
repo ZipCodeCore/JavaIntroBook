@@ -1,4 +1,4 @@
-== Modules
+== Classes
 
 In Java, modules allow for code to  loaded into a program only if it is needed. Modules are one of the advanced topics in Java that we won't spend too much time on, but here are the basics.
 
