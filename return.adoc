@@ -2,14 +2,14 @@
 
 The *return* statement is a very simple one. It just finishes the running of code in the current function and "returns" to the function's caller.
 
-As you have seen, _functions_ are used to make code more understandable, cleaner and more organized. Say we have a couple of functions in our program:
+As you have seen, _methods_ are used to make code more understandable, cleaner and more organized. Say we have a couple of functions in our program:
 
 [source]
 ----
 int minorHit = 3;
 int majorHit = 7;
 
-function adjustHealth(player, hit) {
+boolean adjustHealth(Player player, int hit) {
     player.health = player.health - hit;
 
     if (isAlive(player) == false) {
@@ -19,7 +19,7 @@ function adjustHealth(player, hit) {
     return playerAlive;
 } 
 
-function isAlive(player, hit) {
+boolean function isAlive(player, hit) {
     if (player.health >= 20) {
         return true;
     } else { // player has died!
