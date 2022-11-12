@@ -1,54 +1,54 @@
 
-== Functions
+== Methods
 
-A function is a block of code designed to perform a particular task. A function encloses a set of statements and is a fundamental modular unit of Java. They let you reuse code, and provide a way for you to organize your programs, keeping them easier to understand and easier to modify. It's often said that the craft of programming is the creation of a set of functions and data structures which implement a solution to some problem or set of requirements.
+A method is a block of code designed to perform a particular task. A method encloses a set of statements and is a fundamental modular unit of Java. They let you reuse code, and provide a way for you to organize your programs, keeping them easier to understand and easier to modify. It's often said that the craft of programming is the creation of a set of methods and data structures which implement a solution to some problem or set of requirements.
  
-Functions are objects, like many things in Java. They can be stored in variables, other objects, or even collected into arrays. Functions are very powerful because in Java, they can be passed as arguments to other functions, returned from functions, and can even have methods attached to them. The most important thing that functions can do is get *invoked*.
+methods are objects, like many things in Java. They can be stored in variables, other objects, or even collected into arrays. methods are very powerful because in Java, they can be passed as arguments to other methods, returned from methods, and can even have methods attached to them. The most important thing that methods can do is get *invoked*.
 
-You create functions easily.
+You create methods easily.
 
-=== Function Literal
+=== method Literal
 
-Two examples of how you write a function literal:
+Two examples of how you write a method literal:
 
 [source]
 ----
-int add = function (parameter1, parameter2) {
+int add = method (parameter1, parameter2) {
     return parameter1 + parameter2; 
 }
 ----
 
 [source]
 ----
-function add(p1, p2) {
+method add(p1, p2) {
     return p1 + p2;
 }
 ----
 
-In both of these cases, you end up with a function named 'add' that takes two parameters and adds them, returning the result. (Yes, you could just write (p1 + p2) and everyone would understand. It's just a very simple example.) Here is another example:
+In both of these cases, you end up with a method named 'add' that takes two parameters and adds them, returning the result. (Yes, you could just write (p1 + p2) and everyone would understand. It's just a very simple example.) Here is another example:
 
-=== Creating a Function
+=== Creating a method
 
 [source]
 ----
-function greetUser(username) {
+method greetUser(username) {
     System.out.println( "Hello " + username);
     return;
 }
 
-//calling/Invoking the function
+//calling/Invoking the method
 greetUser("Mike Jones"); // "Hello Mike Jones"
 ----
 
-=== Invoking Functions
+=== Invoking methods
 
-Functions are meant to be _invoked_. So you can have one function call another function which calls a third function and so on; it's very common.
+methods are meant to be _invoked_. So you can have one method call another method which calls a third method and so on; it's very common.
 
-Imagine we have a program that gets an airplane ready for flight. We can imagine a whole series of functions we'd have to write. Things like 'loadPassengers', 'loadBaggage', 'loadFuel', 'checkTirePressures', and so on. Then we might have a 'higher level' functions which brings all these pieces together:
+Imagine we have a program that gets an airplane ready for flight. We can imagine a whole series of methods we'd have to write. Things like 'loadPassengers', 'loadBaggage', 'loadFuel', 'checkTirePressures', and so on. Then we might have a 'higher level' methods which brings all these pieces together:
 
 [source]
 ----
-function prepFlight(airplane) {
+method prepFlight(airplane) {
     loadBaggage(airplane);
     loadPassengers(airplane);
 
@@ -64,15 +64,15 @@ function prepFlight(airplane) {
 }
 ----
 
-You can see how functions let you perform different things in a particular order, and while you might have no idea _how_ 'loadBaggage' does what it does, you can see how the program preps the airplane object for flight and makes sure everything important is done. Each of the functions from 'loadBaggage' to 'takeoff' is invoked and returns so the next one can be invoked. This is the power of functions - the ability to take some code and put it a function so that it much easier to understand.
+You can see how methods let you perform different things in a particular order, and while you might have no idea _how_ 'loadBaggage' does what it does, you can see how the program preps the airplane object for flight and makes sure everything important is done. Each of the methods from 'loadBaggage' to 'takeoff' is invoked and returns so the next one can be invoked. This is the power of methods - the ability to take some code and put it a method so that it much easier to understand.
 
-=== Anonymous Functions
+=== Anonymous methods
 
-A common pattern used in Java revolves around an *anonymous* function. It's a function without a name, and one that probably only gets called _once_. Something like:
+A common pattern used in Java revolves around an *anonymous* method. It's a method without a name, and one that probably only gets called _once_. Something like:
 
 [source]
 ----
-function () {
+method () {
     let x = 5;
     let y = 4;
     while (x < 100) {
@@ -82,28 +82,28 @@ function () {
 } () ;
 ----
 
-Look at that last line. What's going on here? Well, first we are creating a function object _without a name_ (so it's _anonymous_). Then on the last line, we are _invoking_ the function once (see those two parentheses? '()'?), so all the code inside gets run. (x get printed out).
+Look at that last line. What's going on here? Well, first we are creating a method object _without a name_ (so it's _anonymous_). Then on the last line, we are _invoking_ the method once (see those two parentheses? '()'?), so all the code inside gets run. (x get printed out).
 
-You see this often in Java. It's a way to put some code into an argument to another function call.
+You see this often in Java. It's a way to put some code into an argument to another method call.
 
 [source]
 ----
 int milliSecInASecond = 1000;
 
-setTimeout(function () {
+setTimeout(method () {
     System.out.println('We waited for 5 seconds, to print this')
 }, 5 * milliSecInASecond);
 ----
 
-See how we pass an anonymous function to 'setTimeout' as one argument, and a timer value as the second argument? The idea here is that the anonymous function gets called at 5 seconds in the future. (Like scheduling an alarm to do something in 5 seconds).
+See how we pass an anonymous method to 'setTimeout' as one argument, and a timer value as the second argument? The idea here is that the anonymous method gets called at 5 seconds in the future. (Like scheduling an alarm to do something in 5 seconds).
 
-=== Function Return
+=== method Return
 
-Once Java reaches a return statement, the function will stop executing. Functions often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a functions, depending on how the flow of control is changed.
+Once Java reaches a return statement, the method will stop executing. methods often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a methods, depending on how the flow of control is changed.
 
 [source]
 ----
-function greetUser(username) {
+method greetUser(username) {
     return "Hello " + username;
 }
 
@@ -116,7 +116,7 @@ Or like this:
 
 [source]
 ----
-function determineWinner(home, visitor) {
+method determineWinner(home, visitor) {
     if (home.score > visitor.score) {
         return "Home Team Wins! Let's have a Parade!"
     } else if (home.score < visitor.score) {
@@ -126,9 +126,9 @@ function determineWinner(home, visitor) {
 }
 ----
 
-Notice how in this case, we check to see the scoring results with two conditions (which are, what? yes, _boolean expressions_). If neither condition is true, the third one must be the case. But if either condition is true, then we return right away, and the function is done.
+Notice how in this case, we check to see the scoring results with two conditions (which are, what? yes, _boolean expressions_). If neither condition is true, the third one must be the case. But if either condition is true, then we return right away, and the method is done.
 
-Again, to be clear, we might use this function like this:
+Again, to be clear, we might use this method like this:
 
 [source]
 ----
@@ -143,7 +143,7 @@ int visitor = {
     score = 0;
 }
 
-playGame(home, visitor); // a lot of work done in this function(!)
+playGame(home, visitor); // a lot of work done in this method(!)
 
 // game is done
 int result = determineWinner(home, visitor);
@@ -152,17 +152,17 @@ int result = determineWinner(home, visitor);
 System.out.println(result);
 ----
 
-=== Function Parameters
+=== method Parameters
 
-Functions can also take parameters to be used within a function. 
+methods can also take parameters to be used within a method. 
 
 [source]
 ----
-function addThreeNumbers(a, b, c) {
+method addThreeNumbers(a, b, c) {
     return (a + b + c);
 }
 
-function determineWinner(home, visitor) {
+method determineWinner(home, visitor) {
     if (home.score > visitor.score) {
         return "Home Team Wins! Let's have a Parade!";
     } else if (home.score < visitor.score) {
@@ -171,7 +171,7 @@ function determineWinner(home, visitor) {
     return "It's a Tie!";
 }
 
-function makeNegative(number) {
+method makeNegative(number) {
     if (number > 0) {
         return -(number);
     }
@@ -198,13 +198,13 @@ System.out.println((4 % 2 === 0)); // true
 ----
 And we can use the same technique to see if a number is evenly divisible by 3 or 5.
 
-Try to write a function that will perform the following requirements:
+Try to write a method that will perform the following requirements:
 
 [TIP]
 ====
-* Create a function called zipCoder
-* Your function takes one parameter of type number
-* Your function checks and does the following
+* Create a method called zipCoder
+* Your method takes one parameter of type number
+* Your method checks and does the following
 * If parameter is divisible by 3 and 5 (15). Print ZipCoder
 * If parameter is divisible by 3. Print Zip
 * If parameter is divisible by 5. Print Coder
@@ -230,9 +230,9 @@ Well, here's one solution:
 
 [source]
 ----
-// Function ZipCoder
+// method ZipCoder
 
-function zipCoder(aNumber) {
+method zipCoder(aNumber) {
 if (aNumber % 15 == 0) System.out.println("ZipCoder");
 else if (aNumber % 3 == 0) System.out.println("Zip");
 else if (aNumber % 5 == 0) System.out.println("Coder");
