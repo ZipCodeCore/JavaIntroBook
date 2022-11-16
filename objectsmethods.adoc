@@ -1,7 +1,18 @@
 
 == Objects
 
-There are only a few data types in Java. All but one of them are called “primitive” data types, because their values contain only a single thing (be it a string or a number or whatever).
+Java is a language which encourages the idea of Object Oriented Programming. 
+**Objects** are a fundamental idea in Java. In a Java program, a programmer will break down the problem into smaller pieces, each piece might be a small grouping of objects.
+
+Let's think about our reliable furnace, the one that keeps us warm all winter long.
+Attached to the furnace is a _thermostat_, a very simple computer.
+There is a 3-way switch on most of them, one that allows you to select _off_, _heat_ or _cool_.
+In the winter, of course, if you're in the northern hemisphere, you tend to choose _heat_.
+
+If the thermostat is rather old fashion, it might have a ring you rotate to set the temperature, say 68 degrees.
+
+A Java programmer writes code which in _classes_ and then, when a java program runs, _objects_ are created 
+All but one of them are called “primitive” data types, because their values contain only a single thing (be it a string or a number or whatever).
 
 In contrast, *objects* are used to store *keyed* collections of various data and more complex entities. 
 _Objects_ add tremendous power to Java and penetrate almost every aspect of the language. 
@@ -121,16 +132,6 @@ System.out.println(airplane512.type); // airbusA330
 ----
 
 This is because both flight77 and airplane512 _refer to the *same* object. so when you make changes through the flight77 name, the properties in the object change, and you can get and/or set properties through the airplane512 name as well. This proves very powerful in many cases.
-
-=== Delete Properties
-
-Properties can be deleted as well.
-
-[source]
-----
-delete flight77.destination;
-delete flight77.origin;
-----
 
 === Object Functions
 
