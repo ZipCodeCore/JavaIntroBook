@@ -62,7 +62,7 @@ Now, if you wanted to find the average of a bunch of numbers, that's as easy as 
 
 [source]
 ----
-int sum = 0;
+int sum = 0;  // this needs to be 0 not 1
 int n = 100;
 for (let i = 1; i < n; i++) {
     sum = sum + i;
@@ -75,7 +75,7 @@ Pretty easy, yes? And the other common pattern here is doing a *product* of all 
 
 [source]
 ----
-int product = 1;
+int product = 1; // this needs to be 1 not 0
 int n = 20;
 for (let i = 1; i < n; i++) {
     product = product * i;

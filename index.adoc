@@ -116,7 +116,7 @@ Okay, let's go.
 :sectnums:
 
 
-== Output System.out.println()
+== Output - System.out.println()
 
 include::consolelog.adoc[]
 
