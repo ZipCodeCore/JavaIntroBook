@@ -1,11 +1,9 @@
 # Futures
 
-## Volume 2
+(August 2023 Restart)
 
-more code patterns examples
+- focus on Java from the use of standard library and interfaces.
+- use of OPC is fundamental to coding in the 21st, so think thru using OPC
+- what packages? classes? kits? can be used
+  - are there any re-thought fundamental libraries for Java?
 
-- a simple event loop for a console game
-- more OOP examples in JS
-- a mars lander console game
-
-Same ideas for Python3. rework code examples.
