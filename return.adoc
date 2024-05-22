@@ -1,25 +1,25 @@
 ==  Return statement
 
-The *return* statement is a very simple one. It just finishes the running of code in the current function and "returns" to the function's caller.
+The *return* statement is a very simple one. 
+It just finishes the running of code in the current method and "returns" to the method's caller.
 
-As you have seen, _methods_ are used to make code more understandable, cleaner and more organized. Say we have a couple of functions in our program:
+A method in Java can return a value if the method needs to. 
+
+As you have seen, _methods_ are used to make code more understandable, cleaner and more organized. 
+Say we have a couple of functions in our program:
 
 [source]
 ----
 int minorHit = 3;
 int majorHit = 7;
 
-boolean adjustHealth(Player player, int hit) {
+public boolean adjustHealth(Player player, int hit) {
     player.health = player.health - hit;
 
-    if (isAlive(player) == false) {
-        return playerDead;
-    }
-
-    return playerAlive;
+    return isAlive(player);
 } 
 
-boolean function isAlive(player, hit) {
+public boolean isAlive(player) {
     if (player.health >= 20) {
         return true;
     } else { // player has died!
@@ -34,11 +34,28 @@ If someplace in our code we were to do something like:
 [source]
 ----
 // big hit!
-continuePlaying = adjustHealth(playerOne, majorHit);
+isPlayerDead = adjustHealth(playerOne, majorHit);
 
-if (continuePlaying == playerDead) endGame();
+if (isPlayerDead == true) endGame();
 ----
 
-You can see how when we call the function "adjustHealth()" it returns either playerAlive or playerDead, and we make a decision to end the game if the player has died.
+You can see how when we call the function "adjustHealth()" it returns the result of calling `isAlive(player)`,
+and we make a decision to end the game if the player has died.
 
-Notice too, you can have multiple return statements in functions, and each one can return a different value if that's what you need.
+Notice too, you can have multiple return statements in functions, 
+and each one can return a different value if that's what you need.
+
+If a method is marked `void` then the method does not return a value, but can still use `return` statements 
+to stop computing within a method.
+
+[source]
+----
+
+public void printStatus(String message) {
+    System.err.println(message);
+    return;
+}
+----
+
+In this `void` return case the return statement does not return a value; but it makes it clear the method
+is at an end.

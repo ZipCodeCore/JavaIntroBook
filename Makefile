@@ -1,5 +1,5 @@
-BASE_NAME=ZipCodeJavaBook
-WORKB_NAME=ZipCodeJavaWorkBook
+BASE_NAME=ZipcodeJavaBook
+WORKB_NAME=ZipcodeJavaWorkBook
 
 all: $(BASE_NAME).pdf $(BASE_NAME).epub $(WORKB_NAME).pdf $(WORKB_NAME).epub 
 
@@ -37,5 +37,5 @@ clean:
 	rm -rf workbook.pdf index.pdf
 
 pub:
-	cp pdf/index.pdf ZCW-JS-Prep.pdf
-	cp epub/index.epub ZCW-JS-Prep.epub
+	cp pdf/index.pdf $(BASE_NAME).pdf
+	cp epub/index.epub $(BASE_NAME).epub
