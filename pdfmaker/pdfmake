@@ -1,0 +1,11 @@
+#!/bin/bash
+# $1 is the input file in markdown format
+set -x
+TMPFILE=$(mktemp /tmp/temp.$$.html)
+OUTFILE=${1%.*}
+echo $OUTFILE
+cat koleycss.html > $TMPFILE
+blackfriday-tool $1 >> $TMPFILE
+wkhtmltopdf --print-media-type -s Letter --footer-html footer.html --header-html header.html $TMPFILE $OUTFILE.pdf
+#wkhtmltopdf -s Letter --header-html header.html $TMPFILE $OUTFILE.pdf
+rm $TMPFILE
