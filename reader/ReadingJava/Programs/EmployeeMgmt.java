@@ -9,7 +9,11 @@ import java.io.*;
 // What's the problem with this program?
 // How should it be organized?
 
+// Would you use just files storing the data?
+// How could you upgrade it to being a Database app?
 
+// reduce the number of printlns scattered thru the code, how could you
+// make more use of templates
 class MainMenu
 {
   public void menu()

@@ -15,6 +15,11 @@
 // The code is not well documented, and it is hard to use.
 // So clean it up, and make it better.
 // 
+
+// look for patterns in the code, areas where you can replace duplicated code with method calls.
+// look for ways to put blocks of string data into a central data structure.
+// look for ways to make the Attack data into a data structure.
+
 import java.util.*;
 public class Dungeon {
     public static void main(String args[]) {
@@ -49,6 +54,7 @@ public class Dungeon {
         int maxMoney3 = 20;
         int maxMoney4 = 30;
 
+        // Attacks 
         String enemyAtks1[] = new String[]{"Awkward Stare","Spit","Bite","Thrash","Tackle"};
         int enemyAtks1dmg[] = new int[]{6,16,19,14,15};
         String enemyAtks2[] = new String[]{"Poison","Toxic Fungi","Soul Decay","Symbiosis"};

@@ -3,7 +3,7 @@
  *  Execution:    java Stack < input.txt
  *  Data files:   https://introcs.cs.princeton.edu/java/43stack/tobe.txt
  *
- *  A generic stack, implemented using a linked list. Each stack
+ *  A GENERIC stack, implemented using a linked list. Each stack
  *  element is of type Item.
  *
  *  % more tobe.txt
@@ -39,7 +39,7 @@ import java.util.NoSuchElementException;
  *
  *  @param <Item> the generic type of each item in this stack
  */
-public class Stack<Item> implements Iterable<Item> {
+public class GenericStack<Item> implements Iterable<Item> {
     private int n;          // size of the stack
     private Node first;     // top of stack
 
@@ -52,7 +52,7 @@ public class Stack<Item> implements Iterable<Item> {
    /**
      * Initializes an empty stack.
      */
-    public Stack() {
+    public GenericStack() {
         first = null;
         n = 0;
     }
@@ -157,7 +157,7 @@ public class Stack<Item> implements Iterable<Item> {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
+        GenericStack<String> stack = new GenericStack<String>();
         while (!StdIn.isEmpty()) {
             String item = StdIn.readString();
             if (!item.equals("-")) stack.push(item);
