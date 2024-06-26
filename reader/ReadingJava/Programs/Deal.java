@@ -25,12 +25,23 @@
  *
  ******************************************************************************/
 
+
+
+ // This needs to be Re-Factor'd
+ // This is a simple program that deals 5-card hands at random to the given number of players.
+ // It needs to be generalized, so that it can be used for any number of players and any number of cards per player.
+ // Also the blocks of code in `main` should be broken down into methods.
+// the code is not well-organized, and it is not clear what the code does.
+// the SUITS and RANKS arrays should be declared as constants. And outside of the main method.
+
+
 public class Deal {
     public static void main(String[] args) {
         int CARDS_PER_PLAYER = 5;
 
         // number of players
         int PLAYERS = Integer.parseInt(args[0]);
+        // what does this ^^^^ mean?
 
         String[] SUITS = {
             "Clubs", "Diamonds", "Hearts", "Spades"

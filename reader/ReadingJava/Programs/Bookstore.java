@@ -1,4 +1,12 @@
 
+// Make Bookstore class a "collection" class. It should have an array of Books.
+// Add a method to add a Book to the array.
+// Add a method to search for the price of a book given its title.
+// Add a method to search for the titles of all books written by a given author.
+// Add a method to search for the titles of all books with a price below a given amount.
+
+// Make a Main class that creates a Bookstore object and tests all the methods.
+
 class Author 
 {
 	private String fName;
@@ -94,3 +102,7 @@ public class Bookstore
 		System.out.println("Title : " + Book2.getTitle() + "\nAuthor : " + Book2.getAuthor() + "\nPrice : Rs " + Book2.getPrice());
 	}
 }
+
+// Change public class Bookstore to just a class Bookstore
+// Make Main a `public class` with a main method that creates a Bookstore object and tests all the methods.
+
