@@ -1,3 +1,4 @@
+// Level 1
 
 // Make Bookstore class a "collection" class. It should have an array of Books.
 // Add a method to add a Book to the array.

@@ -1,10 +1,4 @@
-/******************** Importing Essential Libraries ************************/
-
-import java.util.*;
-import java.io.*;
-
-
-/*************************** MENU OF EMS ****************************/
+// Level-2
 
 // What's the problem with this program?
 // How should it be organized?
@@ -14,6 +8,14 @@ import java.io.*;
 
 // reduce the number of printlns scattered thru the code, how could you
 // make more use of templates
+
+/******************** Importing Essential Libraries ************************/
+
+import java.util.*;
+import java.io.*;
+
+
+/*************************** MENU OF EMS ****************************/
 class MainMenu
 {
   public void menu()

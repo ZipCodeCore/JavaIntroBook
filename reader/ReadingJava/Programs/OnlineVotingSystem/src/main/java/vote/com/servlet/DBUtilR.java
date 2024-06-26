@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBUtilR {
-	  static Connection conn = null;
+	static Connection conn = null;
+	
 	static
 	 {	
 		try {
@@ -24,7 +25,6 @@ public class DBUtilR {
 	}
 	
 	public static  Connection getDBConnection() {
-		// TODO Auto-generated method stub
 		return conn;
 	}
 }

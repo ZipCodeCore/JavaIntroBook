@@ -1,3 +1,9 @@
+// Level-2 
+// Make this program into a much more useful class.
+// make main method into a method that takes a string array as an argument.
+
+// but make the convert method into a static method that takes an int as an argument and returns a string.
+
 /******************************************************************************
  *  Compilation:  javac IntegerToBinary.java
  *  Execution:    java IntegerToBinary n

@@ -1,4 +1,5 @@
-import java.util.*;
+
+// Level 1
 
 /* 
  * This program is used to encrypt and decrypt data.
@@ -18,6 +19,9 @@ import java.util.*;
  * You should also write a test class that tests the encryption and decryption methods.
  * 
  */
+
+
+import java.util.*;
 
 
 public class Encryption {

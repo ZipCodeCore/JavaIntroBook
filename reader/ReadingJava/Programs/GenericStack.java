@@ -1,3 +1,9 @@
+// Level-1
+
+// Use this class by testing all its methods in the main method of the Main class.
+// (as in move the main method from this class to the Main class)
+// yes, you need to make a Main class.
+
 /******************************************************************************
  *  Compilation:  javac Stack.java
  *  Execution:    java Stack < input.txt

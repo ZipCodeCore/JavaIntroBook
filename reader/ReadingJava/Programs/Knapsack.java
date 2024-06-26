@@ -1,3 +1,8 @@
+// Level-4 
+// Research this problem and understand what the `knapsack` problem is.
+// Explain it to a 5th grader. :-)
+// build a test class that tests the `knapSack` method.
+
 import java.util.*;
 public class Knapsack {
 

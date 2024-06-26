@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-//
+// Level-3
+
 // Add many more Riddles. Also make sure the riddles are in a either a JSON file, CSV file, YAML file or a text file.
 // Add a hint for each riddle.
 

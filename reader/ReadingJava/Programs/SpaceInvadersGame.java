@@ -8,8 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+// Level-2
+// 
 // Read the code, and then explain it!
 // Do so WITHOUT running it to see what it does.
+// make it prettier, but using images instead of squares.
+//
+
 
 public class SpaceInvadersGame extends JPanel implements KeyListener, ActionListener {
     private int playerX, playerY;

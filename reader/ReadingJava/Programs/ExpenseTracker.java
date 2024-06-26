@@ -1,3 +1,15 @@
+// Level-1
+// make a Main class, and move the main method from this class to the Main class.
+// add some methods to ExpenseTracker class to make it more modular and reusable.
+// add a method to save the expenses to a file.
+// add a method to load the expenses from a file.
+// add a method to display the total expenses.
+// add a method to display the expenses.
+// add a method to add an expense.
+// add a method to display the menu.
+// add a method to exit the program.
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

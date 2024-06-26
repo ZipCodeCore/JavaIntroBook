@@ -1,3 +1,5 @@
+// Level-2
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -8,6 +10,10 @@ import java.security.NoSuchAlgorithmException;
 //
     // Make this program interactive by allowing the user to input a password and then encrypt it.
     // Add other forms of encryption (e.g., MD5, SHA-1, etc.) and allow the user to choose which one to use.
+    // what the Heck is BigInteger? Research it and explain it to a 5th grader. :-)
+    // what the Heck is MessageDigest? Research it and explain it to a 5th grader. :-)
+    // what the Heck is NoSuchAlgorithmException? Research it and explain it to a 5th grader. :-)
+
     
 
 public class PasswordEncryption
