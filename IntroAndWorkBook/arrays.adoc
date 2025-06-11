@@ -120,7 +120,7 @@ donuts[2] = "powdered";   // -> ["chocolate", "glazed", "powdered", "strawberry"
 System.out.println(donuts[2]); // powdered
 ----
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice working with arrays:
 

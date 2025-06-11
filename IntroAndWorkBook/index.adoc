@@ -144,7 +144,7 @@ include::controlflow.adoc[]
 include::if.adoc[]
 
 // need to re-write
-//include::switch.adoc[]
+include::switch.adoc[]
 
 include::whileloop.adoc[]
 
@@ -154,17 +154,17 @@ include::break.adoc[]
 
 include::patterns.adoc[]
 
-//include::classes.adoc[]
+include::classes.adoc[]
 
-//include::methods.adoc[]
+include::methods.adoc[]
 
 include::return.adoc[]
 
-//include::objectsmethods.adoc[]
+include::objectsmethods.adoc[]
 
-//include::appendixa.adoc[]
+include::appendixa.adoc[]
 
-//include::appendixb.adoc[]
+include::appendixb.adoc[]
 
 include::appendixc.adoc[]
 

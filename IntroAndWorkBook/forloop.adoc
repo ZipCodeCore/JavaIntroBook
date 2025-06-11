@@ -87,7 +87,7 @@ for(int x = 0; x < donuts.length; x++){
 
 If you had something like this, buy yourself a donut, you deserve it.
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice for loops:
 

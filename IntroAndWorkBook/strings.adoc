@@ -194,7 +194,7 @@ System.out.println(rapper.substring(3,7));  // aila
 
 We're using each of the three different substring methods to copy out some smaller piece of the 'rapper' string.
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice working with strings:
 

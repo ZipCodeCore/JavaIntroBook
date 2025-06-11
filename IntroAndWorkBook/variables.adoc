@@ -241,7 +241,7 @@ String myDogName =         ;
 final int floorsInMyBuilding =         ;
 ----
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice working with variables:
 

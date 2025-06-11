@@ -143,22 +143,18 @@ Here is an example:
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double houseTemp = 67.0;
-    double thermostatSetting = 70.0;
+double houseTemp = 67.0;
+double thermostatSetting = 70.0;
 
-    System.out.println(houseTemp >= 55.0);
-    System.out.println(houseTemp <= thermostatSetting);
-    System.out.println(thermostatSetting != 72.0);
-    System.out.println(houseTemp > 65.0 && thermostatSetting == 68.0);
-  }
-}
+System.out.println(houseTemp >= 55.0);
+System.out.println(houseTemp <= thermostatSetting);
+System.out.println(thermostatSetting != 72.0);
+System.out.println(houseTemp > 65.0 && thermostatSetting == 68.0);
 ----
 
 These log statements should produce TRUE, TRUE, TRUE and FALSE.
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice boolean expressions and logical operators:
 

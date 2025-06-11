@@ -19,16 +19,12 @@ is to
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    // And in Java:
-    // a = b3 - 6 
+// And in Java:
+// a = b3 - 6 
 
-    int b = 3;
-    int a = b * 3 - 6;
-    System.out.println(a); // -> 3
-  }
-}
+int b = 3;
+int a = b * 3 - 6;
+System.out.println(a); // -> 3
 ----
 
 Now you try it. 
@@ -46,14 +42,10 @@ Take a moment and write down your solution before reading on.
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    int q = 0; 
-    int j = 5;
-    q = 2 * j + 20;
-    System.out.println(q); // -> 30
-  }
-}
+int q = 0; 
+int j = 5;
+q = 2 * j + 20;
+System.out.println(q); // -> 30
 ----
 
 Let's try another...
@@ -73,13 +65,9 @@ and print out x.
 My solution is pretty simple.
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double y = 2; 
-    double x = 5 * y + Math.pow(y, 3) - 7;
-    System.out.println(x); // -> 11
-  }
-}
+double y = 2; 
+double x = 5 * y + Math.pow(y, 3) - 7;
+System.out.println(x); // -> 11
 ----
 
 === _Trigonometry_
@@ -102,14 +90,10 @@ Formula: A = h * b / 2
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double height = 20;
-    double base = 10;	
-    double areaOfaTriangle  =  height * base / 2;
-    System.out.println(areaOfaTriangle); // -> 100
-  }
-}
+double height = 20;
+double base = 10;	
+double areaOfaTriangle  =  height * base / 2;
+System.out.println(areaOfaTriangle); // -> 100
 ----
 
 
@@ -123,17 +107,13 @@ Hint: You'll need to use a constant Math property!
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double radius = 7.7;	
-    double area  =  Math.PI * Math.pow(radius, 2);
-    System.out.println(area); 
-    // -> 186.26502843133886 (wow)
-  }
-}
+double radius = 7.7;	
+double area  =  Math.PI * Math.pow(radius, 2);
+System.out.println(area); 
+// -> 186.26502843133886 (wow)
 ----
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice algebraic equations and trigonometry:
 

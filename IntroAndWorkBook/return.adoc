@@ -60,7 +60,7 @@ public void printStatus(String message) {
 In this `void` return case the return statement does not return a value; but it makes it clear the method
 is at an end.
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice working with return statements and methods:
 

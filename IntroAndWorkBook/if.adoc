@@ -93,7 +93,7 @@ if (userAge < 18) {
 
 If statements are one of the most commonly used statements to express logic in a Java program. It's important to know them well.
 
-== Chapter Exercises
+=== Chapter Exercises
 
 Try these exercises in jshell to practice if statements and conditional logic:
 
