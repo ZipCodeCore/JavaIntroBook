@@ -148,7 +148,7 @@ public class Main {
     // Remainder
 
     for (a = 4; a < 13; a++) {
-        System.out.println(a, a % b); // would produce 
+        System.out.println(a + " " + (a % b)); // would produce 
     }
     // output of
     // 4 0
@@ -254,7 +254,13 @@ public class Main {
 }
 ----
 
-What's going to happen? Will the answer be 42 or 72? Paste it into the REPL.it and find out!
+What's going to happen? Will the answer be 42 or 72? Try it in jshell and find out:
+
+```
+jshell> int result = (30 + 6) * 2;
+jshell> System.out.println(result);
+72
+```
 
 === Java Math Class
 
@@ -315,3 +321,83 @@ then add 36 + 5 = 41.
 
 You'll learn a lot more about working with numbers in your career as a coder. 
 This is really just the very basic of beginnings.
+
+== Chapter Exercises
+
+Try these exercises in jshell to practice arithmetic operators:
+
+[TIP]
+====
+*Exercise 1: Basic Arithmetic*
+
+Practice all the basic operators:
+```
+int a = 20;
+int b = 6;
+
+System.out.println("a + b = " + (a + b));
+System.out.println("a - b = " + (a - b));
+System.out.println("a * b = " + (a * b));
+System.out.println("a / b = " + (a / b));
+System.out.println("a % b = " + (a % b));
+```
+What happens with integer division? Why is 20/6 = 3?
+====
+
+[TIP]
+====
+*Exercise 2: Order of Operations*
+
+Predict the results before running:
+```
+int result1 = 5 + 3 * 2;
+int result2 = (5 + 3) * 2;
+int result3 = 10 - 4 / 2 + 1;
+int result4 = (10 - 4) / (2 + 1);
+
+System.out.println("5 + 3 * 2 = " + result1);
+System.out.println("(5 + 3) * 2 = " + result2);
+System.out.println("10 - 4 / 2 + 1 = " + result3);
+System.out.println("(10 - 4) / (2 + 1) = " + result4);
+```
+====
+
+[TIP]
+====
+*Exercise 3: Math Class Methods*
+
+Experiment with Math class methods:
+```
+double radius = 5.0;
+double area = Math.PI * Math.pow(radius, 2);
+double circumference = 2 * Math.PI * radius;
+
+System.out.println("Circle with radius: " + radius);
+System.out.println("Area: " + area);
+System.out.println("Circumference: " + circumference);
+System.out.println("Square root of 64: " + Math.sqrt(64));
+System.out.println("4 to the power of 3: " + Math.pow(4, 3));
+```
+====
+
+[TIP]
+====
+*Exercise 4: Increment and Decrement*
+
+Practice with ++ and -- operators:
+```
+int counter = 10;
+System.out.println("Initial counter: " + counter);
+
+counter++;
+System.out.println("After counter++: " + counter);
+
+counter--;
+System.out.println("After counter--: " + counter);
+
+System.out.println("Using ++counter: " + (++counter));
+System.out.println("Using counter++: " + (counter++));
+System.out.println("Final counter: " + counter);
+```
+Notice the difference between ++counter and counter++
+====

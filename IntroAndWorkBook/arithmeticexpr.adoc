@@ -133,4 +133,92 @@ public class Main {
 }
 ----
 
+== Chapter Exercises
+
+Try these exercises in jshell to practice algebraic equations and trigonometry:
+
+[TIP]
+====
+*Exercise 1: Linear Equations*
+
+Solve these equations with Java:
+```
+// Equation: y = 3x + 7, where x = 4
+int x = 4;
+int y = 3 * x + 7;
+System.out.println("When x = " + x + ", y = " + y);
+
+// Equation: temperature in Fahrenheit = (C * 9/5) + 32
+double celsius = 25.0;
+double fahrenheit = (celsius * 9.0 / 5.0) + 32;
+System.out.println(celsius + "°C = " + fahrenheit + "°F");
+```
+====
+
+[TIP]
+====
+*Exercise 2: Quadratic Expressions*
+
+Calculate values for a quadratic equation:
+```
+// Equation: y = x² + 2x - 3
+int x = 5;
+double y = Math.pow(x, 2) + 2 * x - 3;
+System.out.println("For x = " + x + ", y = " + y);
+
+// Try with different x values
+x = -1;
+y = Math.pow(x, 2) + 2 * x - 3;
+System.out.println("For x = " + x + ", y = " + y);
+```
+====
+
+[TIP]
+====
+*Exercise 3: Geometry Calculations*
+
+Calculate areas and perimeters:
+```
+// Rectangle
+double length = 12.5;
+double width = 8.0;
+double rectArea = length * width;
+double rectPerimeter = 2 * (length + width);
+
+System.out.println("Rectangle: " + length + " x " + width);
+System.out.println("Area: " + rectArea);
+System.out.println("Perimeter: " + rectPerimeter);
+
+// Circle
+double radius = 6.5;
+double circleArea = Math.PI * Math.pow(radius, 2);
+double circumference = 2 * Math.PI * radius;
+
+System.out.println("Circle with radius: " + radius);
+System.out.println("Area: " + circleArea);
+System.out.println("Circumference: " + circumference);
+```
+====
+
+[TIP]
+====
+*Exercise 4: Physics Formulas*
+
+Calculate distance, speed, and acceleration:
+```
+// Distance = speed × time
+double speed = 65.0; // mph
+double time = 2.5;   // hours
+double distance = speed * time;
+System.out.println("Driving " + speed + " mph for " + time + " hours");
+System.out.println("Distance traveled: " + distance + " miles");
+
+// Force = mass × acceleration
+double mass = 10.0;  // kg
+double acceleration = 9.8; // m/s²
+double force = mass * acceleration;
+System.out.println("Force = " + mass + " kg × " + acceleration + " m/s² = " + force + " N");
+```
+====
+
 

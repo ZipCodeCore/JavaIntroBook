@@ -49,12 +49,12 @@ Java can also "nest" if statements, making them very flexible for complicated si
 
 [source]
 ----
-int timeOfDay = "Afternoon";
+String timeOfDay = "Afternoon";
 
-if (timeOfDay === "Morning") {
+if (timeOfDay.equals("Morning")) {
     System.out.println("Time to eat breakfast");
     eatCereal();
-} else if (timeOfDay === "Afternoon") {
+} else if (timeOfDay.equals("Afternoon")) {
     System.out.println("Time to eat lunch");
     haveASandwich();
 } else {
@@ -77,7 +77,7 @@ Write code to check if a user is old enough to drink.
 ====
 You should use an if statement for your solution!
 
-Finally, make sure to change the value of the age variable in the repl, to output out different results and test that all three options can happen. What do you have to do to make the `else` clause happen?
+Finally, make sure to change the value of the age variable in jshell, to output different results and test that all three options can happen. What do you have to do to make the `else` clause happen?
 
 [source]
 ----
@@ -92,5 +92,118 @@ if (userAge < 18) {
 ----
 
 If statements are one of the most commonly used statements to express logic in a Java program. It's important to know them well.
+
+== Chapter Exercises
+
+Try these exercises in jshell to practice if statements and conditional logic:
+
+[TIP]
+====
+*Exercise 1: Simple If Statements*
+
+Create a temperature checking program:
+```
+int temperature = 75;
+
+if (temperature > 80) {
+    System.out.println("It's hot outside!");
+}
+
+if (temperature < 60) {
+    System.out.println("It's cold outside!");
+}
+
+if (temperature >= 60 && temperature <= 80) {
+    System.out.println("Perfect weather!");
+}
+
+System.out.println("Current temperature: " + temperature + "°F");
+```
+Try changing the temperature value to test different conditions.
+====
+
+[TIP]
+====
+*Exercise 2: If-Else Statements*
+
+Create a grade calculator:
+```
+int score = 85;
+String grade;
+
+if (score >= 90) {
+    grade = "A";
+} else if (score >= 80) {
+    grade = "B";
+} else if (score >= 70) {
+    grade = "C";
+} else if (score >= 60) {
+    grade = "D";
+} else {
+    grade = "F";
+}
+
+System.out.println("Score: " + score);
+System.out.println("Grade: " + grade);
+
+if (score >= 70) {
+    System.out.println("Passing grade!");
+} else {
+    System.out.println("Need to retake the test.");
+}
+```
+====
+
+[TIP]
+====
+*Exercise 3: Nested If Statements*
+
+Create a movie recommendation system:
+```
+int age = 16;
+String movieType = "action";
+boolean hasParent = false;
+
+System.out.println("Age: " + age + ", Movie type: " + movieType);
+
+if (age >= 18) {
+    System.out.println("Can watch any movie");
+} else {
+    if (movieType.equals("kids")) {
+        System.out.println("Can watch kids movies");
+    } else if (movieType.equals("teen") && age >= 13) {
+        System.out.println("Can watch teen movies");
+    } else if (hasParent) {
+        System.out.println("Can watch with parent supervision");
+    } else {
+        System.out.println("Cannot watch this movie");
+    }
+}
+```
+====
+
+[TIP]
+====
+*Exercise 4: Complex Conditions*
+
+Create a login validation system:
+```
+String username = "admin";
+String password = "secret123";
+boolean accountLocked = false;
+int loginAttempts = 2;
+
+if (accountLocked) {
+    System.out.println("Account is locked. Contact administrator.");
+} else if (loginAttempts >= 3) {
+    System.out.println("Too many failed attempts. Account locked.");
+} else if (username.equals("admin") && password.equals("secret123")) {
+    System.out.println("Login successful! Welcome, " + username);
+} else {
+    System.out.println("Invalid username or password.");
+    System.out.println("Attempts remaining: " + (3 - loginAttempts - 1));
+}
+```
+====
 
 

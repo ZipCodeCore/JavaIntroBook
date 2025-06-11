@@ -120,3 +120,119 @@ donuts[2] = "powdered";   // -> ["chocolate", "glazed", "powdered", "strawberry"
 System.out.println(donuts[2]); // powdered
 ----
 
+== Chapter Exercises
+
+Try these exercises in jshell to practice working with arrays:
+
+[TIP]
+====
+*Exercise 1: Array Basics*
+
+Create and manipulate a simple array:
+```
+int[] scores = {95, 87, 92, 78, 88};
+
+System.out.println("First score: " + scores[0]);
+System.out.println("Last score: " + scores[scores.length - 1]);
+System.out.println("Array length: " + scores.length);
+
+// Change a score
+scores[1] = 90;
+System.out.println("Updated second score: " + scores[1]);
+
+// Print all scores
+System.out.println("All scores:");
+for (int i = 0; i < scores.length; i++) {
+    System.out.println("Score " + (i + 1) + ": " + scores[i]);
+}
+```
+====
+
+[TIP]
+====
+*Exercise 2: String Arrays*
+
+Work with an array of strings:
+```
+String[] cities = {"New York", "Los Angeles", "Chicago", "Houston", "Phoenix"};
+
+System.out.println("Cities in our array:");
+for (int i = 0; i < cities.length; i++) {
+    System.out.println((i + 1) + ". " + cities[i]);
+}
+
+// Find the longest city name
+String longest = cities[0];
+for (int i = 1; i < cities.length; i++) {
+    if (cities[i].length() > longest.length()) {
+        longest = cities[i];
+    }
+}
+System.out.println("Longest city name: " + longest);
+```
+====
+
+[TIP]
+====
+*Exercise 3: Array Calculations*
+
+Calculate statistics from an array of numbers:
+```
+double[] prices = {12.99, 8.50, 15.75, 22.00, 9.99, 18.25};
+
+// Find sum and average
+double sum = 0;
+for (int i = 0; i < prices.length; i++) {
+    sum += prices[i];
+}
+double average = sum / prices.length;
+
+// Find min and max
+double min = prices[0];
+double max = prices[0];
+for (int i = 1; i < prices.length; i++) {
+    if (prices[i] < min) min = prices[i];
+    if (prices[i] > max) max = prices[i];
+}
+
+System.out.println("Number of items: " + prices.length);
+System.out.println("Total cost: $" + sum);
+System.out.println("Average price: $" + average);
+System.out.println("Cheapest item: $" + min);
+System.out.println("Most expensive item: $" + max);
+```
+====
+
+[TIP]
+====
+*Exercise 4: Enhanced For Loop*
+
+Try the enhanced for loop (for-each):
+```
+String[] fruits = {"apple", "banana", "orange", "grape", "kiwi"};
+
+// Traditional for loop
+System.out.println("Traditional for loop:");
+for (int i = 0; i < fruits.length; i++) {
+    System.out.println("- " + fruits[i]);
+}
+
+// Enhanced for loop (for-each)
+System.out.println("\nEnhanced for loop:");
+for (String fruit : fruits) {
+    System.out.println("- " + fruit.toUpperCase());
+}
+
+// Count fruits that start with vowels
+int vowelCount = 0;
+for (String fruit : fruits) {
+    char firstChar = fruit.charAt(0);
+    if (firstChar == 'a' || firstChar == 'e' || firstChar == 'i' || 
+        firstChar == 'o' || firstChar == 'u') {
+        vowelCount++;
+    }
+}
+System.out.println("Fruits starting with vowels: " + vowelCount);
+```
+====
+

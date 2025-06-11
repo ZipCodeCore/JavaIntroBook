@@ -2,7 +2,7 @@
 :title-page:
 = Zip Code Wilmington's Programming in Java
 Kristofer Younger <kris@zipcodewilmington.com>
-v0.4, 2024-05-22
+v2.1, 2025-06-01
 :imagesdir: images
 :pdf-theme: indextheme.yml
 :source-highlighter: rouge
@@ -20,7 +20,7 @@ v0.4, 2024-05-22
 Zip Code Wilmington's Programming in Java
 by Kristofer Younger
 
-Copyright (C) 2020-2024 by Zip Code Wilmington. All Rights Reserved.
+Copyright (C) 2020-2025 by Zip Code Wilmington. All Rights Reserved.
 
 //Cover Design: Janelle Bowman
 
@@ -165,6 +165,8 @@ include::return.adoc[]
 //include::appendixa.adoc[]
 
 //include::appendixb.adoc[]
+
+include::appendixc.adoc[]
 
 [appendix]
 == Additional Java Resources

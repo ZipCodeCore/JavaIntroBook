@@ -9,11 +9,11 @@ while (true) {
 
   String cmd = getCommandFromUser("Enter a command", '');
 
-  if (cmd == "exit") break; 
+  if (cmd.equals("exit")) break; 
 
   execute(cmd);
 }
-System.out.println("Exiting.")
+System.out.println("Exiting.");
 ----
 
 Here, you are asking the user to type in a command. If the command is "exit", then quit the loop and output "Exiting", and end the program.
@@ -27,12 +27,12 @@ We can use it if we’re done with the current iteration and would like to move 
 
 [source]
 ----
-for (let i = 0; i < 10; i++) {
+for (int i = 0; i < 10; i++) {
 
   // if true, skip the remaining part of the body
   // will only be true if the number is even
 
-  if (i % 2 === 0) continue;
+  if (i % 2 == 0) continue;
 
   System.out.println(i); // prints 1, then 3, 5, 7, 9
 }

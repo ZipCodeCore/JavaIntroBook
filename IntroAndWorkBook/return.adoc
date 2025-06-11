@@ -19,7 +19,7 @@ public boolean adjustHealth(Player player, int hit) {
     return isAlive(player);
 } 
 
-public boolean isAlive(player) {
+public boolean isAlive(Player player) {
     if (player.health >= 20) {
         return true;
     } else { // player has died!
@@ -59,3 +59,65 @@ public void printStatus(String message) {
 
 In this `void` return case the return statement does not return a value; but it makes it clear the method
 is at an end.
+
+== Chapter Exercises
+
+Try these exercises in jshell to practice working with return statements and methods:
+
+[TIP]
+====
+*Exercise 1: Simple Return Method*
+
+Create a method that takes two integers and returns their sum:
+```
+int addNumbers(int a, int b) {
+    return a + b;
+}
+```
+Test it: `addNumbers(5, 3)` should return `8`
+====
+
+[TIP]
+====
+*Exercise 2: Boolean Return Method*
+
+Create a method that checks if a number is positive:
+```
+boolean isPositive(int number) {
+    return number > 0;
+}
+```
+Test it: `isPositive(5)` should return `true`, `isPositive(-3)` should return `false`
+====
+
+[TIP]
+====
+*Exercise 3: String Return Method*
+
+Create a method that returns a greeting message:
+```
+String createGreeting(String name) {
+    return "Hello, " + name + "!";
+}
+```
+Test it: `createGreeting("Alice")` should return `"Hello, Alice!"`
+====
+
+[TIP]
+====
+*Exercise 4: Multiple Return Paths*
+
+Create a method that returns different messages based on a grade:
+```
+String getGradeMessage(int grade) {
+    if (grade >= 90) {
+        return "Excellent!";
+    } else if (grade >= 70) {
+        return "Good job!";
+    } else {
+        return "Keep trying!";
+    }
+}
+```
+Test it with different values: `getGradeMessage(95)`, `getGradeMessage(75)`, `getGradeMessage(65)`
+====

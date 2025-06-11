@@ -123,7 +123,7 @@ public class Main {
 }
 ----
 
-What's going to be the answer? footnote:[totalCost will be $243.33 and $20.28 per month.] Run it in your Repl window to work it all out.
+What's going to be the answer? footnote:[totalCost will be $243.33 and $20.28 per month.] Run it in jshell to work it all out.
 
 And let's do one more.
 

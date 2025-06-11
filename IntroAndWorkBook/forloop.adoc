@@ -49,7 +49,7 @@ Let's show you another glimpse of the *break* statement.
 [source]
 ----
 for(int p = 1; p < 6; p++){
-    if(p === 4){
+    if(p == 4){
         break;
     }
 System.out.println("Loop " + p + " times");
@@ -86,3 +86,129 @@ for(int x = 0; x < donuts.length; x++){
 ----
 
 If you had something like this, buy yourself a donut, you deserve it.
+
+== Chapter Exercises
+
+Try these exercises in jshell to practice for loops:
+
+[TIP]
+====
+*Exercise 1: Basic For Loop*
+
+Practice counting and basic output:
+```
+// Count from 1 to 10
+for (int i = 1; i <= 10; i++) {
+    System.out.println("Count: " + i);
+}
+
+// Count backwards from 10 to 1
+System.out.println("\nCountdown:");
+for (int i = 10; i >= 1; i--) {
+    System.out.println(i);
+}
+System.out.println("Blast off!");
+
+// Count by 2s
+System.out.println("\nEven numbers from 2 to 20:");
+for (int i = 2; i <= 20; i += 2) {
+    System.out.println(i);
+}
+```
+====
+
+[TIP]
+====
+*Exercise 2: Mathematical Calculations*
+
+Use for loops for calculations:
+```
+// Calculate sum of numbers 1 to 100
+int sum = 0;
+for (int i = 1; i <= 100; i++) {
+    sum += i;
+}
+System.out.println("Sum of 1 to 100: " + sum);
+
+// Create a multiplication table
+int number = 7;
+System.out.println("\nMultiplication table for " + number + ":");
+for (int i = 1; i <= 10; i++) {
+    System.out.println(number + " × " + i + " = " + (number * i));
+}
+
+// Calculate factorial
+int factorial = 1;
+int n = 5;
+for (int i = 1; i <= n; i++) {
+    factorial *= i;
+}
+System.out.println(n + "! = " + factorial);
+```
+====
+
+[TIP]
+====
+*Exercise 3: Pattern Printing*
+
+Create visual patterns with loops:
+```
+// Print a triangle of stars
+System.out.println("Triangle:");
+for (int i = 1; i <= 5; i++) {
+    for (int j = 1; j <= i; j++) {
+        System.out.print("* ");
+    }
+    System.out.println();
+}
+
+// Print a square
+System.out.println("\nSquare:");
+for (int i = 1; i <= 4; i++) {
+    for (int j = 1; j <= 4; j++) {
+        System.out.print("# ");
+    }
+    System.out.println();
+}
+
+// Print numbers in a pattern
+System.out.println("\nNumber pattern:");
+for (int i = 1; i <= 4; i++) {
+    for (int j = 1; j <= i; j++) {
+        System.out.print(j + " ");
+    }
+    System.out.println();
+}
+```
+====
+
+[TIP]
+====
+*Exercise 4: Working with Arrays*
+
+Combine for loops with arrays:
+```
+String[] names = {"Alice", "Bob", "Charlie", "Diana", "Eve"};
+
+// Print all names with index
+System.out.println("Student roster:");
+for (int i = 0; i < names.length; i++) {
+    System.out.println((i + 1) + ". " + names[i]);
+}
+
+// Find names that start with a specific letter
+char searchLetter = 'A';
+System.out.println("\nNames starting with '" + searchLetter + "':");
+for (int i = 0; i < names.length; i++) {
+    if (names[i].charAt(0) == searchLetter) {
+        System.out.println("- " + names[i]);
+    }
+}
+
+// Create a modified version
+System.out.println("\nFormatted names:");
+for (int i = 0; i < names.length; i++) {
+    System.out.println("Hello, " + names[i] + "!");
+}
+```
+====

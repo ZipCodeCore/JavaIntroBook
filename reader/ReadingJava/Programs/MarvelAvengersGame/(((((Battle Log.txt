@@ -14,3 +14,6 @@ IRON MAN v/s THANOS			IRON MAN Killed THANOS			Points Scored : 960
 IRON MAN v/s THANOS			IRON MAN Killed THANOS			Points Scored : 960
 IRON MAN v/s THANOS			IRON MAN Killed THANOS			Points Scored : 960
 IRON MAN v/s LOKI			IRON MAN Killed LOKI			Points Scored : 480
+IRON MAN v/s LOKI			IRON MAN Killed LOKI			Points Scored : 480
+THOR v/s THANOS			THOR and THANOS Killed Each Other			Points Scored  : 960
+THOR v/s THANOS			THOR and THANOS Killed Each Other			Points Scored  : 960

@@ -55,9 +55,7 @@ To do that we need a bunch of *comparison operators*.
 |===
 |Operator |Description |Example
 |== |Equal to |x == 5
-|=== |Equal value and type |x === '5'
 |!= |Not equal to |x != 55
-|!== |Not equal to value and type |x !== '5'
 |> |Greater than |x > 1
 |< |Less than |x < 10
 |>= |Greater than or equal to |x >= 5
@@ -97,7 +95,7 @@ The AND operator, '&&', is an operator where BOTH sides have to be true for the 
 
 [source]
 ----
-(5 < 9) && (6-3 === 3)  // true
+(5 < 9) && (6-3 == 3)  // true
 ----
 
 See how both expressions on either side of the '&&' are true? That makes the entire line true.
@@ -107,11 +105,11 @@ The OR operator, '||' footnote:[shift-backslash '\' on most keyboards], is an op
 
 [source]
 ----
-(5 < 9) || (6-3 === 3) // true
+(5 < 9) || (6-3 == 3) // true
 
-(5 === 4) || (7 > 3)   // true!
+(5 == 4) || (7 > 3)   // true!
 
-(5 === 4) || (6 === 2) // false (both are false)
+(5 == 4) || (6 == 2) // false (both are false)
 ----
 
 Both sides of a logical operator need to be Boolean expressions. So it's all right to
@@ -159,4 +157,91 @@ public class Main {
 ----
 
 These log statements should produce TRUE, TRUE, TRUE and FALSE.
+
+== Chapter Exercises
+
+Try these exercises in jshell to practice boolean expressions and logical operators:
+
+[TIP]
+====
+*Exercise 1: Basic Comparisons*
+
+Practice comparison operators:
+```
+int age = 22;
+int votingAge = 18;
+int drinkingAge = 21;
+
+System.out.println("Age: " + age);
+System.out.println("Can vote: " + (age >= votingAge));
+System.out.println("Can drink: " + (age >= drinkingAge));
+System.out.println("Is exactly voting age: " + (age == votingAge));
+System.out.println("Is not drinking age: " + (age != drinkingAge));
+```
+====
+
+[TIP]
+====
+*Exercise 2: Logical AND and OR*
+
+Combine conditions with && and ||:
+```
+int temperature = 75;
+boolean isSunny = true;
+boolean hasUmbrella = false;
+
+boolean perfectWeather = (temperature > 70) && isSunny;
+boolean needJacket = (temperature < 60) || (!isSunny);
+boolean goOutside = perfectWeather || (hasUmbrella && !isSunny);
+
+System.out.println("Temperature: " + temperature + "°F, Sunny: " + isSunny);
+System.out.println("Perfect weather: " + perfectWeather);
+System.out.println("Need jacket: " + needJacket);
+System.out.println("Go outside: " + goOutside);
+```
+====
+
+[TIP]
+====
+*Exercise 3: String Comparisons*
+
+Practice with string equality:
+```
+String password = "secret123";
+String userInput = "secret123";
+String wrongInput = "Secret123";
+
+boolean correctPassword = password.equals(userInput);
+boolean incorrectPassword = password.equals(wrongInput);
+boolean isEmpty = password.equals("");
+
+System.out.println("Correct password: " + correctPassword);
+System.out.println("Incorrect password: " + incorrectPassword);
+System.out.println("Password is empty: " + isEmpty);
+System.out.println("Password length > 5: " + (password.length() > 5));
+```
+====
+
+[TIP]
+====
+*Exercise 4: Complex Conditions*
+
+Create a grade evaluation system:
+```
+int score = 85;
+boolean hasExtraCredit = true;
+boolean attendedAllClasses = true;
+
+boolean passingGrade = score >= 70;
+boolean excellentGrade = score >= 90;
+boolean bonusEligible = hasExtraCredit && attendedAllClasses;
+boolean finalPass = passingGrade || (score >= 60 && bonusEligible);
+
+System.out.println("Score: " + score);
+System.out.println("Passing grade: " + passingGrade);
+System.out.println("Excellent grade: " + excellentGrade);
+System.out.println("Bonus eligible: " + bonusEligible);
+System.out.println("Final pass: " + finalPass);
+```
+====
 
