@@ -111,60 +111,55 @@ Comments can be used to explain tricky bits of code, or describe what you should
 
 === Chapter Exercises
 
-Note on exercises: So yeah, I want you to learn Java. And you claim you want to learn Java.
+__Note on exercises: So yeah, I want you to learn Java. And you claim you want to learn Java.
 So, then, about the these exercises; remember when I said learning the hard way is best?
 (the idea that by typing code in with your own two-little-fingers (oh wait, what? 
-you know how to type? You'll go far in this gig!!)) Yeah, so here's the deal.
+you know how to type? You'll go far in this gig!!)) Yeah, so here's the deal.__
 
-You should NOT copypasta these exercises into jshell. You should t-y-p-e them. Yes, that's right,
+__You should NOT copypasta these exercises into jshell. You should t-y-p-e them. Yes, that's right,
 t-y-p-e them in with your fingers. You will practice what code looks like and how it goes
 together if you do enough of it.
-And that word, "copypasta", well look it up.  
+And that word, "copypasta", well look it up.__
 
 Try these exercises in jshell to practice System.out.println and basic Java syntax:
 
-[TIP]
-====
 *Exercise 1: Your First Output*
 
 Print your name and age using System.out.println:
+Replace [Your Name] and [Your Age] with your actual information.
+
+
 ```
 System.out.println("My name is [Your Name]");
 System.out.println("I am [Your Age] years old");
 ```
-Replace [Your Name] and [Your Age] with your actual information.
-====
 
-[TIP]
-====
 *Exercise 2: Using Variables and Concatenation*
 
 Create variables for your favorite food and hobby, then print them:
+
 ```
 String favFood = "pizza";
 String hobby = "reading";
 System.out.println("I love eating " + favFood);
 System.out.println("My favorite hobby is " + hobby);
 ```
-====
 
-[TIP]
-====
 *Exercise 3: Numbers and Math*
 
 Create variables for two numbers and print their sum:
+
 ```
 int num1 = 15;
 int num2 = 27;
 System.out.println("Sum of " + num1 + " & " + num2 + " is " + (num1 + num2));
 ```
-====
 
-[TIP]
-====
 *Exercise 4: Multiple Data Types*
 
 Practice with different data types:
+==== 
+
 ```
 String name = "Java";
 int version = 21;
@@ -176,7 +171,6 @@ System.out.println("Version: " + version);
 System.out.println("Pi: " + pi);
 System.out.println("Is awesome: " + isAwesome);
 ```
-==== 
 
 == BUT WAIT!!!
 

@@ -155,8 +155,8 @@ Notice how the arguments to the functions are *slightly* different. This is why 
 
 Let's try a little harder idea...
 
-[TIP]
-====
+**Exercise: Extract and Transform Substring**
+
 [source]
 ----
 String fName = "Christopher";
@@ -164,7 +164,6 @@ String fName = "Christopher";
 - Your turn to use the substring/substr/slice method on firstName
 - Extract and print out "STOP" from inside the string above
 - And make it uppercase! ("stop" to "STOP") footnote:[You could google how to do this, try "Java string make upper case"]
-====
 
 Well?
 
@@ -198,9 +197,7 @@ We're using each of the three different substring methods to copy out some small
 
 Try these exercises in jshell to practice working with strings:
 
-[TIP]
-====
-*Exercise 1: String Basics*
+**Exercise 1: String Basics**
 
 Practice string creation and basic properties:
 ```
@@ -215,11 +212,8 @@ System.out.println("Full name length: " + fullName.length());
 System.out.println("First character: " + fullName.charAt(0));
 System.out.println("Last character: " + fullName.charAt(fullName.length() - 1));
 ```
-====
 
-[TIP]
-====
-*Exercise 2: String Methods*
+**Exercise 2: String Methods**
 
 Explore different string methods:
 ```
@@ -234,11 +228,8 @@ System.out.println("Contains 'Python': " + message.contains("Python"));
 System.out.println("Starts with 'Java': " + message.startsWith("Java"));
 System.out.println("Ends with '!': " + message.endsWith("!"));
 ```
-====
 
-[TIP]
-====
-*Exercise 3: Substring Practice*
+**Exercise 3: Substring Practice**
 
 Extract parts of strings:
 ```
@@ -260,11 +251,8 @@ String last = username.substring(dotIndex + 1);
 System.out.println("First name: " + first);
 System.out.println("Last name: " + last);
 ```
-====
 
-[TIP]
-====
-*Exercise 4: String Building*
+**Exercise 4: String Building**
 
 Create formatted output:
 ```
@@ -289,6 +277,5 @@ sb.append("Item: ").append(productName).append("\n");
 sb.append("Cost: $").append(total);
 System.out.println(sb.toString());
 ```
-====
 
 

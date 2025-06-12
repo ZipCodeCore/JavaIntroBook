@@ -1,7 +1,13 @@
 
 == Arithmetic Operators
 
-Java can do math. And many early programming exercises you will come across deal with doing fairly easy math. There are ways to do lots of useful things with numbers. 
+Java can do math. 
+__(and that should not surpirise you!)__
+And many early programming exercises you will come across deal with doing fairly easy math. 
+There are ways to do lots of useful things with numbers. 
+
+Now, remember, there are two basic kinds of numbers, integers and floating-point.
+And these operators work on both kinds.
 
 === Basics
 
@@ -41,13 +47,12 @@ But, it's pretty much the same as the more simple example above.
 
 Using this as a model, how would you write programs to solve these problems?
 
-[TIP]
-====
+**Exercises:**
+
 * Exercise 1: Subtract A from B and print the result
 * Exercise 2: Divide A by B and print the result
 * Exercise 3: Use an operator to increase A by 1 and print result
 * Exercise 4: Find remainder of A of b
-====
 
 [source]
 ----
@@ -191,12 +196,11 @@ So if we have "9 - 6 + 5", we subtract first and then add.
 "9 - 6 + 5" is 8
 ====
 
-[TIP]
-====
+**Problem: Order of Operations**
+
 30 + 6 × 2   How should this be solved?
 
 Right way to solve 30 + 6 × 2 is first multiply, 6 × 2 = 12, then add 30 + 12 = 42
-====
 
 This is because the multiplication is _higher priority_ than the addition, _even though the addition is before the multiplication_ in the expression. Let's check it in Java:
 
@@ -210,12 +214,11 @@ This gives us 42.
 
 Now there is another way to force Java to do things "out of order" with parenthesis. 
 
-[TIP]
-====
+**Problem: Using Parentheses**
+
 (30 + 6) × 2
 
 What happens now?
-====
 
 [source]
 ----
@@ -287,11 +290,10 @@ This is really just the very basic of beginnings.
 
 Try these exercises in jshell to practice arithmetic operators:
 
-[TIP]
-====
-*Exercise 1: Basic Arithmetic*
+**Exercise 1: Basic Arithmetic**
 
 Practice all the basic operators:
+
 ```
 int a = 20;
 int b = 6;
@@ -303,13 +305,11 @@ System.out.println("a / b = " + (a / b));
 System.out.println("a % b = " + (a % b));
 ```
 What happens with integer division? Why is 20/6 = 3?
-====
 
-[TIP]
-====
-*Exercise 2: Order of Operations*
+**Exercise 2: Order of Operations**
 
 Predict the results before running:
+
 ```
 int result1 = 5 + 3 * 2;
 int result2 = (5 + 3) * 2;
@@ -321,13 +321,11 @@ System.out.println("(5 + 3) * 2 = " + result2);
 System.out.println("10 - 4 / 2 + 1 = " + result3);
 System.out.println("(10 - 4) / (2 + 1) = " + result4);
 ```
-====
 
-[TIP]
-====
-*Exercise 3: Math Class Methods*
+**Exercise 3: Math Class Methods**
 
 Experiment with Math class methods:
+
 ```
 double radius = 5.0;
 double area = Math.PI * Math.pow(radius, 2);
@@ -339,13 +337,11 @@ System.out.println("Circumference: " + circumference);
 System.out.println("Square root of 64: " + Math.sqrt(64));
 System.out.println("4 to the power of 3: " + Math.pow(4, 3));
 ```
-====
 
-[TIP]
-====
-*Exercise 4: Increment and Decrement*
+**Exercise 4: Increment and Decrement**
 
 Practice with ++ and -- operators:
+
 ```
 int counter = 10;
 System.out.println("Initial counter: " + counter);
@@ -361,4 +357,3 @@ System.out.println("Using counter++: " + (counter++));
 System.out.println("Final counter: " + counter);
 ```
 Notice the difference between ++counter and counter++
-====

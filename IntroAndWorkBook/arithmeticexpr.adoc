@@ -6,10 +6,9 @@ take the drudgery of doing math by a person, and making the computer do the math
 These kinds of _computations_ rely on the fact that the computer won't do the wrong thing if it's programed carefully.
 
 Given a simple math equation like:
-[TIP]
-====
+**Problem: Solve for a**
+
 a = b3 - 6 and if b equals 3, then a equals ?
-====
 
 In math class, your teacher would have said "How do we solve for a?" The best way to solve for `a = b3 - 6`
 is to
@@ -29,16 +28,13 @@ System.out.println(a); // -> 3
 
 Now you try it. 
 
-[TIP]
-====
-Solve the equation with Java...
+**Exercise: Solve the equation with Java**
 
 q = 2j + 20
 
 if j = 5, then q = ?
 
 Take a moment and write down your solution before reading on.
-====
 
 [source]
 ----
@@ -50,16 +46,13 @@ System.out.println(q); // -> 30
 
 Let's try another...
 
-[TIP]
-====
-Solve the equation with Java...
+**Exercise: Solve the equation with Java**
 
 x = 5y + y^3^ - 7
 
 if y=2, x = ?
 
 and print out x.
-====
 
 
 My solution is pretty simple.
@@ -80,13 +73,11 @@ equation *AreaOfaTriangle = height * base / 2*
 
 Therefore we just need to create variables for each and use the operators to calculate the area.
 
-[TIP]
-====
-Calculate Area of a Triangle in Java
+**Exercise: Calculate Area of a Triangle in Java**
+
 Height is 20
 Base is 10
 Formula: A = h * b / 2
-====
 
 [source]
 ----
@@ -97,11 +88,9 @@ System.out.println(areaOfaTriangle); // -> 100
 ----
 
 
-[TIP]
-====
-Calculate the area of a circle whose radius is 7.7
+**Exercise: Calculate the area of a circle whose radius is 7.7**
+
 Formula: area = Pi * radius^2^
-====
 Hint: You'll need to use a constant Math property!
 
 
@@ -117,8 +106,6 @@ System.out.println(area);
 
 Try these exercises in jshell to practice algebraic equations and trigonometry:
 
-[TIP]
-====
 *Exercise 1: Linear Equations*
 
 Solve these equations with Java:
@@ -133,10 +120,7 @@ double celsius = 25.0;
 double fahrenheit = (celsius * 9.0 / 5.0) + 32;
 System.out.println(celsius + "°C = " + fahrenheit + "°F");
 ```
-====
 
-[TIP]
-====
 *Exercise 2: Quadratic Expressions*
 
 Calculate values for a quadratic equation:
@@ -151,10 +135,8 @@ x = -1;
 y = Math.pow(x, 2) + 2 * x - 3;
 System.out.println("For x = " + x + ", y = " + y);
 ```
-====
 
-[TIP]
-====
+
 *Exercise 3: Geometry Calculations*
 
 Calculate areas and perimeters:
@@ -178,10 +160,7 @@ System.out.println("Circle with radius: " + radius);
 System.out.println("Area: " + circleArea);
 System.out.println("Circumference: " + circumference);
 ```
-====
 
-[TIP]
-====
 *Exercise 4: Physics Formulas*
 
 Calculate distance, speed, and acceleration:
@@ -199,6 +178,3 @@ double acceleration = 9.8; // m/s²
 double force = mass * acceleration;
 System.out.println("Force = " + mass + " kg × " + acceleration + " m/s² = " + force + " N");
 ```
-====
-
-

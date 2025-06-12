@@ -11,3 +11,9 @@ heading:
 code:
   font_color: $base_font_color
   font_size: $base_font_size - 1
+admonition:
+  icon:
+    tip:
+      name: lightbulb
+      stroke_color: #111111
+      size: 9

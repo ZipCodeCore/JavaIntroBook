@@ -24,8 +24,8 @@ class Main {
     }
 }
 
-# Output:
-# "Woof!"
+// Output:
+// "Woof!"
 ```
 
 In this example, we've defined an interface named `Animal` with a single method `makeSound()`.
@@ -66,11 +66,11 @@ class Main {
     }
 }
 
-# Output:
-# "The animal eats..."
-# "The dog barks..."
-# "The animal eats..."
-# "The cat meows..."
+// Output:
+// "The animal eats..."
+// "The dog barks..."
+// "The animal eats..."
+// "The cat meows..."
 ```
 
 In this example, we've created a base class ‘Animal’ with a method ‘eat()’.
@@ -97,9 +97,9 @@ class Main {
     }
 }
 
-# Output:
-# Caught an arithmetic exception.
-# The finally block always executes.
+// Output:
+// Caught an arithmetic exception.
+// The finally block always executes.
 ```
 
 In this example, we've used a try-catch-finally block to handle an ArithmeticException.
@@ -128,8 +128,8 @@ class Main {
     }
 }
 
-# Output:
-# Successfully wrote to the file.
+// Output:
+// Successfully wrote to the file.
 ```
 
 In this example, we've used the FileWriter class to write data to a file.
@@ -167,9 +167,9 @@ class Main {
     }
 }
 
-# Output:
-# [Zip, Code, Wilmington]
-# [Zip, Code]
+// Output:
+// [Zip, Code, Wilmington]
+// [Zip, Code]
 ```
 
 ### Implementing Design Patterns
@@ -205,8 +205,8 @@ class Main {
     }
 }
 
-# Output:
-# Singleton@15bb9861
+// Output:
+// Singleton@15bb9861
 ```
 
 In this example, we’ve created a Singleton class that has a private constructor to prevent creating more than one instance.
@@ -230,8 +230,8 @@ class Main {
     }
 }
 
-# Output:
-# Caught a NullPointerException.
+// Output:
+// Caught a NullPointerException.
 ```
 
 ### Best Practices for Exception Handling
@@ -270,8 +270,8 @@ class Main {
     }
 }
 
-# Output:
-# 'The car starts...'
+// Output:
+// "The car starts..."
 ```
 
 In this example, we’ve created a ‘Car’ class with a ‘color’ attribute and a ‘start()’ method.

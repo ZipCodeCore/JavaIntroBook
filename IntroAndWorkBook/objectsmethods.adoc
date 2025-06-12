@@ -32,12 +32,23 @@ A property is a “key: value” pair, where key is a string (also called a “p
 
 [source]
 ----
-int katniss = {
-    firstname: "Katniss",
-    lastname: "Everdene",
-    homedistrict: 12,
-    skills: ["foraging", "wildlife", "hunting", "survival"]
+// Creating a Person object using a class
+class Person {
+    String firstname;
+    String lastname;
+    int homedistrict;
+    String[] skills;
+    
+    public Person(String firstname, String lastname, int homedistrict, String[] skills) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.homedistrict = homedistrict;
+        this.skills = skills;
+    }
 }
+
+Person katniss = new Person("Katniss", "Everdene", 12, 
+    new String[]{"foraging", "wildlife", "hunting", "survival"});
 ----
 
 Notice how you use commas for all but the last one in the list?
@@ -49,17 +60,37 @@ Each pair (of key and value) can be referred to as a *property*. Properties can 
 
 [source]
 ----
-int player1 = {
-    name: "Rocco",
-    species: "warrior",
-    super_power: flight,
-    lives: 4,
-    weapons: {
-        sword: "Excalibur",
-        bow: "Legolas",
-        arrows: 12
+// Creating a Player class with nested Weapons class
+class Weapons {
+    String sword;
+    String bow;
+    int arrows;
+    
+    public Weapons(String sword, String bow, int arrows) {
+        this.sword = sword;
+        this.bow = bow;
+        this.arrows = arrows;
     }
-};
+}
+
+class Player {
+    String name;
+    String species;
+    String superPower;
+    int lives;
+    Weapons weapons;
+    
+    public Player(String name, String species, String superPower, int lives, Weapons weapons) {
+        this.name = name;
+        this.species = species;
+        this.superPower = superPower;
+        this.lives = lives;
+        this.weapons = weapons;
+    }
+}
+
+Player player1 = new Player("Rocco", "warrior", "flight", 4, 
+    new Weapons("Excalibur", "Legolas", 12));
 ----
 
 A property has a key (also known as “name” or “identifier”) before the colon ":" and a value to the right of it.
@@ -75,14 +106,13 @@ Values can be retrieved from inside an object by using a string expression in a 
 
 [source]
 ----
-player1[name] // "Rocco"
-player.name   // "Rocco"
-player1.lives // 4
+player1.name   // "Rocco"
+player1.lives  // 4
 ----
 
 You get 'undefined' if you try to retrieve a value whose key doesn't exist.
 
-player1.nickname  // undefined
+// player1.nickname  // would cause compilation error - field doesn't exist
 
 === Property Update
 
@@ -91,7 +121,7 @@ If we were to use an assignment statement, we can change the properties inside o
 [source]
 ----
 player1.name = "Gina";
-player1[species] = "Mage";
+player1.species = "Mage";
 player1.weapons.sword = "Anduril";  // notice how to reach into nested objects!
 
 System.out.println(player1.weapons.sword);  // Anduril
@@ -105,19 +135,30 @@ If we have an object:
 
 [source]
 ----
-int airplane512 = {
-    type: "airbusA330",
-    topSpeed: 0.86, // Mach
-    passengerLimit: 253,
-    passengersOnboard: 0
+class Airplane {
+    String type;
+    double topSpeed;
+    int passengerLimit;
+    int passengersOnboard;
+    String destination;
+    String origin;
+    
+    public Airplane(String type, double topSpeed, int passengerLimit, int passengersOnboard) {
+        this.type = type;
+        this.topSpeed = topSpeed;
+        this.passengerLimit = passengerLimit;
+        this.passengersOnboard = passengersOnboard;
+    }
 }
+
+Airplane airplane512 = new Airplane("airbusA330", 0.86, 253, 0);
 ----
 
 We have built a plane object.
 
 [source]
 ----
-int flight77 = airplane512;  // I'm assigning a plane to a flight
+Airplane flight77 = airplane512;  // I'm assigning a plane to a flight
 
 flight77.destination = "Tokyo"; //create two new properties in the object
 flight77.origin = "Seattle";
@@ -142,28 +183,44 @@ As you may be aware, in American football there are four common changes to a tea
 
 [source]
 ----
-int scoreCounter = {
-    options: {"fieldgoal": 3, "touchdown": 6, 
-    "point_after_touchdown": 1, "safety": 2},
+import java.util.HashMap;
+import java.util.Map;
+
+class ScoreCounter {
+    private Map<String, Integer> options;
+    private int score;
     
-    score: 0,
+    public ScoreCounter() {
+        options = new HashMap<>();
+        options.put("fieldgoal", 3);
+        options.put("touchdown", 6);
+        options.put("point_after_touchdown", 1);
+        options.put("safety", 2);
+        score = 0;
+    }
     
-    touchdown: function () {
-        this.score += this.options["touchdown"];
-    },
-    fieldgoal: function () {
-        this.score += this.options["fieldgoal"];
-    },
-    pat: function () {
-        this.score += this.options["point_after_touchdown"];
-    },
-    safety: function () {
-        this.score += this.options["safety"];
-    },
-    get_score: function () {
+    public void touchdown() {
+        this.score += this.options.get("touchdown");
+    }
+    
+    public void fieldgoal() {
+        this.score += this.options.get("fieldgoal");
+    }
+    
+    public void pat() {
+        this.score += this.options.get("point_after_touchdown");
+    }
+    
+    public void safety() {
+        this.score += this.options.get("safety");
+    }
+    
+    public int getScore() {
         return this.score;
     }
 }
+
+ScoreCounter scoreCounter = new ScoreCounter();
 ----
 
 We can use that object, with its function methods like this:
@@ -174,7 +231,7 @@ scoreCounter.touchdown(); // add 6
 scoreCounter.pat(); // add 1
 scoreCounter.fieldgoal(); // add 3
 
-System.out.println(scoreCounter.get_score()); // ??
+System.out.println(scoreCounter.getScore()); // ??
 ----
 
 There are two data properties (options and score), and 5(!) functions. These functions are called *methods* (functions which are attached to an object), and get invoked when you make the _method call_ (or _invoke_ the method on the _object_).

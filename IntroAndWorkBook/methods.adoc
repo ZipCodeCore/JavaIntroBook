@@ -13,14 +13,14 @@ Two examples of how you write a method literal:
 
 [source]
 ----
-int add = method (parameter1, parameter2) {
+public static int add(int parameter1, int parameter2) {
     return parameter1 + parameter2; 
 }
 ----
 
 [source]
 ----
-method add(p1, p2) {
+public static int add(int p1, int p2) {
     return p1 + p2;
 }
 ----
@@ -31,9 +31,8 @@ In both of these cases, you end up with a method named 'add' that takes two para
 
 [source]
 ----
-method greetUser(username) {
+public static void greetUser(String username) {
     System.out.println( "Hello " + username);
-    return;
 }
 
 //calling/Invoking the method
@@ -48,7 +47,7 @@ Imagine we have a program that gets an airplane ready for flight. We can imagine
 
 [source]
 ----
-method prepFlight(airplane) {
+public static void prepFlight(Airplane airplane) {
     loadBaggage(airplane);
     loadPassengers(airplane);
 
@@ -59,8 +58,6 @@ method prepFlight(airplane) {
 
     taxiToRunway(airplane, mainRunway90);
     takeoff(airplane.pilot, airplane);
-
-    return;
 }
 ----
 
@@ -72,14 +69,16 @@ A common pattern used in Java revolves around an *anonymous* method. It's a meth
 
 [source]
 ----
-method () {
-    let x = 5;
-    let y = 4;
+// Anonymous methods are not typically used in Java like this
+// Here's a simple method example instead:
+public static void exampleMethod() {
+    int x = 5;
+    int y = 4;
     while (x < 100) {
         x = x + y;
     }
-    System.out.println("x is", x);
-} () ;
+    System.out.println("x is " + x);
+}
 ----
 
 Look at that last line. What's going on here? Well, first we are creating a method object _without a name_ (so it's _anonymous_). Then on the last line, we are _invoking_ the method once (see those two parentheses? '()'?), so all the code inside gets run. (x get printed out).
@@ -90,9 +89,10 @@ You see this often in Java. It's a way to put some code into an argument to anot
 ----
 int milliSecInASecond = 1000;
 
-setTimeout(method () {
-    System.out.println('We waited for 5 seconds, to print this')
-}, 5 * milliSecInASecond);
+// Note: setTimeout doesn't exist in standard Java
+// This is more like JavaScript syntax
+// In Java, you would use Timer or ScheduledExecutorService
+System.out.println("We waited for 5 seconds, to print this");
 ----
 
 See how we pass an anonymous method to 'setTimeout' as one argument, and a timer value as the second argument? The idea here is that the anonymous method gets called at 5 seconds in the future. (Like scheduling an alarm to do something in 5 seconds).
@@ -103,11 +103,11 @@ Once Java reaches a return statement, the method will stop executing. methods of
 
 [source]
 ----
-method greetUser(username) {
+public static String greetUser(String username) {
     return "Hello " + username;
 }
 
-int result = greetUser("Welcome back, Mike Jones");
+String result = greetUser("Welcome back, Mike Jones");
 
 System.out.println(result); // will print "Hello Welcome back, Mike Jones" 
 ----
@@ -116,13 +116,13 @@ Or like this:
 
 [source]
 ----
-method determineWinner(home, visitor) {
+public static String determineWinner(Team home, Team visitor) {
     if (home.score > visitor.score) {
-        return "Home Team Wins! Let's have a Parade!"
+        return "Home Team Wins! Let's have a Parade!";
     } else if (home.score < visitor.score) {
-        return "Visitors Win! (oh Well)"
+        return "Visitors Win! (oh Well)";
     }
-    return "It's a Tie!"
+    return "It's a Tie!";
 }
 ----
 
@@ -133,20 +133,18 @@ Again, to be clear, we might use this method like this:
 [source]
 ----
 
-int home = {
-    name = "Fightin Cats"
-    score = 0;
-}
+Team home = new Team();
+home.name = "Fightin Cats";
+home.score = 0;
 
-int visitor = {
-    name = "Wild Horses"
-    score = 0;
-}
+Team visitor = new Team();
+visitor.name = "Wild Horses";
+visitor.score = 0;
 
 playGame(home, visitor); // a lot of work done in this method(!)
 
 // game is done
-int result = determineWinner(home, visitor);
+String result = determineWinner(home, visitor);
 
 // and then print the result..
 System.out.println(result);
@@ -158,11 +156,11 @@ methods can also take parameters to be used within a method.
 
 [source]
 ----
-method addThreeNumbers(a, b, c) {
+public static int addThreeNumbers(int a, int b, int c) {
     return (a + b + c);
 }
 
-method determineWinner(home, visitor) {
+public static String determineWinner(Team home, Team visitor) {
     if (home.score > visitor.score) {
         return "Home Team Wins! Let's have a Parade!";
     } else if (home.score < visitor.score) {
@@ -171,7 +169,7 @@ method determineWinner(home, visitor) {
     return "It's a Tie!";
 }
 
-method makeNegative(number) {
+public static int makeNegative(int number) {
     if (number > 0) {
         return -(number);
     }
@@ -180,28 +178,28 @@ method makeNegative(number) {
 }
 ----
 
-Remember how we had the expression ot see if a number was even? ( x % 2 === 0)
+Remember how we had the expression to see if a number was even? ( x % 2 == 0)
 Now, here's a way to decide is number was divisible cleanly by another, it's a standard arithmetic expression:
 
 [source]
 ----
-(number % divisor === 0)
+(number % divisor == 0)
 ----
 
 So to see if a number is even, we could use '(number % 2 == 0)':
 
 [source]
 ----
-System.out.println((8 % 2 === 0)); // true
-System.out.println((7 % 2 === 0)); // false
-System.out.println((4 % 2 === 0)); // true
+System.out.println((8 % 2 == 0)); // true
+System.out.println((7 % 2 == 0)); // false
+System.out.println((4 % 2 == 0)); // true
 ----
 And we can use the same technique to see if a number is evenly divisible by 3 or 5.
 
 Try to write a method that will perform the following requirements:
 
-[TIP]
-====
+**Exercise: Create a ZipCoder Method**
+
 * Create a method called zipCoder
 * Your method takes one parameter of type number
 * Your method checks and does the following
@@ -210,7 +208,6 @@ Try to write a method that will perform the following requirements:
 * If parameter is divisible by 5. Print Coder
 Phew...Finally
 * Call the method and pass in 45 as your parameter
-====
 
 OKAY! Write it yourself!
 
@@ -232,10 +229,10 @@ Well, here's one solution:
 ----
 // method ZipCoder
 
-method zipCoder(aNumber) {
-if (aNumber % 15 == 0) System.out.println("ZipCoder");
-else if (aNumber % 3 == 0) System.out.println("Zip");
-else if (aNumber % 5 == 0) System.out.println("Coder");
+public static void zipCoder(int aNumber) {
+    if (aNumber % 15 == 0) System.out.println("ZipCoder");
+    else if (aNumber % 3 == 0) System.out.println("Zip");
+    else if (aNumber % 5 == 0) System.out.println("Coder");
 }
 
 zipCoder(45); // -> ZipCoder

@@ -27,9 +27,9 @@ What do you need to do to this function to make it use the triangle equation?
 
 [source]
 ----
-function triangleArea(h, b) {
-    area = 0;
-    return area
+public static double triangleArea(double h, double b) {
+    double area = 0;
+    return area;
 }
 
 System.out.println(triangleArea(4,5));
@@ -41,7 +41,7 @@ System.out.println(triangleArea(2,6));
 If asked to write a function to calculate and return a number divided by 2, you would code
 
 ----
-function f(x) {
+public static double f(double x) {
     return x / 2;
 }
 ----

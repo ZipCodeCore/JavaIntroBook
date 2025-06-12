@@ -132,12 +132,11 @@ get cash from the cash machine? Again, this is *why* boolean expressions are imp
 why coders need to be able to use them to get the software *just right*.
 
 
-[TIP]
-====
+**Exercise: Boolean Comparisons**
+
 * Create 2 variables to use for a comparison 
 * Use at least two comparison operators in Java
 * And print them "System.out.println(2 > 1)"
-====
 
 Here is an example:
 
@@ -158,9 +157,7 @@ These log statements should produce TRUE, TRUE, TRUE and FALSE.
 
 Try these exercises in jshell to practice boolean expressions and logical operators:
 
-[TIP]
-====
-*Exercise 1: Basic Comparisons*
+**Exercise 1: Basic Comparisons**
 
 Practice comparison operators:
 ```
@@ -174,11 +171,8 @@ System.out.println("Can drink: " + (age >= drinkingAge));
 System.out.println("Is exactly voting age: " + (age == votingAge));
 System.out.println("Is not drinking age: " + (age != drinkingAge));
 ```
-====
 
-[TIP]
-====
-*Exercise 2: Logical AND and OR*
+**Exercise 2: Logical AND and OR**
 
 Combine conditions with && and ||:
 ```
@@ -195,11 +189,8 @@ System.out.println("Perfect weather: " + perfectWeather);
 System.out.println("Need jacket: " + needJacket);
 System.out.println("Go outside: " + goOutside);
 ```
-====
 
-[TIP]
-====
-*Exercise 3: String Comparisons*
+**Exercise 3: String Comparisons**
 
 Practice with string equality:
 ```
@@ -216,11 +207,8 @@ System.out.println("Incorrect password: " + incorrectPassword);
 System.out.println("Password is empty: " + isEmpty);
 System.out.println("Password length > 5: " + (password.length() > 5));
 ```
-====
 
-[TIP]
-====
-*Exercise 4: Complex Conditions*
+**Exercise 4: Complex Conditions**
 
 Create a grade evaluation system:
 ```
@@ -239,5 +227,4 @@ System.out.println("Excellent grade: " + excellentGrade);
 System.out.println("Bonus eligible: " + bonusEligible);
 System.out.println("Final pass: " + finalPass);
 ```
-====
 

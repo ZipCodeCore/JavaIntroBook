@@ -1,5 +1,4 @@
-Java TreeMap: Your Guide to Key-Value Pair Handling
-Posted in Java, Programming / Coding By Gabriel Ramuglia On November 13, 2023
+# Java TreeMap: Your Guide to Key-Value Pair Handling
 
 digital_tree_structure_representing_java_treemap_with_key_value_pairs_and_code_snippets
 Are you finding it challenging to use TreeMap in Java? You’re not alone. Many developers find themselves puzzled when it comes to handling TreeMap in Java, but we’re here to help.
@@ -13,17 +12,16 @@ So, let’s dive in and start mastering TreeMap in Java!
 TL;DR: What is a TreeMap in Java and how do I use it?
 TreeMap in Java is a Red-Black tree based NavigableMap implementation. It is used to store key-value pairs in sorted order, and is instantiated with the syntax, TreeMap<Integer, String> treeMap = new TreeMap<>();. Here’s a simple example of how to use it:
 
+```java
 TreeMap<Integer, String> treeMap = new TreeMap<>();
-treeMap.put(5, 'Five');
-treeMap.put(3, 'Three');
-treeMap.put(1, 'One');
+treeMap.put(5, "Five");
+treeMap.put(3, "Three");
+treeMap.put(1, "One");
 System.out.println(treeMap);
 
-# Output:
-
-# {1=One, 3=Three, 5=Five}
-
-Java
+// Output:
+// {1=One, 3=Three, 5=Five}
+```
 In this example, we create a TreeMap instance and add three key-value pairs to it. The TreeMap automatically sorts these pairs in ascending order of their keys. When we print the TreeMap, we see the sorted key-value pairs.
 
 This is just a basic way to use TreeMap in Java, but there’s much more to learn about TreeMap’s capabilities. Continue reading for a more detailed understanding and advanced usage scenarios.
@@ -44,39 +42,38 @@ Creating a TreeMap
 
 Creating a TreeMap in Java is straightforward. Here’s how you do it:
 
+```java
 TreeMap<Integer, String> treeMap = new TreeMap<>();
-Java
+```
 In this example, we’re creating a TreeMap that will store keys of type Integer and values of type String. The “ operator (known as the diamond operator) is used to indicate the types of objects the TreeMap will store.
 
 Adding Elements to TreeMap
 
 Once you’ve created a TreeMap, you can add elements to it using the put method. Here’s an example:
 
+```java
 TreeMap<Integer, String> treeMap = new TreeMap<>();
-treeMap.put(3, 'Three');
-treeMap.put(1, 'One');
-treeMap.put(2, 'Two');
+treeMap.put(3, "Three");
+treeMap.put(1, "One");
+treeMap.put(2, "Two");
 System.out.println(treeMap);
 
-# Output:
-
-# {1=One, 2=Two, 3=Three}
-
-Java
+// Output:
+// {1=One, 2=Two, 3=Three}
+```
 In this example, we’re adding three key-value pairs to the TreeMap. The TreeMap automatically sorts these pairs in ascending order of their keys.
 
 Retrieving Elements from TreeMap
 
 You can retrieve elements from a TreeMap using the get method. Here’s how:
 
+```java
 String value = treeMap.get(1);
 System.out.println(value);
 
-# Output:
-
-# One
-
-Java
+// Output:
+// One
+```
 In this example, we’re retrieving the value associated with the key 1 and printing it.
 
 Advantages and Potential Pitfalls
@@ -96,24 +93,23 @@ Custom Sorting with Comparator
 
 By default, TreeMap sorts its keys in natural order. However, you can customize this by providing a Comparator when you create the TreeMap. Here’s an example:
 
+```java
 Comparator<Integer> comparator = new Comparator<Integer>() {
-@Override
-public int compare(Integer num1, Integer num2) {
-return num2.compareTo(num1);
-}
+    @Override
+    public int compare(Integer num1, Integer num2) {
+        return num2.compareTo(num1);
+    }
 };
 
 TreeMap<Integer, String> treeMap = new TreeMap<>(comparator);
-treeMap.put(3, 'Three');
-treeMap.put(1, 'One');
-treeMap.put(2, 'Two');
+treeMap.put(3, "Three");
+treeMap.put(1, "One");
+treeMap.put(2, "Two");
 System.out.println(treeMap);
 
-# Output:
-
-# {3=Three, 2=Two, 1=One}
-
-Java
+// Output:
+// {3=Three, 2=Two, 1=One}
+```
 In this example, we’re creating a Comparator that sorts integers in reverse order. We then use this Comparator when we create the TreeMap. The TreeMap now sorts its keys in reverse order.
 
 Navigating a TreeMap
@@ -124,14 +120,13 @@ Using subMap, headMap, and tailMap
 
 These methods allow you to create a view of a portion of the TreeMap. For example, subMap returns a view of the portion of the TreeMap whose keys range from fromKey to toKey.
 
+```java
 SortedMap<Integer, String> subMap = treeMap.subMap(1, 3);
 System.out.println(subMap);
 
-# Output:
-
-# {1=One, 2=Two}
-
-Java
+// Output:
+// {1=One, 2=Two}
+```
 In this example, we’re creating a subMap that includes the keys from 1 to 2. Note that the subMap method includes the fromKey and excludes the toKey.
 
 Similarly, headMap returns a view of the portion of the TreeMap whose keys are less than toKey, and tailMap returns a view of the portion of the TreeMap whose keys are greater than or equal to fromKey.
@@ -145,34 +140,32 @@ Using HashMap in Java
 
 HashMap is a part of Java’s collections framework that can also store key-value pairs. However, unlike TreeMap, it doesn’t automatically sort its keys. Here’s an example of how to use it:
 
+```java
 HashMap<Integer, String> hashMap = new HashMap<>();
-hashMap.put(3, 'Three');
-hashMap.put(1, 'One');
-hashMap.put(2, 'Two');
+hashMap.put(3, "Three");
+hashMap.put(1, "One");
+hashMap.put(2, "Two");
 System.out.println(hashMap);
 
-# Output:
-
-# {1=One, 2=Two, 3=Three}
-
-Java
+// Output:
+// {1=One, 2=Two, 3=Three}
+```
 In this example, we’re adding three key-value pairs to the HashMap. When we print the HashMap, we see the key-value pairs in the order they were added.
 
 Using LinkedHashMap in Java
 
 LinkedHashMap is another alternative that can be used to handle key-value pairs. It’s similar to HashMap, but it maintains the order in which the elements were inserted. Here’s an example:
 
+```java
 LinkedHashMap<Integer, String> linkedHashMap = new LinkedHashMap<>();
-linkedHashMap.put(3, 'Three');
-linkedHashMap.put(1, 'One');
-linkedHashMap.put(2, 'Two');
+linkedHashMap.put(3, "Three");
+linkedHashMap.put(1, "One");
+linkedHashMap.put(2, "Two");
 System.out.println(linkedHashMap);
 
-# Output:
-
-# {3=Three, 1=One, 2=Two}
-
-Java
+// Output:
+// {3=Three, 1=One, 2=Two}
+```
 In this example, we’re adding three key-value pairs to the LinkedHashMap. When we print the LinkedHashMap, we see the key-value pairs in the order they were added.
 
 Comparing TreeMap, HashMap, and LinkedHashMap
@@ -193,14 +186,13 @@ Handling Null Keys
 
 One of the main issues with TreeMap is that it doesn’t allow null keys. If you try to add a null key, you’ll get a NullPointerException. Here’s an example:
 
+```java
 TreeMap<Integer, String> treeMap = new TreeMap<>();
-treeMap.put(null, 'Null');
+treeMap.put(null, "Null");
 
-# Output:
-
-# Exception in thread "main" java.lang.NullPointerException
-
-Java
+// Output:
+// Exception in thread "main" java.lang.NullPointerException
+```
 In this example, we’re trying to add a null key to the TreeMap, which results in a NullPointerException.
 
 To handle this, you can use a check to avoid adding null keys. Alternatively, you can use a HashMap or LinkedHashMap, both of which allow null keys.
@@ -209,15 +201,14 @@ Dealing with Non-Comparable Keys
 
 Another issue with TreeMap is that all keys must be mutually comparable. If they’re not, you’ll get a ClassCastException. Here’s an example:
 
+```java
 TreeMap<Object, String> treeMap = new TreeMap<>();
-treeMap.put(1, 'One');
-treeMap.put('Two', 'Two');
+treeMap.put(1, "One");
+treeMap.put("Two", "Two");
 
-# Output:
-
-# Exception in thread "main" java.lang.ClassCastException
-
-Java
+// Output:
+// Exception in thread "main" java.lang.ClassCastException
+```
 In this example, we’re trying to add keys of different types (Integer and String) to the TreeMap, which results in a ClassCastException.
 
 To handle this, you can ensure that all keys are of the same type or implement a custom Comparator that can handle different types of keys.
@@ -231,16 +222,15 @@ Java’s Map Interface
 
 At its core, TreeMap is an implementation of Java’s Map interface. This interface maps keys to values, acting somewhat like a dictionary. Here’s a simple example of using a Map:
 
+```java
 Map<Integer, String> map = new HashMap<>();
-map.put(1, 'One');
-map.put(2, 'Two');
+map.put(1, "One");
+map.put(2, "Two");
 System.out.println(map);
 
-# Output:
-
-# {1=One, 2=Two}
-
-Java
+// Output:
+// {1=One, 2=Two}
+```
 In this example, we’re creating a Map and adding two key-value pairs to it. When we print the Map, we see the key-value pairs.
 
 NavigableMap Interface

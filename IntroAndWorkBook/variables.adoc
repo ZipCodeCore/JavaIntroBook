@@ -16,7 +16,7 @@ Now, if we wanted to indicate that someone had a birthday, we might add 1 to the
 
 [source]
 ----
-int age = age + 1;
+age = age + 1;
 ----
 
 At this point, the _age_ variable as 4 in it.
@@ -91,6 +91,7 @@ System.out.println(cats);  // -> 3
 int age = 19; 
 String name = "James";
 System.out.println(name + " is " + age + " years old"); // -> James is 19 years old
+
 age = 21;
 name = "Gina";
 System.out.println(name + " is " + age + " years old"); // -> Gina is 21 years old
@@ -183,8 +184,8 @@ data get handled in the right ways.
 
 So Java has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
 
-[TIP]
-====
+**Exercise: Create Variables for Primitive Data Types**
+
 Create variables for each primitive data type:
 
 - double
@@ -193,8 +194,6 @@ Create variables for each primitive data type:
 - boolean
 
 Store a value in each.
-
-====
 
 [source]
 ----
@@ -245,11 +244,11 @@ final int floorsInMyBuilding =         ;
 
 Try these exercises in jshell to practice working with variables:
 
-[TIP]
-====
 *Exercise 1: Basic Variable Declaration and Assignment*
 
 Create variables for a student's information:
+
+
 ```
 String studentName = "Alex";
 int age = 20;
@@ -261,13 +260,12 @@ System.out.println("Age: " + age);
 System.out.println("GPA: " + gpa);
 System.out.println("Enrolled: " + isEnrolled);
 ```
-====
 
-[TIP]
-====
+
 *Exercise 2: Variable Reassignment*
 
 Start with a score and update it:
+
 ```
 int score = 100;
 System.out.println("Initial score: " + score);
@@ -278,13 +276,12 @@ System.out.println("After penalty: " + score);
 score = score + 25;  // Bonus points
 System.out.println("After bonus: " + score);
 ```
-====
 
-[TIP]
-====
 *Exercise 3: Working with Constants*
 
 Create constants for a pizza order:
+====
+
 ```
 final double PIZZA_PRICE = 12.99;
 final double TAX_RATE = 0.08;
@@ -301,13 +298,12 @@ System.out.println("Subtotal: $" + subtotal);
 System.out.println("Tax: $" + tax);
 System.out.println("Total: $" + total);
 ```
-====
 
-[TIP]
-====
 *Exercise 4: Variable Naming Practice*
 
 Fix these poorly named variables by creating better ones:
+
+
 ```
 // Poor names:
 int x = 25;
@@ -322,5 +318,4 @@ double hourlyWage = 5.75;
 System.out.println(firstName + " is " + studentAge + " years old");
 System.out.println("Hourly wage: $" + hourlyWage);
 ```
-====
 

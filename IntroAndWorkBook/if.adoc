@@ -67,14 +67,13 @@ if (timeOfDay.equals("Morning")) {
 
 Notice how this becomes a 3-way choice, depending on the timeOfDay.
 
-[TIP]
-====
+**Exercise: Age Verification**
+
 Write code to check if a user is old enough to drink.
 
 * if the user's age is under 18. Print out "Cannot party with us"
 * Else if the user's age is 18 or over, Print out "Party over here"
 * Else print out, "I do not recognize your age"
-====
 You should use an if statement for your solution!
 
 Finally, make sure to change the value of the age variable in jshell, to output different results and test that all three options can happen. What do you have to do to make the `else` clause happen?
@@ -97,9 +96,7 @@ If statements are one of the most commonly used statements to express logic in a
 
 Try these exercises in jshell to practice if statements and conditional logic:
 
-[TIP]
-====
-*Exercise 1: Simple If Statements*
+**Exercise 1: Simple If Statements**
 
 Create a temperature checking program:
 ```
@@ -120,11 +117,8 @@ if (temperature >= 60 && temperature <= 80) {
 System.out.println("Current temperature: " + temperature + "°F");
 ```
 Try changing the temperature value to test different conditions.
-====
 
-[TIP]
-====
-*Exercise 2: If-Else Statements*
+**Exercise 2: If-Else Statements**
 
 Create a grade calculator:
 ```
@@ -152,11 +146,8 @@ if (score >= 70) {
     System.out.println("Need to retake the test.");
 }
 ```
-====
 
-[TIP]
-====
-*Exercise 3: Nested If Statements*
+**Exercise 3: Nested If Statements**
 
 Create a movie recommendation system:
 ```
@@ -180,11 +171,8 @@ if (age >= 18) {
     }
 }
 ```
-====
 
-[TIP]
-====
-*Exercise 4: Complex Conditions*
+**Exercise 4: Complex Conditions**
 
 Create a login validation system:
 ```
@@ -204,6 +192,5 @@ if (accountLocked) {
     System.out.println("Attempts remaining: " + (3 - loginAttempts - 1));
 }
 ```
-====
 
 
