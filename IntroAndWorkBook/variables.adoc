@@ -280,7 +280,6 @@ System.out.println("After bonus: " + score);
 *Exercise 3: Working with Constants*
 
 Create constants for a pizza order:
-====
 
 ```
 final double PIZZA_PRICE = 12.99;

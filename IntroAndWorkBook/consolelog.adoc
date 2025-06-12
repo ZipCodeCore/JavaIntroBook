@@ -158,7 +158,6 @@ System.out.println("Sum of " + num1 + " & " + num2 + " is " + (num1 + num2));
 *Exercise 4: Multiple Data Types*
 
 Practice with different data types:
-==== 
 
 ```
 String name = "Java";
