@@ -47,28 +47,30 @@ Let's use this array for the following examples.
 
 [source]
 ----
-const groceries = [
-  {
-    name: 'Breakfast Cereal',
-    price: 5.50,
-  },
-  {
-    name: 'Rice',
-    price: 14.99,
-  },
-  {
-    name: 'Oranges',
-    price: 6.49,
-  },
-  {
-    name: 'Crackers',
-    price: 4.79,
-  },
-  {
-    name: 'Potatoes',
-    price: 3.99,
-  },
-];
+// For jshell - create a simple Grocery class
+class Grocery {
+    String name;
+    double price;
+    
+    Grocery(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+    
+    @Override
+    public String toString() {
+        return name + ": $" + price;
+    }
+}
+
+// Create the grocery list
+var groceries = List.of(
+    new Grocery("Breakfast Cereal", 5.50),
+    new Grocery("Rice", 14.99),
+    new Grocery("Oranges", 6.49),
+    new Grocery("Crackers", 4.79),
+    new Grocery("Potatoes", 3.99)
+);
 ----
 
 A common grocery list, we have this as a list (or array) of objects (what's known as a key/value data structure).
@@ -80,8 +82,8 @@ Now, if you wanted to print out each item's name in the grocery list to the cons
 [source]
 ----
 int idx = 0;
-while (idx < groceries.length) {
-  System.out.println(groceries[idx].name);
+while (idx < groceries.size()) {
+  System.out.println(groceries.get(idx).name);
   idx = idx + 1;
 }
 ----
@@ -94,7 +96,7 @@ Rather, how about this:
 
 [source]
 ----
-groceries.forEach((item) => {
+groceries.forEach(item -> {
   System.out.println(item.name);
 });
 ----
@@ -114,9 +116,9 @@ Say we wanted to get a list of just the prices of our grocery list. If we use a 
 [source]
 ----
 int index = 0;
-const prices = [];
-while (index < groceries.length) {
-  prices.push(groceries[index].price);
+var prices = new ArrayList<Double>();
+while (index < groceries.size()) {
+  prices.add(groceries.get(index).price);
   index = index + 1;
 }
 ----
@@ -125,9 +127,9 @@ But if we use a different higher-order function, `map`:
 
 [source]
 ----
-int prices = groceries.map((item) => {
-  return item.price;
-});
+var prices = groceries.stream()
+    .map(item -> item.price)
+    .collect(Collectors.toList());
 ----
 
 The value of prices would be: `[5.5,14.99,6.49,4.79,3.99]`. And if we were to want something a little more useful than just producing a list, we would do this when using a loop: 
@@ -135,9 +137,9 @@ The value of prices would be: `[5.5,14.99,6.49,4.79,3.99]`. And if we were to wa
 [source]
 ----
 int index = 0;
-int total = 0;
-while (index < groceries.length) {
-  total = total + groceries[index].price;
+double total = 0;
+while (index < groceries.size()) {
+  total = total + groceries.get(index).price;
   index = index + 1;
 }
 ----
@@ -149,9 +151,9 @@ But look how much simpler our code can be if we use `reduce`, another higher-ord
 
 [source]
 ----
-int total = groceries.reduce((sum, item) => {
-  return sum += item.price;
-}, 0);
+double total = groceries.stream()
+    .mapToDouble(item -> item.price)
+    .sum();
 ----
 
 The result, if we print `total` is the awkward number `35.760000000000005`, and why that is, well, later we'll discuss it. But, `35.76` should suffice.
@@ -160,11 +162,11 @@ If we wanted to pull out all the even numbers from a list of numbers, we'd need 
 
 [source]
 ----
-function even (value) {
-    return value % 2 === 0;
+static boolean even(int value) {
+    return value % 2 == 0;
 }
 
-System.out.println(even(3), even(4), even(126));
+System.out.println(even(3) + " " + even(4) + " " + even(126));
 
 // giving us 'false true true'
 ----
@@ -173,34 +175,34 @@ If we remove the name `even` from the definition, and use a higher-order functio
 
 [source]
 ----
-numList = [1,2,3,4,5,6,7,8];
-numList.filter(
-    function (value) {return value % 2 === 0}
-);
+var numList = List.of(1,2,3,4,5,6,7,8);
+var evenNumbers = numList.stream()
+    .filter(value -> value % 2 == 0)
+    .collect(Collectors.toList());
 ----
 
 `filter` is a function which filters out the elements in an array that don’t pass a test. You can visualize it this way:
 
 [source]
 ----
-function filter(array, test) {
-  let passed = [];
-  for (let element of array) {
-    if (test(element)) {
-      passed.push(element);
+static List<Integer> filter(List<Integer> array, Predicate<Integer> test) {
+  var passed = new ArrayList<Integer>();
+  for (Integer element : array) {
+    if (test.test(element)) {
+      passed.add(element);
     }
   }
   return passed;
 }
 
-function even (value) {
-    return value % 2 === 0;
+static boolean even(int value) {
+    return value % 2 == 0;
 }
 
-int dataList = [1,2,3,4];
+var dataList = List.of(1,2,3,4);
 
 System.out.println(
-    filter(dataList, even)
+    filter(dataList, x -> even(x))
 ); // produces [2,4]
 
 ----
@@ -219,14 +221,14 @@ And I can reduce it even more to something like this:
 
 [source]
 ----
-int result = [1,2,3,4].filter(
-    function (value) {return value % 2 === 0}
-);
+var result = List.of(1,2,3,4).stream()
+    .filter(value -> value % 2 == 0)
+    .collect(Collectors.toList());
 
-// or, If I have 'dataList' defined as [1,2,3,4]
-int result = dataList.filter(
-    function (value) {return value % 2 === 0}
-);
+// or, If I have 'dataList' defined as List.of(1,2,3,4)
+var result = dataList.stream()
+    .filter(value -> value % 2 == 0)
+    .collect(Collectors.toList());
 ----
 
 And as you will see further down, we can even reduce that to a simpler form, called a `lambda`.
@@ -248,19 +250,19 @@ We might, happily, build something like this:
 
 [source]
 ----
-const discount = (amount, code) => {
-  if (code == 'TWENTYOFF') {
+static double discount(double amount, String code) {
+  if (code.equals("TWENTYOFF")) {
       return amount * 0.80;
-  } else if (code == 'QUARTEROFF') {
+  } else if (code.equals("QUARTEROFF")) {
       return amount * 0.75;
-  } else if (code == 'HALFOFF') {
+  } else if (code.equals("HALFOFF")) {
       return amount * 0.50;
   } else { // no discount
       return amount;
   }
-}; // whew! that a lot of braces.
+} // whew! that a lot of braces.
 
-int netprice = discount(200.00, 'HALFOFF'); // would be 100.
+double netprice = discount(200.00, "HALFOFF"); // would be 100.
 ----
 
 But think about adding another discount, we'd have to add another `if`, more braces, and make sure we nest it in there carefully, otherwise we break the whole, rickety, mess.
@@ -271,18 +273,20 @@ Switch statements too, have a way of expanding on you, getting long, and sometim
 
 [source]
 ----
-const discount = (amount, code) => {
+static double discount(double amount, String code) {
   switch (code) {
-    case 'TWENTYOFF':
+    case "TWENTYOFF":
       return amount * 0.80;
-    case 'QUARTEROFF':
+    case "QUARTEROFF":
       return amount * 0.75;
-    case 'HALFOFF':
+    case "HALFOFF":
       return amount * 0.50;
+    default:
+      return amount;
   }
-};
+}
 
-int netprice = discount(200.00, 'HALFOFF'); // would be 100.
+double netprice = discount(200.00, "HALFOFF"); // would be 100.
 ----
 
 We have to add two lines of code for each `case`. 
@@ -292,15 +296,15 @@ But consider this idea: use a combination of a simple data structure and a small
 
 [source]
 ----
-const DISCOUNT_MULTIPLIER = {
-  'TWENTYOFF': 0.80,
-  'QUARTEROFF': 0.75,
-  'HALFOFF': 0.50,
-};
+var DISCOUNT_MULTIPLIER = Map.of(
+  "TWENTYOFF", 0.80,
+  "QUARTEROFF", 0.75,
+  "HALFOFF", 0.50
+);
 
-const discount = (amount, code) => { // look at that arrow '=>'?
-  return amount * DISCOUNT_MULTIPLIER[code];
-};
+static double discount(double amount, String code) {
+  return amount * DISCOUNT_MULTIPLIER.getOrDefault(code, 1.0);
+}
 ----
 
 Whoa! How easy is it to add another 1, 3 or 7 discount cases? 
@@ -315,10 +319,11 @@ In Java, we have function expressions which give us an anonymous function (a fun
 
 [source]
 ----
-var anon = function (a, b) { return a + b };
+// In Java, we can create function objects using interfaces
+BiFunction<Integer, Integer, Integer> anon = (a, b) -> a + b;
 
-// this is the same as
-function anon (a, b) {
+// this is similar to a static method
+static int anon(int a, int b) {
     return a + b;
 }
 ----
@@ -330,23 +335,29 @@ We could write the above example as:
 
 [source]
 ----
-var anon = function (a, b) { return a + b }; // from above
+BiFunction<Integer, Integer, Integer> anon = (a, b) -> a + b; // from above
 
-var anon = (a, b) => a + b; // Sweet!
+BiFunction<Integer, Integer, Integer> anon = (a, b) -> a + b; // Sweet!
 
 // or we could
-var anon = (a, b) => { return a + b };
-// if we only have one parameter we can loose the parentheses
-var anon = a => a + a;
-// and without parameters
-var () => {} // this does nothing. So who cares?
+BiFunction<Integer, Integer, Integer> anon = (a, b) -> { return a + b; };
+// if we only have one parameter we can use Function instead
+Function<Integer, Integer> anon = a -> a + a;
+// and without parameters we use Supplier
+Supplier<String> anon = () -> "nothing"; // this returns "nothing"
 
 // this looks pretty nice when you change something like:
-[1,2,3,4].filter(
-    function (value) {return value % 2 === 0}
-);
+List.of(1,2,3,4).stream()
+    .filter(new Predicate<Integer>() {
+        public boolean test(Integer value) {
+            return value % 2 == 0;
+        }
+    })
+    .collect(Collectors.toList());
 // to:
-[1,2,3,4].filter(value => value % 2 === 0);
+List.of(1,2,3,4).stream()
+    .filter(value -> value % 2 == 0)
+    .collect(Collectors.toList());
 ----
 
 See how much easier it is to read the last line in the example over the previous filter using the anonymous function?
@@ -362,24 +373,25 @@ Let's show some code which helps bill a customer.
 
 [source]
 ----
+// For jshell - create a Customer class
+class Customer {
+    String name;
+    double amount;
+    String paymentMethod;
+    
+    Customer(String name, double amount, String paymentMethod) {
+        this.name = name;
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+    }
+}
+
 // list of customers we want to 'checkout'
-const customers = [
-  {
-    name: 'sam',
-    amount: 75.00,
-    paymentMethod: 'credit-card',
-  },
-  {
-    name: 'frodo',
-    amount: 50.00,
-    paymentMethod: 'debit-card',
-  },
-  {
-    name: 'galadriel',
-    amount: 25.00,
-    paymentMethod: 'cash',
-  },
-];
+var customers = List.of(
+  new Customer("sam", 75.00, "credit-card"),
+  new Customer("frodo", 50.00, "debit-card"),
+  new Customer("galadriel", 25.00, "cash")
+);
 ----
 
 I'm going to gloss over the code needed to do each of the three kinds of payment.
@@ -387,27 +399,27 @@ But show you how I might have to account for all three inside a `checkout` funct
 
 [source]
 ----
-const checkout = (amount, paymentMethod) => {
+static void checkout(double amount, String paymentMethod) {
   switch (paymentMethod) {
-    case 'credit-card':
-      // Complex code to charge ${amount} to the credit card.
+    case "credit-card":
+      // Complex code to charge amount to the credit card.
       break;
-    case 'debit-card':
-      // Complex code to charge ${amount} to the debit card.
+    case "debit-card":
+      // Complex code to charge amount to the debit card.
       break;
-    case 'cash':
-      // Complex code to put ${amount} into the cash drawer.
+    case "cash":
+      // Complex code to put amount into the cash drawer.
       break;
   }
-};
+}
 ----
 
 Now, I'd like to take the list of customers, and checkout each one. (Notice how I'm using the higher-order function here, not a `for` loop.)
 
 [source]
 ----
-customers.forEach(({ amount, paymentMethod }) => {
-  checkout(amount, paymentMethod);
+customers.forEach(customer -> {
+  checkout(customer.amount, customer.paymentMethod);
 });
 ----
 
@@ -416,40 +428,47 @@ And look how I have broken the large function up, into three simpler things.
 
 [source]
 ----
-class CreditCardCheckout {
-  static charge(amount) {
-    // Complex code to charge ${amount} to the credit card.
+// First, create an interface for payment methods
+interface PaymentProcessor {
+    void charge(double amount);
+}
+
+class CreditCardCheckout implements PaymentProcessor {
+  public void charge(double amount) {
+    // Complex code to charge amount to the credit card.
   }
 }
-class DebitCardCheckout {
-  static charge(amount) {
-    // Complex code to charge ${amount} to the debit card.
+class DebitCardCheckout implements PaymentProcessor {
+  public void charge(double amount) {
+    // Complex code to charge amount to the debit card.
   }
 }
-class CashCheckout {
-  static charge(amount) {
-    // Complex code to put ${amount} into the cash drawer.
+class CashCheckout implements PaymentProcessor {
+  public void charge(double amount) {
+    // Complex code to put amount into the cash drawer.
   }
 }
-const customers = [
-  {
-    name: 'sam',
-    amount: 75.00,
-    paymentMethod: CreditCardCheckout,
-  },
-  {
-    name: 'frodo',
-    amount: 50.00,
-    paymentMethod: DebitCardCheckout,
-  },
-  {
-    name: 'galadriel',
-    amount: 25.00,
-    paymentMethod: CashCheckout,
-  },
-];
-customers.forEach(({ amount, paymentMethod}) => {
-  paymentMethod.charge(amount);
+
+// Update Customer class to use PaymentProcessor
+class Customer {
+    String name;
+    double amount;
+    PaymentProcessor paymentMethod;
+    
+    Customer(String name, double amount, PaymentProcessor paymentMethod) {
+        this.name = name;
+        this.amount = amount;
+        this.paymentMethod = paymentMethod;
+    }
+}
+
+var customers = List.of(
+  new Customer("sam", 75.00, new CreditCardCheckout()),
+  new Customer("frodo", 50.00, new DebitCardCheckout()),
+  new Customer("galadriel", 25.00, new CashCheckout())
+);
+customers.forEach(customer -> {
+  customer.paymentMethod.charge(customer.amount);
 });
 ----
 

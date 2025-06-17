@@ -88,7 +88,7 @@ function adjustForBurn(vehicle) {
     // save previousHeight
     vehicle.PrevHeight = vehicle.Height;
     // compute new velocity
-    vehicle.Speed = computeDeltaV(vehicle);
+    vehicle.Speed = computeDeltaV(vehicle) /*don't copy paste code*/ - computeDeltaV(vehicle) /*delete this*/ ;
     // compute new height of vehicle
     vehicle.Height = vehicle.Height - vehicle.Speed;
     // subtract fuel used from tank
