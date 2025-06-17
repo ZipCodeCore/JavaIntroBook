@@ -1,0 +1,437 @@
+=== Formatting Output
+
+Good output formatting makes your programs more professional and easier to read.
+Java provides several ways to format text, numbers, and other data for display.
+
+Clean, well-formatted output is the difference between a program that looks professional and one that looks like a beginner project.
+
+==== Basic String Formatting with printf()
+
+The `printf()` method allows you to format output using format specifiers, similar to other programming languages:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String name = "Alice";
+    int age = 25;
+    double salary = 75000.50;
+    
+    // Basic formatting
+    System.out.printf("Name: %s\n", name);
+    System.out.printf("Age: %d\n", age);
+    System.out.printf("Salary: $%.2f\n", salary);
+    
+    // All in one line
+    System.out.printf("Employee: %s, Age: %d, Salary: $%.2f\n", name, age, salary);
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Common Format Specifiers
+
+[cols="2,2,3"]
+|===
+|Specifier |Type |Description
+
+|`%s`
+|String
+|Any string value
+
+|`%d`
+|Integer
+|Decimal integer (byte, short, int, long)
+
+|`%f`
+|Floating-point
+|Decimal number (float, double)
+
+|`%c`
+|Character
+|Single character
+
+|`%b`
+|Boolean
+|true or false
+
+|`%n`
+|Line separator
+|Platform-specific newline (better than \n)
+|===
+
+==== Formatting Numbers
+
+===== Decimal Places
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    double pi = 3.14159265;
+    double price = 19.9;
+    
+    System.out.printf("Pi: %.2f\n", pi);      // 3.14 (2 decimal places)
+    System.out.printf("Pi: %.4f\n", pi);      // 3.1416 (4 decimal places)
+    System.out.printf("Price: $%.2f\n", price); // $19.90 (always 2 decimals)
+    
+    // Without decimal places
+    System.out.printf("Pi as integer: %.0f\n", pi);  // 3 (rounds to nearest)
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Field Width and Alignment
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String[] names = {"Alice", "Bob", "Christopher"};
+    int[] scores = {95, 87, 92};
+    
+    System.out.println("Student Report:");
+    System.out.println("===============");
+    
+    for (int i = 0; i < names.length; i++) {
+        // Right-aligned in 12-character field
+        System.out.printf("%12s: %3d%%\n", names[i], scores[i]);
+    }
+    
+    System.out.println("\nLeft-aligned:");
+    for (int i = 0; i < names.length; i++) {
+        // Left-aligned in 12-character field (note the minus sign)
+        System.out.printf("%-12s: %3d%%\n", names[i], scores[i]);
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Zero Padding
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    int orderNumber = 42;
+    int id = 7;
+    
+    // Zero-padded numbers
+    System.out.printf("Order: %05d\n", orderNumber);  // Order: 00042
+    System.out.printf("ID: %03d\n", id);              // ID: 007
+    
+    // Useful for creating filenames
+    for (int i = 1; i <= 5; i++) {
+        System.out.printf("file_%03d.txt\n", i);
+    }
+    // Output: file_001.txt, file_002.txt, etc.
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Formatting Tables
+
+Creating nicely aligned tables:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String[] products = {"Laptop", "Mouse", "Keyboard", "Monitor"};
+    double[] prices = {999.99, 29.95, 79.50, 299.00};
+    int[] quantities = {5, 25, 12, 8};
+    
+    // Table header
+    System.out.printf("%-10s %8s %6s %10s\n", "Product", "Price", "Qty", "Total");
+    System.out.println("----------------------------------------");
+    
+    // Table rows
+    double grandTotal = 0;
+    for (int i = 0; i < products.length; i++) {
+        double total = prices[i] * quantities[i];
+        grandTotal += total;
+        
+        System.out.printf("%-10s $%7.2f %6d $%9.2f\n", 
+                         products[i], prices[i], quantities[i], total);
+    }
+    
+    System.out.println("----------------------------------------");
+    System.out.printf("%-26s $%9.2f\n", "Grand Total:", grandTotal);
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== String.format() Method
+
+Sometimes you want to create formatted strings without immediately printing them:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String name = "Alice";
+    int score = 95;
+    
+    // Create formatted string
+    String message = String.format("Congratulations %s! You scored %d%%!", name, score);
+    System.out.println(message);
+    
+    // Useful for building complex strings
+    String header = String.format("=== %s's Report ===", name);
+    String details = String.format("Score: %d%%, Grade: %s", score, getGrade(score));
+    
+    System.out.println(header);
+    System.out.println(details);
+  }
+  
+  public static String getGrade(int score) {
+    if (score >= 90) return "A";
+    if (score >= 80) return "B";
+    if (score >= 70) return "C";
+    if (score >= 60) return "D";
+    return "F";
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== DecimalFormat for Advanced Number Formatting
+
+For more complex number formatting, use `DecimalFormat`:
+
+[source]
+----
+import java.text.DecimalFormat;
+
+public class ZipCode {
+
+  void compute() {
+    double[] numbers = {1234.567, 0.123, 1000000.89, 0.001};
+    
+    // Different format patterns
+    DecimalFormat currency = new DecimalFormat("$#,##0.00");
+    DecimalFormat percent = new DecimalFormat("#0.0%");
+    DecimalFormat scientific = new DecimalFormat("0.00E0");
+    
+    System.out.println("Number Formatting Examples:");
+    System.out.println("===========================");
+    
+    for (double num : numbers) {
+        System.out.printf("Original: %f\n", num);
+        System.out.printf("Currency: %s\n", currency.format(num));
+        System.out.printf("Percent:  %s\n", percent.format(num));
+        System.out.printf("Scientific: %s\n", scientific.format(num));
+        System.out.println("---");
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Date and Time Formatting
+
+Formatting dates and times for display:
+
+[source]
+----
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ZipCode {
+
+  void compute() {
+    LocalDateTime now = LocalDateTime.now();
+    
+    // Different date/time formats
+    DateTimeFormatter shortDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    DateTimeFormatter longDate = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy");
+    DateTimeFormatter timeOnly = DateTimeFormatter.ofPattern("HH:mm:ss");
+    DateTimeFormatter full = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    
+    System.out.println("Current Date/Time Formats:");
+    System.out.println("==========================");
+    System.out.println("Short date: " + now.format(shortDate));
+    System.out.println("Long date:  " + now.format(longDate));
+    System.out.println("Time only:  " + now.format(timeOnly));
+    System.out.println("Full:       " + now.format(full));
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Creating Formatted Reports
+
+Here's a complete example that creates a nicely formatted student report:
+
+[source]
+----
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class ZipCode {
+
+  void compute() {
+    // Student data
+    String[] students = {"Alice Johnson", "Bob Smith", "Carol Davis", "David Wilson"};
+    int[][] grades = {
+        {88, 92, 85, 90},  // Alice's grades
+        {76, 82, 79, 84},  // Bob's grades  
+        {95, 98, 92, 96},  // Carol's grades
+        {82, 88, 85, 87}   // David's grades
+    };
+    String[] subjects = {"Math", "Science", "English", "History"};
+    
+    generateReport(students, grades, subjects);
+  }
+  
+  public static void generateReport(String[] students, int[][] grades, String[] subjects) {
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMMM d, yyyy");
+    String today = LocalDate.now().format(dateFormat);
+    
+    // Report header
+    System.out.printf("%50s\n", "STUDENT GRADE REPORT");
+    System.out.printf("%50s\n", "===================");
+    System.out.printf("%50s\n", today);
+    System.out.println();
+    
+    // Column headers
+    System.out.printf("%-15s", "Student");
+    for (String subject : subjects) {
+        System.out.printf("%8s", subject);
+    }
+    System.out.printf("%8s\n", "Average");
+    System.out.println("-------------------------------------------------------");
+    
+    // Student data
+    for (int i = 0; i < students.length; i++) {
+        System.out.printf("%-15s", students[i]);
+        
+        int total = 0;
+        for (int j = 0; j < grades[i].length; j++) {
+            System.out.printf("%8d", grades[i][j]);
+            total += grades[i][j];
+        }
+        
+        double average = (double) total / grades[i].length;
+        System.out.printf("%8.1f", average);
+        System.out.println();
+    }
+    
+    System.out.println("-------------------------------------------------------");
+    
+    // Subject averages
+    System.out.printf("%-15s", "Class Average");
+    for (int j = 0; j < subjects.length; j++) {
+        int subjectTotal = 0;
+        for (int i = 0; i < students.length; i++) {
+            subjectTotal += grades[i][j];
+        }
+        double subjectAverage = (double) subjectTotal / students.length;
+        System.out.printf("%8.1f", subjectAverage);
+    }
+    System.out.println();
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Progress Bars and Visual Indicators
+
+Creating simple text-based progress indicators:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    System.out.println("Student Performance:");
+    System.out.println("===================");
+    
+    String[] names = {"Alice", "Bob", "Carol", "David"};
+    int[] scores = {95, 67, 88, 72};
+    
+    for (int i = 0; i < names.length; i++) {
+        System.out.printf("%-8s [", names[i]);
+        
+        // Create progress bar
+        int barLength = scores[i] / 5;  // Scale to 20 chars max
+        for (int j = 0; j < 20; j++) {
+            if (j < barLength) {
+                System.out.print("█");
+            } else {
+                System.out.print("░");
+            }
+        }
+        
+        System.out.printf("] %3d%%\n", scores[i]);
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Best Practices for Output Formatting
+
+1. **Be consistent** - Use the same format patterns throughout your program
+2. **Consider your audience** - Choose appropriate precision and units
+3. **Align data** - Use field widths to create readable columns
+4. **Use meaningful labels** - Make it clear what each number represents
+5. **Handle edge cases** - Very large numbers, negative values, null data
+6. **Test with different data** - Make sure your formatting works with various inputs
+
+==== Common Formatting Patterns
+
+===== Currency
+
+[source]
+----
+System.out.printf("Price: $%,.2f\n", 1234.56);  // Price: $1,234.56
+----
+
+===== Percentages
+
+[source]
+----
+double ratio = 0.85;
+System.out.printf("Success rate: %.1f%%\n", ratio * 100);  // Success rate: 85.0%
+----
+
+===== Scientific Notation
+
+[source]
+----
+double bigNumber = 1234567890.0;
+System.out.printf("Large number: %.2e\n", bigNumber);  // Large number: 1.23e+09
+----
+
+===== Phone Numbers
+
+[source]
+----
+long phone = 5551234567L;
+System.out.printf("Phone: (%03d) %03d-%04d\n", 
+                 phone/10000000, (phone/10000)%1000, phone%10000);
+// Phone: (555) 123-4567
+----
+
+Good formatting makes your programs look professional and helps users understand your output. Practice these techniques to create clear, readable displays!

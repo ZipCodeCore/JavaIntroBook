@@ -2,7 +2,7 @@
 :title-page:
 = Zip Code Wilmington's Programming in Java
 Kristofer Younger <kris@zipcodewilmington.com>
-v2.1, 2025-06-01
+v2.2, 2025-06-17
 :imagesdir: images
 :pdf-theme: indextheme.yml
 :source-highlighter: rouge
@@ -115,8 +115,7 @@ Okay, let's go.
 
 :sectnums:
 
-
-== Output - System.out.println()
+include::aastartwithjshell.adoc[]
 
 include::consolelog.adoc[]
 
@@ -124,6 +123,7 @@ include::consolelog.adoc[]
 
 include::variables.adoc[]
 
+include::type-casting.adoc[]
 
 include::operators.adoc[]
 
@@ -135,9 +135,13 @@ include::booleanexpr.adoc[]
 
 include::strings.adoc[]
 
+include::stringbuilder.adoc[]
+
 == Arrays
 
 include::arrays.adoc[]
+
+include::multidimensional-arrays.adoc[]
 
 include::controlflow.adoc[]
 
@@ -158,15 +162,29 @@ include::classes.adoc[]
 
 include::methods.adoc[]
 
+include::method-overloading.adoc[]
+
 include::return.adoc[]
 
 include::objectsmethods.adoc[]
+
+include::access-modifiers.adoc[]
+
+== Input/Output Operations
+
+include::scanner-input.adoc[]
+
+include::file-io.adoc[]
+
+include::output-formatting.adoc[]
 
 include::appendixa.adoc[]
 
 include::appendixb.adoc[]
 
 include::appendixc.adoc[]
+
+include::jvm-ecosystem.adoc[]
 
 [appendix]
 == Additional Java Resources

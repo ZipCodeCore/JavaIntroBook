@@ -1,6 +1,9 @@
 
+
+== Output - System.out.println()
+
 Let's start with a really simple program.
-Perhaps the simplest Java program is:
+So using `jshell`, perhaps the simplest Java program is:
 
 [source]
 ----
@@ -26,7 +29,7 @@ Now, how do we `run` this program? Use jshell!
 
 jshell is Java's built-in interactive tool that comes with Java 9 and later. It lets you type Java code and see results immediately, without having to create full programs with classes and main methods.
 
-To start jshell, open your terminal or command prompt and type:
+If you haven't already got a jshell, open your terminal or command prompt and type:
 ```
 jshell
 ```
@@ -39,18 +42,26 @@ You'll see a prompt like this:
 jshell>
 ```
 __(And if you get something like **jshell: command not found**, see the appendix at the back of the book
-on how to install what you need.) --- (I'll wait. Go ahead, come back here when it's installed.)__
+on how to install what you need.) - (and if the number up there is 9 or 11 or 21... well it really doesn't matter)
+ - (I'll wait. Go ahead, come back here when it's installed.)__
 
 Now you can type simple Java statements directly! For example:
 ```
-jshell> double milesPerHour = 55.0
+jshell> double milesPerHour = 55.0;
 milesPerHour ==> 55.0
 
-jshell> System.out.println("Car's Speed: " + milesPerHour)
+jshell> System.out.println("Car's Speed: " + milesPerHour);
 Car's Speed: 55.0
 ```
 
-Throughout this book, code examples are designed to work directly in jshell. You can type these statements one by one and see immediate results. For example:
+Take a LOT of care to type the code is **exactly** as you see it above. 
+Notice, the double quotes **"** and the semi-colon **;**.
+
+ProTip: All of this matters, and being precise with your code, well, it's expected by potential employers.
+
+Throughout this book, code examples are designed to work directly in jshell. 
+You can type these statements one by one and see immediate results. For example:
+
 ```
 jshell> double milesPerHour = 55.0;
 jshell> System.out.println("Car's Speed: " + milesPerHour);
@@ -65,6 +76,91 @@ jshell is perfect for learning Java because you can experiment immediately witho
 To exit jshell when you're done, type `/exit` or press Ctrl+D.
 
 Cool, huh? The ability to communicate with you is one of Java's most fundamental capabilities. And you've run Java code interactively. Congratulations, you're a coder. (Well, at least for today you are.)
+
+
+=== Some Exercises
+
+__Note on exercises: So yeah, I want you to learn Java. And you claim you want to learn Java.
+So, then, about the these exercises; remember when I said learning the hard way is best?
+(the idea that by typing code in with your own two-little-fingers (oh wait, what? 
+you know how to type? You'll go far in this gig!!)) Yeah, so here's the deal.__
+
+__You should NOT copypasta these exercises into jshell. You should t-y-p-e them. Yes, that's right,
+t-y-p-e them in with your fingers. You will practice what code looks like and how it goes
+together if you do enough of it.
+And that word, "copypasta", well look it up.__
+
+Try these exercises in jshell to practice System.out.println and basic Java syntax:
+
+*Exercise 1: Your First Output*
+
+Print your name and age using System.out.println:
+Replace [Your Name] and [Your Age] with your actual information.
+
+
+```
+System.out.println("My name is [Your Name]");
+System.out.println("I am [Your Age] years old");
+```
+
+*Exercise 2: Using Variables and Concatenation*
+
+Create variables (hmm, what's a variable?) for your favorite food and hobby, then print them:
+
+```
+String favFood = "pizza";
+String hobby = "reading";
+System.out.println("I love eating " + favFood);
+System.out.println("My favorite hobby is " + hobby);
+```
+
+__We will talk about variables very soon.__
+
+*Exercise 3: Numbers and Math*
+
+Create variables for two numbers and print their sum:
+
+```
+int num1 = 15;
+int num2 = 27;
+System.out.println("Sum of " + num1 + " & " + num2 + " is " + (num1 + num2));
+```
+
+*Exercise 4: Multiple Data Types*
+
+Practice with different data types:
+
+```
+String name = "Java";
+int version = 21;
+double pi = 3.14159;
+boolean isAwesome = true;
+
+System.out.println("Language: " + name);
+System.out.println("Version: " + version);
+System.out.println("Pi: " + pi);
+System.out.println("Is awesome: " + isAwesome);
+```
+
+=== BUT WAIT!!!
+
+What does `int` and `double` signify? Well, see how they proceed another descriptive word describing
+how many loaves and the flour amount?
+
+[source]
+----
+int loavesToMake = 2;
+//^
+double flourAmount = 3.5;
+//^^^^  
+System.out.println("We need " + flourAmount 
+  + " cups of flour to make "+loavesToMake+" loaves.");
+----
+
+It is our way of telling Java what __kind of number__ `flourAmount` is. 
+We want `flourAmount` to be place holder for the number `3.5`, 
+because makes the code easier to read and understand. 
+See much more on this, up ahead, in `Variables`.
 
 == Comments
 
@@ -97,7 +193,7 @@ jshell> System.out.println(flourAmount);
 3.5
 ```
 
-We can also add useful stuff to the .log call. 
+We can also add useful stuff to the **.println** call. 
 
 [source]
 ----
@@ -105,91 +201,34 @@ double flourAmount = 3.5;
 System.out.println("We need " + flourAmount + " cups of flour.");
 ----
 
-See how Java types it all out as a useful phrase? That proves to be very handy in a million-plus (or more) cases.
+See how Java types it all out as a useful phrase? 
+That proves to be very handy in a million-plus (or more) cases.
 
-Comments can be used to explain tricky bits of code, or describe what you should see in output. Comments are your friend.
+But comments can be used to explain tricky bits of code, or describe what you should see in output. 
+Comments in code are primarily used to enhance readability and understanding,
+both for a "future you" and for others who might work with the code later. 
+Comments serve as documentation, explaining the purpose, logic, and functionality of the code, 
+especially in complex or tricky parts. 
+Comments also help with collaboration, making it easier for teams working with you to 
+understand and modify code in the future.
 
-=== Chapter Exercises
-
-__Note on exercises: So yeah, I want you to learn Java. And you claim you want to learn Java.
-So, then, about the these exercises; remember when I said learning the hard way is best?
-(the idea that by typing code in with your own two-little-fingers (oh wait, what? 
-you know how to type? You'll go far in this gig!!)) Yeah, so here's the deal.__
-
-__You should NOT copypasta these exercises into jshell. You should t-y-p-e them. Yes, that's right,
-t-y-p-e them in with your fingers. You will practice what code looks like and how it goes
-together if you do enough of it.
-And that word, "copypasta", well look it up.__
-
-Try these exercises in jshell to practice System.out.println and basic Java syntax:
-
-*Exercise 1: Your First Output*
-
-Print your name and age using System.out.println:
-Replace [Your Name] and [Your Age] with your actual information.
+Comments are your friend.
+And they are __FREE__, no cost to using them. 
 
 
-```
-System.out.println("My name is [Your Name]");
-System.out.println("I am [Your Age] years old");
-```
+== Numbers
 
-*Exercise 2: Using Variables and Concatenation*
+The statement **"everything is number"** is attributed to the ancient Greek philosopher Pythagoras (born circa 570BCE) 
+and his followers, the Pythagoreans. 
+They believed that numbers, particularly whole numbers and their ratios, were the fundamental essence 
+and underlying principle of all things in the universe.
 
-Create variables for your favorite food and hobby, then print them:
-
-```
-String favFood = "pizza";
-String hobby = "reading";
-System.out.println("I love eating " + favFood);
-System.out.println("My favorite hobby is " + hobby);
-```
-
-*Exercise 3: Numbers and Math*
-
-Create variables for two numbers and print their sum:
-
-```
-int num1 = 15;
-int num2 = 27;
-System.out.println("Sum of " + num1 + " & " + num2 + " is " + (num1 + num2));
-```
-
-*Exercise 4: Multiple Data Types*
-
-Practice with different data types:
-
-```
-String name = "Java";
-int version = 21;
-double pi = 3.14159;
-boolean isAwesome = true;
-
-System.out.println("Language: " + name);
-System.out.println("Version: " + version);
-System.out.println("Pi: " + pi);
-System.out.println("Is awesome: " + isAwesome);
-```
-
-== BUT WAIT!!!
-
-What does `int` and `double` signify? Well, see how they proceed another word?
-
-[source]
-----
-int loavesToMake = 2;
-double flourAmount = 3.5;
-//  ^^^^^^ ^^^^^^^^^^^  
-System.out.println("We need " + flourAmount 
-  + " cups of flour to make "+loavesToMake+" loaves.");
-----
-
-It is our way of telling Java what `flourAmount` is. 
-We want `flourAmount` to be place holder for the number `3.5`, 
-because makes the code easier to read and understand. See much more on this, up ahead, in `variables`.
+Little did the Pythagoreans know how close they got it: everything in your new world is digital.
+Numbers, simplified all the way down to 1 and 0 (as in bits).
 
 === Two kinds of Numbers in Java
 
+There basically two kinds of numbers in Java.
 There are times when I cannot believe I have to make this point. 
 It just seems like, "well, if Java is so smart why do I have to care about this."
 
@@ -203,11 +242,13 @@ _loavesToMake_.
 If you're just going to _count_ things (like say the number of birthdays a person has had), we will
 use _integers_ for that. _integers_ in Java, are called **int**.
 A `int` means a number, but just an integer like 0, 1, 2, 42, 99, etc. 
-It even means negative numbers -5 or -123487262. The math teacher might say that _integers_ are _whole  numbers_.
+It even means negative numbers -5 or -123487262. 
+The math teacher might say that _integers_ are _whole  numbers_.
 
 But a **lot** of things need a lot more flexibility. 
 The value of your debit account could be $105.55, which is a number _between_ 105 and 106. 
-The amount of fuel in your car's gas tank isn't 1 or 6 gallons, it's probably something like 7.42 gallons, and changes by small amounts as you drive.
+The amount of fuel in your car's gas tank isn't 13 or 16 gallons, it's probably something 
+like 13.42 gallons, and changes by small amounts as you drive.
 
 So Java has another **type** of number, a **floating point number** and in these early days in this book, we will use **double** as the kind of number we use when we need a number that might not be a _whole number_, but rather _real numbers_.
 A **double** can have decimal point and some number after, so I can write `3.5` or `42.0`. 
@@ -233,7 +274,7 @@ We will use throughout this book, two _types_ of numbers. **int**s which are who
 4560072615728
 ----
 
-And there are **double**s which are real numbers like
+And there are **double**s which are **real numbers** like
 
 [source]
 ----
@@ -241,11 +282,17 @@ And there are **double**s which are real numbers like
 0.0
 -7.005
 822.98676253
+0.000000000000020983028029
+3.1415926535897931
+10.
 ----
 
 And it turns out Java has a few more **types** of numbers, more than just **int** and **double**. 
-I'll list them, but you'll need to go to a larger Java book or website to understand how they are different from _int_ and _double_.
-They are four more **types** of numbers: **long**, **short**, **byte**, and **float**. 
+I'll list them, but you'll need to go to a larger Java book or 
+website to understand how they are different from _int_ and _double_.
+
+There are four more **types** of numbers: **long**, **short**, **byte**, and **float**. 
+
 
 == Statements and Expressions
 

@@ -182,13 +182,47 @@ If you get security warnings on macOS:
 === Recommended Java Versions
 
 For this book, we recommend:
-- **Java 17 LTS** - Current long-term support version (recommended)
-- **Java 21 LTS** - Latest long-term support version
+- **Java 21 LTS** - Latest long-term support version (recommended)
+- **Java 17 LTS** - Widely used long-term support version  
 - **Java 11 LTS** - Older but still supported LTS version
 
 Avoid:
 - Java 8 and earlier (no jshell support)
 - Non-LTS versions unless you have a specific need
+
+=== Setting Up Your Development Environment
+
+Once Java is installed, you have several options for writing and running Java code:
+
+==== Using jshell (Recommended for This Book)
+
+jshell is perfect for learning and experimenting:
+- No need to create full programs
+- Immediate feedback on code snippets
+- Great for testing small pieces of code
+- Comes built-in with Java 9+
+
+Start jshell by typing `jshell` in your terminal.
+
+==== Code Editors and IDEs
+
+For larger projects, consider these tools:
+
+**Beginner-Friendly:**
+- **Visual Studio Code** with Java extensions - Free, lightweight
+- **IntelliJ IDEA Community Edition** - Free, powerful
+- **Eclipse** - Free, widely used
+
+**Professional:**
+- **IntelliJ IDEA Ultimate** - Commercial, full-featured
+- **NetBeans** - Free, Oracle-supported
+
+**Simple Text Editors:**
+- **Notepad++** (Windows) - Basic syntax highlighting
+- **TextEdit** (macOS) - Simple text editing
+- **Gedit** (Linux) - Basic code editing
+
+For this book, jshell is sufficient, but having a good editor helps when you want to save your programs.
 
 === Getting Help
 

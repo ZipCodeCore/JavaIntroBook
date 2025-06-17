@@ -1,0 +1,413 @@
+=== Basic File Input/Output
+
+File I/O (Input/Output) allows your Java programs to read data from files and write data to files.
+This is essential for creating programs that can save and load information, process data files, or generate reports.
+
+==== Why File I/O?
+
+Most real-world programs need to:
+- Save user data between program runs
+- Read configuration settings
+- Process data from spreadsheets or databases
+- Generate reports or logs
+- Import/export information
+
+==== Reading Text Files
+
+===== Using Scanner to Read Files
+
+The easiest way to read text files is using the Scanner class we already learned about:
+
+[source]
+----
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    try {
+      File file = new File("data.txt");
+      Scanner scanner = new Scanner(file);
+      
+      while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        System.out.println(line);
+      }
+      
+      scanner.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("File not found: " + e.getMessage());
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Reading Different Data Types from Files
+
+[source]
+----
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    try {
+      File file = new File("scores.txt");
+      Scanner scanner = new Scanner(file);
+      
+      while (scanner.hasNext()) {
+        String name = scanner.next();     // Read name
+        int score = scanner.nextInt();    // Read score
+        
+        System.out.println(name + ": " + score);
+      }
+      
+      scanner.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("Could not find the file!");
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Writing Text Files
+
+===== Using PrintWriter to Write Files
+
+[source]
+----
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+
+public class ZipCode {
+
+  void compute() {
+    try {
+      PrintWriter writer = new PrintWriter(new FileWriter("output.txt"));
+      
+      writer.println("Hello, World!");
+      writer.println("This is line 2");
+      writer.print("This is on the same line ");
+      writer.println("as this text.");
+      
+      writer.close();  // Important: Always close the writer!
+      System.out.println("File written successfully!");
+      
+    } catch (IOException e) {
+      System.out.println("Error writing to file: " + e.getMessage());
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Writing Data with Formatting
+
+[source]
+----
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+
+public class ZipCode {
+
+  void compute() {
+    try {
+      PrintWriter writer = new PrintWriter(new FileWriter("students.txt"));
+      
+      // Write header
+      writer.println("Student Grade Report");
+      writer.println("====================");
+      writer.println();
+      
+      // Write student data
+      String[] names = {"Alice", "Bob", "Charlie"};
+      int[] grades = {85, 92, 78};
+      
+      for (int i = 0; i < names.length; i++) {
+        writer.printf("%-10s: %3d%%\n", names[i], grades[i]);
+      }
+      
+      writer.close();
+      System.out.println("Report saved to students.txt");
+      
+    } catch (IOException e) {
+      System.out.println("Error: " + e.getMessage());
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Exception Handling with Files
+
+File operations can fail for many reasons (file doesn't exist, no permission, disk full, etc.), so we must handle exceptions:
+
+===== Try-Catch Blocks
+
+[source]
+----
+import java.io.*;
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    String filename = "data.txt";
+    
+    try {
+      // Attempt to read the file
+      Scanner scanner = new Scanner(new File(filename));
+      
+      while (scanner.hasNextLine()) {
+        System.out.println(scanner.nextLine());
+      }
+      
+      scanner.close();
+      
+    } catch (FileNotFoundException e) {
+      System.out.println("Sorry, could not find file: " + filename);
+    } catch (Exception e) {
+      System.out.println("An unexpected error occurred: " + e.getMessage());
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Try-with-Resources (Automatic Cleanup)
+
+Java provides a cleaner way to handle file resources that automatically closes them:
+
+[source]
+----
+import java.io.*;
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    // Try-with-resources automatically closes the Scanner
+    try (Scanner scanner = new Scanner(new File("data.txt"))) {
+      
+      while (scanner.hasNextLine()) {
+        System.out.println(scanner.nextLine());
+      }
+      
+      // scanner.close() is called automatically!
+      
+    } catch (FileNotFoundException e) {
+      System.out.println("File not found: " + e.getMessage());
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Complete Example: Student Grade Manager
+
+Here's a practical example that reads student data from a file, processes it, and writes a report:
+
+[source]
+----
+import java.io.*;
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    readAndProcessGrades();
+  }
+  
+  public static void readAndProcessGrades() {
+    // Read grades from input file
+    try (Scanner input = new Scanner(new File("grades_input.txt"));
+         PrintWriter output = new PrintWriter(new FileWriter("grade_report.txt"))) {
+      
+      output.println("GRADE REPORT");
+      output.println("============");
+      output.println();
+      
+      double totalGrades = 0;
+      int studentCount = 0;
+      
+      while (input.hasNextLine()) {
+        String line = input.nextLine();
+        String[] parts = line.split(",");  // Assume CSV format: "Name,Grade"
+        
+        if (parts.length == 2) {
+          String name = parts[0].trim();
+          int grade = Integer.parseInt(parts[1].trim());
+          
+          // Write student info
+          output.printf("%-15s: %3d%% ", name, grade);
+          
+          // Add letter grade
+          if (grade >= 90) {
+            output.println("(A)");
+          } else if (grade >= 80) {
+            output.println("(B)");
+          } else if (grade >= 70) {
+            output.println("(C)");
+          } else if (grade >= 60) {
+            output.println("(D)");
+          } else {
+            output.println("(F)");
+          }
+          
+          totalGrades += grade;
+          studentCount++;
+        }
+      }
+      
+      // Calculate and write average
+      if (studentCount > 0) {
+        double average = totalGrades / studentCount;
+        output.println();
+        output.printf("Class Average: %.1f%%\n", average);
+      }
+      
+      System.out.println("Grade report generated successfully!");
+      
+    } catch (FileNotFoundException e) {
+      System.out.println("Input file not found: " + e.getMessage());
+    } catch (IOException e) {
+      System.out.println("Error writing report: " + e.getMessage());
+    } catch (NumberFormatException e) {
+      System.out.println("Error: Invalid grade format in file");
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== File Paths and Locations
+
+===== Relative vs Absolute Paths
+
+[source]
+----
+// Relative path (relative to where your program runs)
+File file1 = new File("data.txt");           // In current directory
+File file2 = new File("data/students.txt");  // In data subfolder
+
+// Absolute path (complete path from root)
+File file3 = new File("/Users/student/documents/grades.txt");  // Mac/Linux
+File file4 = new File("C:\\Users\\student\\Documents\\grades.txt");  // Windows
+----
+
+===== Checking if Files Exist
+
+[source]
+----
+import java.io.File;
+
+public class ZipCode {
+
+  void compute() {
+    File file = new File("data.txt");
+    
+    if (file.exists()) {
+      System.out.println("File exists!");
+      System.out.println("File size: " + file.length() + " bytes");
+      System.out.println("Can read: " + file.canRead());
+      System.out.println("Can write: " + file.canWrite());
+    } else {
+      System.out.println("File does not exist.");
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Common File I/O Patterns
+
+===== Reading All Lines into an Array
+
+[source]
+----
+import java.io.*;
+import java.util.*;
+
+public static List<String> readAllLines(String filename) {
+  List<String> lines = new ArrayList<>();
+  
+  try (Scanner scanner = new Scanner(new File(filename))) {
+    while (scanner.hasNextLine()) {
+      lines.add(scanner.nextLine());
+    }
+  } catch (FileNotFoundException e) {
+    System.out.println("File not found: " + filename);
+  }
+  
+  return lines;
+}
+----
+
+===== Appending to Files
+
+[source]
+----
+import java.io.*;
+
+public static void appendToFile(String filename, String text) {
+  try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
+    writer.println(text);  // true parameter means "append mode"
+  } catch (IOException e) {
+    System.out.println("Error appending to file: " + e.getMessage());
+  }
+}
+----
+
+==== Best Practices for File I/O
+
+1. **Always use try-catch blocks** - File operations can fail
+2. **Close your resources** - Use try-with-resources when possible
+3. **Check if files exist** before trying to read them
+4. **Use meaningful error messages** to help debug problems
+5. **Handle different types of exceptions** appropriately
+6. **Use absolute paths** when you need to be sure of file location
+7. **Validate file data** before processing it
+
+==== Common File I/O Exceptions
+
+[cols="2,3"]
+|===
+|Exception |When it Occurs
+
+|`FileNotFoundException`
+|When trying to read a file that doesn't exist
+
+|`IOException`
+|General I/O errors (permission denied, disk full, etc.)
+
+|`SecurityException`
+|When your program doesn't have permission to access the file
+
+|`NumberFormatException`
+|When parsing text as numbers fails
+|===
+
+==== Practice Exercises
+
+1. **File Copy Program** - Read a text file and write an exact copy to a new file
+2. **Word Counter** - Count the number of words in a text file
+3. **CSV Processor** - Read a comma-separated values file and calculate statistics
+4. **Log File Analyzer** - Read a log file and find error messages
+
+File I/O is a fundamental skill that opens up many possibilities for your Java programs. Master these basics and you'll be able to create programs that work with real-world data!

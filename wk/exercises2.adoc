@@ -49,34 +49,6 @@ public static double f(double x) {
 *x* is the parameter, the number we want to divide by 2. We just `return x / 2`. 
 So if x=6, the number returned by the function will be *3*.
 
-If asked to produce a function that calculated a more complicated expression, perhaps
-
-****
-234 * 76 / 89 * 564
-****
-
-You could just write
-
-----
-public static double whoa() {
-    return 234 * 76 / 89 * 564;
-}
-----
-
-If asked to produce a function that calculated a more complicated expression, perhaps
-
-****
-234 * 76 / 89 * 564
-****
-
-You could just write
-
-----
-public static double whoa() {
-    return 234 * 76 / 89 * 564;
-}
-----
-
 
 Use these as *patterns* to solve the problems below.
 
@@ -138,7 +110,7 @@ a variable named thumb equal to 1
 a variable name isPlayerAlive equal to true
 a variable named speed equal to 55.0
 a variable named playerOne equal to a string "Joe"
-a constant(!) named PI equal to 3.14159
+a variable named PI equal to 3.14159
 a variable named hand equal to 2 times fingers plus 2 times thumbs
 ----
 
@@ -374,4 +346,67 @@ public static int arraySum(int[] aList) {
 int[] numbers = {3, 8, 5, 7, 9, 2, 13};
 
 System.out.println( arraySum(numbers) ); // answer should be 47.
+----
+
+=== Additional Practice Exercises
+
+==== User Input Practice
+
+Practice reading user input with Scanner. Try these exercises:
+
+Write a program that asks the user for their name and age, then prints a personalized message.
+
+----
+Scanner scanner = new Scanner(System.in);
+// Your code here
+scanner.close();
+----
+
+Create a simple calculator that asks for two numbers and an operation (+, -, *, /) and prints the result.
+
+==== String Building Practice
+
+Use StringBuilder to efficiently build strings:
+
+Create a function that takes an array of words and combines them into a single sentence with spaces between words.
+
+----
+public static String combineWords(String[] words) {
+    // Use StringBuilder here
+}
+----
+
+==== Method Overloading Practice
+
+Create overloaded methods for calculating area:
+
+----
+// Area of a square
+public static double area(double side) {
+    return 0; // Fill this in
+}
+
+// Area of a rectangle  
+public static double area(double length, double width) {
+    return 0; // Fill this in
+}
+
+// Area of a triangle
+public static double area(double base, double height, String shape) {
+    // Only calculate if shape equals "triangle"
+    return 0; // Fill this in
+}
+----
+
+==== Type Casting Practice
+
+Practice converting between different data types:
+
+Write a function that takes a double price and returns the dollars (as an int) and cents (as an int) separately.
+
+----
+public static void separatePrice(double price) {
+    // Convert price to dollars and cents
+    // Print both values
+}
 ----
