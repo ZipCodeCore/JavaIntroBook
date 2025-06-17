@@ -147,7 +147,7 @@ Once you declare something to be of a given type, you cannot change the type whi
 
 === Constants
 
-Constants are like let variables but they contain values that do NOT change such as a person’s date of birth. Convention is to capitalize constant variable names. 
+Constants are like regular variables but they contain values that do NOT change such as a person’s date of birth. Convention is to capitalize constant variable names. 
 
 You make a double or int or String a constant by marking it **final**.
 

@@ -1,10 +1,9 @@
-
 [appendix]
 == Mars Lander
 
 This is some code to show you how you might write a simple mars lander simulation in Java. It's taken from history, way back in the 1970's - this idea was passed around as some of the very first open source programs.
 
-Meant as an example of a longer program (159 lines) to get you thinking, it's really not very complicated. 
+Meant as an example of a longer program to get you thinking, it's really not very complicated. 
 The general idea is you have a series of "burns" in a list, and the game (or simulator, if you will) steps through the list applying each burn. 
 If you run out of altitude (or height) while you're going too fast, you will crash.
 
@@ -12,163 +11,249 @@ The tricky bit would be for you to figure out what `burnArray` would be used to 
 
 [source]
 ----
-// Mars Lander Source Code.
+import java.util.Random;
+import java.util.Scanner;
 
-const Gravity = 100 
-/* The rate in which the spaceship descents in free fall (in ten seconds) */
-
-const version = "1.2"; /* The Version of the program */
-
-// various end-of-game messages.
-const dead = "\nThere were no survivors.\n\n";
-const crashed = "\nThe Spaceship crashed. Good luck getting back home.\n\n";
-const success = "\nYou made it! Good job!\n\n";
-const emptyfuel = "\nThere is no fuel left. You're floating around like Wheatley.\n\n";
-
-function randomheight() {
-    let max = 20000;
-    let min = 10000;
-    let r = Math.floor(Math.random() * (max - min)) + min;
-    return (r % 15000 + 4000)
-}
-
-function gameHeader() {
-    s = "";
-    s = s + "\nMars Lander - Version " + version + "\n";
-    s = s + "This is a computer simulation of an Apollo mars landing capsule.\n";
-    s = s + "The on-board computer has failed so you have to land the capsule manually.\n";
-    s = s + "Set burn rate of retro rockets to any value between 0 (free fall) and 200\n";
-    s = s + "(maximum burn) kilo per second. Set burn rate every 10 seconds.\n"; /* That's why we have to go with 10 second-steps. */
-    s = s + "You must land at a speed of 2 or 1. Good Luck!\n\n";
-    return s;
-}
-
-function getHeader() {
-    s = "";
-    s = s + "\nTime\t";
-    s = s + "Speed\t\t";
-    s = s + "Fuel\t\t";
-    s = s + "Height\t\t";
-    s = s + "Burn\n";
-    s = s + "----\t";
-    s = s + "-----\t\t";
-    s = s + "----\t\t";
-    s = s + "------\t\t";
-    s = s + "----\n";
-    return s;
-}
-
-
-function computeDeltaV(vehicle) {
-    return (vehicle.Speed + Gravity - vehicle.Burn)
-}
-
-function checkStatus(vehicle) {
-    s = "";
-    if (vehicle.Height <= 0) {
-        if (vehicle.Speed > 10) {
-            s = dead;
-        }
-        if (vehicle.Speed < 10 && vehicle.Speed > 3) {
-            s = crashed;
-        }
-
-        if (vehicle.Speed < 3) {
-            s = success;
-        }
-    } else {
-        if (vehicle.Height > 0) {
-            s = emptyfuel;
+public class MarsLander {
+    // Constants
+    private static final int GRAVITY = 100; 
+    // The rate in which the spaceship descends in free fall (in ten seconds)
+    
+    private static final String VERSION = "1.2"; // The Version of the program
+    
+    // Various end-of-game messages
+    private static final String DEAD = "\nThere were no survivors.\n\n";
+    private static final String CRASHED = "\nThe Spaceship crashed. Good luck getting back home.\n\n";
+    private static final String SUCCESS = "\nYou made it! Good job!\n\n";
+    private static final String EMPTY_FUEL = "\nThere is no fuel left. You're floating around like Wheatley.\n\n";
+    
+    private static Random random = new Random();
+    
+    public static int randomHeight() {
+        int max = 20000;
+        int min = 10000;
+        int r = random.nextInt(max - min) + min;
+        return (r % 15000 + 4000);
+    }
+    
+    public static String gameHeader() {
+        StringBuilder s = new StringBuilder();
+        s.append("\nMars Lander - Version ").append(VERSION).append("\n");
+        s.append("This is a computer simulation of an Apollo mars landing capsule.\n");
+        s.append("The on-board computer has failed so you have to land the capsule manually.\n");
+        s.append("Set burn rate of retro rockets to any value between 0 (free fall) and 200\n");
+        s.append("(maximum burn) kilo per second. Set burn rate every 10 seconds.\n");
+        s.append("You must land at a speed of 2 or 1. Good Luck!\n\n");
+        return s.toString();
+    }
+    
+    public static String getHeader() {
+        StringBuilder s = new StringBuilder();
+        s.append("\nTime\t");
+        s.append("Speed\t\t");
+        s.append("Fuel\t\t");
+        s.append("Height\t\t");
+        s.append("Burn\n");
+        return s.toString();
+    }
+    
+    public static String displayStatus(int time, int speed, int fuel, int height, int burn) {
+        StringBuilder s = new StringBuilder();
+        s.append(time).append("\t");
+        s.append(speed).append(" mps\t\t");
+        s.append(fuel).append(" kilos\t\t");
+        s.append(height).append(" meters\t\t");
+        s.append(burn).append("\n");
+        return s.toString();
+    }
+    
+    public static class LanderStatus {
+        public int time;
+        public int speed;
+        public int fuel;
+        public int height;
+        public boolean isAlive;
+        public boolean hasLanded;
+        public String message;
+        
+        public LanderStatus(int time, int speed, int fuel, int height) {
+            this.time = time;
+            this.speed = speed;
+            this.fuel = fuel;
+            this.height = height;
+            this.isAlive = true;
+            this.hasLanded = false;
+            this.message = "";
         }
     }
-    return s
-}
-
-function adjustForBurn(vehicle) {
-    // save previousHeight
-    vehicle.PrevHeight = vehicle.Height;
-    // compute new velocity
-    vehicle.Speed = computeDeltaV(vehicle) /*don't copy paste code*/ - computeDeltaV(vehicle) /*delete this*/ ;
-    // compute new height of vehicle
-    vehicle.Height = vehicle.Height - vehicle.Speed;
-    // subtract fuel used from tank
-    vehicle.Fuel = vehicle.Fuel - vehicle.Burn;
-}
-
-function stillFlying() {
-    return (vehicle.Height > 0);
-}
-
-function outOfFuel(vehicle) {
-    return (vehicle.Fuel <= 0);
-}
-
-function getStatus(vehicle) {
-    // create a string with the vehicle status on it.
-    let s = "";
-    s = vehicle.Tensec + "0 \t\t" + vehicle.Speed + " \t\t" + vehicle.Fuel + " \t\t" +
-        vehicle.Height;
-    return s
-}
-
-function printString(string) {
-    // print long strings with new lines the them.
-    let a = string.split(/\r?\n/);
-    for (i = 0; i < a.length; i++) {
-        System.out.println(a[i]);
-    }
-}
-
-// this is initial vehicle setup
-var vehicle = {
-    Height: 8000,
-    Speed: 1000,
-    Fuel: 12000,
-    Tensec: 0,
-    Burn: 0,
-    PrevHeight: 8000,
-    Step: 1,
-}
-
-// main game loop
-function runGame(burns) {
-    let status = ""
-
-    /* Set initial vehicle parameters */
-    let h = randomheight()
-    vehicle.Height = h;
-    vehicle.PrevHeight = h;
-
-    burnIdx = 0;
-
-    printString(gameHeader());
-    printString(getHeader());
-
-    while (stillFlying() === true) {
-
-        status = getStatus(vehicle);
-
-        vehicle.Burn = burns[burnIdx];
-        printString(status + "\t\t" + vehicle.Burn);
-
-        adjustForBurn(vehicle);
-
-        if (outOfFuel(vehicle) === true) {
-            break;
+    
+    public static LanderStatus updateLander(LanderStatus status, int burn) {
+        // Update time
+        status.time += 10;
+        
+        // Check if we have enough fuel for this burn
+        if (burn > status.fuel) {
+            burn = status.fuel; // Use all remaining fuel
         }
-        vehicle.Tensec++;
-        burnIdx++;
-
-
+        
+        // Update fuel
+        status.fuel -= burn;
+        
+        // Calculate new speed (burn reduces speed, gravity increases it)
+        status.speed = status.speed + GRAVITY - burn;
+        
+        // Calculate new height
+        status.height = status.height - status.speed;
+        
+        // Check landing conditions
+        if (status.height <= 0) {
+            status.hasLanded = true;
+            if (status.speed <= 2) {
+                status.message = SUCCESS;
+                status.isAlive = true;
+            } else if (status.speed <= 10) {
+                status.message = CRASHED;
+                status.isAlive = true;
+            } else {
+                status.message = DEAD;
+                status.isAlive = false;
+            }
+        }
+        
+        return status;
     }
-    status = checkStatus(vehicle);
-    printString(status);
+    
+    public static void playGame() {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Initialize game state
+        LanderStatus lander = new LanderStatus(0, 1000, 8000, randomHeight());
+        
+        System.out.println(gameHeader());
+        System.out.println(getHeader());
+        
+        // Game loop
+        while (!lander.hasLanded && lander.height > 0) {
+            System.out.print(displayStatus(lander.time, lander.speed, lander.fuel, lander.height, 0));
+            
+            // Get burn rate from user
+            System.out.print("Burn rate (0-200): ");
+            int burn = 0;
+            try {
+                burn = Integer.parseInt(scanner.nextLine());
+                if (burn < 0) burn = 0;
+                if (burn > 200) burn = 200;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input, using 0");
+                burn = 0;
+            }
+            
+            // Update lander
+            lander = updateLander(lander, burn);
+            
+            // Check for out of fuel
+            if (lander.fuel <= 0 && !lander.hasLanded) {
+                System.out.println(EMPTY_FUEL);
+                break;
+            }
+        }
+        
+        // Display final status
+        if (lander.hasLanded) {
+            System.out.print(displayStatus(lander.time, lander.speed, lander.fuel, 0, 0));
+            System.out.println(lander.message);
+        }
+        
+        scanner.close();
+    }
+    
+    // Example of automated landing with predefined burns
+    public static void automatedLanding() {
+        // Example burn sequence - you'll need to experiment to find good values!
+        int[] burnArray = {0, 0, 0, 50, 50, 50, 100, 100, 150, 150, 200, 200};
+        
+        LanderStatus lander = new LanderStatus(0, 1000, 8000, 15000);
+        
+        System.out.println("=== Automated Landing Simulation ===");
+        System.out.println(getHeader());
+        
+        int burnIndex = 0;
+        while (!lander.hasLanded && lander.height > 0 && burnIndex < burnArray.length) {
+            int burn = burnArray[burnIndex];
+            System.out.print(displayStatus(lander.time, lander.speed, lander.fuel, lander.height, burn));
+            
+            lander = updateLander(lander, burn);
+            burnIndex++;
+            
+            if (lander.fuel <= 0 && !lander.hasLanded) {
+                System.out.println(EMPTY_FUEL);
+                break;
+            }
+        }
+        
+        if (lander.hasLanded) {
+            System.out.print(displayStatus(lander.time, lander.speed, lander.fuel, 0, 0));
+            System.out.println(lander.message);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose mode:");
+        System.out.println("1. Interactive game");
+        System.out.println("2. Automated landing demo");
+        System.out.print("Enter choice (1 or 2): ");
+        
+        try {
+            int choice = Integer.parseInt(scanner.nextLine());
+            if (choice == 1) {
+                playGame();
+            } else if (choice == 2) {
+                automatedLanding();
+            } else {
+                System.out.println("Invalid choice, running interactive game");
+                playGame();
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input, running interactive game");
+            playGame();
+        }
+    }
 }
-
-// these are the series of burns made each 10 secs by the lander.
-// change them to see if you can get the lander to make a soft landing.
-// burns are between 0 and 200. This burn array usually crashes.
-const burnArray = [100, 100, 200, 200, 100, 100, 0, 0, 200, 100, 100, 0, 0, 0, 0];
-
-runGame(burnArray);
 ----
+
+=== How to Use This Code
+
+To run this Mars Lander simulation:
+
+1. Copy the code into a file called `MarsLander.java`
+2. Compile it with: `javac MarsLander.java`
+3. Run it with: `java MarsLander`
+
+Or, you can experiment with individual methods in jshell:
+
+[source]
+----
+jshell> // Copy the static methods into jshell and try them out
+jshell> int height = randomHeight();
+jshell> System.out.println("Random starting height: " + height);
+jshell> System.out.println(gameHeader());
+----
+
+=== Understanding the Code
+
+This program demonstrates several important Java concepts:
+
+- **Classes and Objects**: The `LanderStatus` class encapsulates the lander's state
+- **Static Methods**: Game logic is organized into reusable static methods
+- **Constants**: Using `final static` for values that don't change
+- **StringBuilder**: Efficient string building for output formatting
+- **Scanner**: Reading user input from the console
+- **Arrays**: Storing predefined burn sequences
+- **Control Flow**: Loops and conditional statements for game logic
+- **Exception Handling**: Try-catch blocks for robust input handling
+
+The challenge is to find the right sequence of burns to land safely. 
+A speed of 1-2 meters per second is a safe landing, while anything over 10 will likely be fatal!
+
+Try creating your own burn sequences and see if you can perfect the landing.

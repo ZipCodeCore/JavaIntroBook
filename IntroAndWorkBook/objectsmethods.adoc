@@ -269,7 +269,7 @@ for you to get a very basic understanding of coding in Java.
 
 There are a number of very powerful things we have left out of this discussion about Java objects.
 
-We also have not discussed an extremely powerful concept, *closures*. 
+We also have not discussed extremely powerful concepts like *lambdas* and *streams*. 
 But rest assured, there is much much more for you to learn about Objects in Java. 
 
 Master what we've written about here and then forge ahead into more complicated and powerful capabilities.

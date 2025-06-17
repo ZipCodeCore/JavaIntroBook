@@ -64,7 +64,7 @@ class Grocery {
 }
 
 // Create the grocery list
-var groceries = List.of(
+List<Grocery> groceries = List.of(
     new Grocery("Breakfast Cereal", 5.50),
     new Grocery("Rice", 14.99),
     new Grocery("Oranges", 6.49),
@@ -116,7 +116,7 @@ Say we wanted to get a list of just the prices of our grocery list. If we use a 
 [source]
 ----
 int index = 0;
-var prices = new ArrayList<Double>();
+List<Double> prices = new ArrayList<>();
 while (index < groceries.size()) {
   prices.add(groceries.get(index).price);
   index = index + 1;
@@ -127,7 +127,7 @@ But if we use a different higher-order function, `map`:
 
 [source]
 ----
-var prices = groceries.stream()
+List<Double> prices = groceries.stream()
     .map(item -> item.price)
     .collect(Collectors.toList());
 ----
@@ -175,8 +175,8 @@ If we remove the name `even` from the definition, and use a higher-order functio
 
 [source]
 ----
-var numList = List.of(1,2,3,4,5,6,7,8);
-var evenNumbers = numList.stream()
+List<Integer> numList = List.of(1,2,3,4,5,6,7,8);
+List<Integer> evenNumbers = numList.stream()
     .filter(value -> value % 2 == 0)
     .collect(Collectors.toList());
 ----
@@ -186,7 +186,7 @@ var evenNumbers = numList.stream()
 [source]
 ----
 static List<Integer> filter(List<Integer> array, Predicate<Integer> test) {
-  var passed = new ArrayList<Integer>();
+  List<Integer> passed = new ArrayList<>();
   for (Integer element : array) {
     if (test.test(element)) {
       passed.add(element);
@@ -199,7 +199,7 @@ static boolean even(int value) {
     return value % 2 == 0;
 }
 
-var dataList = List.of(1,2,3,4);
+List<Integer> dataList = List.of(1,2,3,4);
 
 System.out.println(
     filter(dataList, x -> even(x))
@@ -221,12 +221,12 @@ And I can reduce it even more to something like this:
 
 [source]
 ----
-var result = List.of(1,2,3,4).stream()
+List<Integer> result = List.of(1,2,3,4).stream()
     .filter(value -> value % 2 == 0)
     .collect(Collectors.toList());
 
 // or, If I have 'dataList' defined as List.of(1,2,3,4)
-var result = dataList.stream()
+List<Integer> result = dataList.stream()
     .filter(value -> value % 2 == 0)
     .collect(Collectors.toList());
 ----
@@ -296,7 +296,7 @@ But consider this idea: use a combination of a simple data structure and a small
 
 [source]
 ----
-var DISCOUNT_MULTIPLIER = Map.of(
+Map<String, Double> DISCOUNT_MULTIPLIER = Map.of(
   "TWENTYOFF", 0.80,
   "QUARTEROFF", 0.75,
   "HALFOFF", 0.50
@@ -387,7 +387,7 @@ class Customer {
 }
 
 // list of customers we want to 'checkout'
-var customers = List.of(
+List<Customer> customers = List.of(
   new Customer("sam", 75.00, "credit-card"),
   new Customer("frodo", 50.00, "debit-card"),
   new Customer("galadriel", 25.00, "cash")
@@ -462,7 +462,7 @@ class Customer {
     }
 }
 
-var customers = List.of(
+List<Customer> customers = List.of(
   new Customer("sam", 75.00, new CreditCardCheckout()),
   new Customer("frodo", 50.00, new DebitCardCheckout()),
   new Customer("galadriel", 25.00, new CashCheckout())

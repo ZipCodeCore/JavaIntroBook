@@ -1,240 +1,500 @@
+== Understanding Methods in Java
 
-== Methods
+Now that you understand classes and objects, let's dive deeper into **methods** - the actions that objects can perform. Methods are like mini-programs inside your classes that do specific tasks.
 
-A method is a block of code designed to perform a particular task. A method encloses a set of statements and is a fundamental modular unit of Java. They let you reuse code, and provide a way for you to organize your programs, keeping them easier to understand and easier to modify. It's often said that the craft of programming is the creation of a set of methods and data structures which implement a solution to some problem or set of requirements.
- 
-methods are objects, like many things in Java. They can be stored in variables, other objects, or even collected into arrays. methods are very powerful because in Java, they can be passed as arguments to other methods, returned from methods, and can even have methods attached to them. The most important thing that methods can do is get *invoked*.
+=== What is a Method?
 
-You create methods easily.
+A method is a block of code that performs a specific task. Think of methods as the "verbs" of your program - they represent actions that can be performed.
 
-=== method Literal
+Just like in real life:
+- A `Person` can `walk()`, `talk()`, or `sleep()`
+- A `Car` can `start()`, `accelerate()`, or `brake()`
+- A `Calculator` can `add()`, `subtract()`, or `divide()`
 
-Two examples of how you write a method literal:
+Methods help you:
+1. **Organize code** into logical chunks
+2. **Reuse code** instead of writing the same thing multiple times
+3. **Break down complex problems** into smaller, manageable pieces
+4. **Make code easier to read** and understand
+
+=== Method Basics
+
+Here's the basic structure of a method:
 
 [source]
 ----
-public static int add(int parameter1, int parameter2) {
-    return parameter1 + parameter2; 
+public static returnType methodName(parameters) {
+    // Code that does something
+    return value; // if the method returns something
 }
 ----
 
+Let's break this down:
+- `public static` - We'll explain these keywords later, but for now, always include them
+- `returnType` - What type of data the method gives back (or `void` if it gives back nothing)  
+- `methodName` - What you want to call your method
+- `parameters` - Input values the method needs to do its work
+- `return` - Sends a value back to whoever called the method
+
+=== Simple Method Examples
+
+Let's start with some basic methods you can try in jshell:
+
+==== Methods that Don't Return Anything (void methods)
+
 [source]
 ----
-public static int add(int p1, int p2) {
-    return p1 + p2;
+jshell> public static void sayHello() {
+   ...>     System.out.println("Hello there!");
+   ...> }
+|  created method sayHello()
+
+jshell> sayHello();
+Hello there!
+----
+
+[source]
+----
+jshell> public static void printBorder() {
+   ...>     System.out.println("========================");
+   ...> }
+|  created method printBorder()
+
+jshell> printBorder();
+========================
+----
+
+==== Methods with Parameters
+
+Parameters let you pass information into your methods:
+
+[source]
+----
+jshell> public static void greetPerson(String name) {
+   ...>     System.out.println("Hello, " + name + "!");
+   ...> }
+|  created method greetPerson(String)
+
+jshell> greetPerson("Alice");
+Hello, Alice!
+
+jshell> greetPerson("Bob");
+Hello, Bob!
+----
+
+[source]
+----
+jshell> public static void printSquare(int size) {
+   ...>     for (int i = 0; i < size; i++) {
+   ...>         for (int j = 0; j < size; j++) {
+   ...>             System.out.print("* ");
+   ...>         }
+   ...>         System.out.println();
+   ...>     }
+   ...> }
+|  created method printSquare(int)
+
+jshell> printSquare(3);
+* * * 
+* * * 
+* * * 
+----
+
+==== Methods that Return Values
+
+Many methods calculate something and give you back the result:
+
+[source]
+----
+jshell> public static int add(int a, int b) {
+   ...>     return a + b;
+   ...> }
+|  created method add(int,int)
+
+jshell> int result = add(5, 3);
+result ==> 8
+
+jshell> System.out.println("5 + 3 = " + result);
+5 + 3 = 8
+----
+
+[source]
+----
+jshell> public static double calculateCircleArea(double radius) {
+   ...>     return 3.14159 * radius * radius;
+   ...> }
+|  created method calculateCircleArea(double)
+
+jshell> double area = calculateCircleArea(5.0);
+area ==> 78.53975
+
+jshell> System.out.println("Area of circle with radius 5: " + area);
+Area of circle with radius 5: 78.53975
+----
+
+=== Methods in Classes
+
+Remember our classes from the previous section? Methods inside classes can work with the object's data (instance variables):
+
+[source]
+----
+jshell> class BankAccount {
+   ...>     String accountNumber;
+   ...>     String ownerName;
+   ...>     double balance;
+   ...>     
+   ...>     void deposit(double amount) {
+   ...>         balance = balance + amount;
+   ...>         System.out.println("Deposited $" + amount);
+   ...>         System.out.println("New balance: $" + balance);
+   ...>     }
+   ...>     
+   ...>     void withdraw(double amount) {
+   ...>         if (amount <= balance) {
+   ...>             balance = balance - amount;
+   ...>             System.out.println("Withdrew $" + amount);
+   ...>             System.out.println("New balance: $" + balance);
+   ...>         } else {
+   ...>             System.out.println("Insufficient funds!");
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     double getBalance() {
+   ...>         return balance;
+   ...>     }
+   ...> }
+|  created class BankAccount
+
+jshell> BankAccount account = new BankAccount();
+account ==> BankAccount@...
+
+jshell> account.ownerName = "Sarah";
+account.ownerName ==> "Sarah"
+
+jshell> account.balance = 100.0;
+account.balance ==> 100.0
+
+jshell> account.deposit(50.0);
+Deposited $50.0
+New balance: $150.0
+
+jshell> account.withdraw(25.0);
+Withdrew $25.0
+New balance: $125.0
+
+jshell> double currentBalance = account.getBalance();
+currentBalance ==> 125.0
+----
+
+=== Method Parameters in Detail
+
+Methods can take different types and numbers of parameters:
+
+==== Single Parameter
+
+[source]
+----
+jshell> public static int square(int number) {
+   ...>     return number * number;
+   ...> }
+|  created method square(int)
+
+jshell> square(4);
+$1 ==> 16
+----
+
+==== Multiple Parameters
+
+[source]
+----
+jshell> public static int multiply(int a, int b) {
+   ...>     return a * b;
+   ...> }
+|  created method multiply(int,int)
+
+jshell> multiply(6, 7);
+$2 ==> 42
+----
+
+==== Different Parameter Types
+
+[source]
+----
+jshell> public static void introduce(String name, int age, double height) {
+   ...>     System.out.println("Name: " + name);
+   ...>     System.out.println("Age: " + age);
+   ...>     System.out.println("Height: " + height + " feet");
+   ...> }
+|  created method introduce(String,int,double)
+
+jshell> introduce("Alex", 25, 5.8);
+Name: Alex
+Age: 25
+Height: 5.8 feet
+----
+
+=== Return Values Explained
+
+When a method returns a value, you can:
+
+1. **Store it in a variable**:
+[source]
+----
+jshell> public static String getFullName(String first, String last) {
+   ...>     return first + " " + last;
+   ...> }
+|  created method getFullName(String,String)
+
+jshell> String name = getFullName("John", "Smith");
+name ==> "John Smith"
+----
+
+2. **Use it directly in expressions**:
+[source]
+----
+jshell> System.out.println("Hello, " + getFullName("Jane", "Doe"));
+Hello, Jane Doe
+----
+
+3. **Use it in calculations**:
+[source]
+----
+jshell> public static int getAge() {
+   ...>     return 25;
+   ...> }
+|  created method getAge()
+
+jshell> int ageInMonths = getAge() * 12;
+ageInMonths ==> 300
+----
+
+=== Methods with Conditional Logic
+
+Methods can make decisions using if statements:
+
+[source]
+----
+jshell> public static String checkGrade(int score) {
+   ...>     if (score >= 90) {
+   ...>         return "A";
+   ...>     } else if (score >= 80) {
+   ...>         return "B";
+   ...>     } else if (score >= 70) {
+   ...>         return "C";
+   ...>     } else if (score >= 60) {
+   ...>         return "D";
+   ...>     } else {
+   ...>         return "F";
+   ...>     }
+   ...> }
+|  created method checkGrade(int)
+
+jshell> checkGrade(85);
+$3 ==> "B"
+
+jshell> checkGrade(92);
+$4 ==> "A"
+
+jshell> checkGrade(55);
+$5 ==> "F"
+----
+
+=== Practical Example: A Complete Class with Methods
+
+Let's create a `Student` class that demonstrates various types of methods:
+
+[source]
+----
+jshell> class Student {
+   ...>     String name;
+   ...>     int grade;
+   ...>     double[] testScores;
+   ...>     int numTests;
+   ...>     
+   ...>     Student(String studentName) {
+   ...>         name = studentName;
+   ...>         grade = 0;
+   ...>         testScores = new double[10]; // can store up to 10 test scores
+   ...>         numTests = 0;
+   ...>     }
+   ...>     
+   ...>     void addTestScore(double score) {
+   ...>         if (numTests < testScores.length) {
+   ...>             testScores[numTests] = score;
+   ...>             numTests++;
+   ...>             System.out.println("Added test score: " + score);
+   ...>         } else {
+   ...>             System.out.println("Cannot add more test scores!");
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     double calculateAverage() {
+   ...>         if (numTests == 0) {
+   ...>             return 0.0;
+   ...>         }
+   ...>         
+   ...>         double sum = 0.0;
+   ...>         for (int i = 0; i < numTests; i++) {
+   ...>             sum += testScores[i];
+   ...>         }
+   ...>         return sum / numTests;
+   ...>     }
+   ...>     
+   ...>     String getLetterGrade() {
+   ...>         double average = calculateAverage();
+   ...>         if (average >= 90) return "A";
+   ...>         else if (average >= 80) return "B";
+   ...>         else if (average >= 70) return "C";
+   ...>         else if (average >= 60) return "D";
+   ...>         else return "F";
+   ...>     }
+   ...>     
+   ...>     void printReport() {
+   ...>         System.out.println("Student: " + name);
+   ...>         System.out.println("Number of tests: " + numTests);
+   ...>         System.out.println("Average: " + calculateAverage());
+   ...>         System.out.println("Letter grade: " + getLetterGrade());
+   ...>     }
+   ...> }
+|  created class Student
+
+jshell> Student alice = new Student("Alice Johnson");
+alice ==> Student@...
+
+jshell> alice.addTestScore(85.0);
+Added test score: 85.0
+
+jshell> alice.addTestScore(92.0);
+Added test score: 92.0
+
+jshell> alice.addTestScore(78.0);
+Added test score: 78.0
+
+jshell> alice.printReport();
+Student: Alice Johnson
+Number of tests: 3
+Average: 85.0
+Letter grade: B
+----
+
+=== Method Naming Best Practices
+
+Choose clear, descriptive names for your methods:
+
+**Good method names:**
+- `calculateArea()`
+- `getUserInput()`
+- `validateEmail()`
+- `printReport()`
+- `isEven()`
+
+**Poor method names:**
+- `doStuff()`
+- `method1()`
+- `calc()`
+- `x()`
+
+=== Common Method Patterns
+
+==== Validation Methods
+
+Methods that check if something is valid often return boolean values:
+
+[source]
+----
+jshell> public static boolean isEven(int number) {
+   ...>     return number % 2 == 0;
+   ...> }
+|  created method isEven(int)
+
+jshell> isEven(4);
+$6 ==> true
+
+jshell> isEven(7);
+$7 ==> false
+----
+
+==== Utility Methods
+
+Methods that perform common calculations:
+
+[source]
+----
+jshell> public static double convertCelsiusToFahrenheit(double celsius) {
+   ...>     return (celsius * 9.0 / 5.0) + 32.0;
+   ...> }
+|  created method convertCelsiusToFahrenheit(double)
+
+jshell> convertCelsiusToFahrenheit(0);
+$8 ==> 32.0
+
+jshell> convertCelsiusToFahrenheit(100);
+$9 ==> 212.0
+----
+
+=== Practical Exercises
+
+Try creating these methods in jshell:
+
+**Exercise 1: Basic Math Methods**
+[source]
+----
+// Create these methods:
+public static int findMax(int a, int b) {
+    // Return the larger of the two numbers
+}
+
+public static double calculateTip(double billAmount, double tipPercent) {
+    // Calculate and return the tip amount
+}
+
+public static boolean isPositive(int number) {
+    // Return true if number is positive, false otherwise
 }
 ----
 
-In both of these cases, you end up with a method named 'add' that takes two parameters and adds them, returning the result. (Yes, you could just write (p1 + p2) and everyone would understand. It's just a very simple example.) Here is another example:
-
-=== Creating a method
-
+**Exercise 2: String Methods**
 [source]
 ----
-public static void greetUser(String username) {
-    System.out.println( "Hello " + username);
+// Create these methods:
+public static String makeTitle(String text) {
+    // Convert first letter to uppercase, rest to lowercase
+    // "hELLO" becomes "Hello"
 }
 
-//calling/Invoking the method
-greetUser("Mike Jones"); // "Hello Mike Jones"
-----
-
-=== Invoking methods
-
-methods are meant to be _invoked_. So you can have one method call another method which calls a third method and so on; it's very common.
-
-Imagine we have a program that gets an airplane ready for flight. We can imagine a whole series of methods we'd have to write. Things like 'loadPassengers', 'loadBaggage', 'loadFuel', 'checkTirePressures', and so on. Then we might have a 'higher level' methods which brings all these pieces together:
-
-[source]
-----
-public static void prepFlight(Airplane airplane) {
-    loadBaggage(airplane);
-    loadPassengers(airplane);
-
-    loadFuel(airplane);
-    performPreflightChecklist(airplane.copilot);
-    askTowerToDepart(airplane.pilot);
-    departGate(airplane);
-
-    taxiToRunway(airplane, mainRunway90);
-    takeoff(airplane.pilot, airplane);
+public static int countVowels(String text) {
+    // Count and return the number of vowels (a, e, i, o, u)
 }
 ----
 
-You can see how methods let you perform different things in a particular order, and while you might have no idea _how_ 'loadBaggage' does what it does, you can see how the program preps the airplane object for flight and makes sure everything important is done. Each of the methods from 'loadBaggage' to 'takeoff' is invoked and returns so the next one can be invoked. This is the power of methods - the ability to take some code and put it a method so that it much easier to understand.
-
-=== Anonymous methods
-
-A common pattern used in Java revolves around an *anonymous* method. It's a method without a name, and one that probably only gets called _once_. Something like:
-
-[source]
-----
-// Anonymous methods are not typically used in Java like this
-// Here's a simple method example instead:
-public static void exampleMethod() {
-    int x = 5;
-    int y = 4;
-    while (x < 100) {
-        x = x + y;
-    }
-    System.out.println("x is " + x);
-}
-----
-
-Look at that last line. What's going on here? Well, first we are creating a method object _without a name_ (so it's _anonymous_). Then on the last line, we are _invoking_ the method once (see those two parentheses? '()'?), so all the code inside gets run. (x get printed out).
-
-You see this often in Java. It's a way to put some code into an argument to another method call.
+**Exercise 3: ZipCoder Challenge**
+Create a method that follows these rules:
+- If a number is divisible by both 3 and 5, print "ZipCoder"
+- If divisible by only 3, print "Zip"  
+- If divisible by only 5, print "Coder"
+- Otherwise, print the number
 
 [source]
 ----
-int milliSecInASecond = 1000;
-
-// Note: setTimeout doesn't exist in standard Java
-// This is more like JavaScript syntax
-// In Java, you would use Timer or ScheduledExecutorService
-System.out.println("We waited for 5 seconds, to print this");
-----
-
-See how we pass an anonymous method to 'setTimeout' as one argument, and a timer value as the second argument? The idea here is that the anonymous method gets called at 5 seconds in the future. (Like scheduling an alarm to do something in 5 seconds).
-
-=== method Return
-
-Once Java reaches a return statement, the method will stop executing. methods often compute a return value. The return value is "returned" back to the "caller". You can have many returns in a methods, depending on how the flow of control is changed.
-
-[source]
-----
-public static String greetUser(String username) {
-    return "Hello " + username;
+public static void zipCoder(int number) {
+    // Your code here
 }
 
-String result = greetUser("Welcome back, Mike Jones");
-
-System.out.println(result); // will print "Hello Welcome back, Mike Jones" 
+// Test it:
+zipCoder(15); // Should print "ZipCoder"
+zipCoder(9);  // Should print "Zip"
+zipCoder(10); // Should print "Coder"  
+zipCoder(7);  // Should print "7"
 ----
 
-Or like this:
+=== Key Takeaways
 
-[source]
-----
-public static String determineWinner(Team home, Team visitor) {
-    if (home.score > visitor.score) {
-        return "Home Team Wins! Let's have a Parade!";
-    } else if (home.score < visitor.score) {
-        return "Visitors Win! (oh Well)";
-    }
-    return "It's a Tie!";
-}
-----
+1. **Methods organize code** into reusable blocks that perform specific tasks
+2. **Parameters** let you pass information into methods
+3. **Return values** let methods give information back
+4. **void methods** perform actions but don't return anything
+5. **Methods in classes** can access and modify the object's instance variables
+6. **Good method names** make your code easier to read and understand
+7. **Break complex problems** into smaller methods for better organization
 
-Notice how in this case, we check to see the scoring results with two conditions (which are, what? yes, _boolean expressions_). If neither condition is true, the third one must be the case. But if either condition is true, then we return right away, and the method is done.
-
-Again, to be clear, we might use this method like this:
-
-[source]
-----
-
-Team home = new Team();
-home.name = "Fightin Cats";
-home.score = 0;
-
-Team visitor = new Team();
-visitor.name = "Wild Horses";
-visitor.score = 0;
-
-playGame(home, visitor); // a lot of work done in this method(!)
-
-// game is done
-String result = determineWinner(home, visitor);
-
-// and then print the result..
-System.out.println(result);
-----
-
-=== method Parameters
-
-methods can also take parameters to be used within a method. 
-
-[source]
-----
-public static int addThreeNumbers(int a, int b, int c) {
-    return (a + b + c);
-}
-
-public static String determineWinner(Team home, Team visitor) {
-    if (home.score > visitor.score) {
-        return "Home Team Wins! Let's have a Parade!";
-    } else if (home.score < visitor.score) {
-        return "Visitors Win! (oh Well)";
-    }
-    return "It's a Tie!";
-}
-
-public static int makeNegative(int number) {
-    if (number > 0) {
-        return -(number);
-    }
-    // already negative, it's less than 0
-    return number;
-}
-----
-
-Remember how we had the expression to see if a number was even? ( x % 2 == 0)
-Now, here's a way to decide is number was divisible cleanly by another, it's a standard arithmetic expression:
-
-[source]
-----
-(number % divisor == 0)
-----
-
-So to see if a number is even, we could use '(number % 2 == 0)':
-
-[source]
-----
-System.out.println((8 % 2 == 0)); // true
-System.out.println((7 % 2 == 0)); // false
-System.out.println((4 % 2 == 0)); // true
-----
-And we can use the same technique to see if a number is evenly divisible by 3 or 5.
-
-Try to write a method that will perform the following requirements:
-
-**Exercise: Create a ZipCoder Method**
-
-* Create a method called zipCoder
-* Your method takes one parameter of type number
-* Your method checks and does the following
-* If parameter is divisible by 3 and 5 (15). Print ZipCoder
-* If parameter is divisible by 3. Print Zip
-* If parameter is divisible by 5. Print Coder
-Phew...Finally
-* Call the method and pass in 45 as your parameter
-
-OKAY! Write it yourself!
-
-Do it.
-
-Just write it yourself.
-
-C'mon, write your own version first.
-
-No, really.
-
-Wait.
-
-Do you want to be a ZipCoder, or just a Copy-Paste Stylist?
-
-Well, here's one solution:
-
-[source]
-----
-// method ZipCoder
-
-public static void zipCoder(int aNumber) {
-    if (aNumber % 15 == 0) System.out.println("ZipCoder");
-    else if (aNumber % 3 == 0) System.out.println("Zip");
-    else if (aNumber % 5 == 0) System.out.println("Coder");
-}
-
-zipCoder(45); // -> ZipCoder
-----
-
+Methods are essential for writing organized, reusable code. They're the building blocks that let you create powerful programs by combining simple operations into complex behaviors. As you continue learning Java, you'll find that most of your programming involves creating and calling methods to solve problems step by step.
