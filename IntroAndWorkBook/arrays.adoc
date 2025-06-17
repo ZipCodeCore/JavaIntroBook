@@ -120,6 +120,117 @@ donuts[2] = "powdered";   // -> ["chocolate", "glazed", "powdered", "strawberry"
 System.out.println(donuts[2]); // powdered
 ----
 
+=== Array Size Limitations: A Java Reality
+
+One of the most important things to understand about arrays in Java is that **once you create an array, its size is fixed**. You cannot make an array larger or smaller after it's been created. This is different from some other programming languages, but it's a fundamental characteristic of how Java manages memory.
+
+[source]
+----
+// This creates an array of exactly 5 elements
+int[] scores = new int[5];
+
+// You CANNOT do this - it would cause a compilation error:
+// scores = new int[10];  // This doesn't resize the array!
+----
+
+==== Why Arrays Have Fixed Sizes
+
+Java arrays have fixed sizes for several important reasons:
+
+1. **Memory Efficiency**: Java knows exactly how much memory to allocate when the array is created
+2. **Performance**: Fixed-size arrays allow for very fast access to elements using simple math
+3. **Type Safety**: Java can guarantee that all elements are the same type and fit in the allocated space
+4. **Predictable Behavior**: Your program won't unexpectedly run out of memory due to arrays growing
+
+==== When You Need a Bigger Array
+
+If you need more space in your array, you have to create a new, larger array and copy the elements from the old one:
+
+[source]
+----
+// Original array with 3 elements
+String[] donuts = {"chocolate", "glazed", "jelly"};
+
+// We want to add more donuts, so we need a bigger array
+String[] biggerDonuts = new String[5];
+
+// Copy the old donuts to the new array
+for (int i = 0; i < donuts.length; i++) {
+    biggerDonuts[i] = donuts[i];
+}
+
+// Now we can add new donuts
+biggerDonuts[3] = "powdered";
+biggerDonuts[4] = "strawberry";
+
+// The original 'donuts' array still exists, but we're using 'biggerDonuts' now
+----
+
+==== Java's Garbage Collection Makes This Manageable
+
+You might think, "Isn't creating new arrays and copying wasteful?" In many programming languages, this would be a serious concern. But Java has a **garbage collector** that automatically manages memory for you.
+
+Here's what happens behind the scenes:
+
+1. **You create a new, larger array**: Java allocates the needed memory
+2. **You copy elements from old to new**: This happens quickly - Java is optimized for array operations
+3. **You stop using the old array**: When no variables point to the old array anymore
+4. **Garbage collector cleans up**: Java automatically reclaims the memory from the old array
+
+[source]
+----
+// Step 1: Original array
+int[] smallArray = {1, 2, 3};
+
+// Step 2: Create bigger array and copy (this is fine!)
+int[] bigArray = new int[6];
+for (int i = 0; i < smallArray.length; i++) {
+    bigArray[i] = smallArray[i];
+}
+
+// Step 3: Use the new array
+smallArray = null; // We're done with the small array
+
+// Step 4: Garbage collector will eventually clean up the old array automatically
+// You don't need to do anything!
+----
+
+==== The Java Philosophy: Predictable and Safe
+
+This design reflects Java's philosophy of being **predictable** and **safe**:
+
+- **Predictable**: You always know exactly how big your arrays are
+- **Safe**: You can't accidentally access memory that doesn't belong to your array
+- **Managed**: The garbage collector handles memory cleanup automatically
+
+For dynamic-sized collections, Java provides `ArrayList`, `LinkedList`, and other collection classes that handle the "create bigger array and copy" process automatically. But understanding arrays helps you appreciate how those more advanced collections work under the hood.
+
+==== Try This in jshell
+
+[source]
+----
+jshell> int[] original = {10, 20, 30};
+original ==> int[3] { 10, 20, 30 }
+
+jshell> int[] expanded = new int[5];
+expanded ==> int[5] { 0, 0, 0, 0, 0 }
+
+jshell> for (int i = 0; i < original.length; i++) {
+   ...>     expanded[i] = original[i];
+   ...> }
+
+jshell> expanded[3] = 40;
+expanded[3] ==> 40
+
+jshell> expanded[4] = 50;
+expanded[4] ==> 50
+
+jshell> System.out.println(Arrays.toString(expanded));
+[10, 20, 30, 40, 50]
+----
+
+Remember: creating new arrays and copying isn't a "bad thing" in Java - it's just how the language works. The garbage collector makes this approach practical and efficient.
+
 === Chapter Exercises
 
 Try these exercises in jshell to practice working with arrays:
@@ -224,3 +335,39 @@ for (String fruit : fruits) {
 }
 System.out.println("Fruits starting with vowels: " + vowelCount);
 ```
+
+*Exercise 5: Array Resizing Practice*
+
+Practice creating larger arrays and copying data:
+```
+// Start with a small array
+int[] originalGrades = {85, 92, 78};
+System.out.println("Original array length: " + originalGrades.length);
+System.out.println("Original grades: " + Arrays.toString(originalGrades));
+
+// Create a larger array to hold more grades
+int[] expandedGrades = new int[6];
+
+// Copy existing grades to the new array
+for (int i = 0; i < originalGrades.length; i++) {
+    expandedGrades[i] = originalGrades[i];
+}
+
+// Add new grades
+expandedGrades[3] = 95;
+expandedGrades[4] = 88;
+expandedGrades[5] = 91;
+
+System.out.println("Expanded array length: " + expandedGrades.length);
+System.out.println("All grades: " + Arrays.toString(expandedGrades));
+
+// Calculate average of all grades
+double sum = 0;
+for (int grade : expandedGrades) {
+    sum += grade;
+}
+double average = sum / expandedGrades.length;
+System.out.println("Average grade: " + average);
+```
+
+This exercise demonstrates the important Java concept that arrays have fixed sizes, and when you need more space, you create a new array and copy the data. The old array will be automatically cleaned up by Java's garbage collector.
