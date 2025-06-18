@@ -237,8 +237,10 @@ Height: 5.8 feet
 
 When a method returns a value, you can:
 
-1. **Store it in a variable**:
+**Store it in a variable**:
+
 [source]
+
 ----
 jshell> public static String getFullName(String first, String last) {
    ...>     return first + " " + last;
@@ -249,14 +251,16 @@ jshell> String name = getFullName("John", "Smith");
 name ==> "John Smith"
 ----
 
-2. **Use it directly in expressions**:
+**Use it directly in expressions**:
+
 [source]
 ----
 jshell> System.out.println("Hello, " + getFullName("Jane", "Doe"));
 Hello, Jane Doe
 ----
 
-3. **Use it in calculations**:
+**Use it in calculations**:
+
 [source]
 ----
 jshell> public static int getAge() {

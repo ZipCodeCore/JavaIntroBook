@@ -1,3 +1,4 @@
+
 [appendix]
 == Installing Java JDK
 
@@ -243,4 +244,6 @@ If you're still having trouble:
    - Ensure you downloaded the correct version for your operating system (32-bit vs 64-bit)
    - Try restarting your computer after installation
 
-Once you have Java JDK 9 or later installed and working, you're ready to start using jshell and following along with all the examples in this book!
+Once you have Java JDK 9 or later installed and working, 
+you're ready to start using jshell and following along with all the examples in this book!
+

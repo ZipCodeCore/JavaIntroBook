@@ -12,10 +12,13 @@ System.out.println("Hello, World!");
 
 This program just prints "Hello, World!".
 
-_System.out.println_, in this case, means _outputting_ or _printing_ the "Hello, World!" somewhere. That somewhere is probably the terminal where the program was run.
+_System.out.println_, in this case, means _outputting_ or _printing_ the "Hello, World!" 
+somewhere. That somewhere is probably the terminal where the program was run.
 
 
-We will use `System.out.println` to do a lot in the coming pages. It's a simple statement, one that in other languages might be `print` or `write` or `puts` (and why we all cannot just agree on one way to do this, well, beats me. Java's is `System.out.println`)
+We will use `System.out.println` to do a lot in the coming pages. 
+It's a simple statement, one that in other languages might be `print` or `write` or `puts` 
+(and why we all cannot just agree on one way to do this, well, beats me. Java's is `System.out.println`)
 
 Here's your second Java program: 
 
@@ -159,7 +162,9 @@ System.out.println("We need " + flourAmount
 
 It is our way of telling Java what __kind of number__ `flourAmount` is. 
 We want `flourAmount` to be place holder for the number `3.5`, 
-because makes the code easier to read and understand. 
+because using a descriptive term like `flourAmount` makes the code easier to read and understand. 
+
+`int` and `double` also tell Java __what kind of number__ we want for these values.
 See much more on this, up ahead, in `Variables`.
 
 == Comments
@@ -185,7 +190,8 @@ double flourAmount = 3.5;
 System.out.println(flourAmount); // -> 3.5
 ----
 
-That comment at the end of the System.out.println line is showing what you can expect to see in the output. Here it would be "3.5" printed by itself. Try it in jshell:
+That comment at the end of the System.out.println line is showing what you can expect to 
+see in the output. Here it would be "3.5" printed by itself. Try it in jshell:
 
 ```
 jshell> double flourAmount = 3.5;
@@ -193,7 +199,7 @@ jshell> System.out.println(flourAmount);
 3.5
 ```
 
-We can also add useful stuff to the **.println** call. 
+We can also add useful stuff to the **println** method call. 
 
 [source]
 ----
@@ -234,14 +240,15 @@ It just seems like, "well, if Java is so smart why do I have to care about this.
 
 What am I complaining about?
 
-Well, to make a strange distinction between **two** types of numbers, Java has a bunch different types of numbers.
+Well, to make a strange distinction between **two** types of numbers, 
+Java has a bunch different types of numbers.
 
 In Java, we have to decide what **type** of number we are going use with a variables like _flourAmount_ and 
 _loavesToMake_.
 
 If you're just going to _count_ things (like say the number of birthdays a person has had), we will
 use _integers_ for that. _integers_ in Java, are called **int**.
-A `int` means a number, but just an integer like 0, 1, 2, 42, 99, etc. 
+An **int** means a number, but just an integer like 0, 1, 2, 42, 99, etc. 
 It even means negative numbers -5 or -123487262. 
 The math teacher might say that _integers_ are _whole  numbers_.
 
@@ -250,7 +257,9 @@ The value of your debit account could be $105.55, which is a number _between_ 10
 The amount of fuel in your car's gas tank isn't 13 or 16 gallons, it's probably something 
 like 13.42 gallons, and changes by small amounts as you drive.
 
-So Java has another **type** of number, a **floating point number** and in these early days in this book, we will use **double** as the kind of number we use when we need a number that might not be a _whole number_, but rather _real numbers_.
+So Java has another **type** of number, a **floating point number** and in these early days in this book, 
+we will use **double** as the kind of number we use when we need a number that might not 
+be a _whole number_, but rather _real numbers_.
 A **double** can have decimal point and some number after, so I can write `3.5` or `42.0`. 
 Or even more complicated numbers like:
 
@@ -264,7 +273,7 @@ Or even more complicated numbers like:
 0.00678
 ----
 
-We will use throughout this book, two _types_ of numbers. **int**s which are whole numbers like 
+We will use throughout this book, two _types_ of numbers. **int**s which are **whole numbers** like 
 
 [source]
 ----
@@ -296,11 +305,13 @@ There are four more **types** of numbers: **long**, **short**, **byte**, and **f
 
 == Statements and Expressions
 
-In Java, there are parts of a program and different parts have different names. Two of the most basic (and fundamental) are *statements* and *expressions*.
+In Java, there are parts of a program and different parts have different names. 
+Two of the most basic (and fundamental) are *statements* and *expressions*.
 
 === Expressions
 
-An *expression* is something that needs to be _computed_ to find out the answer. Here are a few simple ones.
+An *expression* is something that needs to be _computed_ to find out the answer. 
+Here are a few simple ones.
 
 [source]
 ----

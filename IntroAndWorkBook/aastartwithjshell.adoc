@@ -4,10 +4,13 @@ We are not going to start like all the other Java textbooks in the world, we're 
 
 It's one of Java's secret weapons for learning how to code.
 
-When you're learning to code, one of the biggest frustrations is the gap between having an idea and being able to test it. 
-In many programming languages, you have to write a complete program, save it to a file, compile it, and then run it just to see if a simple line of code works.
+When you're learning to code, one of the biggest frustrations is the gap between having an idea and 
+being able to test it. 
+In many programming languages, like Java before 2017, you have to write a complete program, 
+save it to a file, compile it, and then run it just to see if a simple line of code works.
 
-Java changed all of that in 2017 with the introduction of **jshell** - an interactive programming environment that lets you write and test Java code instantly.
+Java changed all of that in 2017 with the introduction of **jshell** - an interactive 
+programming environment that lets you write and test Java code instantly.
 Think of it as having a conversation with the Java language itself.
 
 === Why jshell is Revolutionary for Learning
