@@ -1,0 +1,385 @@
+=== Type Casting and Conversion
+
+Type casting in Java is the process of converting one data type to another.
+Sometimes Java does this automatically, and sometimes you need to tell Java explicitly how to convert.
+
+Understanding casting is important because different data types have different ranges and precision, and you need to know how to safely move data between them.
+
+==== Automatic Type Conversion (Widening)
+
+Java automatically converts smaller data types to larger ones when it's safe to do so.
+This is called **widening conversion** or **implicit casting**.
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    byte byteValue = 42;
+    short shortValue = byteValue;    // byte -> short (automatic)
+    int intValue = shortValue;       // short -> int (automatic)
+    long longValue = intValue;       // int -> long (automatic)
+    float floatValue = longValue;    // long -> float (automatic)
+    double doubleValue = floatValue; // float -> double (automatic)
+    
+    System.out.println("Original byte: " + byteValue);
+    System.out.println("As double: " + doubleValue);
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== The Widening Hierarchy
+
+Java will automatically convert in this direction:
+
+----
+byte → short → int → long → float → double
+       char → int
+----
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    int wholeNumber = 100;
+    double decimalNumber = wholeNumber;  // int automatically becomes double
+    
+    System.out.println("Integer: " + wholeNumber);        // 100
+    System.out.println("As double: " + decimalNumber);    // 100.0
+    
+    char letter = 'A';
+    int letterCode = letter;  // char automatically becomes int (ASCII value)
+    System.out.println("Letter: " + letter);              // A  
+    System.out.println("ASCII code: " + letterCode);      // 65
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Explicit Type Casting (Narrowing)
+
+When converting from a larger type to a smaller type, you must explicitly cast.
+This is called **narrowing conversion** or **explicit casting**.
+
+===== Basic Explicit Casting
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    double largeNumber = 123.789;
+    int wholeNumber = (int) largeNumber;  // Explicit cast: double to int
+    
+    System.out.println("Original double: " + largeNumber);  // 123.789
+    System.out.println("Cast to int: " + wholeNumber);      // 123 (decimal part lost!)
+    
+    long bigNumber = 1000L;
+    int smallerNumber = (int) bigNumber;  // Explicit cast: long to int
+    
+    System.out.println("Long: " + bigNumber);               // 1000
+    System.out.println("As int: " + smallerNumber);         // 1000
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Casting with Potential Data Loss
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    // Casting can lose data!
+    double price = 19.99;
+    int dollars = (int) price;           // Loses the cents!
+    
+    System.out.println("Price: $" + price);     // 19.99
+    System.out.println("Dollars: $" + dollars); // 19
+    
+    // Casting very large numbers can cause overflow
+    long bigNumber = 3000000000L;        // 3 billion
+    int overflowNumber = (int) bigNumber;
+    
+    System.out.println("Long: " + bigNumber);        // 3000000000
+    System.out.println("Cast to int: " + overflowNumber);  // Negative number! (overflow)
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Casting with Characters and Numbers
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    // Number to character
+    int letterCode = 65;
+    char letter = (char) letterCode;
+    System.out.println("ASCII 65 is: " + letter);  // A
+    
+    // Character to number
+    char grade = 'B';
+    int gradeValue = (int) grade;
+    System.out.println("Letter " + grade + " has ASCII value: " + gradeValue);  // 66
+    
+    // Working with character arithmetic
+    char startLetter = 'A';
+    for (int i = 0; i < 5; i++) {
+        char currentLetter = (char) (startLetter + i);
+        System.out.print(currentLetter + " ");  // A B C D E
+    }
+    System.out.println();
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== String Conversions
+
+Converting between strings and numbers is very common:
+
+===== Numbers to Strings
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    int age = 25;
+    double price = 19.99;
+    boolean isStudent = true;
+    
+    // Convert to strings
+    String ageString = String.valueOf(age);
+    String priceString = String.valueOf(price);
+    String studentString = String.valueOf(isStudent);
+    
+    System.out.println("Age as string: '" + ageString + "'");
+    System.out.println("Price as string: '" + priceString + "'");
+    System.out.println("Student status: '" + studentString + "'");
+    
+    // Alternative: concatenation with empty string
+    String ageString2 = age + "";
+    String priceString2 = price + "";
+    
+    System.out.println("Age (method 2): '" + ageString2 + "'");
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Strings to Numbers
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String ageText = "25";
+    String priceText = "19.99";
+    String heightText = "5.8";
+    
+    // Convert strings to numbers
+    int age = Integer.parseInt(ageText);
+    double price = Double.parseDouble(priceText);
+    float height = Float.parseFloat(heightText);
+    
+    System.out.println("Age: " + age);
+    System.out.println("Price: " + price);
+    System.out.println("Height: " + height);
+    
+    // You can now do math with these!
+    int ageNextYear = age + 1;
+    double priceWithTax = price * 1.08;
+    
+    System.out.println("Age next year: " + ageNextYear);
+    System.out.println("Price with tax: " + priceWithTax);
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Handling Invalid String Conversions
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String invalidNumber = "not-a-number";
+    
+    try {
+        int number = Integer.parseInt(invalidNumber);
+        System.out.println("Number: " + number);
+    } catch (NumberFormatException e) {
+        System.out.println("Error: '" + invalidNumber + "' is not a valid number!");
+    }
+    
+    // Safe conversion with default value
+    String userInput = "abc123";
+    int value = parseIntSafely(userInput, 0);  // 0 is default if parsing fails
+    System.out.println("Parsed value: " + value);
+  }
+  
+  public static int parseIntSafely(String text, int defaultValue) {
+    try {
+        return Integer.parseInt(text);
+    } catch (NumberFormatException e) {
+        return defaultValue;
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Practical Example: Temperature Converter
+
+[source]
+----
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    Scanner scanner = new Scanner(System.in);
+    
+    System.out.print("Enter temperature in Fahrenheit: ");
+    String input = scanner.nextLine();
+    
+    try {
+        double fahrenheit = Double.parseDouble(input);
+        double celsius = (fahrenheit - 32) * 5.0 / 9.0;
+        
+        // Round to 1 decimal place
+        celsius = Math.round(celsius * 10.0) / 10.0;
+        
+        System.out.println(fahrenheit + "°F = " + celsius + "°C");
+        
+        // Cast to int for whole degrees
+        int wholeCelsius = (int) celsius;
+        System.out.println("Rounded down: " + wholeCelsius + "°C");
+        
+    } catch (NumberFormatException e) {
+        System.out.println("Please enter a valid number!");
+    }
+    
+    scanner.close();
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Casting in Expressions
+
+When you mix different numeric types in expressions, Java applies promotion rules:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    byte a = 10;
+    byte b = 20;
+    
+    // This won't compile! byte + byte = int
+    // byte result = a + b;  // ERROR!
+    
+    // You need to cast back to byte
+    byte result = (byte) (a + b);
+    System.out.println("Result: " + result);
+    
+    // Mixing types in expressions
+    int wholeNumber = 10;
+    double decimal = 3.5;
+    
+    double mixedResult = wholeNumber + decimal;  // int promoted to double
+    System.out.println("Mixed result: " + mixedResult);  // 13.5
+    
+    // Integer division vs. decimal division
+    int x = 7;
+    int y = 3;
+    
+    System.out.println("Integer division: " + x / y);           // 2
+    System.out.println("Decimal division: " + (double) x / y);  // 2.333...
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Best Practices for Type Casting
+
+1. **Be careful with narrowing casts** - You can lose data
+2. **Check ranges** before casting to smaller types
+3. **Use appropriate parsing methods** for strings
+4. **Handle exceptions** when parsing user input
+5. **Be explicit** about your intentions with casting
+6. **Understand precision loss** when casting floats/doubles to integers
+
+==== Common Casting Scenarios
+
+===== Rounding vs. Truncating
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    double value = 4.7;
+    
+    // Truncation (casting just chops off decimal)
+    int truncated = (int) value;
+    System.out.println("Truncated: " + truncated);  // 4
+    
+    // Proper rounding
+    int rounded = (int) Math.round(value);
+    System.out.println("Rounded: " + rounded);      // 5
+    
+    // Rounding with more control
+    double price = 19.999;
+    int dollars = (int) (price + 0.5);  // Add 0.5 then truncate
+    System.out.println("Price rounded: $" + dollars);  // $20
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== Safe Range Checking
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    long bigNumber = 50000L;
+    
+    // Check if it fits in an int before casting
+    if (bigNumber >= Integer.MIN_VALUE && bigNumber <= Integer.MAX_VALUE) {
+        int safeInt = (int) bigNumber;
+        System.out.println("Safe conversion: " + safeInt);
+    } else {
+        System.out.println("Number too large for int!");
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+Type casting is a fundamental skill in Java programming. Understanding when conversions happen automatically and when you need to be explicit will help you write more reliable and predictable code!

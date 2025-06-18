@@ -33,14 +33,14 @@ while (x < 6) {
     x++;
 }
 
-System.out.println("ending at", x); // ? what will print here ?
+System.out.println("ending at " + x); // ? what will print here ?
 ----
 
 While loops work well in situations where the condition you are testing at the top
 of the loop is one that may not be related to a simple number. 
 
 ----
-while (player[1].isAlive() === true) {
+while (player[1].isAlive() == true) {
     player[1].takeTurn();
     game.updateStatus(player[1]);
 }

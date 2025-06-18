@@ -70,7 +70,7 @@ We can use `.length` to find the length of a string
 [source]
 ----
 String str = "Wakanda Forever!";
-int answer = str.length;
+int answer = str.length();
 System.out.println(answer); // -> 16
 ----
 
@@ -82,11 +82,9 @@ As mentioned before, we can reach into a string and copy out the stuff we find t
 ----
 String word = "Hello";
 // Access the the first character (first by index, second by function)
-System.out.println(word[0]); // H
 System.out.println(word.charAt(0)); // H
 // the last character
-System.out.println(word[word.length - 1]); // o
-System.out.println(word.charAt(word.length - 1)); // o
+System.out.println(word.charAt(word.length() - 1)); // o
 ----
 
 When you see something like *word[0]*, it is pronounced like "word sub zero". If you have
@@ -102,7 +100,7 @@ int price = 20;
 String dollarSign = "$";
 String priceTag = dollarSign + price; // $20
 //or
-String priceTag = dollarSign.concat(price); // $20
+String priceTag = dollarSign.concat(String.valueOf(price)); // $20
 System.out.println(priceTag); // -> $20
 ----
 
@@ -157,8 +155,8 @@ Notice how the arguments to the functions are *slightly* different. This is why 
 
 Let's try a little harder idea...
 
-[TIP]
-====
+**Exercise: Extract and Transform Substring**
+
 [source]
 ----
 String fName = "Christopher";
@@ -166,7 +164,6 @@ String fName = "Christopher";
 - Your turn to use the substring/substr/slice method on firstName
 - Extract and print out "STOP" from inside the string above
 - And make it uppercase! ("stop" to "STOP") footnote:[You could google how to do this, try "Java string make upper case"]
-====
 
 Well?
 
@@ -195,5 +192,90 @@ System.out.println(rapper.substring(3,7));  // aila
 ----
 
 We're using each of the three different substring methods to copy out some smaller piece of the 'rapper' string.
+
+=== Chapter Exercises
+
+Try these exercises in jshell to practice working with strings:
+
+**Exercise 1: String Basics**
+
+Practice string creation and basic properties:
+```
+String firstName = "Alice";
+String lastName = "Johnson";
+String fullName = firstName + " " + lastName;
+
+System.out.println("First name: " + firstName);
+System.out.println("Last name: " + lastName);
+System.out.println("Full name: " + fullName);
+System.out.println("Full name length: " + fullName.length());
+System.out.println("First character: " + fullName.charAt(0));
+System.out.println("Last character: " + fullName.charAt(fullName.length() - 1));
+```
+
+**Exercise 2: String Methods**
+
+Explore different string methods:
+```
+String message = "Java Programming is Fun!";
+
+System.out.println("Original: " + message);
+System.out.println("Uppercase: " + message.toUpperCase());
+System.out.println("Lowercase: " + message.toLowerCase());
+System.out.println("Length: " + message.length());
+System.out.println("Contains 'Java': " + message.contains("Java"));
+System.out.println("Contains 'Python': " + message.contains("Python"));
+System.out.println("Starts with 'Java': " + message.startsWith("Java"));
+System.out.println("Ends with '!': " + message.endsWith("!"));
+```
+
+**Exercise 3: Substring Practice**
+
+Extract parts of strings:
+```
+String email = "alice.johnson@example.com";
+
+int atIndex = email.indexOf("@");
+String username = email.substring(0, atIndex);
+String domain = email.substring(atIndex + 1);
+
+System.out.println("Email: " + email);
+System.out.println("Username: " + username);
+System.out.println("Domain: " + domain);
+
+// Extract first and last name from username
+int dotIndex = username.indexOf(".");
+String first = username.substring(0, dotIndex);
+String last = username.substring(dotIndex + 1);
+
+System.out.println("First name: " + first);
+System.out.println("Last name: " + last);
+```
+
+**Exercise 4: String Building**
+
+Create formatted output:
+```
+String productName = "Laptop";
+double price = 1299.99;
+int quantity = 2;
+double total = price * quantity;
+
+String receipt = "Product: " + productName + "\n" +
+                "Price: $" + price + "\n" +
+                "Quantity: " + quantity + "\n" +
+                "Total: $" + total;
+
+System.out.println("=== RECEIPT ===");
+System.out.println(receipt);
+System.out.println("===============");
+
+// Practice with StringBuilder for better performance
+StringBuilder sb = new StringBuilder();
+sb.append("Order Summary:\n");
+sb.append("Item: ").append(productName).append("\n");
+sb.append("Cost: $").append(total);
+System.out.println(sb.toString());
+```
 
 

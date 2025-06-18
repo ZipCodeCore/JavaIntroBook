@@ -1,8 +1,27 @@
 
-=== Variables
+=== Variables and Data Types
+
+Variables and data types are the foundation of all programming in Java. 
+Think of variables as labeled containers that hold information your program needs to remember, 
+and data types as the rules that tell Java what kind of information each container can hold. 
+Whether you're tracking a player's score in a game, storing someone's name, or calculating the 
+total cost of groceries, you'll use variables to keep this information organized and accessible.
+
+In this chapter, you'll learn how to create variables, assign values to them, 
+and understand the different types of data Java can work with. 
+You'll discover why Java is called a "strongly-typed" language, what that means for your code, 
+and how Java's type system helps prevent common programming errors. 
+By the end of this section, you'll be comfortable creating and using variables to 
+build programs that can remember and manipulate information.
+
+All the examples in this chapter work directly in jshell, so you can experiment 
+and see immediate results as you learn.
+
+=== What Are Variables?
 
 In Java, variables are containers used to store data while the program is running. 
-Variables can be named just about anything, and often are named things that make you think about what you store there.
+Variables can be named just about anything, and often are named things that 
+make you think about what you store there.
 
 Think of them as little boxes you can put data into, to keep it there and not lose it.
 If you wanted to track a number, an age of someone, you can create a variable to keep it in.
@@ -16,7 +35,7 @@ Now, if we wanted to indicate that someone had a birthday, we might add 1 to the
 
 [source]
 ----
-int age = age + 1;
+age = age + 1;
 ----
 
 At this point, the _age_ variable as 4 in it.
@@ -63,13 +82,14 @@ CURRENT_SPEED
 
 So be careful with UPPERCASE and lowercase letters in variable names.
 
-==== Declaring a Variable
+=== Declaring a Variable
 
 [source]
 ----
 int x;
 ----
-This creates a variable *x* that can hold an integer (int) primitive type. But it has NO value assigned to it, so if we...
+This creates a variable *x* that can hold an integer (int) primitive type. 
+But it has NO value assigned to it, so if we...
 
 [source]
 ----
@@ -84,16 +104,17 @@ int cats = 3;
 System.out.println(cats);  // -> 3
 ----
 
-==== Assign a value to a variable
+=== Assign a value to a variable
 
 [source]
 ----
 int age = 19; 
 String name = "James";
-System.out.println(name, "is", age, "years old"); // -> James is 19 years old
+System.out.println(name + " is " + age + " years old"); // -> James is 19 years old
+
 age = 21;
 name = "Gina";
-System.out.println(name, "is", age, "years old"); // -> Gina is 21 years old
+System.out.println(name + " is " + age + " years old"); // -> Gina is 21 years old
 ----
 
 _NOTICE_ how the **first time** we use _age_ and _name_ we must _declare_ those variables.
@@ -101,7 +122,7 @@ But the _second time_ (and any use thereafter) we don't have to put _int_ or _St
 
 This is how we make sure we don't use variables we have not declared (which in Java is a _syntax_ error).
 
-==== Reassigning a value to a variable
+=== Reassigning a value to a variable
 
 [source]
 ----
@@ -146,7 +167,7 @@ Once you declare something to be of a given type, you cannot change the type whi
 
 === Constants
 
-Constants are like let variables but they contain values that do NOT change such as a person’s date of birth. Convention is to capitalize constant variable names. 
+Constants are like regular variables but they contain values that do NOT change such as a person’s date of birth. Convention is to capitalize constant variable names. 
 
 You make a double or int or String a constant by marking it **final**.
 
@@ -165,8 +186,8 @@ An attempt to re-assign a value to a constant (something marked with _final_) wi
 
 === Data Types
 
-Java can keep track of a number of different kinds of data, and these are known
-as "primitive data types". There are 5 of them.
+Java can keep track of a bunch of different kinds of data, and some are known
+as "primitive data types" and some are **reference** types (like objects, say, *String* for one).
 
 * *Number* - there are two kinds of numbers: integers and floating point
 ** *Integers* (or **int**) are like 0, -4, 5, 6, 1234
@@ -177,24 +198,22 @@ as "primitive data types". There are 5 of them.
 ** often used to decide things like isPlayer(1).alive() [true or false?]
 
 
-It is common for a computer language to want to know if data is a bunch numbers or text. Tracking
-what **type** a piece of data is is very important. And it is the programmer's job to make sure all the 
-data get handled in the right ways. 
+It is common for a computer language to want to know if some data is a number or a snippet of text. 
+Tracking what **type** a piece of data is is very important to the computer. 
+And it is the programmer's job to make sure all the data get handled in the right ways. 
 
 So Java has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
 
-[TIP]
-====
+**Exercise: Create Variables for Primitive Data Types**
+
 Create variables for each primitive data type:
 
 - double
 - int
-- string 
+- String 
 - boolean
 
 Store a value in each.
-
-====
 
 [source]
 ----
@@ -240,4 +259,85 @@ String myDogName =         ;
 
 final int floorsInMyBuilding =         ;
 ----
+
+Variables are fundamental things in many, many programming languages.
+We use variables to build programs that can remember and manipulate information dynamically.
+
+=== Chapter Exercises
+
+Try these exercises in jshell to practice working with variables:
+
+*Exercise 1: Basic Variable Declaration and Assignment*
+
+Create variables for a student's information:
+
+
+```
+String studentName = "Alex";
+int age = 20;
+double gpa = 3.85;
+boolean isEnrolled = true;
+
+System.out.println("Student: " + studentName);
+System.out.println("Age: " + age);
+System.out.println("GPA: " + gpa);
+System.out.println("Enrolled: " + isEnrolled);
+```
+
+
+*Exercise 2: Variable Reassignment*
+
+Start with a score and update it:
+
+```
+int score = 100;
+System.out.println("Initial score: " + score);
+
+score = score - 15;  // Lost points
+System.out.println("After penalty: " + score);
+
+score = score + 25;  // Bonus points
+System.out.println("After bonus: " + score);
+```
+
+*Exercise 3: Working with Constants*
+
+Create constants for a pizza order:
+
+```
+final double PIZZA_PRICE = 12.99;
+final double TAX_RATE = 0.08;
+final String RESTAURANT_NAME = "Tony's Pizza";
+
+int quantity = 3;
+double subtotal = PIZZA_PRICE * quantity;
+double tax = subtotal * TAX_RATE;
+double total = subtotal + tax;
+
+System.out.println("Order from " + RESTAURANT_NAME);
+System.out.println("Quantity: " + quantity);
+System.out.println("Subtotal: $" + subtotal);
+System.out.println("Tax: $" + tax);
+System.out.println("Total: $" + total);
+```
+
+*Exercise 4: Variable Naming Practice*
+
+Fix these poorly named variables by creating better ones:
+
+
+```
+// Poor names:
+int x = 25;
+String s = "John";
+double d = 5.75;
+
+// Better names:
+int studentAge = 25;
+String firstName = "John";
+double hourlyWage = 5.75;
+
+System.out.println(firstName + " is " + studentAge + " years old");
+System.out.println("Hourly wage: $" + hourlyWage);
+```
 

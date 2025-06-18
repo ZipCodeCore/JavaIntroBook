@@ -1,22 +1,348 @@
-== Classes
+== Understanding Java Classes
 
-In Java, modules allow for code to  loaded into a program only if it is needed. Modules are one of the advanced topics in Java that we won't spend too much time on, but here are the basics.
+Classes are one of the most fundamental concepts in Java programming. 
+Think of a class as a blueprint or template that describes what something 
+should look like and what it can do.
 
-Most of your Java programs are fairly small when you are creating solutions to HackerRank type problems. They can be seen as a simple script you store in a file on your computer. Usually, when they are stored on your computer, they are ".js" files.
+=== What is a Class?
+
+Imagine you're designing a house. Before you build the actual house, you create blueprints that show:
+- What rooms the house will have
+- How big each room will be  
+- Where the doors and windows go
+- What the house can do (provide shelter, have electricity, etc.)
+
+A Java class works the same way. It's a blueprint that describes:
+- What **data** an object will store (called **instance variables** or **fields**)
+- What **actions** an object can perform (called **methods**)
+
+=== A Simple Example: The Person Class
+
+Let's create a simple `Person` class to understand the basics:
 
 [source]
 ----
-System.out.println("Hello, World!");
+class Person {
+    // Instance variables (data the object stores)
+    String name;
+    int age;
+    double height;
+    
+    // Methods (actions the object can perform)
+    void introduce() {
+        System.out.println("Hi, I'm " + name + " and I'm " + age + " years old.");
+    }
+    
+    void celebrateBirthday() {
+        age = age + 1;
+        System.out.println("Happy birthday to me! I'm now " + age + " years old.");
+    }
+}
 ----
-_helloworld.js_
 
-If your program is much larger, it might be split into different files to keep it all more organized or readable. 
-All those files might be kept in a folder all together, as a project. 
-But again, this is beyond what you need to know to do HackerRank Java problems.
+Try this in jshell:
 
-Modules are also used to import code others have written that you wish to take advantage of. 
-There are millions of chunks of Java you can find and use in your code. 
-A lot of it is used by many, many people, and it's important to know where the code you use comes from. 
-It can be dangerous to use someone else's code that isn't trustworthy.
+[source]
+----
+jshell> class Person {
+   ...>     String name;
+   ...>     int age;
+   ...>     double height;
+   ...>     
+   ...>     void introduce() {
+   ...>         System.out.println("Hi, I'm " + name + " and I'm " + age + " years old.");
+   ...>     }
+   ...>     
+   ...>     void celebrateBirthday() {
+   ...>         age = age + 1;
+   ...>         System.out.println("Happy birthday to me! I'm now " + age + " years old.");
+   ...>     }
+   ...> }
+|  created class Person
+----
 
-See https://Java.info/modules-intro for more on modules! Look for information on "import" and "export" to see how modules interact with your code.
+=== Creating Objects from Classes
+
+Once you have a class, you can create **objects** (also called **instances**) from it. If the class is a blueprint, the object is the actual house built from that blueprint.
+
+[source]
+----
+jshell> Person alice = new Person();
+alice ==> Person@...
+
+jshell> alice.name = "Alice";
+alice.name ==> "Alice"
+
+jshell> alice.age = 25;
+alice.age ==> 25
+
+jshell> alice.height = 5.6;
+alice.height ==> 5.6
+
+jshell> alice.introduce();
+Hi, I'm Alice and I'm 25 years old.
+
+jshell> alice.celebrateBirthday();
+Happy birthday to me! I'm now 26 years old.
+----
+
+You can create multiple objects from the same class:
+
+[source]
+----
+jshell> Person bob = new Person();
+bob ==> Person@...
+
+jshell> bob.name = "Bob";
+bob.name ==> "Bob"
+
+jshell> bob.age = 30;
+bob.age ==> 30
+
+jshell> bob.introduce();
+Hi, I'm Bob and I'm 30 years old.
+
+jshell> alice.introduce();
+Hi, I'm Alice and I'm 26 years old.
+----
+
+Notice how `alice` and `bob` are separate objects with their own data, even 
+though they're both created from the same `Person` class.
+
+=== Understanding Instance Variables
+
+**Instance variables** (also called **fields**) are the data that each object stores. 
+Each object gets its own copy of these variables.
+
+In our `Person` class:
+- `name` stores the person's name
+- `age` stores the person's age  
+- `height` stores the person's height
+
+Each `Person` object has its own `name`, `age`, and `height` that can be different from 
+other `Person` objects.
+
+=== Understanding Methods
+
+**Methods** are the actions that objects can perform. They're like functions, 
+but they belong to a specific class and can work with that class's instance variables.
+
+In our `Person` class:
+- `introduce()` prints a greeting using the person's name and age
+- `celebrateBirthday()` increases the person's age by 1
+
+Methods can:
+- Access and modify instance variables
+- Take parameters
+- Return values
+- Call other methods
+
+=== A More Complex Example: BankAccount
+
+Let's look at a more practical example:
+
+[source]
+----
+class BankAccount {
+    String accountNumber;
+    String ownerName;
+    double balance;
+    
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance = balance + amount;
+            System.out.println("Deposited $" + amount + ". New balance: $" + balance);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+    
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance = balance - amount;
+            System.out.println("Withdrew $" + amount + ". New balance: $" + balance);
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+    
+    void checkBalance() {
+        System.out.println("Account " + accountNumber + " balance: $" + balance);
+    }
+}
+----
+
+Try using this class:
+
+[source]
+----
+jshell> BankAccount account = new BankAccount();
+account ==> BankAccount@...
+
+jshell> account.accountNumber = "12345";
+account.accountNumber ==> "12345"
+
+jshell> account.ownerName = "Sarah";
+account.ownerName ==> "Sarah"
+
+jshell> account.balance = 100.0;
+account.balance ==> 100.0
+
+jshell> account.checkBalance();
+Account 12345 balance: $100.0
+
+jshell> account.deposit(50.0);
+Deposited $50.0. New balance: $150.0
+
+jshell> account.withdraw(25.0);
+Withdrew $25.0. New balance: $125.0
+
+jshell> account.withdraw(200.0);
+Invalid withdrawal amount.
+----
+
+=== Constructors: Setting Up Objects
+
+Sometimes you want to set up an object with specific values when you create it. That's what **constructors** do. A constructor is a special method that runs when you create a new object.
+
+[source]
+----
+class ZipCode {
+    String city;
+    String state;
+    int zipCode;
+    
+    // Constructor
+    ZipCode(String cityName, String stateName, int zip) {
+        city = cityName;
+        state = stateName;
+        zipCode = zip;
+    }
+    
+    void displayLocation() {
+        System.out.println(city + ", " + state + " " + zipCode);
+    }
+}
+----
+
+Now you can create objects with initial values:
+
+[source]
+----
+jshell> ZipCode wilmington = new ZipCode("Wilmington", "DE", 19801);
+wilmington ==> ZipCode@...
+
+jshell> wilmington.displayLocation();
+Wilmington, DE 19801
+
+jshell> ZipCode newark = new ZipCode("Newark", "DE", 19711);
+newark ==> ZipCode@...
+
+jshell> newark.displayLocation();
+Newark, DE 19711
+----
+
+=== Why Use Classes?
+
+Classes help you organize your code and model real-world concepts:
+
+1. **Organization**: Keep related data and methods together
+2. **Reusability**: Create multiple objects from the same class
+3. **Modularity**: Each class handles its own responsibilities
+4. **Abstraction**: Hide complex details behind simple interfaces
+
+=== Methods with Parameters and Return Values
+
+Methods can take input (parameters) and give back output (return values):
+
+[source]
+----
+class Calculator {
+    String name;
+    
+    Calculator(String calcName) {
+        name = calcName;
+    }
+    
+    double add(double a, double b) {
+        return a + b;
+    }
+    
+    double multiply(double a, double b) {
+        return a * b;
+    }
+    
+    double divide(double a, double b) {
+        if (b != 0) {
+            return a / b;
+        } else {
+            System.out.println("Cannot divide by zero!");
+            return 0;
+        }
+    }
+}
+----
+
+[source]
+----
+jshell> Calculator calc = new Calculator("MyCalc");
+calc ==> Calculator@...
+
+jshell> double result = calc.add(5.0, 3.0);
+result ==> 8.0
+
+jshell> System.out.println("5 + 3 = " + result);
+5 + 3 = 8.0
+
+jshell> double product = calc.multiply(4.0, 7.0);
+product ==> 28.0
+
+jshell> double quotient = calc.divide(15.0, 3.0);
+quotient ==> 5.0
+----
+
+=== Class vs Object: The Key Difference
+
+Remember the distinction:
+- **Class**: The blueprint or template (like the `Person` class)
+- **Object**: The actual instance created from the class (like `alice` and `bob`)
+
+You write the class once, but you can create many objects from it.
+
+=== Practical Exercises
+
+Try creating these classes in jshell:
+
+**Exercise 1: Book Class**
+Create a `Book` class with:
+- `title`, `author`, `pages` (instance variables)
+- `displayInfo()` method that prints book details
+- Constructor that sets all values
+
+**Exercise 2: Circle Class**  
+Create a `Circle` class with:
+- `radius` (instance variable)
+- `calculateArea()` method that returns π × radius²
+- `calculateCircumference()` method that returns 2 × π × radius
+- Constructor that sets the radius
+
+**Exercise 3: Student Class**
+Create a `Student` class with:
+- `name`, `grade`, `studentId` (instance variables)  
+- `study()` method that prints a study message
+- `takeTest()` method that could change the grade
+- Constructor to set initial values
+
+=== Key Takeaways
+
+1. Classes are blueprints that define what objects will look like and do
+2. Objects are instances created from classes using the `new` keyword
+3. Instance variables store data unique to each object
+4. Methods define what actions objects can perform
+5. Constructors initialize objects when they're created
+6. You can create many objects from the same class
+7. Each object has its own copy of instance variables
+
+Classes are the foundation of object-oriented programming in Java. 
+Once you understand classes, you can model almost anything in your programs - 
+from simple concepts like numbers and strings to complex systems like games, databases, and web applications.

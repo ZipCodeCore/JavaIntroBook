@@ -1,0 +1,365 @@
+=== StringBuilder and StringBuffer
+
+When working with strings in Java, you'll often need to build strings piece by piece or modify them frequently.
+While the String class is great for many purposes, it has a limitation: strings are **immutable**, meaning they cannot be changed once created.
+
+For situations where you need to modify strings frequently, Java provides two powerful alternatives: `StringBuilder` and `StringBuffer`.
+
+==== The Problem with String Concatenation
+
+Let's first understand why we need StringBuilder. Consider this code:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    String message = "Hello";
+    message = message + " ";
+    message = message + "World";
+    message = message + "!";
+    
+    System.out.println(message);  // "Hello World!"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+What's happening behind the scenes is that Java creates a **new String object** every time you use the `+` operator.
+So this simple code actually creates 4 different String objects in memory!
+
+==== StringBuilder: The Solution
+
+StringBuilder allows you to efficiently build and modify strings without creating new objects each time.
+
+===== Basic StringBuilder Usage
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder();
+    
+    sb.append("Hello");
+    sb.append(" ");
+    sb.append("World");
+    sb.append("!");
+    
+    String result = sb.toString();
+    System.out.println(result);  // "Hello World!"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== StringBuilder with Initial Capacity
+
+[source]
+----
+// Create StringBuilder with initial capacity
+StringBuilder sb = new StringBuilder(50);  // Can hold 50 characters initially
+
+// Create StringBuilder with initial content
+StringBuilder sb2 = new StringBuilder("Starting text");
+----
+
+==== Common StringBuilder Methods
+
+===== append() - Add to the End
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder();
+    
+    sb.append("Java");
+    sb.append(" is");
+    sb.append(" awesome");
+    sb.append('!');           // Can append single characters
+    sb.append(2024);          // Can append numbers
+    
+    System.out.println(sb.toString());  // "Java is awesome!2024"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== insert() - Add at Specific Position
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder("Hello World");
+    
+    sb.insert(6, "Beautiful ");  // Insert at position 6
+    
+    System.out.println(sb.toString());  // "Hello Beautiful World"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== delete() and deleteCharAt()
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder("Hello World!");
+    
+    sb.delete(5, 11);         // Delete from index 5 to 11
+    System.out.println(sb.toString());  // "Hello!"
+    
+    sb.deleteCharAt(5);       // Delete character at index 5
+    System.out.println(sb.toString());  // "Hello"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== replace() - Replace Part of String
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder("Hello World");
+    
+    sb.replace(6, 11, "Java");  // Replace "World" with "Java"
+    
+    System.out.println(sb.toString());  // "Hello Java"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+===== reverse() - Reverse the String
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder("Hello");
+    
+    sb.reverse();
+    
+    System.out.println(sb.toString());  // "olleH"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Practical Example: Building HTML
+
+Here's a practical example showing how StringBuilder is useful for building formatted text:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder html = new StringBuilder();
+    
+    html.append("<html>\n");
+    html.append("<head><title>My Page</title></head>\n");
+    html.append("<body>\n");
+    html.append("<h1>Welcome!</h1>\n");
+    html.append("<p>This page was generated with StringBuilder.</p>\n");
+    html.append("</body>\n");
+    html.append("</html>");
+    
+    System.out.println(html.toString());
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Method Chaining
+
+StringBuilder methods return the StringBuilder object itself, allowing you to chain operations:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder sb = new StringBuilder();
+    
+    String result = sb.append("Hello")
+                     .append(" ")
+                     .append("World")
+                     .append("!")
+                     .reverse()
+                     .toString();
+    
+    System.out.println(result);  // "!dlroW olleH"
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== StringBuilder vs StringBuffer
+
+There are two similar classes for mutable strings:
+
+[cols="2,3,3"]
+|===
+|Feature |StringBuilder |StringBuffer
+
+|**Thread Safety**
+|Not thread-safe
+|Thread-safe (synchronized)
+
+|**Performance**
+|Faster
+|Slower (due to synchronization)
+
+|**When to Use**
+|Single-threaded programs (most cases)
+|Multi-threaded programs where multiple threads access the same string
+|===
+
+For most Java programs, **StringBuilder is the preferred choice** because it's faster and most programs don't need thread safety.
+
+==== Performance Comparison
+
+Here's why StringBuilder is much more efficient:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    // Inefficient - creates many String objects
+    long start1 = System.currentTimeMillis();
+    String slow = "";
+    for (int i = 0; i < 10000; i++) {
+        slow = slow + "a";  // Creates new String object each time!
+    }
+    long end1 = System.currentTimeMillis();
+    System.out.println("String concatenation time: " + (end1 - start1) + " ms");
+    
+    // Efficient - modifies existing StringBuilder
+    long start2 = System.currentTimeMillis();
+    StringBuilder fast = new StringBuilder();
+    for (int i = 0; i < 10000; i++) {
+        fast.append("a");   // Modifies existing object
+    }
+    String result = fast.toString();
+    long end2 = System.currentTimeMillis();
+    System.out.println("StringBuilder time: " + (end2 - start2) + " ms");
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== When to Use StringBuilder
+
+Use StringBuilder when you need to:
+
+1. **Build strings in loops** - Especially when you don't know the final size
+2. **Frequently modify strings** - Adding, removing, or changing parts
+3. **Build formatted output** - Like HTML, XML, or reports
+4. **Optimize performance** - When string operations are performance-critical
+
+==== When to Use Regular Strings
+
+Use regular String when you:
+
+1. **Have fixed text** that won't change
+2. **Do simple concatenation** of just a few strings
+3. **Want immutable data** for safety
+
+==== Complete Example: Building a Report
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    StringBuilder report = new StringBuilder();
+    
+    // Header
+    report.append("=== STUDENT REPORT ===\n");
+    report.append("Generated on: 2024-01-15\n\n");
+    
+    // Student data
+    String[] names = {"Alice", "Bob", "Charlie"};
+    int[] grades = {85, 92, 78};
+    
+    for (int i = 0; i < names.length; i++) {
+        report.append("Student: ").append(names[i]);
+        report.append(", Grade: ").append(grades[i]);
+        
+        if (grades[i] >= 90) {
+            report.append(" (Excellent!)");
+        } else if (grades[i] >= 80) {
+            report.append(" (Good)");
+        }
+        
+        report.append("\n");
+    }
+    
+    // Footer
+    report.append("\n--- End of Report ---");
+    
+    System.out.println(report.toString());
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Key StringBuilder Methods Summary
+
+[cols="2,3"]
+|===
+|Method |Description
+
+|`append(value)`
+|Add value to the end
+
+|`insert(index, value)`
+|Insert value at specific position
+
+|`delete(start, end)`
+|Remove characters from start to end
+
+|`deleteCharAt(index)`
+|Remove character at specific index
+
+|`replace(start, end, str)`
+|Replace characters with new string
+
+|`reverse()`
+|Reverse the entire string
+
+|`toString()`
+|Convert to regular String
+
+|`length()`
+|Get current length
+
+|`setLength(len)`
+|Set length (truncate or pad with nulls)
+|===
+
+StringBuilder is an essential tool for efficient string manipulation in Java. Master it to write faster, more memory-efficient programs!

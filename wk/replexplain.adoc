@@ -1,0 +1,113 @@
+jshell is Java's built-in interactive programming tool.
+It allows you to type in Java code, run it immediately, and see what happens.
+Even though it is simple and easy to use, it is a pretty powerful computer programming tool.
+
+jshell comes built into Java 9 and later versions, so if you have a modern Java installation, you already have it!
+
+=== Starting jshell
+
+To start jshell, open your terminal or command prompt and type:
+
+[source]
+----
+jshell
+----
+
+You should see something like:
+
+[source]
+----
+|  Welcome to JShell -- Version 17.0.2
+|  For an introduction type: /help intro
+
+jshell> 
+----
+
+The `jshell>` prompt means jshell is ready for you to type Java code.
+
+=== Your First jshell Command
+
+Let's try a simple example. At the jshell prompt, type:
+
+[source]
+----
+jshell> System.out.println("Hello, World!");
+Hello, World!
+----
+
+Notice how jshell immediately ran your code and showed the output "Hello, World!"
+
+Now try this:
+
+[source]
+----
+jshell> System.out.println("Hello, YourName!");
+----
+
+(Replace "YourName" with your actual name)
+
+What does jshell stand for? The "shell" part means it's an interactive environment where you can type commands and see results immediately. This is perfect for learning Java because you can experiment right away.
+
+=== Working with Variables
+
+In jshell, you can create variables and use them immediately:
+
+[source]
+----
+jshell> int age = 25;
+age ==> 25
+
+jshell> String name = "Alex";
+name ==> "Alex"
+
+jshell> System.out.println("My name is " + name + " and I am " + age + " years old");
+My name is Alex and I am 25 years old
+----
+
+Notice how jshell shows you the value that was assigned to each variable with the `==>` arrow.
+
+=== jshell vs Full Programs
+
+Throughout this book, you'll see full Java programs that look like this:
+
+[source]
+----
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+----
+
+When you see these programs, you can run just the statements inside the main method in jshell:
+
+[source]
+----
+jshell> System.out.println("Hello, World!");
+----
+
+This makes learning much faster because you don't have to worry about all the extra syntax.
+
+=== Exiting jshell
+
+When you're done with jshell, you can exit by typing:
+
+[source]
+----
+jshell> /exit
+----
+
+Or you can press Ctrl+D (on Mac/Linux) or Ctrl+Z then Enter (on Windows).
+
+=== Getting Help
+
+If you need help while in jshell, you can type:
+
+[source]
+----
+jshell> /help
+----
+
+This will show you all the available commands and how to use them.
+
+Congratulations! You've just learned how to use jshell for interactive Java programming.

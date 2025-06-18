@@ -6,10 +6,9 @@ take the drudgery of doing math by a person, and making the computer do the math
 These kinds of _computations_ rely on the fact that the computer won't do the wrong thing if it's programed carefully.
 
 Given a simple math equation like:
-[TIP]
-====
+**Problem: Solve for a**
+
 a = b3 - 6 and if b equals 3, then a equals ?
-====
 
 In math class, your teacher would have said "How do we solve for a?" The best way to solve for `a = b3 - 6`
 is to
@@ -19,67 +18,49 @@ is to
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    // And in Java:
-    // a = b3 - 6 
+// And in Java:
+// a = b3 - 6 
 
-    int b = 3;
-    int a = b * 3 - 6;
-    System.out.println(a); // -> 3
-  }
-}
+int b = 3;
+int a = b * 3 - 6;
+System.out.println(a); // -> 3
 ----
 
 Now you try it. 
 
-[TIP]
-====
-Solve the equation with Java...
+**Exercise: Solve the equation with Java**
 
 q = 2j + 20
 
 if j = 5, then q = ?
 
 Take a moment and write down your solution before reading on.
-====
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    int q = 0; 
-    int j = 5;
-    q = 2 * j + 20;
-    System.out.println(q); // -> 30
-  }
-}
+int q = 0; 
+int j = 5;
+q = 2 * j + 20;
+System.out.println(q); // -> 30
 ----
 
 Let's try another...
 
-[TIP]
-====
-Solve the equation with Java...
+**Exercise: Solve the equation with Java**
 
 x = 5y + y^3^ - 7
 
 if y=2, x = ?
 
 and print out x.
-====
 
 
 My solution is pretty simple.
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double y = 2; 
-    double x = 5 * y + Math.pow(y, 3) - 7;
-    System.out.println(x); // -> 11
-  }
-}
+double y = 2; 
+double x = 5 * y + Math.pow(y, 3) - 7;
+System.out.println(x); // -> 11
 ----
 
 === _Trigonometry_
@@ -92,45 +73,108 @@ equation *AreaOfaTriangle = height * base / 2*
 
 Therefore we just need to create variables for each and use the operators to calculate the area.
 
-[TIP]
-====
-Calculate Area of a Triangle in Java
+**Exercise: Calculate Area of a Triangle in Java**
+
 Height is 20
 Base is 10
 Formula: A = h * b / 2
-====
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double height = 20;
-    double base = 10;	
-    double areaOfaTriangle  =  height * base / 2;
-    System.out.println(areaOfaTriangle); // -> 100
-  }
-}
+double height = 20;
+double base = 10;	
+double areaOfaTriangle  =  height * base / 2;
+System.out.println(areaOfaTriangle); // -> 100
 ----
 
 
-[TIP]
-====
-Calculate the area of a circle whose radius is 7.7
+**Exercise: Calculate the area of a circle whose radius is 7.7**
+
 Formula: area = Pi * radius^2^
-====
 Hint: You'll need to use a constant Math property!
 
 
 [source]
 ----
-public class Main {
-  public static void main(String[] args) {
-    double radius = 7.7;	
-    double area  =  Math.PI * Math.pow(radius, 2);
-    System.out.println(area); 
-    // -> 186.26502843133886 (wow)
-  }
-}
+double radius = 7.7;	
+double area  =  Math.PI * Math.pow(radius, 2);
+System.out.println(area); 
+// -> 186.26502843133886 (wow)
 ----
 
+=== Chapter Exercises
 
+Try these exercises in jshell to practice algebraic equations and trigonometry:
+
+*Exercise 1: Linear Equations*
+
+Solve these equations with Java:
+```
+// Equation: y = 3x + 7, where x = 4
+int x = 4;
+int y = 3 * x + 7;
+System.out.println("When x = " + x + ", y = " + y);
+
+// Equation: temperature in Fahrenheit = (C * 9/5) + 32
+double celsius = 25.0;
+double fahrenheit = (celsius * 9.0 / 5.0) + 32;
+System.out.println(celsius + "°C = " + fahrenheit + "°F");
+```
+
+*Exercise 2: Quadratic Expressions*
+
+Calculate values for a quadratic equation:
+```
+// Equation: y = x² + 2x - 3
+int x = 5;
+double y = Math.pow(x, 2) + 2 * x - 3;
+System.out.println("For x = " + x + ", y = " + y);
+
+// Try with different x values
+x = -1;
+y = Math.pow(x, 2) + 2 * x - 3;
+System.out.println("For x = " + x + ", y = " + y);
+```
+
+
+*Exercise 3: Geometry Calculations*
+
+Calculate areas and perimeters:
+```
+// Rectangle
+double length = 12.5;
+double width = 8.0;
+double rectArea = length * width;
+double rectPerimeter = 2 * (length + width);
+
+System.out.println("Rectangle: " + length + " x " + width);
+System.out.println("Area: " + rectArea);
+System.out.println("Perimeter: " + rectPerimeter);
+
+// Circle
+double radius = 6.5;
+double circleArea = Math.PI * Math.pow(radius, 2);
+double circumference = 2 * Math.PI * radius;
+
+System.out.println("Circle with radius: " + radius);
+System.out.println("Area: " + circleArea);
+System.out.println("Circumference: " + circumference);
+```
+
+*Exercise 4: Physics Formulas*
+
+Calculate distance, speed, and acceleration:
+```
+// Distance = speed × time
+double speed = 65.0; // mph
+double time = 2.5;   // hours
+double distance = speed * time;
+System.out.println("Driving " + speed + " mph for " + time + " hours");
+System.out.println("Distance traveled: " + distance + " miles");
+
+// Force = mass × acceleration
+double mass = 10.0;  // kg
+double acceleration = 9.8; // m/s²
+double force = mass * acceleration;
+System.out.println("Force = " + mass + " kg × " + acceleration + " m/s² = " + force + " N");
+```

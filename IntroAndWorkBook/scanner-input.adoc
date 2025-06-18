@@ -1,0 +1,184 @@
+=== Reading User Input with Scanner
+
+In Java, we can create interactive programs that ask the user to type something and then use that input in our programs.
+This makes our programs much more useful and engaging.
+
+To read user input, we use the `Scanner` class, which is part of Java's standard library.
+
+==== Setting Up Scanner
+
+First, we need to import the Scanner class and create a Scanner object:
+
+[source]
+----
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    Scanner scanner = new Scanner(System.in);
+    
+    // Your code goes here...
+    
+    scanner.close();
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+The `Scanner` object connects to `System.in`, which represents the keyboard input.
+Always remember to close the scanner when you're done with it using `scanner.close()`.
+
+==== Reading Different Types of Input
+
+The Scanner class provides different methods for reading different types of data:
+
+===== Reading Integers
+
+[source]
+----
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("Enter your age: ");
+int age = scanner.nextInt();
+
+System.out.println("You are " + age + " years old.");
+----
+
+===== Reading Strings (Single Words)
+
+[source]
+----
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("Enter your first name: ");
+String firstName = scanner.next();
+
+System.out.println("Hello, " + firstName + "!");
+----
+
+===== Reading Full Lines of Text
+
+[source]
+----
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("Enter your full name: ");
+String fullName = scanner.nextLine();
+
+System.out.println("Nice to meet you, " + fullName + "!");
+----
+
+===== Reading Decimal Numbers
+
+[source]
+----
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("Enter the price: $");
+double price = scanner.nextDouble();
+
+System.out.println("The price is $" + price);
+----
+
+==== Complete Example Program
+
+Here's a complete program that demonstrates reading different types of input:
+
+[source]
+----
+import java.util.Scanner;
+
+public class ZipCode {
+
+  void compute() {
+    Scanner scanner = new Scanner(System.in);
+    
+    System.out.print("What is your name? ");
+    String name = scanner.nextLine();
+    
+    System.out.print("How old are you? ");
+    int age = scanner.nextInt();
+    
+    System.out.print("What is your favorite number? ");
+    double favoriteNumber = scanner.nextDouble();
+    
+    System.out.println("Hello " + name + "!");
+    System.out.println("You are " + age + " years old.");
+    System.out.println("Your favorite number is " + favoriteNumber);
+    
+    scanner.close();
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Input Validation
+
+Sometimes users might enter invalid data. Here's how to handle that:
+
+[source]
+----
+Scanner scanner = new Scanner(System.in);
+
+System.out.print("Enter a number: ");
+if (scanner.hasNextInt()) {
+    int number = scanner.nextInt();
+    System.out.println("You entered: " + number);
+} else {
+    System.out.println("That's not a valid number!");
+    scanner.next(); // clear the invalid input
+}
+----
+
+==== Common Scanner Methods
+
+Here are the most commonly used Scanner methods:
+
+[cols="2,3"]
+|===
+|Method |Description
+
+|`nextInt()`
+|Reads the next integer
+
+|`nextDouble()`
+|Reads the next decimal number
+
+|`next()`
+|Reads the next single word (stops at whitespace)
+
+|`nextLine()`
+|Reads an entire line of text
+
+|`hasNextInt()`
+|Checks if the next input is an integer
+
+|`hasNextDouble()`
+|Checks if the next input is a decimal number
+
+|`hasNext()`
+|Checks if there is more input available
+|===
+
+==== Important Notes
+
+1. **Always close your Scanner** when you're done with it using `scanner.close()`.
+
+2. **Be careful with mixing `nextInt()` and `nextLine()`**. After reading a number, you might need to call `scanner.nextLine()` to consume the remaining newline character.
+
+3. **Handle invalid input** by checking with `hasNextInt()` or similar methods before reading.
+
+4. **Only create one Scanner object** per program that reads from `System.in`.
+
+==== Practice Exercise
+
+Try creating a program that:
+1. Asks the user for their name
+2. Asks for their age
+3. Asks for their favorite color
+4. Prints a personalized message using all three pieces of information
+
+This is a fundamental skill in Java programming that makes your programs interactive and user-friendly!

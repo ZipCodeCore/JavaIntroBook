@@ -10,7 +10,7 @@ Notice how we first get a command from the user, look at each possibility, and d
 
 [source]
 ----
-int lastCommand = getCommandFromUser();
+String lastCommand = getCommandFromUser();
 
 switch(lastCommand){
     case "exit": 
@@ -20,20 +20,20 @@ switch(lastCommand){
         System.out.println("running simulation...");
         runSim();
         break;
-    case: "rename":
+    case "rename":
         renameSim();
         break;
-    case: "delete":
+    case "delete":
         if (makeSureDeleteIsOkay()) {
             deleteSim();
         } else {
            System.out.println("delete cancelled..."); 
         }
         break;
-    case: "new":
+    case "new":
         createNewSim();
         break;
-    case: "help":
+    case "help":
         showHelpToUser();
         break;
     default:
@@ -46,14 +46,13 @@ Switch statements can be quite elaborate (and in this case much better than a wh
 Here's the exercise from the _if_ section. Oftentimes, you can write a switch statement in _if_ statements, or a bunch of _if_ statements as a _switch_ statement. 
 This time, you should use a *switch* statement.
 
-[TIP]
-====
+**Exercise: Age Verification with Switch Statement**
+
 Write code to check if a user is old enough to drink. (Using a switch)
 
 - if the user is under 18. Print out "cannot party with us"
 - Else if the user is 18 or over. Print out "party over here"
 - Else print out "I do not recognize your age"
-====
  
 Finally, make sure to change the value of the age variable to output different results.
 

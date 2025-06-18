@@ -17,6 +17,7 @@
  *  101101110
  *
  *  from Princeton
+ * this thing is Recursive!
  ******************************************************************************/
 
 public class IntegerToBinary {

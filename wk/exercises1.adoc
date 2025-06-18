@@ -1,0 +1,344 @@
+
+Let's look at a series of problems that you can solve to get a feel for what we're looking for on the Zip Code admissions assessment.
+
+== Algebra Exercises
+
+Computing is often programming a computer to math.
+By solving these problems, you'll get a feel for the kind of algebra problems we'd like to be able to solve.
+
+Fell free to use the https://code.zipcode.rocks REPL to work these problems out. 
+(You can also just work them out in your head or on paper)
+
+As with many kinds of programming tasks, these problems can be solved a large number of ways.
+
+=== Y equals ?
+
+----
+Given the following formula,
+ 
+y = (5 * x) + 100
+
+what is y, if x = 3?
+----
+
+For each of these problems, you need to compute the value of *y*. 
+In each case the value of *x* is different, and so is the formula you need to compute.
+
+For this first one, if *x equals 3*, you would first multiply *5* times *3*, and then add 100 to it.
+So a correct answer is *15 + 100* or *115*.
+
+Each of these below are computed in pretty much the same way.
+
+==== ?
+
+----
+Given the following formula,
+ 
+y = (4 * x) - 5
+
+what is y, if x = 5?
+----
+
+==== ?
+
+----
+Given the following formula,
+ 
+y = (6 * x) - 7
+
+what is y, if x = 2?
+----
+
+==== ?
+
+----
+Given the following formula,
+ 
+y = (15 / x) * 8
+
+what is y, if x = 5?
+----
+
+=== Velocities
+
+Velocity is often thought of as *speed*. It's common to drive at 40 or 45 miles per hour.
+That speed is a *velocity*.
+*Acceleration*, you may remember, is the change in velocity.
+
+If a car is moving at an initial velocity V, and accelerates at rate of A for a set time 
+period of T, the formula to determine it final velocity S is: 
+
+****
+S = A*T + V
+****
+
+So if we have a *A=2*, *T=3*, and *V=4*, we would compute 
+****
+S = (2 * 3) + 4
+
+S = 6 + 4
+
+S = 10
+****
+
+You substitute each variable (V, A and T) into the formula and compute the result.
+
+==== ?
+
+----
+What is S if (V = 10), (A = 4), (T = 3)?
+----
+
+==== ?
+
+----
+What is S if (V = 0), (A = 5), (T = 20)?
+----
+
+==== ?
+
+----
+What is S if (V = 17), (A = 2), (T = 14)?
+----
+
+=== F of x or F(x)
+
+Sometimes you will see a formula expressed as a function which takes one parameter, *x*. 
+an _parameter_ to a function is it's input value.
+This is an algebraic (or math) function, not a Java function.
+
+****
+F(x) = 3x + 4
+****
+
+This is just another way of describing a simple computation.
+The result of the function, F(x) (which is pronounced _F of x_), is the same as *y* was
+in the problems above.
+
+****
+y = 3x + 4
+****
+
+*Y* ended up being the answer to the computation. 
+So is _F of x_ is also the answer to the computation.
+Don't overthink this, *y* and *f of x* are just two ways of saying the same thing.
+
+The other thing to notice is the *3x* portion. In Java, you need to change it to *3 * x* so a correct form of a Java function would be 
+
+----
+public static int f(int x) {
+    return (3 * x) + 4;
+}
+----
+
+Write out these three formulas as Java functions.
+Use the example above to help with your answers.
+
+==== ? 
+
+****
+f(x) = 5x - 7
+****
+
+==== ?
+
+****
+g(x) = 6x + 3
+****
+
+==== ?
+
+****
+h(x) = 123x - 68
+****
+
+
+[sidebar]
+.Parameters and Arguments
+--
+You'll be learning about this thing called a *function*. 
+Functions are the main “building blocks” of a program. 
+They allow the code to be called many times without repetition.
+
+So, a programmer bundles up smaller pieces of their program into functions.
+
+In Java, and many other programming languages (yes, there are many!), we often need to supply a function with data.
+And that data can often change.
+
+When we supply a function with data, we *pass* some *parameters* to the function.
+
+Say I have a function that does something really simple:
+[source]
+----
+public static double halve(double x) {
+    return x / 2;
+}
+----
+
+In this example, *x* is a *parameter*. It is also called an *argument*.
+I'll try to use *parameter* throughout this booklet, but in some problems you may see on-line,
+you may also see *x* in the above function described as an *argument*.
+--
+
+=== F of (x, y)
+
+Well, so if *F of x* is the result of a function of one parameter *x*, *F of x and y* is also the result of a function.
+But in this case, the functions takes two parameters *x* and *y*.
+
+Given the following function using x and y: 
+
+**** 
+F(x, y) = 2x + y -27
+****
+
+And then if _F(1, 2) = -23_, well, how did we get that result?
+
+The idea is that you think it through like this:
+
+****
+given F(1, 2), we assign x=1 and y=2 and substitute these two variables to compute the result.
+
+F(1,2) = (2 * x) + y - 27
+
+F(1,2) = (2 * 1) + 2 - 27
+
+F(1,2) = 2 + 2 - 27
+
+F(1,2) = 23
+****
+
+Using that as a *pattern*, work through these problems:
+
+==== ?
+
+****
+f(20, 8) = ?
+****
+
+==== ?
+
+****
+f(6, 25) = ?
+****
+
+==== ?
+
+****
+f(5, 2) = ?
+****
+
+==== ?
+
+****
+f(0, 0) = ?
+****
+
+=== Complete the answer
+
+For this problem, you need to figure out the correct answer to the last expression. 
+----
+dog + fish = 25
+dog + bird = 35
+bird + fish = 30
+----
+
+If the above expressions are true, what is the answer to this?
+
+----
+dog + bird + fish = ?
+----
+
+== Solutions to Algebra Exercises
+
+=== Y equals ? - Answers
+
+----
+y = (4 * x) - 5, if x = 5
+y = (4 * 5) - 5 = 20 - 5 = 15
+----
+
+----
+y = (6 * x) - 7, if x = 2  
+y = (6 * 2) - 7 = 12 - 7 = 5
+----
+
+----
+y = (15 / x) * 8, if x = 5
+y = (15 / 5) * 8 = 3 * 8 = 24
+----
+
+=== Velocity - Answers
+
+----
+S = A*T + V, if V = 10, A = 4, T = 3
+S = (4 * 3) + 10 = 12 + 10 = 22
+----
+
+----
+S = A*T + V, if V = 0, A = 5, T = 20
+S = (5 * 20) + 0 = 100 + 0 = 100
+----
+
+----
+S = A*T + V, if V = 17, A = 2, T = 14
+S = (2 * 14) + 17 = 28 + 17 = 45
+----
+
+=== F(x) Function - Answers
+
+----
+f(x) = 5x - 7
+
+public static int f(int x) {
+    return (5 * x) - 7;
+}
+----
+
+----
+g(x) = 6x + 3
+
+public static int g(int x) {
+    return (6 * x) + 3;
+}
+----
+
+----
+h(x) = 123x - 68
+
+public static int h(int x) {
+    return (123 * x) - 68;
+}
+----
+
+=== F(x,y) Function - Answers
+
+Using F(x, y) = 2x + y - 27:
+
+----
+f(20, 8) = (2 * 20) + 8 - 27 = 40 + 8 - 27 = 21
+----
+
+----
+f(6, 25) = (2 * 6) + 25 - 27 = 12 + 25 - 27 = 10
+----
+
+----
+f(5, 2) = (2 * 5) + 2 - 27 = 10 + 2 - 27 = -15
+----
+
+----
+f(0, 0) = (2 * 0) + 0 - 27 = 0 + 0 - 27 = -27
+----
+
+=== Complete the Answer - Solution
+
+----
+dog + fish = 25
+dog + bird = 35  
+bird + fish = 30
+
+Adding all three equations:
+2*dog + 2*bird + 2*fish = 90
+dog + bird + fish = 45
+----
+

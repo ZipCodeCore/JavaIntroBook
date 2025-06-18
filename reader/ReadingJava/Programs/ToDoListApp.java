@@ -112,6 +112,11 @@ public class ToDoListApp {
     }
 }
 
+// this is known as a Bean, a Java Bean is a simple Java class that follows some conventions:
+// It must have a no-arg constructor.
+// It must have private fields.
+// It must have getter and setter methods for the fields.
+// It must implement the Serializable interface (optional).
 class Task {
     private int id;
     private String description;

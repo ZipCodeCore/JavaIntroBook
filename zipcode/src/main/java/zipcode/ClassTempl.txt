@@ -1,0 +1,9 @@
+public class %s {
+
+  void compute() {
+    //Your code goes in here...
+  }
+  
+  // don't change this...
+  public static void main(String args { new %s().compute(); }
+}

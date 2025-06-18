@@ -60,7 +60,7 @@ Java is a fairly easy programming language to learn, and we're going to use it i
 
 ==== Simple to Use
 
-Java also has the advantage that one can learn to use it without a lot of setup on a computer. In fact, we recommend the use of a "REPL" for the running of the Java examples you'll find in this book. The REPL at https://code.zipcode.rocks is a simple webpage where you can edit Java scripts, click a button, and run them. You can run almost every code snippet in the book and _see_ what the code does.
+Java also has the advantage that one can learn to use it without a lot of setup on a computer. In fact, we recommend the use of jshell for running the Java examples you'll find in this book. jshell is Java's built-in interactive shell that lets you type Java code and see results immediately. You can run almost every code snippet in the book and _see_ what the code does without needing to create full programs.
 
 ==== Focuses on coding
 

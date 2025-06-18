@@ -1,0 +1,213 @@
+=== Method Overloading
+
+Method overloading is a powerful feature in Java that allows you to create multiple methods with the same name, as long as they have different parameters.
+This makes your code more flexible and easier to use.
+
+Think of it like having different ways to say "hello" - you might say "hello" to one person, "hello there" to a friend, or "hello, how are you?" to someone you haven't seen in a while.
+Each version is still saying hello, but with different information.
+
+==== What is Method Overloading?
+
+Method overloading means having multiple methods with:
+- The **same name**
+- **Different parameters** (different number, types, or order)
+
+Java determines which method to call based on the arguments you provide when calling the method.
+
+==== Basic Example
+
+Here's a simple example using addition:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    // Test all our add methods
+    System.out.println(add(5, 3));           // calls add(int, int)
+    System.out.println(add(5.5, 3.2));       // calls add(double, double)
+    System.out.println(add(1, 2, 3));        // calls add(int, int, int)
+  }
+
+  // Method 1: Add two integers
+  public static int add(int a, int b) {
+    return a + b;
+  }
+
+  // Method 2: Add two doubles  
+  public static double add(double a, double b) {
+    return a + b;
+  }
+
+  // Method 3: Add three integers
+  public static int add(int a, int b, int c) {
+    return a + b + c;
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Overloading by Number of Parameters
+
+You can create methods that take different numbers of parameters:
+
+[source]
+----
+// Print a simple message
+public static void printMessage(String message) {
+    System.out.println(message);
+}
+
+// Print a message multiple times
+public static void printMessage(String message, int times) {
+    for (int i = 0; i < times; i++) {
+        System.out.println(message);
+    }
+}
+
+// Print a message with a prefix
+public static void printMessage(String prefix, String message, int times) {
+    for (int i = 0; i < times; i++) {
+        System.out.println(prefix + ": " + message);
+    }
+}
+----
+
+==== Overloading by Parameter Types
+
+You can create methods that take different types of parameters:
+
+[source]
+----
+// Calculate area of a square
+public static double calculateArea(double side) {
+    return side * side;
+}
+
+// Calculate area of a rectangle
+public static double calculateArea(double length, double width) {
+    return length * width;
+}
+
+// Calculate area of a triangle
+public static double calculateArea(double base, double height, String shape) {
+    if (shape.equals("triangle")) {
+        return 0.5 * base * height;
+    }
+    return 0;
+}
+----
+
+==== Real-World Example: Greeting Methods
+
+Here's a practical example showing different ways to greet users:
+
+[source]
+----
+public class ZipCode {
+
+  void compute() {
+    greet("Alice");                    // Simple greeting
+    greet("Bob", "Good morning");      // Custom greeting
+    greet("Charlie", "Hello", 3);      // Repeat greeting
+  }
+
+  // Simple greeting
+  public static void greet(String name) {
+    System.out.println("Hello, " + name + "!");
+  }
+
+  // Custom greeting message
+  public static void greet(String name, String greeting) {
+    System.out.println(greeting + ", " + name + "!");
+  }
+
+  // Repeat greeting multiple times
+  public static void greet(String name, String greeting, int times) {
+    for (int i = 0; i < times; i++) {
+        System.out.println(greeting + ", " + name + "!");
+    }
+  }
+
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Rules for Method Overloading
+
+1. **Method name must be the same**
+2. **Parameters must be different** in at least one of these ways:
+   - Different number of parameters
+   - Different types of parameters
+   - Different order of parameter types
+
+3. **Return type alone is NOT enough** - you cannot overload methods that differ only in return type
+
+==== What DOES Work (Valid Overloading)
+
+[source]
+----
+public static int process(int x) { return x * 2; }
+public static int process(int x, int y) { return x + y; }        // Different number
+public static int process(double x) { return (int)(x * 2); }     // Different type
+public static int process(String x) { return x.length(); }       // Different type
+----
+
+==== What DOES NOT Work (Invalid Overloading)
+
+[source]
+----
+public static int process(int x) { return x * 2; }
+public static double process(int x) { return x * 2.0; }  // ERROR! Only return type differs
+----
+
+==== Constructor Overloading
+
+You can also overload constructors (we'll learn more about these later):
+
+[source]
+----
+public class Student {
+    String name;
+    int age;
+    String grade;
+
+    // Constructor with just name
+    public Student(String name) {
+        this.name = name;
+        this.age = 18;        // default age
+        this.grade = "A";     // default grade
+    }
+
+    // Constructor with name and age
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.grade = "A";     // default grade
+    }
+
+    // Constructor with all parameters
+    public Student(String name, int age, String grade) {
+        this.name = name;
+        this.age = age;
+        this.grade = grade;
+    }
+}
+----
+
+==== Benefits of Method Overloading
+
+1. **Code Reusability** - Use the same method name for similar operations
+2. **Flexibility** - Users can call the method with different combinations of parameters
+3. **Readability** - Code is easier to understand when related methods have the same name
+4. **Convenience** - Provides default values and simplified versions of complex methods
+
+==== Practice Exercise
+
+Try creating a class with overloaded methods for calculating the volume of different shapes:
+1. A cube (takes one parameter: side length)
+2. A rectangular prism (takes three parameters: length, width, height)
+3. A cylinder (takes two parameters: radius, height)
+
+Method overloading is a fundamental concept in Java that makes your code more flexible and user-friendly!
