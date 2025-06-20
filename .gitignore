@@ -28,3 +28,4 @@ pdf/*
 epub/*
 ZCW-JS-Prep.epub
 ZCW-JS-Prep.pdf
+.DS_Store
