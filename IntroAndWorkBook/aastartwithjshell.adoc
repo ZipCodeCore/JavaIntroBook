@@ -13,6 +13,10 @@ Java changed all of that in 2017 with the introduction of **jshell** - an intera
 programming environment that lets you write and test Java code instantly.
 Think of it as having a conversation with the Java language itself.
 
+Now, this section is going to mention some things you have not been introduced to yet.
+Don't let that bother you.
+`jshell` is a powerful thing, and we have to start somewhere, so just kind of move through these ideas as smoothly as you can. 
+
 === Why jshell is Revolutionary for Learning
 
 ==== Immediate Feedback
@@ -308,25 +312,14 @@ jshell> /exit
 
 === Why This Matters for Learning
 
-==== Builds Confidence
-
-When you can immediately test ideas and see them work, you build confidence in your programming abilities.
+- **Builds Confidence** When you can immediately test ideas and see them work, you build confidence in your programming abilities.
 There's no long, intimidating compilation process - just immediate results.
-
-==== Encourages Experimentation
-
-jshell makes it safe to try things.
+- **Encourages Experimentation** jshell makes it safe to try things.
 If something doesn't work, you haven't "broken" anything.
 You just try again with a different approach.
-
-==== Reinforces Learning
-
-The immediate feedback loop means concepts stick better.
+- **Reinforces Learning** The immediate feedback loop means concepts stick better.
 When you see cause and effect immediately, you understand the relationship between code and results.
-
-==== Reduces Friction
-
-By eliminating the ceremony of full programs, jshell lets you focus on learning Java concepts rather than fighting with tools and syntax.
+- **Reduces Friction** By eliminating the complexity of full java programs, jshell lets you focus on learning Java concepts rather than fighting with tools and syntax.
 
 === Practical Learning Strategy
 

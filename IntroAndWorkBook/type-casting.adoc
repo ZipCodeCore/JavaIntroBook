@@ -331,13 +331,20 @@ public class ZipCode {
 5. **Be explicit** about your intentions with casting
 6. **Understand precision loss** when casting floats/doubles to integers
 
+But wait, what is _parsing_ ?
+**Parsing** user input means converting text (like what a user types) into a specific data type your program can use, 
+such as turning the string "123" into the integer 123. This lets your code work with numbers, dates, or other types instead of just plain text.
+
 ==== Common Casting Scenarios
+
+And while _most_ of the time Java is pretty salty about changing the type of things, 
+there are some common situations where casting is okay, and very possibly, essential.
 
 ===== Rounding vs. Truncating
 
 [source]
 ----
-public class ZipCode {
+public class CastingAbout {
 
   void compute() {
     double value = 4.7;
@@ -356,18 +363,25 @@ public class ZipCode {
     System.out.println("Price rounded: $" + dollars);  // $20
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new CastingAbout().compute(); }
 }
 ----
 
 ===== Safe Range Checking
 
+Sometimes, BEFORE you make a cast from one type to another, you need to _check that the number will fit_.
+Well, perhaps you have a really big number, say something in the trillions.
+A number like is probably not fit in a java Integer.
+So you compare the number against the smallest and largest integers, and if it in or out of that range,
+you do or do not make the cast.
+
 [source]
 ----
-public class ZipCode {
+public class WonkyCast {
 
   void compute() {
     long bigNumber = 50000L;
+    long numberTrillion = 1_000_000_000_001L; // 1 trillion and 1.
     
     // Check if it fits in an int before casting
     if (bigNumber >= Integer.MIN_VALUE && bigNumber <= Integer.MAX_VALUE) {
@@ -376,10 +390,25 @@ public class ZipCode {
     } else {
         System.out.println("Number too large for int!");
     }
+    // Check if it fits in an int before casting
+    if (numberTrillion >= Integer.MIN_VALUE && numberTrillion <= Integer.MAX_VALUE) {
+        int safeInt = (int) numberTrillion;
+        System.out.println("Safe conversion: " + numberTrillion);
+    } else {
+        System.out.println("Number"+ numberTrillion + " too large for int!");
+    }
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new WonkyCast().compute(); }
 }
 ----
 
-Type casting is a fundamental skill in Java programming. Understanding when conversions happen automatically and when you need to be explicit will help you write more reliable and predictable code!
+when I run this, I'd get output of:
+
+```
+Safe conversion: 50000
+Number 1000000000001 too large for int!
+```
+
+Type casting is a fundamental skill in Java programming. 
+Understanding when conversions happen automatically and when you need to be explicit will help you write more reliable and predictable code!

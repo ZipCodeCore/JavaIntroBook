@@ -44,8 +44,8 @@ You'll see a prompt like this:
 
 jshell>
 ```
-__(And if you get something like **jshell: command not found**, see the appendix at the back of the book
-on how to install what you need.) - (and if the number up there is 9 or 11 or 21... well it really doesn't matter)
+__(And if you get something like **jshell: command not found**, see the **appendix** at the back of the book
+on how to install the java software you need.) - (and if the number up there is Version 9 or 11 or 21... well it really doesn't matter)
  - (I'll wait. Go ahead, come back here when it's installed.)__
 
 Now you can type simple Java statements directly! For example:
@@ -359,7 +359,7 @@ In this book, you may see that the code used in examples is longer than can fit 
 [source]
 ----
 k = h * kph - (rest / 60);
-
+// OR
 kilometersCycled = numberOfHoursPedalled * kilometersPerHour - (totalMinutesOfRest / 60);
 ----
 
@@ -382,7 +382,7 @@ if (magePower > 120.0) {
 
 See those curly-braces? They start and stop the _block_, and contain the statements within. You can also see how the code is indented, but the real key are those braces. You'll see lots of blocks when you're looking at Java code.
 
-And, it's a bad idea, but this code:
+And, while this is a bad idea, this code:
 
 [source]
 ----
@@ -400,6 +400,7 @@ if (wizardStrength > 120.0) {
 }
 ----
 
-But the SECOND example is formatted much cleaner, making it more readable and therefore easier to understand.
-So I encourage you to your code easy to read by keeping it tidy.
+But the **SECOND example is formatted much cleaner**, making it more **readable** and therefore easier to understand.
+So I encourage you to make your code easy to read by keeping it tidy.
+Why? Well, if no other reason than that it is what the professionals do.
 
