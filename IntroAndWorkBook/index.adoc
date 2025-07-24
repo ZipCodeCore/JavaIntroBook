@@ -152,6 +152,8 @@ include::arrays.adoc[]
 
 include::multidimensional-arrays.adoc[]
 
+include::arraylist.adoc[]
+
 include::controlflow.adoc[]
 
 include::if.adoc[]

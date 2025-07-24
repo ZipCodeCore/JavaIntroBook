@@ -71,40 +71,47 @@ When you run this code:
 
 === The Java Ecosystem
 
+The ecosystem is vast for Java.
+There are many things which make Java very useful to many people an dlots of kinds of applications.
+
 ==== Core Components
 
+There are several kinds of Java. The language is the same, but how it's packaged
+is different. 
 **Java SE (Standard Edition)**
+
 - Basic Java platform for desktop and server applications
 - Includes core libraries, JVM, and development tools
 - What we use in this book
 
-**Java EE (Enterprise Edition)**
+**Jakarta EE(Enterprise Edition)**
+
 - Extended platform for large-scale enterprise applications
 - Includes web services, database connectivity, security features
 - Used for building complex business applications
 
-**Java ME (Micro Edition)**
-- Lightweight platform for mobile and embedded devices
-- Smaller footprint, optimized for resource-constrained environments
-
 ==== Popular Java Frameworks and Libraries
 
 **Web Development:**
+
 - **Spring** - Most popular Java web framework
 - **Spring Boot** - Simplified Spring for rapid development
 - **Struts** - Web application framework
 
 **Data and Databases:**
+
 - **Hibernate** - Object-relational mapping (ORM)
 - **JDBC** - Database connectivity API
 - **JPA** - Java Persistence API
 
 **Testing:**
+
 - **JUnit** - Unit testing framework
 - **TestNG** - Testing framework with advanced features
 - **Mockito** - Mocking framework for testing
 
 **Build Tools:**
+
 - **Maven** - Project management and build automation
 - **Gradle** - Modern build automation tool
 - **Ant** - XML-based build tool
