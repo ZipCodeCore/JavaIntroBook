@@ -7,11 +7,13 @@ Now that you understand classes and objects, let's dive deeper into **methods** 
 A method is a block of code that performs a specific task. Think of methods as the "verbs" of your program - they represent actions that can be performed.
 
 Just like in real life:
+
 - A `Person` can `walk()`, `talk()`, or `sleep()`
 - A `Car` can `start()`, `accelerate()`, or `brake()`
 - A `Calculator` can `add()`, `subtract()`, or `divide()`
 
 Methods help you:
+
 1. **Organize code** into logical chunks
 2. **Reuse code** instead of writing the same thing multiple times
 3. **Break down complex problems** into smaller, manageable pieces
@@ -30,6 +32,7 @@ public static returnType methodName(parameters) {
 ----
 
 Let's break this down:
+
 - `public static` - We'll explain these keywords later, but for now, always include them
 - `returnType` - What type of data the method gives back (or `void` if it gives back nothing)  
 - `methodName` - What you want to call your method
@@ -41,6 +44,13 @@ Let's break this down:
 Let's start with some basic methods you can try in jshell:
 
 ==== Methods that Don't Return Anything (void methods)
+
+A void method in Java is a method that does not return any 
+value at the end of the computation. 
+The keyword void is used in the method declaration to 
+indicate this. Instead of sending data back, a void method 
+typically performs an action, 
+such as printing output or modifying an object.
 
 [source]
 ----
@@ -192,6 +202,11 @@ Methods can take different types and numbers of parameters:
 
 ==== Single Parameter
 
+The simplest way to pass information to a method is through a 
+single parameter. This allows you to create flexible methods 
+that can work with different values each time they're called, 
+making your code more reusable and powerful.
+
 [source]
 ----
 jshell> public static int square(int number) {
@@ -205,6 +220,12 @@ $1 ==> 16
 
 ==== Multiple Parameters
 
+When your method needs more than one piece of information to do 
+its job, you can pass multiple parameters separated by commas. 
+This is essential for methods that perform calculations or 
+operations involving several values, like mathematical functions 
+or data processing.
+
 [source]
 ----
 jshell> public static int multiply(int a, int b) {
@@ -217,6 +238,12 @@ $2 ==> 42
 ----
 
 ==== Different Parameter Types
+
+Methods can accept parameters of different data types in the 
+same parameter list. This flexibility allows you to create 
+methods that work with various kinds of data simultaneously, 
+such as combining text, numbers, and boolean values to perform 
+complex operations.
 
 [source]
 ----
@@ -235,7 +262,15 @@ Height: 5.8 feet
 
 === Return Values Explained
 
-When a method returns a value, you can:
+One way to think about programming is to think about how the data of
+program moves around.
+A programmer controls, and manipulates, the data that is input into 
+the program, and passes it around as various computations are done.
+
+Having methods handle certain computations, and then produce results, well, you need a way to 
+_return_ those results.
+
+When a method returns a resulting value, you can:
 
 **Store it in a variable**:
 
@@ -274,6 +309,11 @@ ageInMonths ==> 300
 
 === Methods with Conditional Logic
 
+Making decisions based on data is a central point of programming.
+You need to do different things based on different data, so it is very
+common to have If statements in methods that use conditions to perform
+computations.
+
 Methods can make decisions using if statements:
 
 [source]
@@ -305,7 +345,8 @@ $5 ==> "F"
 
 === Practical Example: A Complete Class with Methods
 
-Let's create a `Student` class that demonstrates various types of methods:
+Let's create a `Student` class that demonstrates various 
+types of methods:
 
 [source]
 ----
@@ -386,6 +427,7 @@ Letter grade: B
 Choose clear, descriptive names for your methods:
 
 **Good method names:**
+
 - `calculateArea()`
 - `getUserInput()`
 - `validateEmail()`
@@ -393,6 +435,7 @@ Choose clear, descriptive names for your methods:
 - `isEven()`
 
 **Poor method names:**
+
 - `doStuff()`
 - `method1()`
 - `calc()`
@@ -402,7 +445,11 @@ Choose clear, descriptive names for your methods:
 
 ==== Validation Methods
 
-Methods that check if something is valid often return boolean values:
+Validation methods are essential for ensuring data integrity 
+and making logical decisions in your programs. 
+These methods typically return boolean values (true or false) 
+and are used to check conditions, validate input, or determine 
+program flow. They're commonly used in if statements and loops.
 
 [source]
 ----
@@ -420,7 +467,11 @@ $7 ==> false
 
 ==== Utility Methods
 
-Methods that perform common calculations:
+Utility methods are general-purpose functions that perform 
+common operations you might need throughout your program. 
+These methods encapsulate frequently-used calculations or 
+conversions, making your code more organized and eliminating 
+the need to write the same logic multiple times.
 
 [source]
 ----
@@ -441,6 +492,7 @@ $9 ==> 212.0
 Try creating these methods in jshell:
 
 **Exercise 1: Basic Math Methods**
+
 [source]
 ----
 // Create these methods:
@@ -458,6 +510,7 @@ public static boolean isPositive(int number) {
 ----
 
 **Exercise 2: String Methods**
+
 [source]
 ----
 // Create these methods:
@@ -472,7 +525,9 @@ public static int countVowels(String text) {
 ----
 
 **Exercise 3: ZipCoder Challenge**
+
 Create a method that follows these rules:
+
 - If a number is divisible by both 3 and 5, print "ZipCoder"
 - If divisible by only 3, print "Zip"  
 - If divisible by only 5, print "Coder"

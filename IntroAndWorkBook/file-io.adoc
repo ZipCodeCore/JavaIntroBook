@@ -6,6 +6,7 @@ This is essential for creating programs that can save and load information, proc
 ==== Why File I/O?
 
 Most real-world programs need to:
+
 - Save user data between program runs
 - Read configuration settings
 - Process data from spreadsheets or databases
@@ -152,7 +153,8 @@ public class ZipCode {
 
 ==== Exception Handling with Files
 
-File operations can fail for many reasons (file doesn't exist, no permission, disk full, etc.), so we must handle exceptions:
+File operations can fail for many reasons (file doesn't exist, 
+no permission, disk full, etc.), so we must handle exceptions:
 
 ===== Try-Catch Blocks
 
@@ -189,7 +191,8 @@ public class ZipCode {
 
 ===== Try-with-Resources (Automatic Cleanup)
 
-Java provides a cleaner way to handle file resources that automatically closes them:
+Java provides a cleaner way to handle file resources that 
+automatically closes them:
 
 [source]
 ----
@@ -219,7 +222,8 @@ public class ZipCode {
 
 ==== Complete Example: Student Grade Manager
 
-Here's a practical example that reads student data from a file, processes it, and writes a report:
+Here's a practical example that reads student data from a file, 
+processes it, and writes a report:
 
 [source]
 ----

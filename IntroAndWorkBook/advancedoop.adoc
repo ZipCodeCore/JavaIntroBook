@@ -1,0 +1,530 @@
+== Advanced Object-Oriented Programming Concepts
+
+Now that you understand the basics of classes and objects, let's explore some powerful advanced concepts that make Java's object-oriented programming truly shine. These concepts help you write more organized, reusable, and maintainable code.
+
+=== Inheritance - Building on What Already Exists
+
+Inheritance is one of the core principles of object-oriented programming. It allows you to create new classes based on existing classes, inheriting their properties and methods while adding new functionality or modifying existing behavior.
+
+Think of inheritance like a family tree - children inherit traits from their parents, but they can also have their own unique characteristics.
+
+==== Basic Inheritance Example
+
+Let's start with a simple `Animal` class and create specific animal types:
+
+[source]
+----
+jshell> class Animal {
+   ...>     String name;
+   ...>     int age;
+   ...>     
+   ...>     public Animal(String name, int age) {
+   ...>         this.name = name;
+   ...>         this.age = age;
+   ...>     }
+   ...>     
+   ...>     public void eat() {
+   ...>         System.out.println(name + " is eating.");
+   ...>     }
+   ...>     
+   ...>     public void sleep() {
+   ...>         System.out.println(name + " is sleeping.");
+   ...>     }
+   ...>     
+   ...>     public void makeSound() {
+   ...>         System.out.println(name + " makes a sound.");
+   ...>     }
+   ...> }
+|  created class Animal
+
+jshell> class Dog extends Animal {
+   ...>     String breed;
+   ...>     
+   ...>     public Dog(String name, int age, String breed) {
+   ...>         super(name, age);  // Call parent constructor
+   ...>         this.breed = breed;
+   ...>     }
+   ...>     
+   ...>     public void makeSound() {
+   ...>         System.out.println(name + " barks: Woof! Woof!");
+   ...>     }
+   ...>     
+   ...>     public void wagTail() {
+   ...>         System.out.println(name + " is wagging its tail!");
+   ...>     }
+   ...> }
+|  created class Dog
+
+jshell> Dog buddy = new Dog("Buddy", 3, "Golden Retriever");
+buddy ==> Dog@...
+
+jshell> buddy.eat();        // Inherited from Animal
+Buddy is eating.
+
+jshell> buddy.makeSound();  // Overridden in Dog
+Buddy barks: Woof! Woof!
+
+jshell> buddy.wagTail();    // Specific to Dog
+Buddy is wagging its tail!
+----
+
+In this example:
+- `Dog` **extends** `Animal`, meaning Dog inherits all of Animal's properties and methods
+- `Dog` can use inherited methods like `eat()` and `sleep()`
+- `Dog` **overrides** the `makeSound()` method with its own implementation
+- `Dog` adds its own method `wagTail()` that's not in the parent class
+
+=== The 'super' Keyword
+
+The `super` keyword is used to refer to the parent class. It's particularly useful for:
+1. Calling the parent class constructor
+2. Accessing parent class methods that have been overridden
+3. Accessing parent class variables when they're hidden
+
+==== Using super in Constructors
+
+When you create a subclass constructor, you often need to initialize the parent class part of the object first:
+
+[source]
+----
+jshell> class Cat extends Animal {
+   ...>     boolean isIndoor;
+   ...>     
+   ...>     public Cat(String name, int age, boolean isIndoor) {
+   ...>         super(name, age);  // Must be first line in constructor
+   ...>         this.isIndoor = isIndoor;
+   ...>     }
+   ...>     
+   ...>     public void makeSound() {
+   ...>         System.out.println(name + " meows: Meow!");
+   ...>     }
+   ...>     
+   ...>     public void makeSound(boolean loud) {
+   ...>         if (loud) {
+   ...>             super.makeSound();  // Call parent's version
+   ...>             System.out.println("Very loudly!");
+   ...>         } else {
+   ...>             makeSound();  // Call this class's version
+   ...>         }
+   ...>     }
+   ...> }
+|  created class Cat
+
+jshell> Cat whiskers = new Cat("Whiskers", 2, true);
+whiskers ==> Cat@...
+
+jshell> whiskers.makeSound(true);
+Whiskers makes a sound.
+Very loudly!
+----
+
+=== Method Overriding vs Method Overloading
+
+These are two different concepts that beginners often confuse:
+
+==== Method Overriding
+
+**Overriding** means replacing a parent class method with a new implementation in the child class. The method signature (name, parameters) must be exactly the same.
+
+[source]
+----
+jshell> class Bird extends Animal {
+   ...>     public Bird(String name, int age) {
+   ...>         super(name, age);
+   ...>     }
+   ...>     
+   ...>     @Override  // Good practice to use this annotation
+   ...>     public void makeSound() {
+   ...>         System.out.println(name + " chirps: Tweet tweet!");
+   ...>     }
+   ...> }
+|  created class Bird
+
+jshell> Bird robin = new Bird("Robin", 1);
+robin ==> Bird@...
+
+jshell> robin.makeSound();  // Uses Bird's version, not Animal's
+Robin chirps: Tweet tweet!
+----
+
+==== Method Overloading
+
+**Overloading** means creating multiple methods with the same name but different parameters within the same class:
+
+[source]
+----
+jshell> class Calculator {
+   ...>     public int add(int a, int b) {
+   ...>         return a + b;
+   ...>     }
+   ...>     
+   ...>     public double add(double a, double b) {
+   ...>         return a + b;
+   ...>     }
+   ...>     
+   ...>     public int add(int a, int b, int c) {
+   ...>         return a + b + c;
+   ...>     }
+   ...>     
+   ...>     public String add(String a, String b) {
+   ...>         return a + b;
+   ...>     }
+   ...> }
+|  created class Calculator
+
+jshell> Calculator calc = new Calculator();
+calc ==> Calculator@...
+
+jshell> calc.add(5, 3);
+$1 ==> 8
+
+jshell> calc.add(5.5, 3.2);
+$2 ==> 8.7
+
+jshell> calc.add(1, 2, 3);
+$3 ==> 6
+
+jshell> calc.add("Hello", "World");
+$4 ==> "HelloWorld"
+----
+
+=== Abstract Classes and Methods
+
+Sometimes you want to create a class that serves as a template for other classes but should never be instantiated directly. This is where abstract classes come in.
+
+==== Abstract Classes
+
+An abstract class cannot be instantiated with `new`, but it can contain both regular methods and abstract methods that must be implemented by subclasses:
+
+[source]
+----
+jshell> abstract class Shape {
+   ...>     String color;
+   ...>     
+   ...>     public Shape(String color) {
+   ...>         this.color = color;
+   ...>     }
+   ...>     
+   ...>     // Regular method - all shapes can use this
+   ...>     public void displayColor() {
+   ...>         System.out.println("This shape is " + color);
+   ...>     }
+   ...>     
+   ...>     // Abstract method - each shape must implement this differently
+   ...>     public abstract double calculateArea();
+   ...>     public abstract void draw();
+   ...> }
+|  created class Shape
+
+jshell> class Circle extends Shape {
+   ...>     double radius;
+   ...>     
+   ...>     public Circle(String color, double radius) {
+   ...>         super(color);
+   ...>         this.radius = radius;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public double calculateArea() {
+   ...>         return Math.PI * radius * radius;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void draw() {
+   ...>         System.out.println("Drawing a " + color + " circle with radius " + radius);
+   ...>     }
+   ...> }
+|  created class Circle
+
+jshell> class Rectangle extends Shape {
+   ...>     double width, height;
+   ...>     
+   ...>     public Rectangle(String color, double width, double height) {
+   ...>         super(color);
+   ...>         this.width = width;
+   ...>         this.height = height;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public double calculateArea() {
+   ...>         return width * height;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void draw() {
+   ...>         System.out.println("Drawing a " + color + " rectangle " + width + "x" + height);
+   ...>     }
+   ...> }
+|  created class Rectangle
+
+jshell> Circle circle = new Circle("red", 5.0);
+circle ==> Circle@...
+
+jshell> circle.displayColor();
+This shape is red
+
+jshell> circle.calculateArea();
+$5 ==> 78.53981633974483
+
+jshell> circle.draw();
+Drawing a red circle with radius 5.0
+----
+
+=== Interfaces and Multiple Inheritance
+
+Java doesn't support multiple inheritance of classes (a class can't extend multiple classes), but it does support multiple inheritance through interfaces. An interface is like a contract that specifies what methods a class must implement.
+
+==== Basic Interface Example
+
+[source]
+----
+jshell> interface Flyable {
+   ...>     void fly();
+   ...>     void land();
+   ...> }
+|  created interface Flyable
+
+jshell> interface Swimmable {
+   ...>     void swim();
+   ...>     void dive();
+   ...> }
+|  created interface Swimmable
+
+jshell> class Duck extends Animal implements Flyable, Swimmable {
+   ...>     public Duck(String name, int age) {
+   ...>         super(name, age);
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void makeSound() {
+   ...>         System.out.println(name + " quacks: Quack quack!");
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void fly() {
+   ...>         System.out.println(name + " is flying through the air!");
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void land() {
+   ...>         System.out.println(name + " has landed safely.");
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void swim() {
+   ...>         System.out.println(name + " is swimming in the water.");
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void dive() {
+   ...>         System.out.println(name + " dives underwater!");
+   ...>     }
+   ...> }
+|  created class Duck
+
+jshell> Duck donald = new Duck("Donald", 2);
+donald ==> Duck@...
+
+jshell> donald.eat();   // From Animal
+Donald is eating.
+
+jshell> donald.fly();   // From Flyable interface
+Donald is flying through the air!
+
+jshell> donald.swim();  // From Swimmable interface
+Donald is swimming in the water.
+----
+
+==== Interface Default Methods
+
+Modern Java allows interfaces to have default implementations:
+
+[source]
+----
+jshell> interface Speakable {
+   ...>     void speak();
+   ...>     
+   ...>     default void greet() {
+   ...>         System.out.println("Hello there!");
+   ...>         speak();
+   ...>     }
+   ...> }
+|  created interface Speakable
+
+jshell> class Person implements Speakable {
+   ...>     String name;
+   ...>     
+   ...>     public Person(String name) {
+   ...>         this.name = name;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void speak() {
+   ...>         System.out.println("Hi, I'm " + name);
+   ...>     }
+   ...> }
+|  created class Person
+
+jshell> Person alice = new Person("Alice");
+alice ==> Person@...
+
+jshell> alice.greet();  // Uses default implementation
+Hello there!
+Hi, I'm Alice
+----
+
+=== Polymorphism and Dynamic Binding
+
+Polymorphism is the ability for objects of different types to be treated as objects of a common base type, while still maintaining their specific behavior. This is one of the most powerful features of object-oriented programming.
+
+==== Runtime Polymorphism Example
+
+[source]
+----
+jshell> class AnimalShelter {
+   ...>     public void careForAnimal(Animal animal) {
+   ...>         System.out.println("Caring for: " + animal.name);
+   ...>         animal.eat();
+   ...>         animal.makeSound();  // This will call the specific animal's version!
+   ...>         animal.sleep();
+   ...>     }
+   ...> }
+|  created class AnimalShelter
+
+jshell> AnimalShelter shelter = new AnimalShelter();
+shelter ==> AnimalShelter@...
+
+jshell> Animal[] animals = {
+   ...>     new Dog("Rex", 4, "German Shepherd"),
+   ...>     new Cat("Mittens", 3, false),
+   ...>     new Bird("Tweety", 1)
+   ...> };
+animals ==> Animal[3] { Dog@..., Cat@..., Bird@... }
+
+jshell> for (Animal animal : animals) {
+   ...>     shelter.careForAnimal(animal);
+   ...>     System.out.println("---");
+   ...> }
+Caring for: Rex
+Rex is eating.
+Rex barks: Woof! Woof!
+Rex is sleeping.
+---
+Caring for: Mittens
+Mittens is eating.
+Mittens meows: Meow!
+Mittens is sleeping.
+---
+Caring for: Tweety
+Tweety is eating.
+Tweety chirps: Tweet tweet!
+Tweety is sleeping.
+---
+----
+
+Notice how the same method call `animal.makeSound()` produces different results depending on the actual type of the object. This is **dynamic binding** - Java determines which method to call at runtime based on the actual object type.
+
+=== Practical Example: A Shape Drawing Program
+
+Let's put it all together with a more comprehensive example:
+
+[source]
+----
+jshell> interface Drawable {
+   ...>     void draw();
+   ...>     default void describe() {
+   ...>         System.out.println("This is a drawable shape.");
+   ...>     }
+   ...> }
+|  created interface Drawable
+
+jshell> abstract class GeometricShape implements Drawable {
+   ...>     protected String color;
+   ...>     protected double x, y;  // position
+   ...>     
+   ...>     public GeometricShape(String color, double x, double y) {
+   ...>         this.color = color;
+   ...>         this.x = x;
+   ...>         this.y = y;
+   ...>     }
+   ...>     
+   ...>     public abstract double getArea();
+   ...>     public abstract double getPerimeter();
+   ...>     
+   ...>     public void move(double newX, double newY) {
+   ...>         this.x = newX;
+   ...>         this.y = newY;
+   ...>         System.out.println("Shape moved to (" + x + ", " + y + ")");
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void describe() {
+   ...>         System.out.println("A " + color + " geometric shape at (" + x + ", " + y + ")");
+   ...>     }
+   ...> }
+|  created class GeometricShape
+
+jshell> class Square extends GeometricShape {
+   ...>     private double side;
+   ...>     
+   ...>     public Square(String color, double x, double y, double side) {
+   ...>         super(color, x, y);
+   ...>         this.side = side;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public double getArea() {
+   ...>         return side * side;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public double getPerimeter() {
+   ...>         return 4 * side;
+   ...>     }
+   ...>     
+   ...>     @Override
+   ...>     public void draw() {
+   ...>         System.out.println("Drawing a " + color + " square with side " + side);
+   ...>     }
+   ...> }
+|  created class Square
+
+jshell> class Canvas {
+   ...>     public void drawAll(Drawable[] shapes) {
+   ...>         for (Drawable shape : shapes) {
+   ...>             shape.describe();
+   ...>             shape.draw();
+   ...>             if (shape instanceof GeometricShape) {
+   ...>                 GeometricShape geoShape = (GeometricShape) shape;
+   ...>                 System.out.println("Area: " + geoShape.getArea());
+   ...>             }
+   ...>             System.out.println("---");
+   ...>         }
+   ...>     }
+   ...> }
+|  created class Canvas
+
+jshell> Square square = new Square("blue", 10, 20, 5);
+square ==> Square@...
+
+jshell> Canvas canvas = new Canvas();
+canvas ==> Canvas@...
+
+jshell> canvas.drawAll(new Drawable[]{square});
+A blue geometric shape at (10.0, 20.0)
+Drawing a blue square with side 5.0
+Area: 25.0
+---
+----
+
+=== Key Takeaways
+
+1. **Inheritance** lets you build new classes based on existing ones using `extends`
+2. **Super** keyword accesses parent class constructors, methods, and variables
+3. **Method Overriding** replaces parent methods; **Method Overloading** creates multiple versions with different parameters
+4. **Abstract classes** provide templates that cannot be instantiated directly
+5. **Interfaces** define contracts that classes must implement, enabling multiple inheritance
+6. **Polymorphism** allows different objects to be treated uniformly while maintaining their specific behavior
+7. **Dynamic binding** determines which method to call at runtime based on the actual object type
+
+These advanced OOP concepts are the foundation for building complex, maintainable Java applications. They promote code reuse, flexibility, and clean design patterns that make your programs more professional and easier to extend.

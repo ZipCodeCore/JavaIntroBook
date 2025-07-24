@@ -8,11 +8,13 @@ Each version is still saying hello, but with different information.
 
 ==== What is Method Overloading?
 
-Method overloading means having multiple methods with:
-- The **same name**
-- **Different parameters** (different number, types, or order)
+Method overloading means having multiple methods in the same class with:
 
-Java determines which method to call based on the arguments you provide when calling the method.
+- The **same name**
+- But **different parameters** (different number, types, or order)
+
+Java determines which method to call based on the arguments you 
+provide when calling the method.
 
 ==== Basic Example
 
@@ -20,7 +22,7 @@ Here's a simple example using addition:
 
 [source]
 ----
-public class ZipCode {
+public class SimpleOverload {
 
   void compute() {
     // Test all our add methods
@@ -44,7 +46,7 @@ public class ZipCode {
     return a + b + c;
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new SimpleOverload().compute(); }
 }
 ----
 
@@ -105,7 +107,7 @@ Here's a practical example showing different ways to greet users:
 
 [source]
 ----
-public class ZipCode {
+public class GreetMagic {
 
   void compute() {
     greet("Alice");                    // Simple greeting
@@ -130,7 +132,7 @@ public class ZipCode {
     }
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new GreetMagic().compute(); }
 }
 ----
 
@@ -146,6 +148,8 @@ public class ZipCode {
 
 ==== What DOES Work (Valid Overloading)
 
+These examples are okay.
+
 [source]
 ----
 public static int process(int x) { return x * 2; }
@@ -156,12 +160,15 @@ public static int process(String x) { return x.length(); }       // Different ty
 
 ==== What DOES NOT Work (Invalid Overloading)
 
+These examples don't work!
+
 [source]
 ----
 public static int process(int x) { return x * 2; }
 public static double process(int x) { return x * 2.0; }  // ERROR! Only return type differs
 ----
 
+Again, it's because the _return_ types are different, but the _parameters_ are the same type (both are `int` type).
 ==== Constructor Overloading
 
 You can also overload constructors (we'll learn more about these later):

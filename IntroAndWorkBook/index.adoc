@@ -181,11 +181,29 @@ include::access-modifiers.adoc[]
 
 == Input/Output Operations
 
+Getting things in and out of the programs you write, well, this is pretty important.
+Here's a few things to use.
+
 include::scanner-input.adoc[]
 
 include::file-io.adoc[]
 
 include::output-formatting.adoc[]
+
+== Advanced Java Concepts
+
+These are things that are lightly covered here.
+These deserve a much deeper examination, as they are pretty important,
+but if you're just starting to learn Java, they are not crucial.
+
+Be sure to take a look at other Java resourses, if you need more information
+about them!
+
+include::advancedoop.adoc[]
+
+include::exceptions.adoc[]
+
+include::collections.adoc[]
 
 include::appendixa.adoc[]
 

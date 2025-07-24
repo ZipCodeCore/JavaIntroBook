@@ -11,21 +11,20 @@ In the winter, of course, if you're in the northern hemisphere, you tend to choo
 
 If the thermostat is rather old fashion, it might have a ring you rotate to set the temperature, say 68 degrees.
 
-A Java programmer writes code which in _classes_ and then, when a java program runs, _objects_ are created 
-All but one of them are called “primitive” data types, because their values contain only a single thing (be it a string or a number or whatever).
+A Java programmer writes code which in _classes_ and then, when a java program 
+runs, _objects_ are created. 
 
-In contrast, *objects* are used to store *keyed* collections of various data and more complex entities. 
-_Objects_ add tremendous power to Java and penetrate almost every aspect of the language. 
-Here are a few different objects, all these are actually objects in Java, which makes the language rather elegant:
+*Objects* are instances of classes that encapsulate data (instance variables) and behavior (methods) together. 
+_Objects_ add tremendous power to Java and are fundamental to the language's object-oriented design. 
+In Java, everything except primitive types (int, double, boolean, etc.) are objects, including:
 
-* arrays
-* functions
-* regular expressions 
-* objects 
+* String objects
+* Collection objects (ArrayList, HashMap, etc.)
+* Custom class objects you create
 
-Objects are used to collect and organize data - and that data can be variable values, functions and other things. 
-Objects can also contain other objects(!), in kind of a "nesting" way. 
-This allows for large data structures to be built using a very simple and elegant mechanism.
+Objects are used to model real-world entities and organize related data and methods together. 
+Objects can contain other objects as instance variables, creating complex data structures and relationships. 
+This composition allows for building sophisticated applications using well-organized, reusable components.
 
 
 [source]
@@ -42,6 +41,23 @@ class Person {
         this.lastname = lastname;
         this.homedistrict = homedistrict;
         this.skills = skills;
+    }
+    
+    // Getter methods
+    public String getFirstname() {
+        return firstname;
+    }
+    
+    public String getLastname() {
+        return lastname;
+    }
+    
+    public int getHomedistrict() {
+        return homedistrict;
+    }
+    
+    public String[] getSkills() {
+        return skills;
     }
 }
 
@@ -85,7 +101,7 @@ class Player {
         this.species = species;
         this.superPower = superPower;
         this.lives = lives;
-        this.weapons = weapons;
+        this.weapon = weapons;
     }
 }
 
@@ -106,7 +122,7 @@ This approach follows the principle of **encapsulation**, which helps protect th
 
 Suppose you have a `Player` class with a `name` field:
 
-````java
+```java
 public class Player {
     private String name; // instance variable
 
@@ -120,18 +136,18 @@ public class Player {
         name = newName;
     }
 }
-````
+```
 
 - **Getter** (`getName()`): Returns the value of `name`.
 - **Setter** (`setName(String newName)`): Updates the value of `name`.
 
 ### Usage
 
-````java
+```java
 Player player1 = new Player();
 player1.setName("Rocco");              // Set the name using the setter
 System.out.println(player1.getName()); // Get the name using the getter
-````
+```
 
 **Gotcha:**  
 Directly accessing fields (e.g., `player1.name = "Rocco";`) is only possible if the field is `public`. 
@@ -140,6 +156,36 @@ Using getters and setters is safer and more flexible, especially if you want to 
 === Object Reference
 
 This next little bit will stretch your mind a bit. 
+
+A Java object reference is like a label or pointer that tracks for your program 
+where to find an object in memory. (So you don't have to)
+When you create an object using `new`, Java stores it somewhere in memory, 
+and the variable you assign it to holds a reference 
+(not the actual object itself).
+
+Example:
+
+```
+Airplane plane1 = new Airplane("Boeing", 900, 200, 0);
+```
+
+Here, plane1 is an object reference. 
+It doesn't contain the Airplane object itself, but it knows where to find 
+it in memory. If you assign 
+
+```
+Airplane plane2 = plane1;
+```
+ 
+both references point to the same object and changing the object 
+through one reference affects the other.
+
+Key points:
+
+Object references store the location of objects, not the objects themselves.
+Multiple references can point to the same object.
+Changing the object through one reference is visible through all references to that object.
+This is different from primitive types (like int or double), which store actual values, not references.
 
 If we have an object:
 
@@ -160,7 +206,31 @@ class Airplane {
         this.passengersOnboard = passengersOnboard;
     }
 
-    // assume we have all the setters and getters we need.
+    // Getter methods
+    public String getDestination() {
+        return destination;
+    }
+    
+    public String getOrigin() {
+        return origin;
+    }
+    
+    public int getPassengersOnboard() {
+        return passengersOnboard;
+    }
+    
+    // Setter methods
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+    
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+    
+    public void setPassengersOnboard(int passengersOnboard) {
+        this.passengersOnboard = passengersOnboard;
+    }
 }
 
 Airplane airplane512 = new Airplane("airbusA330", 0.86, 253, 0);
@@ -177,8 +247,8 @@ flight77.setOrigin("Seattle");
 // now watch carefully...
 flight77.setPassengersOnboard(120);
 
-// and if I print out some of the properties...
-System.out.println(airplane512.passengersOnboard);  // 120
+// and if I print out some of the instance variables...
+System.out.println(airplane512.getPassengersOnboard());  // 120
 System.out.println(flight77.type); // airbusA330
 System.out.println(airplane512.type); // airbusA330
 ----
@@ -188,9 +258,12 @@ so when you make changes through the flight77 name, the properties in the object
 you can get and/or set properties through the airplane512 name as well. 
 This proves very powerful in many cases.
 
+Is is also the source of confusion, if you happen to make a mistake and that's NOT what you hadd in mind,
+you may have to untangle it a bit.
+
 === Instance Methods
 
-Now to make things even more powerful, Java objects can have _methods_ attached to them.
+As we have said, to make things even more powerful, Java objects can have _methods_ attached to them.
 Let's build a special counter object, something we might use in a program or app somewhere.
 
 As you may be aware, in American football there are four common changes to a team's score during a game:

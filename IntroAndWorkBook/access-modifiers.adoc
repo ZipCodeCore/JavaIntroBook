@@ -178,7 +178,14 @@ public class MathUtils {
 
 ==== Real-World Example: Bank Account Class
 
-Here's a complete example showing proper use of access modifiers:
+Here's a complete example showing proper use of access modifiers.
+
+Notice how the methods are `public` but the instance variables that hold the
+key information about the account are marked `private`.
+This ensures that anyone using this class in their code can only adjust
+the _private_ variables using the _public_ methods.
+
+That is a **very** common pattern used in Java programs.
 
 [source]
 ----
