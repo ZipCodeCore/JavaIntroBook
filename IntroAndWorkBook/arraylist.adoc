@@ -1,7 +1,9 @@
 == ArrayList - A Better Way to Work with Lists
 
-You've learned about arrays, which are useful for storing multiple items of the 
-same type. 
+We are going to introduce a new data structure called **ArrayList** that solves many of the problems with arrays.
+It is your new best friend.
+
+You've learned about arrays, which are useful for storing multiple items of the same type. 
 
 But arrays have some limitations that can make them frustrating to work with:
 
@@ -11,7 +13,7 @@ But arrays have some limitations that can make them frustrating to work with:
 
 Java provides a much better solution called **ArrayList** that solves all these problems. ArrayList is part of Java's Collections Framework and is what most professional Java programmers use instead of arrays for storing lists of items.
 
-And honestly, you just should ArrayLists, because all the Java Pros do.
+And honestly, you should just use ArrayLists, because all the Java Pros do.
 
 === Why ArrayList is Better Than Arrays
 

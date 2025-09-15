@@ -1,5 +1,7 @@
 === Access Modifiers
 
+This is an advanced topic, and you can skip it for now if you want.
+
 Access modifiers in Java control who can see and use your classes, methods, and variables.
 Think of them as different levels of privacy - like having a public park, a private home, a family room, or a room shared with neighbors.
 

@@ -224,9 +224,9 @@ jshell> class Circle extends Shape {
    ...>         this.radius = radius;
    ...>     }
    ...>     
-   ...>     @Override
+   ...>     @Override  // This tells Java we're replacing the parent method
    ...>     public double calculateArea() {
-   ...>         return Math.PI * radius * radius;
+   ...>         return 3.14159 * radius * radius;  // Using π (pi) for circle area
    ...>     }
    ...>     
    ...>     @Override
@@ -494,8 +494,9 @@ jshell> class Canvas {
    ...>         for (Drawable shape : shapes) {
    ...>             shape.describe();
    ...>             shape.draw();
+   ...>             // Check if this shape is a GeometricShape (can calculate area)
    ...>             if (shape instanceof GeometricShape) {
-   ...>                 GeometricShape geoShape = (GeometricShape) shape;
+   ...>                 GeometricShape geoShape = (GeometricShape) shape;  // Cast to access area methods
    ...>                 System.out.println("Area: " + geoShape.getArea());
    ...>             }
    ...>             System.out.println("---");

@@ -170,6 +170,8 @@ public class MarsLander {
     // Example of automated landing with predefined burns
     public static void automatedLanding() {
         // Example burn sequence - you'll need to experiment to find good values!
+        // Each number represents fuel burn rate for 10 seconds
+        // 0 = free fall, 200 = maximum burn
         int[] burnArray = {0, 0, 0, 50, 50, 50, 100, 100, 150, 150, 200, 200};
         
         LanderStatus lander = new LanderStatus(0, 1000, 8000, 15000);

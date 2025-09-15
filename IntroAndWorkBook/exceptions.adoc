@@ -395,7 +395,7 @@ jshell> // Good - proper logging/handling
    ...>     try {
    ...>         int result = 10 / 0;
    ...>     } catch (ArithmeticException e) {
-   ...>         System.err.println("Mathematical error occurred: " + e.getMessage());
+   ...>         System.out.println("ERROR: Mathematical error occurred: " + e.getMessage());
    ...>         // Log the exception or take appropriate action
    ...>     }
    ...> }
@@ -423,7 +423,10 @@ jshell> public static void processData(int[] data) throws DataProcessingExceptio
    ...>         // Simulate some processing that might fail
    ...>         int result = data[0] / data[1];
    ...>         System.out.println("Processing result: " + result);
-   ...>     } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+   ...>     } catch (ArithmeticException e) {
+   ...>         // Chain the original exception
+   ...>         throw new DataProcessingException("Failed to process data", e);
+   ...>     } catch (ArrayIndexOutOfBoundsException e) {
    ...>         // Chain the original exception
    ...>         throw new DataProcessingException("Failed to process data", e);
    ...>     }
@@ -548,7 +551,7 @@ processor ==> NumberFileProcessor@...
 
 jshell> try {
    ...>     // This would normally read from a real file
-   ...>     List<Integer> numbers = List.of(10, 20, 30, 40, 50);  // Simulated data
+   ...>     List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);  // Simulated data
    ...>     double average = processor.calculateAverage(numbers);
    ...>     System.out.println("Numbers processed: " + numbers);
    ...>     System.out.println("Average: " + average);

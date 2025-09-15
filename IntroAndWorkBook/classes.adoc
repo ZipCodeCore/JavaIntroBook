@@ -129,10 +129,12 @@ other `Person` objects.
 === Understanding Methods
 
 **Methods** are the actions that objects can perform. 
+Think of methods as functions that belong to a specific object. 
 In Java, methods are where the computing happens! 
 A programmer writes methods to make objects do what they need to do to accomplish some goal.
-They're like functions in other languages, 
-but they belong to a specific class and can work with that class's instance variables.
+
+Methods are similar to functions in other programming languages, but with an important difference:
+they belong to a specific class and can access and modify that class's instance variables.
 
 In our `Person` class:
 
@@ -155,10 +157,11 @@ Methods can:
 
 Let's look at a more practical example.
 Notice how there is a little bit of computation that happens based on the state of the object.
-(Well, you should not be able take more money from an account than there is in the account!)
+(Well, you should not be able to take more money from an account than there is in the account!)
 
-And sometimes, you'll hear that kind of programming referred to as _business rules_.
-It's the kind of flexibility that programmers use to make the software do what it needs to do.
+This kind of programming - where we add rules about what operations are allowed - 
+is sometimes called implementing _business rules_. These are the real-world constraints 
+that make our software behave correctly and safely.
 
 [source]
 ----
@@ -220,8 +223,8 @@ jshell> account.withdraw(200.0);
 Invalid withdrawal amount.
 ----
 
-And consider, this a class like this you could make as many customer accounts as you might need.
-Each one will have different values, assigned to different customers, keeping all the data correct.
+With a class like this, you could create as many customer accounts as you need.
+Each account will have different values for different customers, and Java keeps all the data separate and correct.
 
 === Constructors: Setting Up Objects
 
@@ -347,8 +350,8 @@ Create a `Book` class with:
 **Exercise 2: Circle Class**  
 Create a `Circle` class with:
 - `radius` (instance variable)
-- `calculateArea()` method that returns π × radius²
-- `calculateCircumference()` method that returns 2 × π × radius
+- `calculateArea()` method that returns 3.14159 * radius * radius
+- `calculateCircumference()` method that returns 2 * 3.14159 * radius
 - Constructor that sets the radius
 
 **Exercise 3: Student Class**

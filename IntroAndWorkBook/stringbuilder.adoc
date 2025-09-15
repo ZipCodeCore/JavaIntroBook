@@ -24,6 +24,8 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
 
 What's happening behind the scenes is that Java creates a **new String object** every time you use the `+` operator.
@@ -53,7 +55,12 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
+
+In this example, we create a `StringBuilder` object and use the `append()` method to add pieces of text.
+Finally, we convert it back to a regular String with `toString()`.
 
 ===== StringBuilder with Initial Capacity
 
@@ -65,6 +72,9 @@ StringBuilder sb = new StringBuilder(50);  // Can hold 50 characters initially
 // Create StringBuilder with initial content
 StringBuilder sb2 = new StringBuilder("Starting text");
 ----
+
+You can create a StringBuilder with an initial capacity to optimize memory usage if you know the approximate size of the final string.
+You can also initialize it with some starting text.
 
 ==== Common StringBuilder Methods
 
@@ -88,7 +98,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
+
+This example shows how to use `append()` to build a string piece by piece.
 
 ===== insert() - Add at Specific Position
 
@@ -106,7 +120,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
+
+This example shows how to insert "Beautiful " into "Hello World".
 
 ===== delete() and deleteCharAt()
 
@@ -126,7 +144,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
+
+This is how to delete a range of characters and a single character.
 
 ===== replace() - Replace Part of String
 
@@ -144,7 +166,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
+
+This example shows how to replace "World" with "Java".
 
 ===== reverse() - Reverse the String
 
@@ -162,7 +188,14 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell: 
+new ZipCode().compute();
 ----
+
+This example shows how to reverse the string "Hello" to "olleH".
+
+This is just a sampling of the many methods available in StringBuilder. You can also get the length, set the length, and more.
+
 
 ==== Practical Example: Building HTML
 
@@ -188,7 +221,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell:
+new ZipCode().compute();
 ----
+
+This example builds a simple HTML page piece by piece using StringBuilder.
 
 ==== Method Chaining
 
@@ -213,7 +250,10 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell:
+new ZipCode().compute();
 ----
+This example shows how to chain multiple `append()` calls and other methods together for concise code.
 
 ==== StringBuilder vs StringBuffer
 
@@ -269,7 +309,14 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell:
+new ZipCode().compute();
 ----
+
+When you run this code, you'll see that using StringBuilder is significantly faster than using String concatenation in a loop.
+
+This has to do with the effects of something called "memory allocation" and "garbage collection" in Java, which are advanced topics beyond the scope of this introduction. But the key takeaway is: **use StringBuilder for building strings in loops or when performance matters**.
+
 
 ==== When to Use StringBuilder
 
@@ -326,7 +373,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// to run in jshell:
+new ZipCode().compute();
 ----
+
+This example builds a student report with names and grades, demonstrating how StringBuilder can be used for structured text generation.
 
 ==== Key StringBuilder Methods Summary
 
@@ -363,3 +414,5 @@ public class ZipCode {
 |===
 
 StringBuilder is an essential tool for efficient string manipulation in Java. Master it to write faster, more memory-efficient programs!
+
+Use it often.

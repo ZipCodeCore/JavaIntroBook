@@ -177,4 +177,52 @@ for (int i = 0; i < half; i++) {
 System.out.println("after: " + Arrays.toString(a));
 ----
 
+=== Nested Loops
 
+Sometimes, you need to do a loop inside a loop. This is called a "nested loop".
+Here is an example of a nested loop that prints a multiplication table.
+
+[source]
+----
+int n = 10;
+for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= n; j++) {
+        System.out.print(i * j + "\t");
+    }
+    System.out.println();
+}
+----
+
+This code prints a multiplication table from 1 to 10.
+The outer loop (with variable i) goes from 1 to n, and for each value
+of i, the inner loop (with variable j) goes from 1 to n, printing the product of i and j.
+The "\t" is a tab character, which makes the output look like a table.
+
+The inner loop completes all its iterations for each iteration of the outer loop.
+The result is a table of products, where each row corresponds to a value of i and each column corresponds to a value of j.
+The output looks like this:
+[source]
+----
+1	2	3	4	5	6	7	8	9	10
+2	4	6	8	10	12	14	16	18	20
+3	6	9	12	15	18	21	24	27	30
+4	8	12	16	20	24	28	32	36	40
+5	10	15	20	25	30	35	40	45	50
+6	12	18	24	30	36	42	48	54	60
+7	14	21	28	35	42	49	56	63	70
+8	16	24	32	40	48	56	64	72	80
+9	18	27	36	45	54	63	72	81	90
+10	20	30	40	50	60	70	80	90	100
+----
+
+This is a simple example of how nested loops can be used to create complex patterns and structures in code.
+
+
+In the AI age, (after about mid-2023), you might be tempted to use an AI tool to generate this code for you.
+That's fine, but you should understand what the code is doing.
+
+But learning to read code is a very important skill. 
+You should be able to read code and understand what it is doing.
+These examples of code patterns are a good way to learn to read code.
+You should be able to glance at a piece of code and say "oh, that's finding the largest value in an array" or "that's reversing the values in an array" or "that's finding the average of the values in an array".
+You should be able to see these patterns and remember them.

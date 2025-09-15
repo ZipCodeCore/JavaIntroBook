@@ -11,7 +11,9 @@ q = j * 4 - 20;
 System.out.println(q); // -> 0
 ----
 
-When programs start to get more sophisticated, the _control flow_ can be changed. There are various conditional statements, loop statements, and functions that can cause the control flow to move around within the code. Here we see using both a loop and a conditional IF statement to change the flow of control.
+When programs start to get more sophisticated, the _control flow_ can be changed to perform different tasks. 
+There are various conditional statements, loop statements, and functions that can cause the control flow to move around within the code. 
+Here we see using both a loop and a conditional IF statement to change the flow of control.
 
 [source]
 ----

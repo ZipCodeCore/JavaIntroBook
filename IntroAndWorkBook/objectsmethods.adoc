@@ -1,18 +1,15 @@
 
 == Objects
 
-Java is a language which encourages the idea of Object Oriented Programming. 
-**Objects** are a fundamental idea in Java. In a Java program, a programmer will break down the problem into smaller pieces, each piece might be a small grouping of objects.
+Java is an object-oriented programming language. 
+**Objects** are a fundamental concept in Java. 
+In Java programs, programmers break down complex problems into smaller pieces using objects.
 
-Let's think about our reliable furnace, the one that keeps us warm all winter long.
-Attached to the furnace is a _thermostat_, a very simple computer.
-There is a 3-way switch on most of them, one that allows you to select _off_, _heat_ or _cool_.
-In the winter, of course, if you're in the northern hemisphere, you tend to choose _heat_.
+Think about everyday objects around you - a car, a phone, or a bank account. 
+Each has properties (like color, brand, balance) and actions they can perform (like start, call, withdraw).
+Java objects work the same way.
 
-If the thermostat is rather old fashion, it might have a ring you rotate to set the temperature, say 68 degrees.
-
-A Java programmer writes code which in _classes_ and then, when a java program 
-runs, _objects_ are created. 
+Java programmers write code in _classes_, and when the program runs, _objects_ are created from those classes. 
 
 *Objects* are instances of classes that encapsulate data (instance variables) and behavior (methods) together. 
 _Objects_ add tremendous power to Java and are fundamental to the language's object-oriented design. 
@@ -65,7 +62,6 @@ Person katniss = new Person("Katniss", "Everdene", 12,
     new String[]{"foraging", "wildlife", "hunting", "survival"});
 ----
 
-Notice how you use commas for all but the last one in the list?
 
 === Object Creation
 
@@ -110,7 +106,7 @@ Player player1 = new Player("Rocco", "warrior", "flight", 4,
 ----
 
 This 'player1' object has 5 instance variables. 
-One of those instance variables is a nested object, the 'weapons' field has another object with 3 instance variable inside of the weapon object. 
+One of those instance variables is itself an object - the 'weapon' field contains a Weapon object with its own 3 instance variables. 
 
 === Field Retrieval
 
@@ -118,11 +114,11 @@ In Java, you typically use **getter** and **setter** methods to access and modif
 (fields) of a class. 
 This approach follows the principle of **encapsulation**, which helps protect the internal state of an object.
 
-### Example
+==== Example
 
 Suppose you have a `Player` class with a `name` field:
 
-```java
+[source]
 public class Player {
     private String name; // instance variable
 
@@ -136,18 +132,19 @@ public class Player {
         name = newName;
     }
 }
-```
+----
 
 - **Getter** (`getName()`): Returns the value of `name`.
 - **Setter** (`setName(String newName)`): Updates the value of `name`.
 
-### Usage
+==== Usage
 
-```java
+[source]
+----
 Player player1 = new Player();
 player1.setName("Rocco");              // Set the name using the setter
 System.out.println(player1.getName()); // Get the name using the getter
-```
+----
 
 **Gotcha:**  
 Directly accessing fields (e.g., `player1.name = "Rocco";`) is only possible if the field is `public`. 
@@ -155,7 +152,7 @@ Using getters and setters is safer and more flexible, especially if you want to 
 
 === Object Reference
 
-This next little bit will stretch your mind a bit. 
+ 
 
 A Java object reference is like a label or pointer that tracks for your program 
 where to find an object in memory. (So you don't have to)
@@ -165,27 +162,27 @@ and the variable you assign it to holds a reference
 
 Example:
 
-```
+[source]
+----
 Airplane plane1 = new Airplane("Boeing", 900, 200, 0);
-```
+----
 
-Here, plane1 is an object reference. 
-It doesn't contain the Airplane object itself, but it knows where to find 
-it in memory. If you assign 
+Here, `plane1` is an object reference. 
+It doesn't contain the Airplane object itself, but it knows where to find it in memory.
 
-```
+[source]
+----
 Airplane plane2 = plane1;
-```
- 
-both references point to the same object and changing the object 
-through one reference affects the other.
+----
 
-Key points:
+Now both references point to the same object. Changing the object through one reference affects the other.
 
-Object references store the location of objects, not the objects themselves.
-Multiple references can point to the same object.
-Changing the object through one reference is visible through all references to that object.
-This is different from primitive types (like int or double), which store actual values, not references.
+**Key points:**
+
+- Object references store the location of objects, not the objects themselves
+- Multiple references can point to the same object
+- Changing the object through one reference is visible through all references to that object
+- This is different from primitive types (like int or double), which store actual values, not references
 
 If we have an object:
 
@@ -258,8 +255,7 @@ so when you make changes through the flight77 name, the properties in the object
 you can get and/or set properties through the airplane512 name as well. 
 This proves very powerful in many cases.
 
-Is is also the source of confusion, if you happen to make a mistake and that's NOT what you hadd in mind,
-you may have to untangle it a bit.
+This can also be confusing if you accidentally create multiple references when you meant to create separate objects.
 
 === Instance Methods
 
@@ -327,13 +323,12 @@ scoreCounter.fieldgoal(); // add 3
 System.out.println(scoreCounter.getScore()); // ??
 ----
 
-There are two data properties (options and score), and 5(!) functions. 
-These functions are called *methods* (functions which are attached to an object), 
-and get invoked when you make the _method call_ (or _invoke_ the method on the _object_).
+This class has two data properties (options and score) and five action methods. 
+These functions are called *methods* - they are functions that belong to an object. 
+You call (or invoke) methods on objects to make them perform actions.
 
-Notice the *this* variable. _This_ is the special variable used to refer to the _object itself_. 
-(which is a rather advanced topic for this book, so, we'll leave it right there. 
-When you get a chance, read about _this_ in a deeper Java resource.)
+Notice the *this* keyword. It refers to the current object - the specific object whose method is being called. 
+For example, when you call `scoreCounter.touchdown()`, inside that method `this` refers to the `scoreCounter` object.
 
 === Follow Ons
 
@@ -347,6 +342,5 @@ But rest assured, there is much much more for you to learn about Objects in Java
 
 Master what we've written about here and then forge ahead into more complicated and powerful capabilities.
 
-There is a lot more to learn about Java.
-But you made it this far, so perhaps you have what it takes to learn the 21st century super-power of coding.
-__(I do hope so.)__
+There is much more to learn about Java objects, but you now have the foundation to build upon. 
+Keep practicing with objects and methods - they're the building blocks of Java programming.

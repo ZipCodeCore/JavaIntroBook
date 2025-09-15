@@ -191,8 +191,7 @@ public class ZipCode {
 
 ===== Try-with-Resources (Automatic Cleanup)
 
-Java provides a cleaner way to handle file resources that 
-automatically closes them:
+Java provides a cleaner way to handle file resources with automatic cleanup:
 
 [source]
 ----
@@ -250,7 +249,7 @@ public class ZipCode {
       
       while (input.hasNextLine()) {
         String line = input.nextLine();
-        String[] parts = line.split(",");  // Assume CSV format: "Name,Grade"
+        String[] parts = line.split(",");  // Split line at comma: "Name,Grade" becomes ["Name", "Grade"]
         
         if (parts.length == 2) {
           String name = parts[0].trim();
@@ -409,9 +408,41 @@ public static void appendToFile(String filename, String text) {
 
 ==== Practice Exercises
 
-1. **File Copy Program** - Read a text file and write an exact copy to a new file
-2. **Word Counter** - Count the number of words in a text file
-3. **CSV Processor** - Read a comma-separated values file and calculate statistics
-4. **Log File Analyzer** - Read a log file and find error messages
+**Exercise 1: File Copy Program**
+Create a program that reads a text file and writes an exact copy to a new file:
+
+[source]
+----
+// Try implementing this:
+// 1. Read each line from "input.txt"
+// 2. Write each line to "copy.txt"
+// 3. Handle FileNotFoundException
+----
+
+**Exercise 2: Word Counter**
+Count the number of words in a text file:
+
+[source]
+----
+// Hint: Use scanner.next() in a loop
+// Count how many times you can read a word
+// Print the total count
+----
+
+**Exercise 3: Simple Data File**
+Read a file with names and ages, then create a report:
+
+[source]
+----
+// Input file format:
+// Alice 25
+// Bob 30
+// Carol 28
+
+// Your program should:
+// 1. Read each name and age
+// 2. Calculate average age
+// 3. Write a summary report
+----
 
 File I/O is a fundamental skill that opens up many possibilities for your Java programs. Master these basics and you'll be able to create programs that work with real-world data!

@@ -3,11 +3,10 @@
 Good output formatting makes your programs more professional and easier to read.
 Java provides several ways to format text, numbers, and other data for display.
 
-Clean, well-formatted output is the difference between a program that looks professional and one that looks like a beginner project.
-
 ==== Basic String Formatting with printf()
 
-The `printf()` method allows you to format output using format specifiers, similar to other programming languages:
+The `printf()` method allows you to format output using format specifiers. 
+Think of format specifiers as placeholders that tell Java how to display your data:
 
 [source]
 ----
@@ -376,9 +375,9 @@ public class ZipCode {
         int barLength = scores[i] / 5;  // Scale to 20 chars max
         for (int j = 0; j < 20; j++) {
             if (j < barLength) {
-                System.out.print("█");
+                System.out.print("#");  // Filled portion
             } else {
-                System.out.print("░");
+                System.out.print(".");  // Empty portion
             }
         }
         
@@ -428,9 +427,12 @@ System.out.printf("Large number: %.2e\n", bigNumber);  // Large number: 1.23e+09
 
 [source]
 ----
-long phone = 5551234567L;
-System.out.printf("Phone: (%03d) %03d-%04d\n", 
-                 phone/10000000, (phone/10000)%1000, phone%10000);
+// Simple approach with a string
+String phone = "5551234567";
+System.out.printf("Phone: (%s) %s-%s\n", 
+                 phone.substring(0,3),    // First 3 digits
+                 phone.substring(3,6),    // Next 3 digits  
+                 phone.substring(6,10));  // Last 4 digits
 // Phone: (555) 123-4567
 ----
 

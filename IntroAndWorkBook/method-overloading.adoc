@@ -146,9 +146,9 @@ public class GreetMagic {
 
 3. **Return type alone is NOT enough** - you cannot overload methods that differ only in return type
 
-==== What DOES Work (Valid Overloading)
+==== Valid Overloading Examples
 
-These examples are okay.
+These examples show correct method overloading:
 
 [source]
 ----
@@ -158,9 +158,9 @@ public static int process(double x) { return (int)(x * 2); }     // Different ty
 public static int process(String x) { return x.length(); }       // Different type
 ----
 
-==== What DOES NOT Work (Invalid Overloading)
+==== Invalid Overloading Examples
 
-These examples don't work!
+These examples will cause compilation errors:
 
 [source]
 ----
@@ -168,7 +168,8 @@ public static int process(int x) { return x * 2; }
 public static double process(int x) { return x * 2.0; }  // ERROR! Only return type differs
 ----
 
-Again, it's because the _return_ types are different, but the _parameters_ are the same type (both are `int` type).
+This fails because only the return type is different - the parameters are identical (both take one `int`).
+
 ==== Constructor Overloading
 
 You can also overload constructors (we'll learn more about these later):
@@ -213,8 +214,29 @@ public class Student {
 ==== Practice Exercise
 
 Try creating a class with overloaded methods for calculating the volume of different shapes:
-1. A cube (takes one parameter: side length)
-2. A rectangular prism (takes three parameters: length, width, height)
-3. A cylinder (takes two parameters: radius, height)
+
+[source]
+----
+public class VolumeCalculator {
+    
+    // Cube volume: side³
+    public static double calculateVolume(double side) {
+        // Your code here
+    }
+    
+    // Rectangular prism volume: length × width × height
+    public static double calculateVolume(double length, double width, double height) {
+        // Your code here
+    }
+    
+    // Cylinder volume: π × radius² × height
+    public static double calculateVolume(double radius, double height, String shape) {
+        if (shape.equals("cylinder")) {
+            // Your code here (use 3.14159 for π)
+        }
+        return 0;
+    }
+}
+----
 
 Method overloading is a fundamental concept in Java that makes your code more flexible and user-friendly!

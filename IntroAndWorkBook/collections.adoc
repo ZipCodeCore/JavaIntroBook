@@ -579,7 +579,7 @@ For more control over iteration:
 ----
 jshell> import java.util.Iterator;
 
-jshell> List<String> animals = new ArrayList<>(List.of("cat", "dog", "bird", "fish"));
+jshell> List<String> animals = new ArrayList<>(Arrays.asList("cat", "dog", "bird", "fish"));
 animals ==> [cat, dog, bird, fish]
 
 jshell> Iterator<String> iter = animals.iterator();
@@ -656,7 +656,7 @@ The `Collections` class provides useful static methods for working with collecti
 ----
 jshell> import java.util.Collections;
 
-jshell> List<String> names = new ArrayList<>(List.of("Charlie", "Alice", "Bob", "Diana"));
+jshell> List<String> names = new ArrayList<>(Arrays.asList("Charlie", "Alice", "Bob", "Diana"));
 names ==> [Charlie, Alice, Bob, Diana]
 
 jshell> // Sorting
@@ -685,7 +685,7 @@ jshell> System.out.println("Min: " + min + ", Max: " + max);
 Min: Alice, Max: Diana
 
 jshell> // Frequency counting
-   ...> List<String> letters = List.of("a", "b", "a", "c", "b", "a");
+   ...> List<String> letters = Arrays.asList("a", "b", "a", "c", "b", "a");
 letters ==> [a, b, a, c, b, a]
 
 jshell> int frequency = Collections.frequency(letters, "a");
