@@ -119,6 +119,7 @@ This approach follows the principle of **encapsulation**, which helps protect th
 Suppose you have a `Player` class with a `name` field:
 
 [source]
+----
 public class Player {
     private String name; // instance variable
 
@@ -133,6 +134,7 @@ public class Player {
     }
 }
 ----
+
 
 - **Getter** (`getName()`): Returns the value of `name`.
 - **Setter** (`setName(String newName)`): Updates the value of `name`.

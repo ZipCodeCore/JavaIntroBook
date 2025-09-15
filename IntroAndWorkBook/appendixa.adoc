@@ -26,6 +26,8 @@ public class ZipCode {
   // don't change this...
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// and to run it in jshell
+new ZipCode().compute();
 ----
 
 [appendix]

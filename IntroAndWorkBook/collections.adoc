@@ -705,6 +705,8 @@ jshell> // readOnlyList.add("Eve");  // This would throw an exception
 
 Let's put everything together with a comprehensive example:
 
+Use this as an example of reading code and build a "mental model" of what's going on.
+
 [source]
 ----
 jshell> class Book {
@@ -843,6 +845,10 @@ Library Collection:
   Animal Farm by George Orwell (ISBN: 978-0451526342) - Available
   To Kill a Mockingbird by Harper Lee (ISBN: 978-0061120084) - Available
 ----
+
+As you can see, the Collections Framework provides powerful tools to manage groups of objects efficiently. By choosing the right collection type for your needs, you can write cleaner, more efficient, and more maintainable code.
+
+And when used together, these collections can form the backbone of complex applications, like our very simple Library Management System example.
 
 === Key Takeaways
 

@@ -2,7 +2,7 @@
 :title-page:
 = Zip Code Wilmington's Introduction to Java Programming
 Kristofer Younger <kris@zipcodewilmington.com>
-v2.4, 2025-09-15
+v2.65, 2025-09-15
 :imagesdir: images
 :pdf-theme: indextheme.yml
 :source-highlighter: rouge
