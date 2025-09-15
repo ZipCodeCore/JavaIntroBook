@@ -3,14 +3,14 @@
 
 Some of the most fundamental of computer programs have been ones that
 take the drudgery of doing math by a person, and making the computer do the math.
-These kinds of _computations_ rely on the fact that the computer won't do the wrong thing if it's programed carefully.
+These kinds of _computations_ rely on the fact that the computer won't do the wrong thing if its program is carefully crafted.
 
 Given a simple math equation like:
 **Problem: Solve for a**
 
-a = b3 - 6 and if b equals 3, then a equals ?
+a = 3b - 6 and if b equals 3, then a equals ?
 
-In math class, your teacher would have said "How do we solve for a?" The best way to solve for `a = b3 - 6`
+In math class, your teacher would have said "How do we solve for a?" The best way to solve for `a = 3b - 6`
 is to
 
 - figure out what b times 3 is (well, if b equals 3, then 3 times 3 is 9)
@@ -19,10 +19,10 @@ is to
 [source]
 ----
 // And in Java:
-// a = b3 - 6 
+// a = 3b - 6 
 
 int b = 3;
-int a = b * 3 - 6;
+int a = (3 * b) - 6;
 System.out.println(a); // -> 3
 ----
 
