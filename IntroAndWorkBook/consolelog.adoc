@@ -88,10 +88,9 @@ So, then, about the these exercises; remember when I said learning the hard way 
 (the idea that by typing code in with your own two-little-fingers (oh wait, what? 
 you know how to type? You'll go far in this gig!!)) Yeah, so here's the deal.__
 
-__You should NOT copypasta these exercises into jshell. You should t-y-p-e them. Yes, that's right,
+__You should NOT copy/paste these exercises into jshell. You should t-y-p-e them. Yes, that's right,
 t-y-p-e them in with your fingers. You will practice what code looks like and how it goes
-together if you do enough of it.
-And that word, "copypasta", well look it up.__
+together if you do enough of it.__
 
 Try these exercises in jshell to practice System.out.println and basic Java syntax:
 
@@ -104,6 +103,10 @@ Replace [Your Name] and [Your Age] with your actual information.
 ```
 System.out.println("My name is [Your Name]");
 System.out.println("I am [Your Age] years old");
+
+// so to be clear, I would type this in jshell:
+System.out.println("My name is Kris Younger");
+System.out.println("I am 25 years old");
 ```
 
 *Exercise 2: Using Variables and Concatenation*
@@ -147,8 +150,8 @@ System.out.println("Is awesome: " + isAwesome);
 
 === BUT WAIT!!!
 
-What does `int` and `double` signify? Well, see how they proceed another descriptive word describing
-how many loaves and the flour amount?
+What does `int` and `double` signify? 
+Well, see how they proceed another descriptive word describing how many loaves and the flour amount?
 
 [source]
 ----
@@ -218,7 +221,7 @@ especially in complex or tricky parts.
 Comments also help with collaboration, making it easier for teams working with you to 
 understand and modify code in the future.
 
-Comments are your friend.
+Comments are __your friend__.
 And they are __FREE__, no cost to using them. 
 
 
@@ -241,13 +244,14 @@ It just seems like, "well, if Java is so smart why do I have to care about this.
 What am I complaining about?
 
 Well, to make a strange distinction between **two** types of numbers, 
-Java has a bunch different types of numbers.
+in actuality Java has a bunch different types of numbers.
 
 In Java, we have to decide what **type** of number we are going use with a variables like _flourAmount_ and 
 _loavesToMake_.
 
-If you're just going to _count_ things (like say the number of birthdays a person has had), we will
-use _integers_ for that. _integers_ in Java, are called **int**.
+If you're just going to _count_ things (like say the number of birthdays a person has had), we will use _integers_ for that.
+_integers_ in Java, are called **int**.
+
 An **int** means a number, but just an integer like 0, 1, 2, 42, 99, etc. 
 It even means negative numbers -5 or -123487262. 
 The math teacher might say that _integers_ are _whole  numbers_.
@@ -258,8 +262,7 @@ The amount of fuel in your car's gas tank isn't 13 or 16 gallons, it's probably 
 like 13.42 gallons, and changes by small amounts as you drive.
 
 So Java has another **type** of number, a **floating point number** and in these early days in this book, 
-we will use **double** as the kind of number we use when we need a number that might not 
-be a _whole number_, but rather _real numbers_.
+we will use **double** as the kind of number we use when we need a number that might not  be a _whole number_, but rather _real numbers_.
 A **double** can have decimal point and some number after, so I can write `3.5` or `42.0`. 
 Or even more complicated numbers like:
 
@@ -300,7 +303,7 @@ And it turns out Java has a few more **types** of numbers, more than just **int*
 I'll list them, but you'll need to go to a larger Java book or 
 website to understand how they are different from _int_ and _double_.
 
-There are four more **types** of numbers: **long**, **short**, **byte**, and **float**. 
+There are four more **types** of numbers: **long**, **short**, **byte**, and **float**. Long, short, and byte are __whole numbers__ and float is a __real number__.
 
 
 == Statements and Expressions

@@ -18,7 +18,7 @@ First, let's see if you already have Java installed and what version it is.
 *On macOS:*
 
 - Press `Cmd + Space`, type `terminal`, and press Enter
-- Or go to Applications → Utilities → Terminal
+- Or go to Applications > Utilities > Terminal
 
 *On Linux:*
 
@@ -189,7 +189,7 @@ sudo update-alternatives --config java
 
 If you get security warnings on macOS:
 
-1. Go to System Preferences → Security & Privacy
+1. Go to System Preferences > Security & Privacy
 2. Click "Allow" for Oracle or the Java installer
 3. Try the installation again
 

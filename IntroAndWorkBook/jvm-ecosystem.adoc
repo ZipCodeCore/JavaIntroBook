@@ -222,17 +222,17 @@ Java was designed with security in mind:
 
 **Traditional Compiled Languages (C, C++):**
 ```
-Source Code → Native Machine Code → Execution
+Source Code > Native Machine Code > Execution
 ```
 
 **Traditional Interpreted Languages (Python, JavaScript):**
 ```
-Source Code → Interpreter → Execution
+Source Code > Interpreter > Execution
 ```
 
 **Java (Hybrid Approach):**
 ```
-Source Code → Bytecode → JVM → Just-In-Time Compilation → Execution
+Source Code > Bytecode > JVM > Just-In-Time Compilation > Execution
 ```
 
 ==== Just-In-Time (JIT) Compilation

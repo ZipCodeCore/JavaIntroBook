@@ -24,13 +24,13 @@ Don't let that bother you.
 Traditional Java programming requires this cycle:
 
 ```
-Write code → Save to file → Compile → Run → See results
+Write code > Save to file > Compile > Run > See results
 ```
 
 With jshell, it's simply:
 
 ```
-Type code → See results immediately
+Type code > See results immediately
 ```
 
 This instant feedback loop is **crucial** for learning because:
@@ -41,7 +41,7 @@ This instant feedback loop is **crucial** for learning because:
 
 ==== No Ceremony, Just Code
 
-In traditional Java, even the simplest program requires a lot of "ceremony":
+In traditional Java, even the simplest program requires a lot of "ceremony". In many languages, you can just write a line of code and see what happens. But Java requires you to wrap everything in a class and a main method:
 
 [source]
 ----
@@ -52,7 +52,9 @@ public class HelloWorld {
 }
 ----
 
-In jshell, you just type:
+This can be intimidating for beginners who just want to see how a simple line of code works.
+
+With jshell, you can skip all that boilerplate:
 
 [source]
 ----
@@ -62,6 +64,8 @@ Hello, World!
 
 All that extra code (the class definition, main method, etc.) is handled automatically by jshell.
 You can focus on learning Java concepts without getting bogged down in syntax you don't understand yet.
+
+And that is going make the following chapters much easier to understand, letting you learn the concepts without the extra noise.
 
 === Getting Started with jshell
 
@@ -188,7 +192,7 @@ jshell> numbers
 numbers ==> int[5] { 1, 2, 10, 4, 5 }
 ----
 
-==== Prototyping Methods
+==== Defining Methods
 
 You can even define and test methods instantly:
 
@@ -223,7 +227,10 @@ $17 ==> 9
 
 ==== Exploring Object Methods
 
-jshell makes it easy to explore what you can do with Java objects.
+jshell makes it easy to explore what you can do with Java objects. Each object has methods you can call to perform actions or retrieve information.
+The fact is that you can discover these methods interactively is a huge advantage.
+The methods are in fact part of the object's *class*, but we will get to that much later.
+For now, just know that you can explore what methods are available on an object.
 Use tab completion to discover methods:
 
 [source]
@@ -263,9 +270,9 @@ jshell> String name =
    ...> 
    ...> System.out.println(name.length())
 |  Error:
-|  variable name might not have been initialized
-|  System.out.println(name.length())
-|                     ^--^
+|  incompatible types: void cannot be converted to java.lang.String
+|  System.out.println(name.length());
+|  ^-------------------------------^
 ----
 
 These immediate error messages help you understand Java's type system and requirements.
@@ -310,6 +317,8 @@ jshell> /help
 jshell> /exit
 ----
 
+(Your help output may vary based on your jshell version.)   
+
 === Why This Matters for Learning
 
 - **Builds Confidence** When you can immediately test ideas and see them work, you build confidence in your programming abilities.
@@ -344,11 +353,14 @@ jshell prepares you for this transition because:
 
 === The Bottom Line
 
-jshell isn't just a tool - it's a philosophy of learning.
+jshell isn't just a toy or simple tool - it's a philosophy of learning.
 It embodies the idea that programming should be interactive, experimental, and immediately rewarding.
 
 When you use jshell, you're not just learning Java syntax.
 You're developing a programmer's mindset: curious, experimental, and comfortable with iteration.
+
+Many Java programmers have learned Java without `jshell` and have struggled with the initial complexity of the language.
+But with `jshell`, you have a powerful ally that makes learning Java more accessible and enjoyable.
 
 So as you work through this book, remember: jshell is your coding playground.
 Use it freely, experiment boldly, and enjoy the immediate satisfaction of seeing your code come to life.

@@ -35,8 +35,8 @@ public class ZipCode {
 Java will automatically convert in this direction:
 
 ----
-byte → short → int → long → float → double
-       char → int
+byte > short > int > long > float > double
+       char > int
 ----
 
 [source]
