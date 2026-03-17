@@ -12,7 +12,8 @@ But in this book, I use a special template. One that you should use when working
 
 === The SPECIAL ZipCode java template!
 
-``` Java
+[source]
+----
 public class ZipCode {
 
   void compute() {
@@ -23,11 +24,11 @@ public class ZipCode {
 
 
   // don't change this...
-  public static void main(String args { new ZipCode().compute(); }
+  public static void main(String[] args) { new ZipCode().compute(); }
 }
-
-// NOTICE the } in the previous line? it's crucial
-```
+// and to run it in jshell
+new ZipCode().compute();
+----
 
 [appendix]
 == Advanced Ideas
@@ -64,7 +65,7 @@ class Grocery {
 }
 
 // Create the grocery list
-List<Grocery> groceries = List.of(
+List<Grocery> groceries = Arrays.asList(
     new Grocery("Breakfast Cereal", 5.50),
     new Grocery("Rice", 14.99),
     new Grocery("Oranges", 6.49),
@@ -127,6 +128,7 @@ But if we use a different higher-order function, `map`:
 
 [source]
 ----
+// Need to import: import java.util.stream.Collectors;
 List<Double> prices = groceries.stream()
     .map(item -> item.price)
     .collect(Collectors.toList());
@@ -175,7 +177,7 @@ If we remove the name `even` from the definition, and use a higher-order functio
 
 [source]
 ----
-List<Integer> numList = List.of(1,2,3,4,5,6,7,8);
+List<Integer> numList = Arrays.asList(1,2,3,4,5,6,7,8);
 List<Integer> evenNumbers = numList.stream()
     .filter(value -> value % 2 == 0)
     .collect(Collectors.toList());
@@ -199,7 +201,7 @@ static boolean even(int value) {
     return value % 2 == 0;
 }
 
-List<Integer> dataList = List.of(1,2,3,4);
+List<Integer> dataList = Arrays.asList(1,2,3,4);
 
 System.out.println(
     filter(dataList, x -> even(x))
@@ -221,7 +223,7 @@ And I can reduce it even more to something like this:
 
 [source]
 ----
-List<Integer> result = List.of(1,2,3,4).stream()
+List<Integer> result = Arrays.asList(1,2,3,4).stream()
     .filter(value -> value % 2 == 0)
     .collect(Collectors.toList());
 
@@ -296,14 +298,19 @@ But consider this idea: use a combination of a simple data structure and a small
 
 [source]
 ----
-Map<String, Double> DISCOUNT_MULTIPLIER = Map.of(
-  "TWENTYOFF", 0.80,
-  "QUARTEROFF", 0.75,
-  "HALFOFF", 0.50
-);
+// Create a map to store discount codes and their multipliers
+Map<String, Double> DISCOUNT_MULTIPLIER = new HashMap<>();
+DISCOUNT_MULTIPLIER.put("TWENTYOFF", 0.80);
+DISCOUNT_MULTIPLIER.put("QUARTEROFF", 0.75);
+DISCOUNT_MULTIPLIER.put("HALFOFF", 0.50);
 
 static double discount(double amount, String code) {
-  return amount * DISCOUNT_MULTIPLIER.getOrDefault(code, 1.0);
+  // Get multiplier for this code, use 1.0 (no discount) if code not found
+  Double multiplier = DISCOUNT_MULTIPLIER.get(code);
+  if (multiplier == null) {
+    multiplier = 1.0;  // No discount
+  }
+  return amount * multiplier;
 }
 ----
 
@@ -347,7 +354,7 @@ Function<Integer, Integer> anon = a -> a + a;
 Supplier<String> anon = () -> "nothing"; // this returns "nothing"
 
 // this looks pretty nice when you change something like:
-List.of(1,2,3,4).stream()
+Arrays.asList(1,2,3,4).stream()
     .filter(new Predicate<Integer>() {
         public boolean test(Integer value) {
             return value % 2 == 0;
@@ -355,7 +362,7 @@ List.of(1,2,3,4).stream()
     })
     .collect(Collectors.toList());
 // to:
-List.of(1,2,3,4).stream()
+Arrays.asList(1,2,3,4).stream()
     .filter(value -> value % 2 == 0)
     .collect(Collectors.toList());
 ----
@@ -387,7 +394,7 @@ class Customer {
 }
 
 // list of customers we want to 'checkout'
-List<Customer> customers = List.of(
+List<Customer> customers = Arrays.asList(
   new Customer("sam", 75.00, "credit-card"),
   new Customer("frodo", 50.00, "debit-card"),
   new Customer("galadriel", 25.00, "cash")
@@ -462,7 +469,7 @@ class Customer {
     }
 }
 
-List<Customer> customers = List.of(
+List<Customer> customers = Arrays.asList(
   new Customer("sam", 75.00, new CreditCardCheckout()),
   new Customer("frodo", 50.00, new DebitCardCheckout()),
   new Customer("galadriel", 25.00, new CashCheckout())
@@ -479,7 +486,7 @@ This is an example of polymorphism, "many forms, same name".
 Another example, commonly used in explaining polymorphism, is a series of geometric shapes, like Square, Triangle and Circle. 
 Each of those shapes has a different way of computing the `area` of itself. 
 A Square's `area()` is `(side * side)`, right? 
-But a Circle's `area()` is `(Math.PI * (radius * radius))`. 
+But a Circle's `area()` is `(3.14159 * (radius * radius))`. 
 Two different ways of calculating the area of a shape, depending on the kind of shape we're working with. 
 Each of these shapes would have it's own class, each with a different definition of how to find the area of the shape.
 That's polymorphism in a nutshell.

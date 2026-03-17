@@ -7,12 +7,14 @@ should look like and what it can do.
 === What is a Class?
 
 Imagine you're designing a house. Before you build the actual house, you create blueprints that show:
+
 - What rooms the house will have
 - How big each room will be  
 - Where the doors and windows go
 - What the house can do (provide shelter, have electricity, etc.)
 
 A Java class works the same way. It's a blueprint that describes:
+
 - What **data** an object will store (called **instance variables** or **fields**)
 - What **actions** an object can perform (called **methods**)
 
@@ -63,7 +65,8 @@ jshell> class Person {
 
 === Creating Objects from Classes
 
-Once you have a class, you can create **objects** (also called **instances**) from it. If the class is a blueprint, the object is the actual house built from that blueprint.
+Once you have a class, you can create **objects** (also called **instances**) from it. 
+If the class is a blueprint, the object is the actual house built from that blueprint.
 
 [source]
 ----
@@ -115,6 +118,7 @@ though they're both created from the same `Person` class.
 Each object gets its own copy of these variables.
 
 In our `Person` class:
+
 - `name` stores the person's name
 - `age` stores the person's age  
 - `height` stores the person's height
@@ -124,22 +128,40 @@ other `Person` objects.
 
 === Understanding Methods
 
-**Methods** are the actions that objects can perform. They're like functions, 
-but they belong to a specific class and can work with that class's instance variables.
+**Methods** are the actions that objects can perform. 
+Think of methods as functions that belong to a specific object. 
+In Java, methods are where the computing happens! 
+A programmer writes methods to make objects do what they need to do to accomplish some goal.
+
+Methods are similar to functions in other programming languages, but with an important difference:
+they belong to a specific class and can access and modify that class's instance variables.
 
 In our `Person` class:
+
 - `introduce()` prints a greeting using the person's name and age
 - `celebrateBirthday()` increases the person's age by 1
 
+But there could be other things we add:
+
+- a method to change a person's name or age.
+- add other methods to track more information about a person. (Like email address, cellphone number, etc.)
+
 Methods can:
-- Access and modify instance variables
-- Take parameters
-- Return values
-- Call other methods
+
+- Access and modify instance variables (the variables inside each object)
+- Take parameters (input values)
+- Return values (the output or results of a computation)
+- Call other methods (ask other objects to do work for you)
 
 === A More Complex Example: BankAccount
 
-Let's look at a more practical example:
+Let's look at a more practical example.
+Notice how there is a little bit of computation that happens based on the state of the object.
+(Well, you should not be able to take more money from an account than there is in the account!)
+
+This kind of programming - where we add rules about what operations are allowed - 
+is sometimes called implementing _business rules_. These are the real-world constraints 
+that make our software behave correctly and safely.
 
 [source]
 ----
@@ -201,19 +223,25 @@ jshell> account.withdraw(200.0);
 Invalid withdrawal amount.
 ----
 
+With a class like this, you could create as many customer accounts as you need.
+Each account will have different values for different customers, and Java keeps all the data separate and correct.
+
 === Constructors: Setting Up Objects
 
-Sometimes you want to set up an object with specific values when you create it. That's what **constructors** do. A constructor is a special method that runs when you create a new object.
+Sometimes you want to set up an object with specific values when you create it. 
+That's what **constructors** do. 
+A constructor is a special method that runs when you create a new object.
 
+Constructors are always named the same as the class itself. 
 [source]
 ----
-class ZipCode {
+class Location {
     String city;
     String state;
     int zipCode;
     
     // Constructor
-    ZipCode(String cityName, String stateName, int zip) {
+    Location(String cityName, String stateName, int zip) {
         city = cityName;
         state = stateName;
         zipCode = zip;
@@ -229,14 +257,14 @@ Now you can create objects with initial values:
 
 [source]
 ----
-jshell> ZipCode wilmington = new ZipCode("Wilmington", "DE", 19801);
-wilmington ==> ZipCode@...
+jshell> Location wilmington = new Location("Wilmington", "DE", 19801);
+wilmington ==> Location@...
 
 jshell> wilmington.displayLocation();
 Wilmington, DE 19801
 
-jshell> ZipCode newark = new ZipCode("Newark", "DE", 19711);
-newark ==> ZipCode@...
+jshell> Location newark = new Location("Newark", "DE", 19711);
+newark ==> Location@...
 
 jshell> newark.displayLocation();
 Newark, DE 19711
@@ -322,8 +350,8 @@ Create a `Book` class with:
 **Exercise 2: Circle Class**  
 Create a `Circle` class with:
 - `radius` (instance variable)
-- `calculateArea()` method that returns π × radius²
-- `calculateCircumference()` method that returns 2 × π × radius
+- `calculateArea()` method that returns 3.14159 * radius * radius
+- `calculateCircumference()` method that returns 2 * 3.14159 * radius
 - Constructor that sets the radius
 
 **Exercise 3: Student Class**

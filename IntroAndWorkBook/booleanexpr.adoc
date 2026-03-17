@@ -19,19 +19,19 @@ This idea of a condition that is either TRUE or FALSE, is known as a *boolean ex
 
 Boolean expressions can be very complex, or very simple:
 
-****
+----
 playerOne.isAlive() == true
-****
+----
 
 might be a key thing to know inside of a game. But it might be more complicated:
 
-****
+----
 player[1].isAlive() == true
 &&
 player[2].isAlive() == true
 &&
 spaceStation.hasAir() == true
-****
+----
 
 (here, _&&_ means `and`)
 

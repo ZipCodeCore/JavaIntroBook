@@ -15,7 +15,7 @@ In modern computing, that kind of data is often called a *String*.
 It is one of the most fundamental aspects of coding: the manipulation of strings by programs to transform, present or store text in some fashion.
 
 Many programming languages use some kind of quote or double quote to show where strings start and end. 
-There is really no difference between using single or double quotes in Java.
+Java uses double quotes, like this: "the quick brown fox".
 So a string like "the quick brown fox" would be a string from the 't' to the 'x'. And notice the three spaces within the string.
 If they were not there, the string would be "thequickbrownfox".
 And that's important, because to the computer, if it keeps these two strings around, it doesn't really understand that 'the' and 'quick' are just two common English words. 

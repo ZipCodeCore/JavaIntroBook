@@ -232,6 +232,11 @@ public class ZipCode {
 }
 ----
 
+But these can be VERY confusing to others reading your code, so avoid them if possible.
+If you do use them, you will need to comment your code heavily to explain what is going on. (and WHY you are doing it, as many of us will not understand the need for jagged arrays, and will think you made a mistake).
+
+Sometimes cleverness is not a virtue.
+
 ==== 3D Arrays and Beyond
 
 You can create arrays with more than 2 dimensions:
@@ -249,6 +254,13 @@ int layers = cube.length;           // 2
 int rows = cube[0].length;          // 3  
 int columns = cube[0][0].length;    // 4
 ----
+
+But honestly, 3D arrays and beyond are rarely used in practice.
+If you find yourself needing more than 2 dimensions, consider using a different data structure or class design.
+
+There are are libraries that can help with multi-dimensional data, such as Apache Commons Math or similar. And things like games, which might use 3D arrays for spatial data, often have their own specialized data structures.
+
+So while you can do 3d arrays, you probably won't.
 
 ==== Common Use Cases for 2D Arrays
 

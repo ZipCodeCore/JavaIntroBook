@@ -1,0 +1,724 @@
+== ArrayList - A Better Way to Work with Lists
+
+We are going to introduce a new data structure called **ArrayList** that solves many of the problems with arrays.
+It is your new best friend.
+
+You've learned about arrays, which are useful for storing multiple items of the same type. 
+
+But arrays have some limitations that can make them frustrating to work with:
+
+- **Fixed size** - Once you create an array, you can't make it bigger or smaller
+- **No built-in methods** - You have to write your own code to search, sort, or manipulate the data
+- **Manual management** - You need to keep track of how many elements you've actually used
+
+Java provides a much better solution called **ArrayList** that solves all these problems. ArrayList is part of Java's Collections Framework and is what most professional Java programmers use instead of arrays for storing lists of items.
+
+And honestly, you should just use ArrayLists, because all the Java Pros do.
+
+=== Why ArrayList is Better Than Arrays
+
+Let's see the difference with a practical example. Imagine you're building a program to keep track of student names in a class:
+
+==== The Array Way (Problematic)
+
+[source]
+----
+jshell> // With arrays - lots of manual work and limitations
+   ...> String[] studentNames = new String[10];  // Fixed size of 10
+studentNames ==> String[10] { null, null, null, null, null, ... }
+
+jshell> int studentCount = 0;  // We have to manually track how many we've added
+studentCount ==> 0
+
+jshell> // Adding students manually
+   ...> studentNames[studentCount] = "Alice";
+studentNames[0] ==> "Alice"
+
+jshell> studentCount++;
+studentCount ==> 1
+
+jshell> studentNames[studentCount] = "Bob";
+studentNames[1] ==> "Bob"
+
+jshell> studentCount++;
+studentCount ==> 2
+
+jshell> // What if we get an 11th student? We can't add them!
+   ...> // What if we want to remove a student? Complex shuffling required!
+   ...> 
+   ...> System.out.println("Current students: " + studentCount);
+Current students: 2
+
+jshell> // To print all students, we need a loop
+   ...> for (int i = 0; i < studentCount; i++) {
+   ...>     System.out.println("Student " + (i + 1) + ": " + studentNames[i]);
+   ...> }
+Student 1: Alice
+Student 2: Bob
+----
+
+==== The ArrayList Way (Much Better!)
+
+[source]
+----
+jshell> import java.util.ArrayList;
+
+jshell> // With ArrayList - dynamic and easy to use
+   ...> ArrayList<String> students = new ArrayList<>();
+students ==> []
+
+jshell> // Adding students is simple
+   ...> students.add("Alice");
+$1 ==> true
+
+jshell> students.add("Bob");
+$2 ==> true
+
+jshell> students.add("Charlie");
+$3 ==> true
+
+jshell> students.add("Diana");  // No limit! It grows automatically
+$4 ==> true
+
+jshell> // Size is automatic
+   ...> System.out.println("Number of students: " + students.size());
+Number of students: 4
+
+jshell> // Easy to print all students
+   ...> System.out.println("All students: " + students);
+All students: [Alice, Bob, Charlie, Diana]
+
+jshell> // Easy to print with a loop
+   ...> for (String student : students) {
+   ...>     System.out.println("Student: " + student);
+   ...> }
+Student: Alice
+Student: Bob
+Student: Charlie
+Student: Diana
+----
+
+See how much cleaner and easier ArrayList is to work with!
+
+=== Creating and Using ArrayList
+
+==== Basic ArrayList Creation
+
+[source]
+----
+jshell> // Creating different types of ArrayLists
+   ...> ArrayList<String> names = new ArrayList<>();        // For strings
+names ==> []
+
+jshell> ArrayList<Integer> numbers = new ArrayList<>();     // For integers
+numbers ==> []
+
+jshell> ArrayList<Double> prices = new ArrayList<>();       // For decimal numbers
+prices ==> []
+
+jshell> // You can also initialize with values
+   ...> ArrayList<String> colors = new ArrayList<>();
+colors ==> []
+
+jshell> colors.add("red");
+$5 ==> true
+
+jshell> colors.add("green");
+$6 ==> true
+
+jshell> colors.add("blue");
+$7 ==> true
+
+jshell> System.out.println("Colors: " + colors);
+Colors: [red, green, blue]
+----
+
+Note the `<String>`, `<Integer>`, etc. - these are called **generics** and they tell Java what type of objects the ArrayList will hold. This prevents you from accidentally mixing different types.
+
+==== Adding Elements
+
+[source]
+----
+jshell> ArrayList<String> fruits = new ArrayList<>();
+fruits ==> []
+
+jshell> // Add to the end
+   ...> fruits.add("apple");
+$8 ==> true
+
+jshell> fruits.add("banana");
+$9 ==> true
+
+jshell> fruits.add("cherry");
+$10 ==> true
+
+jshell> System.out.println("Fruits: " + fruits);
+Fruits: [apple, banana, cherry]
+
+jshell> // Add at a specific position
+   ...> fruits.add(1, "blueberry");  // Insert at index 1
+jshell> System.out.println("After insertion: " + fruits);
+After insertion: [apple, blueberry, banana, cherry]
+
+jshell> // Add at the beginning
+   ...> fruits.add(0, "apricot");
+jshell> System.out.println("After adding at start: " + fruits);
+After adding at start: [apricot, apple, blueberry, banana, cherry]
+----
+
+==== Accessing Elements
+
+[source]
+----
+jshell> // Get element by index (like arrays)
+   ...> String firstFruit = fruits.get(0);
+firstFruit ==> "apricot"
+
+jshell> String lastFruit = fruits.get(fruits.size() - 1);
+lastFruit ==> "cherry"
+
+jshell> System.out.println("First: " + firstFruit + ", Last: " + lastFruit);
+First: apricot, Last: cherry
+
+jshell> // Check if ArrayList contains something
+   ...> boolean hasApple = fruits.contains("apple");
+hasApple ==> true
+
+jshell> boolean hasOrange = fruits.contains("orange");
+hasOrange ==> false
+
+jshell> System.out.println("Has apple: " + hasApple + ", Has orange: " + hasOrange);
+Has apple: true, Has orange: false
+
+jshell> // Find the index of an element
+   ...> int appleIndex = fruits.indexOf("apple");
+appleIndex ==> 1
+
+jshell> System.out.println("Apple is at index: " + appleIndex);
+Apple is at index: 1
+----
+
+==== Removing Elements
+
+[source]
+----
+jshell> System.out.println("Before removal: " + fruits);
+Before removal: [apricot, apple, blueberry, banana, cherry]
+
+jshell> // Remove by value
+   ...> boolean removed = fruits.remove("banana");
+removed ==> true
+
+jshell> System.out.println("After removing banana: " + fruits);
+After removing banana: [apricot, apple, blueberry, cherry]
+
+jshell> // Remove by index
+   ...> String removedFruit = fruits.remove(2);  // Remove at index 2
+removedFruit ==> "blueberry"
+
+jshell> System.out.println("Removed: " + removedFruit);
+Removed: blueberry
+
+jshell> System.out.println("After removing by index: " + fruits);
+After removing by index: [apricot, apple, cherry]
+
+jshell> // Clear all elements
+   ...> ArrayList<String> temp = new ArrayList<>();
+temp ==> []
+
+jshell> temp.add("test1");
+$11 ==> true
+
+jshell> temp.add("test2");
+$12 ==> true
+
+jshell> System.out.println("Before clear: " + temp);
+Before clear: [test1, test2]
+
+jshell> temp.clear();
+jshell> System.out.println("After clear: " + temp);
+After clear: []
+----
+
+==== Modifying Elements
+
+[source]
+----
+jshell> System.out.println("Current fruits: " + fruits);
+Current fruits: [apricot, apple, cherry]
+
+jshell> // Change an element at a specific index
+   ...> String oldValue = fruits.set(1, "avocado");  // Replace "apple" with "avocado"
+oldValue ==> "apple"
+
+jshell> System.out.println("Replaced '" + oldValue + "' with 'avocado'");
+Replaced 'apple' with 'avocado'
+
+jshell> System.out.println("Updated fruits: " + fruits);
+Updated fruits: [apricot, avocado, cherry]
+----
+
+=== Practical Example: Grade Tracker
+
+Let's build a practical example that shows why ArrayList is so much better than arrays:
+
+[source]
+----
+jshell> class GradeTracker {
+   ...>     private ArrayList<Double> grades;
+   ...>     private String studentName;
+   ...>     
+   ...>     public GradeTracker(String name) {
+   ...>         this.studentName = name;
+   ...>         this.grades = new ArrayList<>();
+   ...>     }
+   ...>     
+   ...>     public void addGrade(double grade) {
+   ...>         if (grade >= 0 && grade <= 100) {
+   ...>             grades.add(grade);
+   ...>             System.out.println("Added grade " + grade + " for " + studentName);
+   ...>         } else {
+   ...>             System.out.println("Invalid grade: " + grade + ". Must be 0-100.");
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void removeGrade(double grade) {
+   ...>         if (grades.remove(grade)) {  // remove() returns true if found and removed
+   ...>             System.out.println("Removed grade " + grade + " for " + studentName);
+   ...>         } else {
+   ...>             System.out.println("Grade " + grade + " not found for " + studentName);
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public double getAverage() {
+   ...>         if (grades.isEmpty()) {
+   ...>             return 0.0;
+   ...>         }
+   ...>         
+   ...>         double sum = 0.0;
+   ...>         for (double grade : grades) {
+   ...>             sum += grade;
+   ...>         }
+   ...>         return sum / grades.size();
+   ...>     }
+   ...>     
+   ...>     public void printReport() {
+   ...>         System.out.println("\n=== Grade Report for " + studentName + " ===");
+   ...>         System.out.println("All grades: " + grades);
+   ...>         System.out.println("Number of grades: " + grades.size());
+   ...>         System.out.println("Average: " + String.format("%.2f", getAverage()));
+   ...>         
+   ...>         if (!grades.isEmpty()) {
+   ...>             double highest = grades.get(0);
+   ...>             double lowest = grades.get(0);
+   ...>             
+   ...>             for (double grade : grades) {
+   ...>                 if (grade > highest) highest = grade;
+   ...>                 if (grade < lowest) lowest = grade;
+   ...>             }
+   ...>             
+   ...>             System.out.println("Highest grade: " + highest);
+   ...>             System.out.println("Lowest grade: " + lowest);
+   ...>         }
+   ...>         System.out.println("========================\n");
+   ...>     }
+   ...> }
+|  created class GradeTracker
+
+jshell> // Test the grade tracker
+   ...> GradeTracker alice = new GradeTracker("Alice");
+alice ==> GradeTracker@...
+
+jshell> alice.addGrade(85.5);
+Added grade 85.5 for Alice
+
+jshell> alice.addGrade(92.0);
+Added grade 92.0 for Alice
+
+jshell> alice.addGrade(78.5);
+Added grade 78.5 for Alice
+
+jshell> alice.addGrade(88.0);
+Added grade 88.0 for Alice
+
+jshell> alice.printReport();
+
+=== Grade Report for Alice ===
+All grades: [85.5, 92.0, 78.5, 88.0]
+Number of grades: 4
+Average: 86.00
+Highest grade: 92.0
+Lowest grade: 78.5
+========================
+
+jshell> // Easy to add more grades - no size limit!
+   ...> alice.addGrade(95.0);
+Added grade 95.0 for Alice
+
+jshell> alice.addGrade(82.5);
+Added grade 82.5 for Alice
+
+jshell> alice.printReport();
+
+=== Grade Report for Alice ===
+All grades: [85.5, 92.0, 78.5, 88.0, 95.0, 82.5]
+Number of grades: 6
+Average: 86.92
+Highest grade: 95.0
+Lowest grade: 78.5
+========================
+
+jshell> // Easy to remove a grade if there was an error
+   ...> alice.removeGrade(78.5);
+Removed grade 78.5 for Alice
+
+jshell> alice.printReport();
+
+=== Grade Report for Alice ===
+All grades: [85.5, 92.0, 88.0, 95.0, 82.5]
+Number of grades: 5
+Average: 88.60
+Highest grade: 95.0
+Lowest grade: 82.5
+========================
+----
+
+Try to imagine writing this same program with arrays - you'd need to manually resize arrays, shift elements when removing items, and keep track of how many grades you've actually stored. With ArrayList, it's all handled automatically!
+
+=== ArrayList with Different Data Types
+
+You can create ArrayLists for any type of object:
+
+==== ArrayList of Numbers
+
+[source]
+----
+jshell> ArrayList<Integer> ages = new ArrayList<>();
+ages ==> []
+
+jshell> ages.add(25);
+$13 ==> true
+
+jshell> ages.add(30);
+$14 ==> true
+
+jshell> ages.add(22);
+$15 ==> true
+
+jshell> ages.add(35);
+$16 ==> true
+
+jshell> System.out.println("Ages: " + ages);
+Ages: [25, 30, 22, 35]
+
+jshell> // Find the average age
+   ...> double totalAge = 0;
+totalAge ==> 0.0
+
+jshell> for (int age : ages) {
+   ...>     totalAge += age;
+   ...> }
+
+jshell> double averageAge = totalAge / ages.size();
+averageAge ==> 28.0
+
+jshell> System.out.println("Average age: " + averageAge);
+Average age: 28.0
+----
+
+==== ArrayList of Booleans
+
+[source]
+----
+jshell> ArrayList<Boolean> testResults = new ArrayList<>();
+testResults ==> []
+
+jshell> testResults.add(true);   // Test 1: passed
+$17 ==> true
+
+jshell> testResults.add(false);  // Test 2: failed
+$18 ==> true
+
+jshell> testResults.add(true);   // Test 3: passed
+$19 ==> true
+
+jshell> testResults.add(true);   // Test 4: passed
+$20 ==> true
+
+jshell> // Count how many tests passed
+   ...> int passedCount = 0;
+passedCount ==> 0
+
+jshell> for (boolean result : testResults) {
+   ...>     if (result) {
+   ...>         passedCount++;
+   ...>     }
+   ...> }
+
+jshell> System.out.println("Tests passed: " + passedCount + " out of " + testResults.size());
+Tests passed: 3 out of 4
+----
+
+=== Sorting and Searching ArrayList
+
+ArrayList works great with Java's built-in sorting and searching methods:
+
+[source]
+----
+jshell> import java.util.Collections;
+
+jshell> ArrayList<String> names = new ArrayList<>();
+names ==> []
+
+jshell> names.add("Charlie");
+$21 ==> true
+
+jshell> names.add("Alice");
+$22 ==> true
+
+jshell> names.add("Bob");
+$23 ==> true
+
+jshell> names.add("Diana");
+$24 ==> true
+
+jshell> System.out.println("Before sorting: " + names);
+Before sorting: [Charlie, Alice, Bob, Diana]
+
+jshell> // Sort alphabetically
+   ...> Collections.sort(names);
+jshell> System.out.println("After sorting: " + names);
+After sorting: [Alice, Bob, Charlie, Diana]
+
+jshell> // Shuffle randomly
+   ...> Collections.shuffle(names);
+jshell> System.out.println("After shuffling: " + names);
+After shuffling: [Bob, Diana, Alice, Charlie]
+
+jshell> // Sort numbers
+   ...> ArrayList<Integer> numbers = new ArrayList<>();
+numbers ==> []
+
+jshell> numbers.add(45);
+$25 ==> true
+
+jshell> numbers.add(12);
+$26 ==> true
+
+jshell> numbers.add(78);
+$27 ==> true
+
+jshell> numbers.add(23);
+$28 ==> true
+
+jshell> System.out.println("Before sorting: " + numbers);
+Before sorting: [45, 12, 78, 23]
+
+jshell> Collections.sort(numbers);
+jshell> System.out.println("After sorting: " + numbers);
+After sorting: [12, 23, 45, 78]
+----
+
+=== Converting Between Arrays and ArrayList
+
+Sometimes you might need to work with both arrays and ArrayLists in the same program:
+
+==== Array to ArrayList
+
+[source]
+----
+jshell> import java.util.Arrays;
+
+jshell> // Convert array to ArrayList
+   ...> String[] cityArray = {"New York", "Los Angeles", "Chicago", "Houston"};
+cityArray ==> String[4] { "New York", "Los Angeles", "Chicago", "Houston" }
+
+jshell> ArrayList<String> cities = new ArrayList<>(Arrays.asList(cityArray));
+cities ==> [New York, Los Angeles, Chicago, Houston]
+
+jshell> System.out.println("ArrayList from array: " + cities);
+ArrayList from array: [New York, Los Angeles, Chicago, Houston]
+
+jshell> // Now we can use ArrayList methods
+   ...> cities.add("Phoenix");
+$29 ==> true
+
+jshell> cities.remove("Chicago");
+$30 ==> true
+
+jshell> System.out.println("Modified ArrayList: " + cities);
+Modified ArrayList: [New York, Los Angeles, Houston, Phoenix]
+----
+
+==== ArrayList to Array
+
+[source]
+----
+jshell> // Convert ArrayList back to array
+   ...> String[] newCityArray = cities.toArray(new String[0]);
+newCityArray ==> String[4] { "New York", "Los Angeles", "Houston", "Phoenix" }
+
+jshell> System.out.println("Array from ArrayList: " + Arrays.toString(newCityArray));
+Array from ArrayList: [New York, Los Angeles, Houston, Phoenix]
+----
+
+=== When to Use ArrayList vs Arrays
+
+**Use ArrayList when:**
+- You don't know how many elements you'll have
+- You need to add or remove elements frequently
+- You want convenient methods like `contains()`, `indexOf()`, etc.
+- You're building most types of applications (this is the common case)
+
+**Use arrays when:**
+- You have a fixed number of elements that won't change
+- You need maximum performance for mathematical calculations
+- You're working with primitive types and need to save memory
+- You're interfacing with code that specifically requires arrays
+
+=== Common ArrayList Methods Summary
+
+Here's a quick reference of the most useful ArrayList methods:
+
+[source]
+----
+jshell> // Creating and basic operations
+   ...> ArrayList<String> list = new ArrayList<>();
+list ==> []
+
+jshell> list.add("item");           // Add to end
+$31 ==> true
+
+jshell> list.add(0, "first");       // Add at specific index
+jshell> list.get(0);                // Get element at index
+$32 ==> "first"
+
+jshell> list.set(0, "new first");   // Replace element at index
+$33 ==> "first"
+
+jshell> list.remove("item");        // Remove by value
+$34 ==> true
+
+jshell> list.remove(0);             // Remove by index
+$35 ==> "new first"
+
+jshell> // Information methods
+   ...> list.add("test");
+$36 ==> true
+
+jshell> list.size();                // Number of elements
+$37 ==> 1
+
+jshell> list.isEmpty();             // Check if empty
+$38 ==> false
+
+jshell> list.contains("test");      // Check if contains value
+$39 ==> true
+
+jshell> list.indexOf("test");       // Find index of value
+$40 ==> 0
+
+jshell> // Bulk operations
+   ...> list.clear();               // Remove all elements
+jshell> list.isEmpty();
+$41 ==> true
+----
+
+=== Practical Exercise: Shopping List Manager
+
+Try building this shopping list manager to practice using ArrayList:
+
+[source]
+----
+jshell> class ShoppingList {
+   ...>     private ArrayList<String> items;
+   ...>     
+   ...>     public ShoppingList() {
+   ...>         items = new ArrayList<>();
+   ...>     }
+   ...>     
+   ...>     public void addItem(String item) {
+   ...>         if (!items.contains(item)) {
+   ...>             items.add(item);
+   ...>             System.out.println("Added: " + item);
+   ...>         } else {
+   ...>             System.out.println(item + " is already on the list");
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void removeItem(String item) {
+   ...>         if (items.remove(item)) {
+   ...>             System.out.println("Removed: " + item);
+   ...>         } else {
+   ...>             System.out.println(item + " was not on the list");
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void showList() {
+   ...>         if (items.isEmpty()) {
+   ...>             System.out.println("Shopping list is empty");
+   ...>         } else {
+   ...>             System.out.println("\nShopping List:");
+   ...>             for (int i = 0; i < items.size(); i++) {
+   ...>                 System.out.println((i + 1) + ". " + items.get(i));
+   ...>             }
+   ...>             System.out.println("Total items: " + items.size() + "\n");
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public boolean hasItem(String item) {
+   ...>         return items.contains(item);
+   ...>     }
+   ...> }
+|  created class ShoppingList
+
+jshell> // Test the shopping list
+   ...> ShoppingList groceries = new ShoppingList();
+groceries ==> ShoppingList@...
+
+jshell> groceries.addItem("milk");
+Added: milk
+
+jshell> groceries.addItem("bread");
+Added: bread
+
+jshell> groceries.addItem("eggs");
+Added: eggs
+
+jshell> groceries.addItem("milk");  // Duplicate
+milk is already on the list
+
+jshell> groceries.showList();
+
+Shopping List:
+1. milk
+2. bread
+3. eggs
+Total items: 3
+
+jshell> groceries.removeItem("bread");
+Removed: bread
+
+jshell> groceries.showList();
+
+Shopping List:
+1. milk
+2. eggs
+Total items: 2
+
+jshell> System.out.println("Need milk? " + groceries.hasItem("milk"));
+Need milk? true
+----
+
+=== Key Takeaways
+
+1. **ArrayList is usually better than arrays** for most programming tasks
+2. **Dynamic size** - ArrayLists grow and shrink automatically as needed
+3. **Rich functionality** - Many built-in methods for common operations
+4. **Type safety** - Generics (`<String>`, `<Integer>`) prevent type errors
+5. **Easy to use** - Adding, removing, and accessing elements is straightforward
+6. **Integrates well** - Works seamlessly with other Java features and libraries
+
+ArrayList is one of the most commonly used classes in Java programming. Once you get comfortable with it, you'll find yourself using it constantly instead of arrays. It makes your code cleaner, safer, and much easier to maintain.
+
+Most professional Java code uses ArrayList (and other Collections) rather than basic arrays, so learning ArrayList well is essential for becoming a competent Java programmer.

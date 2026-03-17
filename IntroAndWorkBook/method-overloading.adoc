@@ -8,11 +8,13 @@ Each version is still saying hello, but with different information.
 
 ==== What is Method Overloading?
 
-Method overloading means having multiple methods with:
-- The **same name**
-- **Different parameters** (different number, types, or order)
+Method overloading means having multiple methods in the same class with:
 
-Java determines which method to call based on the arguments you provide when calling the method.
+- The **same name**
+- But **different parameters** (different number, types, or order)
+
+Java determines which method to call based on the arguments you 
+provide when calling the method.
 
 ==== Basic Example
 
@@ -20,7 +22,7 @@ Here's a simple example using addition:
 
 [source]
 ----
-public class ZipCode {
+public class SimpleOverload {
 
   void compute() {
     // Test all our add methods
@@ -44,7 +46,7 @@ public class ZipCode {
     return a + b + c;
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new SimpleOverload().compute(); }
 }
 ----
 
@@ -105,7 +107,7 @@ Here's a practical example showing different ways to greet users:
 
 [source]
 ----
-public class ZipCode {
+public class GreetMagic {
 
   void compute() {
     greet("Alice");                    // Simple greeting
@@ -130,7 +132,7 @@ public class ZipCode {
     }
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new GreetMagic().compute(); }
 }
 ----
 
@@ -144,7 +146,9 @@ public class ZipCode {
 
 3. **Return type alone is NOT enough** - you cannot overload methods that differ only in return type
 
-==== What DOES Work (Valid Overloading)
+==== Valid Overloading Examples
+
+These examples show correct method overloading:
 
 [source]
 ----
@@ -154,13 +158,17 @@ public static int process(double x) { return (int)(x * 2); }     // Different ty
 public static int process(String x) { return x.length(); }       // Different type
 ----
 
-==== What DOES NOT Work (Invalid Overloading)
+==== Invalid Overloading Examples
+
+These examples will cause compilation errors:
 
 [source]
 ----
 public static int process(int x) { return x * 2; }
 public static double process(int x) { return x * 2.0; }  // ERROR! Only return type differs
 ----
+
+This fails because only the return type is different - the parameters are identical (both take one `int`).
 
 ==== Constructor Overloading
 
@@ -206,8 +214,29 @@ public class Student {
 ==== Practice Exercise
 
 Try creating a class with overloaded methods for calculating the volume of different shapes:
-1. A cube (takes one parameter: side length)
-2. A rectangular prism (takes three parameters: length, width, height)
-3. A cylinder (takes two parameters: radius, height)
+
+[source]
+----
+public class VolumeCalculator {
+    
+    // Cube volume: side³
+    public static double calculateVolume(double side) {
+        // Your code here
+    }
+    
+    // Rectangular prism volume: length × width × height
+    public static double calculateVolume(double length, double width, double height) {
+        // Your code here
+    }
+    
+    // Cylinder volume: π × radius² × height
+    public static double calculateVolume(double radius, double height, String shape) {
+        if (shape.equals("cylinder")) {
+            // Your code here (use 3.14159 for π)
+        }
+        return 0;
+    }
+}
+----
 
 Method overloading is a fundamental concept in Java that makes your code more flexible and user-friendly!

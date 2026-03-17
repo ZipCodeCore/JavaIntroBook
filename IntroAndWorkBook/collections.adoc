@@ -1,0 +1,864 @@
+== Java Collections Framework
+
+So far, you've worked with arrays to store multiple items. While arrays are useful, they have limitations - they have a fixed size, and you can't easily add or remove elements. Java's **Collections Framework** provides a much more powerful and flexible way to work with groups of objects.
+
+The Collections Framework is a unified architecture for representing and manipulating collections of objects. It includes interfaces, implementations, and algorithms that make working with data much easier and more efficient.
+
+=== Why Use Collections Instead of Arrays?
+
+Let's see the difference:
+
+[source]
+----
+jshell> // Arrays - fixed size, limited functionality
+   ...> String[] arrayNames = new String[3];
+arrayNames ==> String[3] { null, null, null }
+
+jshell> arrayNames[0] = "Alice";
+arrayNames[0] ==> "Alice"
+
+jshell> arrayNames[1] = "Bob";
+arrayNames[1] ==> "Bob"
+
+jshell> // What if we want to add a 4th name? We can't!
+   ...> // arrayNames[3] = "Charlie";  // This would throw an exception
+
+jshell> // Collections - dynamic size, rich functionality
+   ...> import java.util.ArrayList;
+jshell> ArrayList<String> listNames = new ArrayList<>();
+listNames ==> []
+
+jshell> listNames.add("Alice");
+$4 ==> true
+
+jshell> listNames.add("Bob");
+$5 ==> true
+
+jshell> listNames.add("Charlie");  // No problem!
+$6 ==> true
+
+jshell> listNames.add("Diana");    // Keep adding as needed
+$7 ==> true
+
+jshell> System.out.println("List contains: " + listNames);
+List contains: [Alice, Bob, Charlie, Diana]
+
+jshell> System.out.println("Size: " + listNames.size());
+Size: 4
+----
+
+Collections are more flexible, have useful methods, and can grow or shrink as needed.
+
+=== Collection Hierarchy Overview
+
+The Collections Framework is built around several key interfaces:
+
+* **Collection** - The root interface for all collections
+* **List** - Ordered collections (like arrays, but dynamic)
+* **Set** - Collections with no duplicates
+* **Map** - Key-value pairs (like a dictionary)
+* **Queue** - Collections designed for processing elements in a specific order
+
+=== List Interface - Ordered Collections
+
+Lists maintain the order of elements and allow duplicates. The most commonly used implementations are ArrayList, LinkedList, and Vector.
+
+==== ArrayList - The Most Popular List
+
+ArrayList is like a dynamic array that can grow and shrink as needed:
+
+[source]
+----
+jshell> import java.util.ArrayList;
+jshell> import java.util.List;
+
+jshell> // Creating and adding elements
+   ...> List<String> fruits = new ArrayList<>();
+fruits ==> []
+
+jshell> fruits.add("apple");
+$8 ==> true
+
+jshell> fruits.add("banana");
+$9 ==> true
+
+jshell> fruits.add("cherry");
+$10 ==> true
+
+jshell> fruits.add("banana");  // Duplicates are allowed
+$11 ==> true
+
+jshell> System.out.println("Fruits: " + fruits);
+Fruits: [apple, banana, cherry, banana]
+
+jshell> // Accessing elements by index
+   ...> System.out.println("First fruit: " + fruits.get(0));
+First fruit: apple
+
+jshell> System.out.println("Last fruit: " + fruits.get(fruits.size() - 1));
+Last fruit: banana
+
+jshell> // Inserting at specific position
+   ...> fruits.add(1, "blueberry");
+jshell> System.out.println("After insertion: " + fruits);
+After insertion: [apple, blueberry, banana, cherry, banana]
+
+jshell> // Removing elements
+   ...> fruits.remove("banana");  // Removes first occurrence
+$12 ==> true
+
+jshell> System.out.println("After removal: " + fruits);
+After removal: [apple, blueberry, cherry, banana]
+
+jshell> // Removing by index
+   ...> String removed = fruits.remove(2);
+removed ==> "cherry"
+
+jshell> System.out.println("Removed: " + removed);
+Removed: cherry
+
+jshell> System.out.println("Final list: " + fruits);
+Final list: [apple, blueberry, banana]
+----
+
+==== LinkedList - Good for Frequent Insertions/Deletions
+
+LinkedList is better when you frequently add or remove elements from the middle of the list:
+
+[source]
+----
+jshell> import java.util.LinkedList;
+
+jshell> LinkedList<Integer> numbers = new LinkedList<>();
+numbers ==> []
+
+jshell> // Adding elements
+   ...> numbers.add(10);
+$13 ==> true
+
+jshell> numbers.add(20);
+$14 ==> true
+
+jshell> numbers.add(30);
+$15 ==> true
+
+jshell> // LinkedList has special methods for beginning and end
+   ...> numbers.addFirst(5);  // Add at beginning
+jshell> numbers.addLast(40);   // Add at end
+jshell> System.out.println("Numbers: " + numbers);
+Numbers: [5, 10, 20, 30, 40]
+
+jshell> // Special removal methods
+   ...> int first = numbers.removeFirst();
+first ==> 5
+
+jshell> int last = numbers.removeLast();
+last ==> 40
+
+jshell> System.out.println("After removing first and last: " + numbers);
+After removing first and last: [10, 20, 30]
+----
+
+==== Practical List Example: Student Grade Manager
+
+[source]
+----
+jshell> class Student {
+   ...>     String name;
+   ...>     List<Integer> grades;
+   ...>     
+   ...>     public Student(String name) {
+   ...>         this.name = name;
+   ...>         this.grades = new ArrayList<>();
+   ...>     }
+   ...>     
+   ...>     public void addGrade(int grade) {
+   ...>         if (grade >= 0 && grade <= 100) {
+   ...>             grades.add(grade);
+   ...>             System.out.println("Added grade " + grade + " for " + name);
+   ...>         } else {
+   ...>             System.out.println("Invalid grade: " + grade);
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public double getAverage() {
+   ...>         if (grades.isEmpty()) return 0.0;
+   ...>         
+   ...>         int sum = 0;
+   ...>         for (int grade : grades) {
+   ...>             sum += grade;
+   ...>         }
+   ...>         return (double) sum / grades.size();
+   ...>     }
+   ...>     
+   ...>     public void printReport() {
+   ...>         System.out.println("Student: " + name);
+   ...>         System.out.println("Grades: " + grades);
+   ...>         System.out.println("Average: " + String.format("%.2f", getAverage()));
+   ...>         System.out.println("Total grades: " + grades.size());
+   ...>     }
+   ...> }
+|  created class Student
+
+jshell> Student alice = new Student("Alice");
+alice ==> Student@...
+
+jshell> alice.addGrade(85);
+Added grade 85 for Alice
+
+jshell> alice.addGrade(92);
+Added grade 92 for Alice
+
+jshell> alice.addGrade(78);
+Added grade 78 for Alice
+
+jshell> alice.addGrade(88);
+Added grade 88 for Alice
+
+jshell> alice.printReport();
+Student: Alice
+Grades: [85, 92, 78, 88]
+Average: 85.75
+Total grades: 4
+----
+
+=== Set Interface - No Duplicates Allowed
+
+Sets are collections that don't allow duplicate elements. They're perfect when you need to ensure uniqueness.
+
+==== HashSet - Fast, No Order Guarantee
+
+[source]
+----
+jshell> import java.util.HashSet;
+jshell> import java.util.Set;
+
+jshell> Set<String> uniqueColors = new HashSet<>();
+uniqueColors ==> []
+
+jshell> uniqueColors.add("red");
+$16 ==> true
+
+jshell> uniqueColors.add("blue");
+$17 ==> true
+
+jshell> uniqueColors.add("green");
+$18 ==> true
+
+jshell> uniqueColors.add("red");  // Duplicate - won't be added
+$19 ==> false
+
+jshell> System.out.println("Unique colors: " + uniqueColors);
+Unique colors: [red, blue, green]
+
+jshell> System.out.println("Contains 'yellow': " + uniqueColors.contains("yellow"));
+Contains 'yellow': false
+
+jshell> System.out.println("Contains 'blue': " + uniqueColors.contains("blue"));
+Contains 'blue': true
+----
+
+==== TreeSet - Sorted Set
+
+TreeSet keeps elements in sorted order:
+
+[source]
+----
+jshell> import java.util.TreeSet;
+
+jshell> Set<Integer> sortedNumbers = new TreeSet<>();
+sortedNumbers ==> []
+
+jshell> sortedNumbers.add(25);
+$20 ==> true
+
+jshell> sortedNumbers.add(10);
+$21 ==> true
+
+jshell> sortedNumbers.add(35);
+$22 ==> true
+
+jshell> sortedNumbers.add(15);
+$23 ==> true
+
+jshell> sortedNumbers.add(10);  // Duplicate - won't be added
+$24 ==> false
+
+jshell> System.out.println("Sorted numbers: " + sortedNumbers);
+Sorted numbers: [10, 15, 25, 35]
+----
+
+==== LinkedHashSet - Maintains Insertion Order
+
+[source]
+----
+jshell> import java.util.LinkedHashSet;
+
+jshell> Set<String> orderedSet = new LinkedHashSet<>();
+orderedSet ==> []
+
+jshell> orderedSet.add("first");
+$25 ==> true
+
+jshell> orderedSet.add("second");
+$26 ==> true
+
+jshell> orderedSet.add("third");
+$27 ==> true
+
+jshell> orderedSet.add("first");  // Duplicate - won't be added
+$28 ==> false
+
+jshell> System.out.println("Insertion order preserved: " + orderedSet);
+Insertion order preserved: [first, second, third]
+----
+
+=== Map Interface - Key-Value Pairs
+
+Maps store key-value pairs, like a dictionary where you look up values using keys.
+
+==== HashMap - The Most Common Map
+
+[source]
+----
+jshell> import java.util.HashMap;
+jshell> import java.util.Map;
+
+jshell> Map<String, Integer> studentAges = new HashMap<>();
+studentAges ==> {}
+
+jshell> // Adding key-value pairs
+   ...> studentAges.put("Alice", 20);
+$29 ==> null
+
+jshell> studentAges.put("Bob", 22);
+$30 ==> null
+
+jshell> studentAges.put("Charlie", 19);
+$31 ==> null
+
+jshell> studentAges.put("Diana", 21);
+$32 ==> null
+
+jshell> System.out.println("Student ages: " + studentAges);
+Student ages: {Alice=20, Bob=22, Charlie=19, Diana=21}
+
+jshell> // Getting values by key
+   ...> System.out.println("Alice's age: " + studentAges.get("Alice"));
+Alice's age: 20
+
+jshell> System.out.println("Eve's age: " + studentAges.get("Eve"));  // Not found
+Eve's age: null
+
+jshell> // Check if key exists
+   ...> System.out.println("Contains Bob: " + studentAges.containsKey("Bob"));
+Contains Bob: true
+
+jshell> // Update a value
+   ...> studentAges.put("Alice", 21);  // Alice had a birthday
+$33 ==> 20
+
+jshell> System.out.println("Updated ages: " + studentAges);
+Updated ages: {Alice=21, Bob=22, Charlie=19, Diana=21}
+
+jshell> // Remove an entry
+   ...> Integer removed = studentAges.remove("Charlie");
+removed ==> 19
+
+jshell> System.out.println("After removal: " + studentAges);
+After removal: {Alice=21, Bob=22, Diana=21}
+----
+
+==== TreeMap - Sorted by Keys
+
+[source]
+----
+jshell> import java.util.TreeMap;
+
+jshell> Map<String, String> sortedMap = new TreeMap<>();
+sortedMap ==> {}
+
+jshell> sortedMap.put("zebra", "black and white");
+$34 ==> null
+
+jshell> sortedMap.put("apple", "red or green");
+$35 ==> null
+
+jshell> sortedMap.put("banana", "yellow");
+$36 ==> null
+
+jshell> System.out.println("Sorted map: " + sortedMap);
+Sorted map: {apple=red or green, banana=yellow, zebra=black and white}
+----
+
+==== Practical Map Example: Word Counter
+
+[source]
+----
+jshell> class WordCounter {
+   ...>     private Map<String, Integer> wordCounts;
+   ...>     
+   ...>     public WordCounter() {
+   ...>         wordCounts = new HashMap<>();
+   ...>     }
+   ...>     
+   ...>     public void addText(String text) {
+   ...>         String[] words = text.toLowerCase().split("\\s+");
+   ...>         
+   ...>         for (String word : words) {
+   ...>             // Remove punctuation
+   ...>             word = word.replaceAll("[^a-zA-Z]", "");
+   ...>             if (!word.isEmpty()) {
+   ...>                 wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
+   ...>             }
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void printWordCounts() {
+   ...>         System.out.println("Word frequencies:");
+   ...>         for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
+   ...>             System.out.println(entry.getKey() + ": " + entry.getValue());
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public String getMostFrequentWord() {
+   ...>         String mostFrequent = null;
+   ...>         int maxCount = 0;
+   ...>         
+   ...>         for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
+   ...>             if (entry.getValue() > maxCount) {
+   ...>                 maxCount = entry.getValue();
+   ...>                 mostFrequent = entry.getKey();
+   ...>             }
+   ...>         }
+   ...>         
+   ...>         return mostFrequent;
+   ...>     }
+   ...> }
+|  created class WordCounter
+
+jshell> WordCounter counter = new WordCounter();
+counter ==> WordCounter@...
+
+jshell> counter.addText("The quick brown fox jumps over the lazy dog. The dog was very lazy.");
+
+jshell> counter.printWordCounts();
+Word frequencies:
+the: 3
+dog: 2
+fox: 1
+was: 1
+over: 1
+very: 1
+jumps: 1
+lazy: 2
+brown: 1
+quick: 1
+
+jshell> System.out.println("Most frequent word: " + counter.getMostFrequentWord());
+Most frequent word: the
+----
+
+=== Queue and Deque Interfaces
+
+Queues are designed for holding elements prior to processing, typically in FIFO (First-In-First-Out) order.
+
+==== LinkedList as a Queue
+
+[source]
+----
+jshell> import java.util.Queue;
+
+jshell> Queue<String> taskQueue = new LinkedList<>();
+taskQueue ==> []
+
+jshell> // Adding elements to the queue
+   ...> taskQueue.offer("Task 1");  // offer() adds to rear
+$37 ==> true
+
+jshell> taskQueue.offer("Task 2");
+$38 ==> true
+
+jshell> taskQueue.offer("Task 3");
+$39 ==> true
+
+jshell> System.out.println("Queue: " + taskQueue);
+Queue: [Task 1, Task 2, Task 3]
+
+jshell> // Processing elements from the queue
+   ...> String nextTask = taskQueue.poll();  // poll() removes from front
+nextTask ==> "Task 1"
+
+jshell> System.out.println("Processing: " + nextTask);
+Processing: Task 1
+
+jshell> System.out.println("Remaining queue: " + taskQueue);
+Remaining queue: [Task 2, Task 3]
+
+jshell> // Peek at next element without removing
+   ...> String peek = taskQueue.peek();
+peek ==> "Task 2"
+
+jshell> System.out.println("Next task (peek): " + peek);
+Next task (peek): Task 2
+
+jshell> System.out.println("Queue unchanged: " + taskQueue);
+Queue unchanged: [Task 2, Task 3]
+----
+
+==== ArrayDeque - Double-Ended Queue
+
+[source]
+----
+jshell> import java.util.ArrayDeque;
+jshell> import java.util.Deque;
+
+jshell> Deque<Integer> deque = new ArrayDeque<>();
+deque ==> []
+
+jshell> // Can add to both ends
+   ...> deque.addFirst(10);    // Add to front
+jshell> deque.addLast(20);     // Add to back
+jshell> deque.addFirst(5);     // Add to front again
+jshell> deque.addLast(30);     // Add to back again
+
+jshell> System.out.println("Deque: " + deque);
+Deque: [5, 10, 20, 30]
+
+jshell> // Can remove from both ends
+   ...> int first = deque.removeFirst();
+first ==> 5
+
+jshell> int last = deque.removeLast();
+last ==> 30
+
+jshell> System.out.println("After removing first and last: " + deque);
+After removing first and last: [10, 20]
+----
+
+=== Iterators and Enhanced For Loops
+
+There are several ways to traverse collections:
+
+==== Enhanced For Loop (For-Each)
+
+The easiest way to iterate through collections:
+
+[source]
+----
+jshell> List<String> colors = List.of("red", "green", "blue", "yellow");
+colors ==> [red, green, blue, yellow]
+
+jshell> // Enhanced for loop - clean and simple
+   ...> for (String color : colors) {
+   ...>     System.out.println("Color: " + color);
+   ...> }
+Color: red
+Color: green
+Color: blue
+Color: yellow
+
+jshell> // Works with any collection type
+   ...> Set<Integer> numbers = Set.of(10, 20, 30, 40);
+numbers ==> [40, 10, 20, 30]
+
+jshell> for (Integer number : numbers) {
+   ...>     System.out.println("Number: " + number);
+   ...> }
+Number: 40
+Number: 10
+Number: 20
+Number: 30
+----
+
+==== Iterator Interface
+
+For more control over iteration:
+
+[source]
+----
+jshell> import java.util.Iterator;
+
+jshell> List<String> animals = new ArrayList<>(Arrays.asList("cat", "dog", "bird", "fish"));
+animals ==> [cat, dog, bird, fish]
+
+jshell> Iterator<String> iter = animals.iterator();
+iter ==> java.util.ArrayList$Itr@...
+
+jshell> while (iter.hasNext()) {
+   ...>     String animal = iter.next();
+   ...>     System.out.println("Animal: " + animal);
+   ...>     
+   ...>     // Can safely remove during iteration
+   ...>     if (animal.equals("dog")) {
+   ...>         iter.remove();
+   ...>         System.out.println("Removed dog");
+   ...>     }
+   ...> }
+Animal: cat
+Animal: dog
+Removed dog
+Animal: bird
+Animal: fish
+
+jshell> System.out.println("Final list: " + animals);
+Final list: [cat, bird, fish]
+----
+
+==== Iterating Over Maps
+
+Maps require special handling since they contain key-value pairs:
+
+[source]
+----
+jshell> Map<String, Integer> scores = new HashMap<>();
+scores ==> {}
+
+jshell> scores.put("Alice", 95);
+$40 ==> null
+
+jshell> scores.put("Bob", 87);
+$41 ==> null
+
+jshell> scores.put("Charlie", 92);
+$42 ==> null
+
+jshell> // Iterate over entries (key-value pairs)
+   ...> for (Map.Entry<String, Integer> entry : scores.entrySet()) {
+   ...>     System.out.println(entry.getKey() + " scored " + entry.getValue());
+   ...> }
+Alice scored 95
+Bob scored 87
+Charlie scored 92
+
+jshell> // Iterate over just keys
+   ...> for (String name : scores.keySet()) {
+   ...>     System.out.println("Student: " + name);
+   ...> }
+Student: Alice
+Student: Bob
+Student: Charlie
+
+jshell> // Iterate over just values
+   ...> for (Integer score : scores.values()) {
+   ...>     System.out.println("Score: " + score);
+   ...> }
+Score: 95
+Score: 87
+Score: 92
+----
+
+=== Collections Utility Class
+
+The `Collections` class provides useful static methods for working with collections:
+
+[source]
+----
+jshell> import java.util.Collections;
+
+jshell> List<String> names = new ArrayList<>(Arrays.asList("Charlie", "Alice", "Bob", "Diana"));
+names ==> [Charlie, Alice, Bob, Diana]
+
+jshell> // Sorting
+   ...> Collections.sort(names);
+jshell> System.out.println("Sorted: " + names);
+Sorted: [Alice, Bob, Charlie, Diana]
+
+jshell> // Shuffling
+   ...> Collections.shuffle(names);
+jshell> System.out.println("Shuffled: " + names);
+Shuffled: [Diana, Alice, Charlie, Bob]
+
+jshell> // Reversing
+   ...> Collections.reverse(names);
+jshell> System.out.println("Reversed: " + names);
+Reversed: [Bob, Charlie, Alice, Diana]
+
+jshell> // Finding min and max
+   ...> String min = Collections.min(names);
+min ==> "Alice"
+
+jshell> String max = Collections.max(names);
+max ==> "Diana"
+
+jshell> System.out.println("Min: " + min + ", Max: " + max);
+Min: Alice, Max: Diana
+
+jshell> // Frequency counting
+   ...> List<String> letters = Arrays.asList("a", "b", "a", "c", "b", "a");
+letters ==> [a, b, a, c, b, a]
+
+jshell> int frequency = Collections.frequency(letters, "a");
+frequency ==> 3
+
+jshell> System.out.println("'a' appears " + frequency + " times");
+'a' appears 3 times
+
+jshell> // Creating unmodifiable collections
+   ...> List<String> readOnlyList = Collections.unmodifiableList(names);
+readOnlyList ==> [Bob, Charlie, Alice, Diana]
+
+jshell> // readOnlyList.add("Eve");  // This would throw an exception
+----
+
+=== Practical Example: Library Management System
+
+Let's put everything together with a comprehensive example:
+
+Use this as an example of reading code and build a "mental model" of what's going on.
+
+[source]
+----
+jshell> class Book {
+   ...>     String title;
+   ...>     String author;
+   ...>     String isbn;
+   ...>     boolean isAvailable;
+   ...>     
+   ...>     public Book(String title, String author, String isbn) {
+   ...>         this.title = title;
+   ...>         this.author = author;
+   ...>         this.isbn = isbn;
+   ...>         this.isAvailable = true;
+   ...>     }
+   ...>     
+   ...>     public String toString() {
+   ...>         return title + " by " + author + " (ISBN: " + isbn + ") - " + 
+   ...>                (isAvailable ? "Available" : "Checked out");
+   ...>     }
+   ...> }
+|  created class Book
+
+jshell> class Library {
+   ...>     private List<Book> books;
+   ...>     private Map<String, Book> booksByIsbn;
+   ...>     private Map<String, Set<Book>> booksByAuthor;
+   ...>     private Queue<String> waitingList;
+   ...>     
+   ...>     public Library() {
+   ...>         books = new ArrayList<>();
+   ...>         booksByIsbn = new HashMap<>();
+   ...>         booksByAuthor = new HashMap<>();
+   ...>         waitingList = new LinkedList<>();
+   ...>     }
+   ...>     
+   ...>     public void addBook(String title, String author, String isbn) {
+   ...>         Book book = new Book(title, author, isbn);
+   ...>         books.add(book);
+   ...>         booksByIsbn.put(isbn, book);
+   ...>         
+   ...>         // Add to author's collection
+   ...>         booksByAuthor.computeIfAbsent(author, k -> new HashSet<>()).add(book);
+   ...>         
+   ...>         System.out.println("Added: " + book);
+   ...>     }
+   ...>     
+   ...>     public Book findBookByIsbn(String isbn) {
+   ...>         return booksByIsbn.get(isbn);
+   ...>     }
+   ...>     
+   ...>     public Set<Book> findBooksByAuthor(String author) {
+   ...>         return booksByAuthor.getOrDefault(author, new HashSet<>());
+   ...>     }
+   ...>     
+   ...>     public void checkOutBook(String isbn) {
+   ...>         Book book = findBookByIsbn(isbn);
+   ...>         if (book != null && book.isAvailable) {
+   ...>             book.isAvailable = false;
+   ...>             System.out.println("Checked out: " + book.title);
+   ...>         } else if (book != null) {
+   ...>             System.out.println("Book not available: " + book.title);
+   ...>         } else {
+   ...>             System.out.println("Book not found with ISBN: " + isbn);
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void returnBook(String isbn) {
+   ...>         Book book = findBookByIsbn(isbn);
+   ...>         if (book != null && !book.isAvailable) {
+   ...>             book.isAvailable = true;
+   ...>             System.out.println("Returned: " + book.title);
+   ...>         } else if (book != null) {
+   ...>             System.out.println("Book was not checked out: " + book.title);
+   ...>         } else {
+   ...>             System.out.println("Book not found with ISBN: " + isbn);
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void printAllBooks() {
+   ...>         System.out.println("Library Collection:");
+   ...>         for (Book book : books) {
+   ...>             System.out.println("  " + book);
+   ...>         }
+   ...>     }
+   ...>     
+   ...>     public void printBooksByAuthor(String author) {
+   ...>         Set<Book> authorBooks = findBooksByAuthor(author);
+   ...>         if (authorBooks.isEmpty()) {
+   ...>             System.out.println("No books found by " + author);
+   ...>         } else {
+   ...>             System.out.println("Books by " + author + ":");
+   ...>             for (Book book : authorBooks) {
+   ...>                 System.out.println("  " + book);
+   ...>             }
+   ...>         }
+   ...>     }
+   ...> }
+|  created class Library
+
+jshell> // Test the library system
+   ...> Library library = new Library();
+library ==> Library@...
+
+jshell> library.addBook("1984", "George Orwell", "978-0451524935");
+Added: 1984 by George Orwell (ISBN: 978-0451524935) - Available
+
+jshell> library.addBook("Animal Farm", "George Orwell", "978-0451526342");
+Added: Animal Farm by George Orwell (ISBN: 978-0451526342) - Available
+
+jshell> library.addBook("To Kill a Mockingbird", "Harper Lee", "978-0061120084");
+Added: To Kill a Mockingbird by Harper Lee (ISBN: 978-0061120084) - Available
+
+jshell> library.printAllBooks();
+Library Collection:
+  1984 by George Orwell (ISBN: 978-0451524935) - Available
+  Animal Farm by George Orwell (ISBN: 978-0451526342) - Available
+  To Kill a Mockingbird by Harper Lee (ISBN: 978-0061120084) - Available
+
+jshell> library.printBooksByAuthor("George Orwell");
+Books by George Orwell:
+  1984 by George Orwell (ISBN: 978-0451524935) - Available
+  Animal Farm by George Orwell (ISBN: 978-0451526342) - Available
+
+jshell> library.checkOutBook("978-0451524935");
+Checked out: 1984
+
+jshell> library.checkOutBook("978-0451524935");  // Try to check out again
+Book not available: 1984
+
+jshell> library.returnBook("978-0451524935");
+Returned: 1984
+
+jshell> library.printAllBooks();
+Library Collection:
+  1984 by George Orwell (ISBN: 978-0451524935) - Available
+  Animal Farm by George Orwell (ISBN: 978-0451526342) - Available
+  To Kill a Mockingbird by Harper Lee (ISBN: 978-0061120084) - Available
+----
+
+As you can see, the Collections Framework provides powerful tools to manage groups of objects efficiently. By choosing the right collection type for your needs, you can write cleaner, more efficient, and more maintainable code.
+
+And when used together, these collections can form the backbone of complex applications, like our very simple Library Management System example.
+
+=== Key Takeaways
+
+1. **Collections Framework** provides flexible, dynamic data structures that are superior to arrays for most use cases
+2. **List** (ArrayList, LinkedList) - ordered collections that allow duplicates
+3. **Set** (HashSet, TreeSet, LinkedHashSet) - collections that don't allow duplicates
+4. **Map** (HashMap, TreeMap, LinkedHashMap) - key-value pair collections
+5. **Queue/Deque** - collections designed for processing elements in specific orders
+6. **Enhanced for loops** provide clean, simple iteration over collections
+7. **Iterators** give more control over collection traversal and modification
+8. **Collections utility class** provides helpful static methods for common operations
+
+The Collections Framework is essential for professional Java development. It provides the building blocks for managing data efficiently and makes your code more maintainable and powerful. Understanding when to use each collection type and how to iterate through them effectively will make you a much more capable Java programmer.

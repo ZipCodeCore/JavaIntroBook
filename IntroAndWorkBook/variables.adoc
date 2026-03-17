@@ -151,11 +151,18 @@ Java, once you declare a variable as an _int_
 
 [source]
 ----
-int height = 62.0; // inches maybe?
+int height = 62; // inches
 System.out.println(height); // -> 62
 
 height = "very tall"; // Java WILL NOT LET you do this.
 System.out.println(height);
+
+height ==> 62
+62
+|  Error:
+|  incompatible types: java.lang.String cannot be converted to int
+|  height = "very tall";
+|           ^---------^
 
 ----
 
@@ -204,9 +211,9 @@ And it is the programmer's job to make sure all the data get handled in the righ
 
 So Java has a few fundamental *data types* that it can handle. And we will cover each one in turn. 
 
-**Exercise: Create Variables for Primitive Data Types**
+**Exercise: Create Variables for Data Types**
 
-Create variables for each primitive data type:
+Create variables for each data type:
 
 - double
 - int

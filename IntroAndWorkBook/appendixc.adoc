@@ -11,14 +11,17 @@ First, let's see if you already have Java installed and what version it is.
 ==== Step 1: Open Your Terminal or Command Prompt
 
 *On Windows:*
+
 - Press `Windows + R`, type `cmd`, and press Enter
 - Or search for "Command Prompt" in the Start menu
 
 *On macOS:*
+
 - Press `Cmd + Space`, type `terminal`, and press Enter
-- Or go to Applications → Utilities → Terminal
+- Or go to Applications > Utilities > Terminal
 
 *On Linux:*
+
 - Press `Ctrl + Alt + T`
 - Or search for "Terminal" in your applications
 
@@ -81,18 +84,21 @@ If you need to install or update Java, here are the recommended approaches:
 OpenJDK is a free, open-source implementation of Java:
 
 *For Windows:*
+
 1. Go to https://adoptium.net/
 2. Download the latest LTS version
 3. Run the installer
 4. Make sure "Set JAVA_HOME variable" is checked during installation
 
 *For macOS with Homebrew:*
+
 [source]
 ----
 brew install openjdk
 ----
 
 *For Ubuntu/Debian Linux:*
+
 [source]
 ----
 sudo apt update
@@ -100,6 +106,7 @@ sudo apt install openjdk-17-jdk
 ----
 
 *For Red Hat/CentOS/Fedora Linux:*
+
 [source]
 ----
 sudo yum install java-17-openjdk-devel
@@ -111,6 +118,7 @@ SDKMAN is a tool for managing multiple Java versions:
 
 1. Install SDKMAN: https://sdkman.io/install
 2. Install Java:
+
 [source]
 ----
 sdk install java 17.0.2-tem
@@ -144,6 +152,7 @@ Type `/exit` to quit jshell.
 ==== "java is not recognized as an internal or external command"
 
 *On Windows:*
+
 1. The Java installer should have set the PATH automatically
 2. If not, you may need to add Java to your PATH manually:
    - Find where Java is installed (usually `C:\Program Files\Java\jdk-XX\bin`)
@@ -151,6 +160,7 @@ Type `/exit` to quit jshell.
    - Restart your command prompt
 
 *On macOS/Linux:*
+
 1. Java might be installed but not in your PATH
 2. Try: `which java` to see if it's found
 3. You may need to add Java to your PATH in your shell configuration file
@@ -162,12 +172,14 @@ If you have multiple Java versions installed:
 *On Windows:* The last installed version usually becomes the default
 
 *On macOS:* Use `java_home` to manage versions:
+
 [source]
 ----
 /usr/libexec/java_home -V
 ----
 
 *On Linux:* Use `update-alternatives`:
+
 [source]
 ----
 sudo update-alternatives --config java
@@ -176,18 +188,21 @@ sudo update-alternatives --config java
 ==== Permission Issues on macOS
 
 If you get security warnings on macOS:
-1. Go to System Preferences → Security & Privacy
+
+1. Go to System Preferences > Security & Privacy
 2. Click "Allow" for Oracle or the Java installer
 3. Try the installation again
 
 === Recommended Java Versions
 
 For this book, we recommend:
+
 - **Java 21 LTS** - Latest long-term support version (recommended)
 - **Java 17 LTS** - Widely used long-term support version  
 - **Java 11 LTS** - Older but still supported LTS version
 
 Avoid:
+
 - Java 8 and earlier (no jshell support)
 - Non-LTS versions unless you have a specific need
 
@@ -198,6 +213,7 @@ Once Java is installed, you have several options for writing and running Java co
 ==== Using jshell (Recommended for This Book)
 
 jshell is perfect for learning and experimenting:
+
 - No need to create full programs
 - Immediate feedback on code snippets
 - Great for testing small pieces of code
@@ -210,15 +226,18 @@ Start jshell by typing `jshell` in your terminal.
 For larger projects, consider these tools:
 
 **Beginner-Friendly:**
+
 - **Visual Studio Code** with Java extensions - Free, lightweight
 - **IntelliJ IDEA Community Edition** - Free, powerful
 - **Eclipse** - Free, widely used
 
 **Professional:**
+
 - **IntelliJ IDEA Ultimate** - Commercial, full-featured
 - **NetBeans** - Free, Oracle-supported
 
 **Simple Text Editors:**
+
 - **Notepad++** (Windows) - Basic syntax highlighting
 - **TextEdit** (macOS) - Simple text editing
 - **Gedit** (Linux) - Basic code editing
@@ -230,16 +249,19 @@ For this book, jshell is sufficient, but having a good editor helps when you wan
 If you're still having trouble:
 
 1. **Check your Java vendor's documentation:**
+
    - Oracle: https://docs.oracle.com/en/java/
    - Adoptium: https://adoptium.net/support/
 
 2. **University/School IT Support:** Many institutions provide Java installation help
 
 3. **Online Communities:**
+
    - Stack Overflow: https://stackoverflow.com/questions/tagged/java
    - Reddit: r/learnjava
 
 4. **Verify Installation:**
+
    - Make sure you downloaded the JDK, not just the JRE
    - Ensure you downloaded the correct version for your operating system (32-bit vs 64-bit)
    - Try restarting your computer after installation

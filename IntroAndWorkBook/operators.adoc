@@ -142,10 +142,23 @@ for (a = 4; a < 13; a++) {
     // 10 2
     // 11 3
     // 12 0
-  }
-}
-
 ----
+
+(This example has a *loop* more on loops ahead. It's how we control repeating things in code.)
+
+Notice how `a` changes, but `b` stays the same. The result of `a % b` is always less than `b`.
+This is because the result is the _remainder_ of the division of `a` by `b`.
+So, when `a` is 4, `4 % 4` is 0 (4 goes into 4 once, with no remainder).
+When `a` is 5, `5 % 4` is 1 (4 goes into 5 once, with a remainder of 1).
+When `a` is 6, `6 % 4` is 2 (4 goes into 6 once, with a remainder of 2).
+When `a` is 7, `7 % 4` is 3 (4 goes into 7 once, with a remainder of 3).
+When `a` is 8, `8 % 4` is 0 (4 goes into 8 twice, with no remainder).
+When `a` is 9, `9 % 4` is 1 (4 goes into 9 twice, with a remainder of 1).
+When `a` is 10, `10 % 4` is 2 (4 goes into 10 twice, with a remainder of 2).
+When `a` is 11, `11 % 4` is 3 (4 goes into 11 twice, with a remainder of 3).
+When `a` is 12, `12 % 4` is 0 (4 goes into 12 three times, with no remainder).
+
+This is a useful operator for many things, including determining if a number is even or odd.
 
 === Order is Important
 
@@ -234,9 +247,13 @@ jshell> System.out.println(result);
 72
 ```
 
+The parenthesis forces the addition to be done first, giving us 36, and then multiplying by 2 gives us 72.
+
+So make it easy on yourself, always use parenthesis to make it clear what you want done first.
+
 === Java Math Class
 
-There is a useful thing in Java called the Math class which allows you to perform mathematical tasks on numbers.
+There is a useful thing in Java called the `Math` class which allows you to perform mathematical tasks on numbers.
 
 
 * Math.PI; - returns 3.141592653589793
@@ -262,6 +279,10 @@ System.out.println(squareRootTwo);
 We will get "1.4142135623730951" in the output. That number (squareRootTwo) 
 is the square root of 2, and it is 
 the result of the function and _what the function sqrt "returns"'_.
+
+More on functions later. And more on the Math class later.
+
+And more on `return` later.
 
 ====
 

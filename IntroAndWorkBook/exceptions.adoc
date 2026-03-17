@@ -1,0 +1,578 @@
+== Exception Handling in Java
+
+When you write programs, things don't always go as planned. Files might not exist, users might enter invalid data, network connections might fail, or you might try to divide by zero. Java provides a robust system called **exception handling** to deal with these unexpected situations gracefully.
+
+=== Understanding Exceptions and Error Handling
+
+An **exception** is an event that occurs during program execution that disrupts the normal flow of instructions. Instead of letting your program crash, Java allows you to "catch" these exceptions and handle them appropriately.
+
+Think of exceptions like unexpected events in real life - if you're driving and encounter a roadblock, you don't just stop your car forever. You find an alternate route or wait for the roadblock to clear.
+
+==== What Causes Exceptions?
+
+Here are some common situations that cause exceptions:
+
+[source]
+----
+jshell> int result = 10 / 0;  // ArithmeticException
+|  Exception java.lang.ArithmeticException: / by zero
+|        at (#1:1)
+
+jshell> String text = null;
+text ==> null
+
+jshell> int length = text.length();  // NullPointerException
+|  Exception java.lang.NullPointerException
+|        at (#3:1)
+
+jshell> int[] numbers = {1, 2, 3};
+numbers ==> int[3] { 1, 2, 3 }
+
+jshell> int value = numbers[5];  // ArrayIndexOutOfBoundsException
+|  Exception java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 3
+|        at (#5:1)
+----
+
+Without exception handling, these errors would terminate your program. But with proper exception handling, you can make your program continue running even when these situations occur.
+
+=== Try-Catch-Finally Blocks
+
+The primary mechanism for handling exceptions in Java is the **try-catch-finally** statement. Here's how it works:
+
+==== Basic Try-Catch
+
+[source]
+----
+jshell> public static void safeDivision(int a, int b) {
+   ...>     try {
+   ...>         int result = a / b;
+   ...>         System.out.println(a + " / " + b + " = " + result);
+   ...>     } catch (ArithmeticException e) {
+   ...>         System.out.println("Error: Cannot divide by zero!");
+   ...>         System.out.println("Exception message: " + e.getMessage());
+   ...>     }
+   ...>     System.out.println("Program continues...");
+   ...> }
+|  created method safeDivision(int,int)
+
+jshell> safeDivision(10, 2);
+10 / 2 = 5
+Program continues...
+
+jshell> safeDivision(10, 0);
+Error: Cannot divide by zero!
+Exception message: / by zero
+Program continues...
+----
+
+==== Multiple Catch Blocks
+
+You can handle different types of exceptions differently:
+
+[source]
+----
+jshell> public static void processArray(int[] array, int index) {
+   ...>     try {
+   ...>         System.out.println("Accessing element at index " + index);
+   ...>         int value = array[index];
+   ...>         int result = 100 / value;
+   ...>         System.out.println("Result: " + result);
+   ...>     } catch (ArrayIndexOutOfBoundsException e) {
+   ...>         System.out.println("Error: Index " + index + " is out of bounds!");
+   ...>     } catch (ArithmeticException e) {
+   ...>         System.out.println("Error: Cannot divide by zero!");
+   ...>     } catch (NullPointerException e) {
+   ...>         System.out.println("Error: Array is null!");
+   ...>     }
+   ...>     System.out.println("Method finished.");
+   ...> }
+|  created method processArray(int[],int)
+
+jshell> int[] numbers = {1, 0, 5, 10};
+numbers ==> int[4] { 1, 0, 5, 10 }
+
+jshell> processArray(numbers, 2);
+Accessing element at index 2
+Result: 20
+
+jshell> processArray(numbers, 10);  // Index out of bounds
+Error: Index 10 is out of bounds!
+Method finished.
+
+jshell> processArray(numbers, 1);   // Division by zero
+Accessing element at index 1
+Error: Cannot divide by zero!
+Method finished.
+
+jshell> processArray(null, 0);      // Null pointer
+Error: Array is null!
+Method finished.
+----
+
+==== The Finally Block
+
+The **finally** block always executes, whether an exception occurs or not. It's perfect for cleanup code:
+
+[source]
+----
+jshell> import java.io.*;
+jshell> public static void readFile(String filename) {
+   ...>     BufferedReader reader = null;
+   ...>     try {
+   ...>         reader = new BufferedReader(new FileReader(filename));
+   ...>         String line = reader.readLine();
+   ...>         System.out.println("First line: " + line);
+   ...>     } catch (FileNotFoundException e) {
+   ...>         System.out.println("Error: File '" + filename + "' not found!");
+   ...>     } catch (IOException e) {
+   ...>         System.out.println("Error reading file: " + e.getMessage());
+   ...>     } finally {
+   ...>         System.out.println("Cleanup: Closing file reader...");
+   ...>         if (reader != null) {
+   ...>             try {
+   ...>                 reader.close();
+   ...>             } catch (IOException e) {
+   ...>                 System.out.println("Error closing file: " + e.getMessage());
+   ...>             }
+   ...>         }
+   ...>     }
+   ...>     System.out.println("Method completed.");
+   ...> }
+|  created method readFile(String)
+
+jshell> readFile("nonexistent.txt");
+Error: File 'nonexistent.txt' not found!
+Cleanup: Closing file reader...
+Method completed.
+----
+
+==== Try-with-Resources (Modern Approach)
+
+Java 7 introduced a cleaner way to handle resources that need to be closed:
+
+[source]
+----
+jshell> public static void readFileModern(String filename) {
+   ...>     try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+   ...>         String line = reader.readLine();
+   ...>         System.out.println("First line: " + line);
+   ...>     } catch (FileNotFoundException e) {
+   ...>         System.out.println("Error: File '" + filename + "' not found!");
+   ...>     } catch (IOException e) {
+   ...>         System.out.println("Error reading file: " + e.getMessage());
+   ...>     }
+   ...>     System.out.println("Method completed (reader auto-closed).");
+   ...> }
+|  created method readFileModern(String)
+----
+
+The resource (BufferedReader) is automatically closed when the try block finishes, even if an exception occurs.
+
+=== Checked vs Unchecked Exceptions
+
+Java has two main categories of exceptions:
+
+==== Unchecked Exceptions (Runtime Exceptions)
+
+These are exceptions that can occur during normal program execution and don't need to be explicitly caught or declared. They usually indicate programming errors:
+
+[source]
+----
+jshell> public static void demonstrateUncheckedExceptions() {
+   ...>     // These can happen but don't need to be caught
+   ...>     
+   ...>     // NullPointerException
+   ...>     String text = null;
+   ...>     // text.length();  // Would throw NPE
+   ...>     
+   ...>     // ArrayIndexOutOfBoundsException  
+   ...>     int[] array = new int[3];
+   ...>     // array[10] = 5;  // Would throw AIOOBE
+   ...>     
+   ...>     // ArithmeticException
+   ...>     // int result = 5 / 0;  // Would throw ArithmeticException
+   ...>     
+   ...>     System.out.println("No exceptions thrown this time!");
+   ...> }
+|  created method demonstrateUncheckedExceptions()
+
+jshell> demonstrateUncheckedExceptions();
+No exceptions thrown this time!
+----
+
+==== Checked Exceptions
+
+These are exceptions that must be either caught or declared in the method signature. They represent recoverable conditions:
+
+[source]
+----
+jshell> import java.io.IOException;
+jshell> import java.io.FileReader;
+
+jshell> // This method MUST handle or declare the IOException
+   ...> public static void mustHandleCheckedException() throws IOException {
+   ...>     FileReader file = new FileReader("somefile.txt");  // Checked exception!
+   ...>     // Must either catch IOException or declare it with 'throws'
+   ...> }
+|  created method mustHandleCheckedException()
+
+jshell> // Better approach - handle the exception
+   ...> public static void handleCheckedException() {
+   ...>     try {
+   ...>         FileReader file = new FileReader("somefile.txt");
+   ...>         System.out.println("File opened successfully!");
+   ...>         file.close();
+   ...>     } catch (IOException e) {
+   ...>         System.out.println("Could not open file: " + e.getMessage());
+   ...>     }
+   ...> }
+|  created method handleCheckedException()
+
+jshell> handleCheckedException();
+Could not open file: somefile.txt (No such file or directory)
+----
+
+=== Creating Custom Exceptions
+
+Sometimes the built-in exceptions don't fit your specific needs. You can create your own exceptions:
+
+==== Custom Unchecked Exception
+
+[source]
+----
+jshell> class InvalidAgeException extends RuntimeException {
+   ...>     public InvalidAgeException(String message) {
+   ...>         super(message);
+   ...>     }
+   ...>     
+   ...>     public InvalidAgeException(String message, int age) {
+   ...>         super(message + " Age provided: " + age);
+   ...>     }
+   ...> }
+|  created class InvalidAgeException
+
+jshell> class Person {
+   ...>     private String name;
+   ...>     private int age;
+   ...>     
+   ...>     public Person(String name, int age) {
+   ...>         if (age < 0 || age > 150) {
+   ...>             throw new InvalidAgeException("Age must be between 0 and 150.", age);
+   ...>         }
+   ...>         this.name = name;
+   ...>         this.age = age;
+   ...>     }
+   ...>     
+   ...>     public void setAge(int age) {
+   ...>         if (age < 0 || age > 150) {
+   ...>             throw new InvalidAgeException("Invalid age provided", age);
+   ...>         }
+   ...>         this.age = age;
+   ...>     }
+   ...>     
+   ...>     public String toString() {
+   ...>         return name + " (age " + age + ")";
+   ...>     }
+   ...> }
+|  created class Person
+
+jshell> try {
+   ...>     Person person1 = new Person("Alice", 25);
+   ...>     System.out.println("Created: " + person1);
+   ...>     
+   ...>     Person person2 = new Person("Bob", -5);  // This will throw exception
+   ...> } catch (InvalidAgeException e) {
+   ...>     System.out.println("Exception caught: " + e.getMessage());
+   ...> }
+Created: Alice (age 25)
+Exception caught: Age must be between 0 and 150. Age provided: -5
+----
+
+==== Custom Checked Exception
+
+[source]
+----
+jshell> class InsufficientFundsException extends Exception {
+   ...>     private double balance;
+   ...>     private double amount;
+   ...>     
+   ...>     public InsufficientFundsException(double balance, double amount) {
+   ...>         super("Insufficient funds. Balance: $" + balance + ", Requested: $" + amount);
+   ...>         this.balance = balance;
+   ...>         this.amount = amount;
+   ...>     }
+   ...>     
+   ...>     public double getBalance() { return balance; }
+   ...>     public double getAmount() { return amount; }
+   ...> }
+|  created class InsufficientFundsException
+
+jshell> class BankAccount {
+   ...>     private double balance;
+   ...>     private String accountNumber;
+   ...>     
+   ...>     public BankAccount(String accountNumber, double initialBalance) {
+   ...>         this.accountNumber = accountNumber;
+   ...>         this.balance = initialBalance;
+   ...>     }
+   ...>     
+   ...>     public void withdraw(double amount) throws InsufficientFundsException {
+   ...>         if (amount > balance) {
+   ...>             throw new InsufficientFundsException(balance, amount);
+   ...>         }
+   ...>         balance -= amount;
+   ...>         System.out.println("Withdrew $" + amount + ". New balance: $" + balance);
+   ...>     }
+   ...>     
+   ...>     public double getBalance() { return balance; }
+   ...> }
+|  created class BankAccount
+
+jshell> BankAccount account = new BankAccount("12345", 100.0);
+account ==> BankAccount@...
+
+jshell> try {
+   ...>     account.withdraw(50.0);   // This should work
+   ...>     account.withdraw(75.0);   // This should fail
+   ...> } catch (InsufficientFundsException e) {
+   ...>     System.out.println("Transaction failed: " + e.getMessage());
+   ...>     System.out.println("Current balance: $" + e.getBalance());
+   ...> }
+Withdrew $50.0. New balance: $50.0
+Transaction failed: Insufficient funds. Balance: $50.0, Requested: $75.0
+Current balance: $50.0
+----
+
+=== Best Practices for Exception Handling
+
+==== 1. Be Specific with Exception Types
+
+Don't catch generic `Exception` unless you really need to:
+
+[source]
+----
+jshell> // Bad - too generic
+   ...> public static void badExample() {
+   ...>     try {
+   ...>         int[] array = {1, 2, 3};
+   ...>         int value = array[10];
+   ...>     } catch (Exception e) {  // Too broad!
+   ...>         System.out.println("Something went wrong");
+   ...>     }
+   ...> }
+|  created method badExample()
+
+jshell> // Good - specific exception handling
+   ...> public static void goodExample() {
+   ...>     try {
+   ...>         int[] array = {1, 2, 3};
+   ...>         int value = array[10];
+   ...>     } catch (ArrayIndexOutOfBoundsException e) {  // Specific!
+   ...>         System.out.println("Array index out of bounds: " + e.getMessage());
+   ...>     }
+   ...> }
+|  created method goodExample()
+----
+
+==== 2. Don't Swallow Exceptions
+
+Always do something meaningful in catch blocks:
+
+[source]
+----
+jshell> // Bad - silent failure
+   ...> public static void badLogging() {
+   ...>     try {
+   ...>         int result = 10 / 0;
+   ...>     } catch (ArithmeticException e) {
+   ...>         // Silent failure - very bad!
+   ...>     }
+   ...> }
+|  created method badLogging()
+
+jshell> // Good - proper logging/handling
+   ...> public static void goodLogging() {
+   ...>     try {
+   ...>         int result = 10 / 0;
+   ...>     } catch (ArithmeticException e) {
+   ...>         System.out.println("ERROR: Mathematical error occurred: " + e.getMessage());
+   ...>         // Log the exception or take appropriate action
+   ...>     }
+   ...> }
+|  created method goodLogging()
+
+jshell> goodLogging();
+Mathematical error occurred: / by zero
+----
+
+==== 3. Use Exception Chaining
+
+When catching an exception and throwing a new one, preserve the original exception:
+
+[source]
+----
+jshell> class DataProcessingException extends Exception {
+   ...>     public DataProcessingException(String message, Throwable cause) {
+   ...>         super(message, cause);
+   ...>     }
+   ...> }
+|  created class DataProcessingException
+
+jshell> public static void processData(int[] data) throws DataProcessingException {
+   ...>     try {
+   ...>         // Simulate some processing that might fail
+   ...>         int result = data[0] / data[1];
+   ...>         System.out.println("Processing result: " + result);
+   ...>     } catch (ArithmeticException e) {
+   ...>         // Chain the original exception
+   ...>         throw new DataProcessingException("Failed to process data", e);
+   ...>     } catch (ArrayIndexOutOfBoundsException e) {
+   ...>         // Chain the original exception
+   ...>         throw new DataProcessingException("Failed to process data", e);
+   ...>     }
+   ...> }
+|  created method processData(int[])
+
+jshell> try {
+   ...>     processData(new int[]{10, 0});  // Will cause ArithmeticException
+   ...> } catch (DataProcessingException e) {
+   ...>     System.out.println("Application error: " + e.getMessage());
+   ...>     System.out.println("Root cause: " + e.getCause().getClass().getSimpleName());
+   ...> }
+Application error: Failed to process data
+Root cause: ArithmeticException
+----
+
+==== 4. Validate Input Early
+
+Prevent exceptions by validating input parameters:
+
+[source]
+----
+jshell> public static double calculateCircleArea(double radius) {
+   ...>     // Validate input early
+   ...>     if (radius < 0) {
+   ...>         throw new IllegalArgumentException("Radius cannot be negative: " + radius);
+   ...>     }
+   ...>     
+   ...>     return Math.PI * radius * radius;
+   ...> }
+|  created method calculateCircleArea(double)
+
+jshell> System.out.println("Area: " + calculateCircleArea(5.0));
+Area: 78.53981633974483
+
+jshell> try {
+   ...>     calculateCircleArea(-3.0);
+   ...> } catch (IllegalArgumentException e) {
+   ...>     System.out.println("Invalid input: " + e.getMessage());
+   ...> }
+Invalid input: Radius cannot be negative: -3.0
+----
+
+=== Practical Example: A Robust File Processor
+
+Let's put it all together with a comprehensive example:
+
+[source]
+----
+jshell> import java.io.*;
+jshell> import java.util.ArrayList;
+jshell> import java.util.List;
+
+jshell> class FileProcessingException extends Exception {
+   ...>     public FileProcessingException(String message) {
+   ...>         super(message);
+   ...>     }
+   ...>     
+   ...>     public FileProcessingException(String message, Throwable cause) {
+   ...>         super(message, cause);
+   ...>     }
+   ...> }
+|  created class FileProcessingException
+
+jshell> class NumberFileProcessor {
+   ...>     public List<Integer> processNumberFile(String filename) throws FileProcessingException {
+   ...>         if (filename == null || filename.trim().isEmpty()) {
+   ...>             throw new IllegalArgumentException("Filename cannot be null or empty");
+   ...>         }
+   ...>         
+   ...>         List<Integer> numbers = new ArrayList<>();
+   ...>         
+   ...>         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+   ...>             String line;
+   ...>             int lineNumber = 0;
+   ...>             
+   ...>             while ((line = reader.readLine()) != null) {
+   ...>                 lineNumber++;
+   ...>                 try {
+   ...>                     line = line.trim();
+   ...>                     if (!line.isEmpty()) {
+   ...>                         int number = Integer.parseInt(line);
+   ...>                         numbers.add(number);
+   ...>                     }
+   ...>                 } catch (NumberFormatException e) {
+   ...>                     System.err.println("Warning: Invalid number on line " + lineNumber + ": '" + line + "'");
+   ...>                     // Continue processing other lines
+   ...>                 }
+   ...>             }
+   ...>             
+   ...>         } catch (FileNotFoundException e) {
+   ...>             throw new FileProcessingException("File not found: " + filename, e);
+   ...>         } catch (IOException e) {
+   ...>             throw new FileProcessingException("Error reading file: " + filename, e);
+   ...>         }
+   ...>         
+   ...>         if (numbers.isEmpty()) {
+   ...>             throw new FileProcessingException("No valid numbers found in file: " + filename);
+   ...>         }
+   ...>         
+   ...>         return numbers;
+   ...>     }
+   ...>     
+   ...>     public double calculateAverage(List<Integer> numbers) {
+   ...>         if (numbers == null || numbers.isEmpty()) {
+   ...>             throw new IllegalArgumentException("Number list cannot be null or empty");
+   ...>         }
+   ...>         
+   ...>         long sum = 0;
+   ...>         for (Integer number : numbers) {
+   ...>             sum += number;
+   ...>         }
+   ...>         
+   ...>         return (double) sum / numbers.size();
+   ...>     }
+   ...> }
+|  created class NumberFileProcessor
+
+jshell> // Simulate processing a file
+   ...> NumberFileProcessor processor = new NumberFileProcessor();
+processor ==> NumberFileProcessor@...
+
+jshell> try {
+   ...>     // This would normally read from a real file
+   ...>     List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50);  // Simulated data
+   ...>     double average = processor.calculateAverage(numbers);
+   ...>     System.out.println("Numbers processed: " + numbers);
+   ...>     System.out.println("Average: " + average);
+   ...> } catch (IllegalArgumentException e) {
+   ...>     System.err.println("Input validation error: " + e.getMessage());
+   ...> } catch (Exception e) {
+   ...>     System.err.println("Unexpected error: " + e.getMessage());
+   ...>     e.printStackTrace();
+   ...> }
+Numbers processed: [10, 20, 30, 40, 50]
+Average: 30.0
+----
+
+=== Key Takeaways
+
+1. **Exceptions** are unexpected events that can disrupt program flow
+2. **Try-catch-finally** blocks let you handle exceptions gracefully
+3. **Checked exceptions** must be caught or declared; **unchecked exceptions** don't require explicit handling
+4. **Custom exceptions** can represent specific error conditions in your domain
+5. **Finally blocks** always execute and are perfect for cleanup code
+6. **Try-with-resources** automatically manages resource cleanup
+7. **Best practices**: Be specific with exception types, don't swallow exceptions, use exception chaining, and validate input early
+
+Exception handling is crucial for writing robust, professional Java applications. It allows your programs to gracefully handle unexpected situations and provide meaningful feedback to users rather than crashing unexpectedly.

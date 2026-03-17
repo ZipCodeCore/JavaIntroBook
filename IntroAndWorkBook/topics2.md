@@ -48,19 +48,19 @@ Reading user input (Scanner class)
 Basic file I/O operations
 Formatting output
 Java Advanced Syllabus
-Module 1: Advanced OOP Concepts
+Chapter: Advanced OOP Concepts
 Inheritance and the 'super' keyword
 Method overriding vs overloading
 Abstract classes and methods
 Interfaces and multiple inheritance
 Polymorphism and dynamic binding
-Module 2: Exception Handling
+Chapter: Exception Handling
 Understanding exceptions and error handling
 Try-catch-finally blocks
 Checked vs unchecked exceptions
 Creating custom exceptions
 Best practices for exception handling
-Module 3: Collections Framework
+Chapter: Collections Framework
 List interface (ArrayList, LinkedList, Vector)
 Set interface (HashSet, TreeSet, LinkedHashSet)
 Map interface (HashMap, TreeMap, LinkedHashMap)

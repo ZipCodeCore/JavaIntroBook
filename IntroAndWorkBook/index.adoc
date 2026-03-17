@@ -1,8 +1,8 @@
 :doctype: book
 :title-page:
-= Zip Code Wilmington's Programming in Java
+= Zip Code Wilmington's Introduction to Java Programming
 Kristofer Younger <kris@zipcodewilmington.com>
-v2.2, 2025-06-17
+v2.65, 2025-09-15
 :imagesdir: images
 :pdf-theme: indextheme.yml
 :source-highlighter: rouge
@@ -12,13 +12,13 @@ v2.2, 2025-06-17
 :homepage: https://zipcodewilmington.com/javabook
 //:pdf-page-size:  [5.5in, 8.5in]
 :pdf-page-size:  [6.75in, 9.1875in]
-//:front-cover-image: ZCW_JS-Book-FNL.png
+:front-cover-image: JavaIntroCover.pdf
 :toc:
 
 [colophon]
 == Colophon
 
-Zip Code Wilmington's Programming in Java
+Zip Code Wilmington's Introduction to Java Programming
 by Kristofer Younger
 
 Copyright (C) 2020-2025 by Zip Code Wilmington. All Rights Reserved.
@@ -48,28 +48,37 @@ Find out more about us at https://zipcodewilmington.com
 == About this book
 
 This book's aim is to provide you with the most basic of fundamentals regarding Java, 
-the programming language we have been teaching at Zip Code Wilmington for more than 8 years. 
+the programming language we have been teaching at Zip Code Wilmington for more than 10 years. 
 To someone who has spent some time with programming languages, this might be just a breezy intro to Java. 
 If you have almost any serious coding experience, this book is probably too elementary for you.
 You might, however, find the ideas in the Appendices interesting.
 
-=== Java: Pretty Easy to Understand
+=== Java: A True War Horse
 
-Java is a fairly easy programming language to learn, and we're going to use it in 
-this book to describe the basic fundamentals of coding. 
-Its form is modern and it is widely used. 
+Java is a moderately difficult programming language to learn, and we're going to use it in 
+this book to describe the basic fundamentals of coding.
+It is battle-tested, having been around for more than 25 years.
+It is used in many places, from Android apps to enterprise back-end systems.
+
+And yet, its form is modern and it is widely used. 
+It is still being updated and maintained and expanded.
 It can be used for many purposes, from web applications to back-end server processing. 
 We're going to use it for learning simple, programming-in-the-small, object-orientation, 
-methods and concepts; but make no mistake - Java is world-class language capable of amazing things.
+methods and concepts; but make no mistake - Java is a world-class language capable of amazing things.
 
-And companies are still paying well for people who know how to use a decades-old 
-programming language.
+And companies are still paying well for people who know how to use a decades-old programming language.
 
 === Coding _The Hard Way_. 
 
 Zed A. Shaw is a popular author of several books where he describes learning a programming language _The Hard Way_. Zed suggests, and we at Zip Code agree with him whole-heartedly, that the best, most impactful, highest return for your investment when learning to code, is *type the code using your own fingers* footnote:[check out his terrific work: https://learncodethehardway.org]
 
 That's right. Whether you are a "visual learner", a "video learner", or someone who can read textbooks like novels (are there any more of these out there?), the best way to learn to code is *to code* and *to code by typing out the code with your own fingers*. This means you DO NOT do a lot of copy and paste of code blocks; you really put in the work, making your brain better wired to code by *coding with your own typing of the code.*
+
+And in the age of *AI code generators* (and AI tools in general), this is even more important. You must learn to think like a coder, and that means you must practice coding, not just reading about it or watching videos about it.
+
+What AI is teaching us is that coding is not just about knowing syntax, it's about problem solving, understanding logic, and being able to break down complex tasks into manageable pieces. AI can help with syntax and even suggest solutions, but it can't replace the *deep understanding* that comes from actually writing code yourself.
+
+=== You must code to become a coder
 
 You're here, reading this, because you're thinking (or maybe you know) that you want to become a coder. It's pretty straight-forward.
 
@@ -152,6 +161,8 @@ include::arrays.adoc[]
 
 include::multidimensional-arrays.adoc[]
 
+include::arraylist.adoc[]
+
 include::controlflow.adoc[]
 
 include::if.adoc[]
@@ -181,11 +192,29 @@ include::access-modifiers.adoc[]
 
 == Input/Output Operations
 
+Getting things in and out of the programs you write, well, this is pretty important.
+Here's a few things to use.
+
 include::scanner-input.adoc[]
 
 include::file-io.adoc[]
 
 include::output-formatting.adoc[]
+
+== Advanced Java Concepts
+
+These are things that are lightly covered here.
+These deserve a much deeper examination, as they are pretty important,
+but if you're just starting to learn Java, they are not crucial.
+
+Be sure to take a look at other Java resourses, if you need more information
+about them!
+
+include::advancedoop.adoc[]
+
+include::exceptions.adoc[]
+
+include::collections.adoc[]
 
 include::appendixa.adoc[]
 

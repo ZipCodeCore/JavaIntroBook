@@ -1,7 +1,10 @@
 === Type Casting and Conversion
 
-Type casting in Java is the process of converting one data type to another.
-Sometimes Java does this automatically, and sometimes you need to tell Java explicitly how to convert.
+*Type casting* in Java is the process of converting one data type to another.
+Sometimes Java does this automatically, and sometimes you need to tell Java explicitly how to convert one thing to another.
+
+In many case though, Java does not allow you to convert between types.
+You cannot cast from a House to a Person, for example.
 
 Understanding casting is important because different data types have different ranges and precision, and you need to know how to safely move data between them.
 
@@ -30,13 +33,19 @@ public class ZipCode {
 }
 ----
 
+What do I mean by "widening"?
+When you convert from a smaller type to a larger type, you are "widening" the range of possible values.
+For example, a `byte` can hold values from -128 to 127, while an `int` can hold values from -2,147,483,648 to 2,147,483,647.
+When you convert a `byte` to an `int`, you are widening the range of possible values.
+This is safe because every value that a `byte` can hold can also be represented as an `int`.
+
 ==== The Widening Hierarchy
 
 Java will automatically convert in this direction:
 
 ----
-byte → short → int → long → float → double
-       char → int
+byte > short > int > long > float > double
+       char > int
 ----
 
 [source]
@@ -64,6 +73,12 @@ public class ZipCode {
 
 When converting from a larger type to a smaller type, you must explicitly cast.
 This is called **narrowing conversion** or **explicit casting**.
+
+And in many cases, this may not be safe, because you can lose data or precision.
+For example, converting a `double` to an `int` will drop the decimal part.
+Or converting a `long` to an `int` may cause overflow if the `long` value is too large to fit in an `int`.
+You cannot put an int like `1000000` into a byte, because a byte can only hold values from -128 to 127.
+(And it has to do with the number of bits used to store the value. A byte is 8 bits, and int is 32 bits.)
 
 ===== Basic Explicit Casting
 
@@ -113,7 +128,16 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+
+// now run it is jshell by
+new ZipCode().compute();
 ----
+
+It's weird, but when you cast a long that is too big to fit in an int,
+you get a negative number.
+This is because of how numbers are stored in binary using two's complement representation. (which is a whole other topic! and one you don't need to know for now!)
+
+Just file it away in your brain, that if you cast a number that is too big to fit in the smaller type, you get a weird negative number.
 
 ==== Casting with Characters and Numbers
 
@@ -143,6 +167,9 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+
+// now run it is jshell by
+new ZipCode().compute();
 ----
 
 ==== String Conversions
@@ -178,7 +205,13 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+
+// now run it is jshell by
+new ZipCode().compute();
 ----
+
+Converting numbers to strings is straightforward using `String.valueOf()`.
+You can also concatenate a number with an empty string (`""`) to achieve the same effect.
 
 ===== Strings to Numbers
 
@@ -210,7 +243,17 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// now run it is jshell by
+new ZipCode().compute();
 ----
+This example demonstrates how to convert text (strings) into numbers so you can perform mathematical operations. In the compute() method, three variables __ageText, priceText, and heightText__ are defined as strings that look like numbers. To use these values in calculations, you need to change (or "cast") them into actual number types.
+
+The code uses special methods for this conversion: Integer.parseInt() turns the string "25" into the integer 25, Double.parseDouble() converts "19.99" into the double 19.99, and Float.parseFloat() changes "5.8" into the float 5.8. After converting, the program prints out each value to show the result.
+
+Once the values are numbers, you can do math with them. For example, it calculates ageNextYear by adding 1 to the age, and priceWithTax by multiplying the price by 1.08 (to add 8% tax). These results are printed as well.
+
+The main method is the entry point of the program. It creates a new ZipCode object and calls the compute() method to run all the code above. This example is useful because it shows how to take user input (often as text) and turn it into numbers for calculations.
+
 
 ===== Handling Invalid String Conversions
 
@@ -244,7 +287,18 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// now run it is jshell by
+new ZipCode().compute();
 ----
+
+and the output would be
+----
+Error: 'not-a-number' is not a valid number!
+Parsed value: 0
+----
+
+This example shows how to handle cases where a string might not be a valid number. When you try to convert a string that doesn't represent a number (like "not-a-number") using Integer.parseInt(), it throws a NumberFormatException. The code catches this exception and prints an error message instead of crashing.
+It also includes a helper method parseIntSafely() that attempts to parse a string into an integer and returns a default value if parsing fails. This is useful for safely handling user input that may not always be valid.
 
 ==== Practical Example: Temperature Converter
 
@@ -282,7 +336,11 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// now run it is jshell by
+new ZipCode().compute();
 ----
+
+This example is a simple temperature converter that reads a temperature in Fahrenheit from the user, converts it to Celsius, and demonstrates both parsing a string to a number and casting a double to an int.
 
 ==== Casting in Expressions
 
@@ -320,7 +378,15 @@ public class ZipCode {
 
   public static void main(String[] args) { new ZipCode().compute(); }
 }
+// now run it is jshell by
+new ZipCode().compute();
 ----
+
+When you perform arithmetic operations, Java promotes smaller types to larger types to avoid data loss. For example, when adding two `byte` values, they are promoted to `int` before the addition. If you want to store the result back in a `byte`, you need to cast it explicitly.
+
+When mixing different numeric types (like `int` and `double`), Java promotes the smaller type to the larger type. In the example, adding an `int` and a `double` results in a `double`.
+
+The example also highlights the difference between integer division (which truncates the decimal part) and decimal division (which retains it). By casting one of the integers to `double`, you ensure that the division is performed in floating-point arithmetic.
 
 ==== Best Practices for Type Casting
 
@@ -331,13 +397,20 @@ public class ZipCode {
 5. **Be explicit** about your intentions with casting
 6. **Understand precision loss** when casting floats/doubles to integers
 
+But wait, what is _parsing_ ?
+**Parsing** user input means converting text (like what a user types) into a specific data type your program can use, 
+such as turning the string "123" into the integer 123. This lets your code work with numbers, dates, or other types instead of just plain text.
+
 ==== Common Casting Scenarios
+
+And while _most_ of the time Java is pretty salty about changing the type of things, 
+there are some common situations where casting is okay, and very possibly, essential.
 
 ===== Rounding vs. Truncating
 
 [source]
 ----
-public class ZipCode {
+public class CastingAbout {
 
   void compute() {
     double value = 4.7;
@@ -356,18 +429,31 @@ public class ZipCode {
     System.out.println("Price rounded: $" + dollars);  // $20
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new CastingAbout().compute(); }
 }
+// now run it is jshell by
+new CastingAbout().compute();
 ----
+
+When you cast a floating-point number (like `double` or `float`) to an integer type (like `int`), Java simply truncates the decimal part, effectively rounding down towards zero. This means that both positive and negative numbers lose their fractional component without rounding.
+
+If you want to round a number to the nearest integer instead of just truncating it, you can use the `Math.round()` method. This method rounds to the nearest whole number, rounding up for .5 and above, and down for below .5.
 
 ===== Safe Range Checking
 
+Sometimes, BEFORE you make a cast from one type to another, you need to _check that the number will fit_.
+Well, perhaps you have a really big number, say something in the trillions.
+A number like is probably not fit in a java Integer.
+So you compare the number against the smallest and largest integers, and if it in or out of that range,
+you do or do not make the cast.
+
 [source]
 ----
-public class ZipCode {
+public class WonkyCast {
 
   void compute() {
     long bigNumber = 50000L;
+    long numberTrillion = 1_000_000_000_001L; // 1 trillion and 1.
     
     // Check if it fits in an int before casting
     if (bigNumber >= Integer.MIN_VALUE && bigNumber <= Integer.MAX_VALUE) {
@@ -376,10 +462,35 @@ public class ZipCode {
     } else {
         System.out.println("Number too large for int!");
     }
+    // Check if it fits in an int before casting
+    if (numberTrillion >= Integer.MIN_VALUE && numberTrillion <= Integer.MAX_VALUE) {
+        int safeInt = (int) numberTrillion;
+        System.out.println("Safe conversion: " + numberTrillion);
+    } else {
+        System.out.println("Number"+ numberTrillion + " too large for int!");
+    }
   }
 
-  public static void main(String[] args) { new ZipCode().compute(); }
+  public static void main(String[] args) { new WonkyCast().compute(); }
 }
+// now run it is jshell by
+new WonkyCast().compute();
 ----
 
-Type casting is a fundamental skill in Java programming. Understanding when conversions happen automatically and when you need to be explicit will help you write more reliable and predictable code!
+when I run this, I'd get output of:
+
+```
+Safe conversion: 50000
+Number 1000000000001 too large for int!
+```
+
+Type casting is a fundamental skill in Java programming. 
+Understanding when conversions happen automatically and when you need to be explicit will help you write more reliable and predictable code!
+
+==== Summary
+
+Type casting is the process of converting a variable from one data type to another.
+Java supports both automatic (widening) and explicit (narrowing) type casting.
+Widening conversions happen automatically when converting from a smaller to a larger type.
+Narrowing conversions require explicit casting and can lead to data loss or overflow.
+Be cautious when casting between incompatible types, and always validate user input when parsing strings to numbers.

@@ -5,8 +5,8 @@ It just finishes the running of code in the current method and "returns" to the 
 
 A method in Java can return a value if the method needs to. 
 
-As you have seen, _methods_ are used to make code more understandable, cleaner and more organized. 
-Say we have a couple of functions in our program:
+Let's look at how return statements work with a practical example.
+Say we have a couple of methods in our program:
 
 [source]
 ----
@@ -34,19 +34,19 @@ If someplace in our code we were to do something like:
 [source]
 ----
 // big hit!
-isPlayerDead = adjustHealth(playerOne, majorHit);
+boolean isPlayerAlive = adjustHealth(playerOne, majorHit);
 
-if (isPlayerDead == true) endGame();
+if (isPlayerAlive == false) endGame();
 ----
 
-You can see how when we call the function "adjustHealth()" it returns the result of calling `isAlive(player)`,
+You can see how when we call the method "adjustHealth()" it returns the result of calling `isAlive(player)`,
 and we make a decision to end the game if the player has died.
 
-Notice too, you can have multiple return statements in functions, 
-and each one can return a different value if that's what you need.
+Notice that you can have multiple return statements in methods.
+Each return statement can return a different value depending on the conditions.
 
-If a method is marked `void` then the method does not return a value, but can still use `return` statements 
-to stop computing within a method.
+If a method is marked `void` then it does not return a value.
+However, void methods can still use `return` statements to stop execution early.
 
 [source]
 ----
@@ -57,8 +57,8 @@ public void printStatus(String message) {
 }
 ----
 
-In this `void` return case the return statement does not return a value; but it makes it clear the method
-is at an end.
+In this `void` method, the return statement doesn't return a value.
+It simply signals that the method has finished executing.
 
 === Chapter Exercises
 
@@ -67,37 +67,45 @@ Try these exercises in jshell to practice working with return statements and met
 **Exercise 1: Simple Return Method**
 
 Create a method that takes two integers and returns their sum:
-```
+
+[source]
+----
 int addNumbers(int a, int b) {
     return a + b;
 }
-```
+----
 Test it: `addNumbers(5, 3)` should return `8`
 
 **Exercise 2: Boolean Return Method**
 
 Create a method that checks if a number is positive:
-```
+
+[source]
+----
 boolean isPositive(int number) {
     return number > 0;
 }
-```
+----
 Test it: `isPositive(5)` should return `true`, `isPositive(-3)` should return `false`
 
 **Exercise 3: String Return Method**
 
 Create a method that returns a greeting message:
-```
+
+[source]
+----
 String createGreeting(String name) {
     return "Hello, " + name + "!";
 }
-```
+----
 Test it: `createGreeting("Alice")` should return `"Hello, Alice!"`
 
 **Exercise 4: Multiple Return Paths**
 
 Create a method that returns different messages based on a grade:
-```
+
+[source]
+----
 String getGradeMessage(int grade) {
     if (grade >= 90) {
         return "Excellent!";
@@ -107,5 +115,5 @@ String getGradeMessage(int grade) {
         return "Keep trying!";
     }
 }
-```
+----
 Test it with different values: `getGradeMessage(95)`, `getGradeMessage(75)`, `getGradeMessage(65)`

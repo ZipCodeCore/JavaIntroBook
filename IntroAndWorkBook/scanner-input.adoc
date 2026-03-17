@@ -27,8 +27,8 @@ public class ZipCode {
 }
 ----
 
-The `Scanner` object connects to `System.in`, which represents the keyboard input.
-Always remember to close the scanner when you're done with it using `scanner.close()`.
+The `Scanner` object connects to `System.in`, which represents input from the keyboard (or console).
+Always remember to close the scanner when you're done with it using `scanner.close()` - this frees up system resources.
 
 ==== Reading Different Types of Input
 
@@ -100,6 +100,7 @@ public class ZipCode {
     
     System.out.print("How old are you? ");
     int age = scanner.nextInt();
+    scanner.nextLine(); // consume the leftover newline
     
     System.out.print("What is your favorite number? ");
     double favoriteNumber = scanner.nextDouble();
@@ -114,6 +115,8 @@ public class ZipCode {
   public static void main(String[] args) { new ZipCode().compute(); }
 }
 ----
+
+**Note:** Notice the extra `scanner.nextLine()` after reading the age. This is needed to consume the "Enter" key that remains after typing a number.
 
 ==== Input Validation
 
@@ -167,7 +170,7 @@ Here are the most commonly used Scanner methods:
 
 1. **Always close your Scanner** when you're done with it using `scanner.close()`.
 
-2. **Be careful with mixing `nextInt()` and `nextLine()`**. After reading a number, you might need to call `scanner.nextLine()` to consume the remaining newline character.
+2. **Be careful with mixing number methods and `nextLine()`**. After reading a number with `nextInt()` or `nextDouble()`, call `scanner.nextLine()` to consume the leftover "Enter" key press.
 
 3. **Handle invalid input** by checking with `hasNextInt()` or similar methods before reading.
 
@@ -175,10 +178,45 @@ Here are the most commonly used Scanner methods:
 
 ==== Practice Exercise
 
-Try creating a program that:
-1. Asks the user for their name
-2. Asks for their age
-3. Asks for their favorite color
-4. Prints a personalized message using all three pieces of information
+Try creating a program that asks for user information:
+
+[source]
+----
+import java.util.Scanner;
+
+public class ZipCode {
+  void compute() {
+    Scanner scanner = new Scanner(System.in);
+    
+    // Ask for name
+    System.out.print("What is your name? ");
+    String name = // Your code here
+    
+    // Ask for age
+    System.out.print("How old are you? ");
+    int age = // Your code here
+    // Don't forget the nextLine() after reading a number!
+    
+    // Ask for favorite color
+    System.out.print("What is your favorite color? ");
+    String color = // Your code here
+    
+    // Print personalized message
+    System.out.println("Hi " + name + "! You are " + age + " years old and you like " + color + ".");
+    
+    scanner.close();
+  }
+  
+  public static void main(String[] args) { new ZipCode().compute(); }
+}
+----
+
+==== Common Troubleshooting
+
+**Problem:** Program skips asking for input or gives unexpected results.
+**Solution:** Make sure to call `scanner.nextLine()` after using `nextInt()` or `nextDouble()`.
+
+**Problem:** Program crashes when user enters wrong type (like letters when expecting numbers).
+**Solution:** Use validation methods like `hasNextInt()` before calling `nextInt()`.
 
 This is a fundamental skill in Java programming that makes your programs interactive and user-friendly!

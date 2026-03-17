@@ -1,5 +1,13 @@
 == Simple Calculation Programs
 
+Let's do some "real world" simple calculations with Java.
+
+Word problems in math class are often a source of dread for students.
+But they are a great way to learn how to break a problem down into small pieces,
+and then write code to do each piece.
+
+Here are three word problems that we can solve with Java.
+
 === How far can we go in the car?
 
 Let's create a simple problem to solve with Java.
@@ -17,7 +25,9 @@ How long will it take us to drive all those miles?
 ****
 
 What do we need figure out? We need a variable for our
-result: totalMilesDriven. So we start our program this way...
+result: `totalMilesDriven`.
+
+So we start our program this way...
 
 [source]
 ----
@@ -28,6 +38,7 @@ System.out.println(totalMilesDriven);
 ----
 
 It's often good to start with a very simple template. If we run that, we will see 0 (zero) as the result, right?
+Which is correct, because we haven't done any computation yet. (but we have a working program!)
 
 Next step, let's add the variables we know.
 
@@ -66,11 +77,12 @@ totalMilesDriven = milesPerGallon * totalGasGallons;
 totalHoursTaken = totalMilesDriven / milesPerHour;
 
 // print result of computation
-System.out.println(totalMilesDriven +" "+ totalHoursTaken);
+System.out.println("Results: " + totalMilesDriven + " miles " + totalHoursTaken + " hours");
 ----
 
 We get as a result 264 miles driven in 4.8 hours.
 And that's how a simple Java program can get written.
+We broke the process into small steps, and then wrote code to do each step.
 
 Let's do another.
 
@@ -103,7 +115,7 @@ totalCost = cansNeeded * costPerCan; // right?
 double monthsPerYear = 12;
 double costPerMonth = totalCost / monthsPerYear;
 // print result of computation
-System.out.println(totalCost +" "+ costPerMonth);
+System.out.println("Tabby will cost " + totalCost + " a year " + costPerMonth + " per month");
 ----
 
 What's going to be the answer? footnote:[totalCost will be $243.33 and $20.28 per month.] Run it in jshell to work it all out.
